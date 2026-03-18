@@ -230,6 +230,7 @@ export function GlobalFloatingBg() {
         pointerEvents: 'none',
         overflow: 'hidden',
         userSelect: 'none',
+        opacity: 0.35,
       }}
     >
       {/* Mouse-parallax inner layer */}

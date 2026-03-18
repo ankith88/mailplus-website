@@ -224,7 +224,7 @@ h1, h2, h3, h4, h5, h6 {
 .organic-blob {
   animation: blob-morph 12s ease-in-out infinite;
   background: radial-gradient(ellipse, #EAF044 0%, #095c7b 100%);
-  opacity: 0.12;
+  opacity: 0.06;
   filter: blur(50px);
   pointer-events: none;
   user-select: none;
@@ -233,7 +233,7 @@ h1, h2, h3, h4, h5, h6 {
 .organic-blob-moss {
   animation: blob-morph 16s ease-in-out infinite reverse;
   background: radial-gradient(ellipse, #095c7b 0%, #0A7090 100%);
-  opacity: 0.10;
+  opacity: 0.05;
   filter: blur(60px);
   pointer-events: none;
   user-select: none;
