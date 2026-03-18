@@ -159,7 +159,7 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t py-5 px-6" style={{ borderColor: 'rgba(255,255,255,0.15)' }}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white opacity-80">
-          <p>2025 MailPlus Pty. Ltd. All rights reserved.</p>
+          <p>{new Date().getFullYear()} MailPlus Pty. Ltd. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:opacity-100 transition-opacity">Privacy Policy.</Link>
             <Link href="/terms" className="hover:opacity-100 transition-opacity">Terms &amp; Conditions.</Link>
