@@ -7,6 +7,7 @@ import { buildOrganizationGraph } from '@/lib/schema/entity-graph'
 import { ParallaxInit } from '@/components/shared/ParallaxInit'
 import { GetStartedModal } from '@/components/shared/GetStartedModal'
 import { GlobalFloatingBg } from '@/components/shared/GlobalFloatingBg'
+import { ScrollRevealProvider } from '@/components/shared/ScrollRevealProvider'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mailplus.com.au'),
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <GlobalFloatingBg />
+        <ScrollRevealProvider />
         <ParallaxInit />
         <Navbar />
         <main>{children}</main>

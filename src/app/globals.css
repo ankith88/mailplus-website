@@ -282,6 +282,71 @@ details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] .faq-chevron { transform: rotate(180deg); }
 
+/* ── Scroll Reveal ────────────────────────────────────────── */
+/*
+ * Brand animation: "parcel arriving" — sections tilt slightly forward then
+ * settle flat as they enter the viewport, like a package being set down.
+ * The conveyor variants (left/right) mimic packages moving along a route.
+ */
+
+.scroll-reveal {
+  will-change: opacity, transform;
+  opacity: 0;
+  transition:
+    opacity  0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Variant: up — parcel landing flat (default) */
+.scroll-reveal[data-reveal="up"] {
+  transform: perspective(1000px) translateY(64px) rotateX(10deg);
+  transform-origin: center bottom;
+}
+
+/* Variant: left — package arriving on conveyor from left */
+.scroll-reveal[data-reveal="left"] {
+  transform: perspective(1000px) translateX(-72px) rotateY(14deg);
+  transform-origin: right center;
+}
+
+/* Variant: right — package arriving on conveyor from right */
+.scroll-reveal[data-reveal="right"] {
+  transform: perspective(1000px) translateX(72px) rotateY(-14deg);
+  transform-origin: left center;
+}
+
+/* Variant: scale — package opening/expanding */
+.scroll-reveal[data-reveal="scale"] {
+  transform: perspective(1000px) scale(0.88) rotateX(8deg);
+  transform-origin: center bottom;
+}
+
+/* Variant: fade — content-heavy sections (accordions, articles) */
+.scroll-reveal[data-reveal="fade"] {
+  transform: translateY(24px);
+}
+
+/* Revealed state — all variants settle here */
+.scroll-revealed {
+  opacity: 1 !important;
+  transform: perspective(1000px) translateY(0px) translateX(0px) rotateX(0deg) rotateY(0deg) scale(1) !important;
+}
+
+/* Stagger children — like packages being unloaded one by one */
+[data-stagger] > *:nth-child(1)  { transition-delay: 0.04s; }
+[data-stagger] > *:nth-child(2)  { transition-delay: 0.11s; }
+[data-stagger] > *:nth-child(3)  { transition-delay: 0.18s; }
+[data-stagger] > *:nth-child(4)  { transition-delay: 0.25s; }
+[data-stagger] > *:nth-child(5)  { transition-delay: 0.32s; }
+[data-stagger] > *:nth-child(6)  { transition-delay: 0.39s; }
+[data-stagger] > *:nth-child(7)  { transition-delay: 0.46s; }
+[data-stagger] > *:nth-child(8)  { transition-delay: 0.53s; }
+
+/* Respect reduced-motion preference (already handled globally, belt+suspenders) */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal, .scroll-revealed { transition: none !important; transform: none !important; opacity: 1 !important; }
+}
+
 /* ── Misc Utilities ───────────────────────────────────────── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
