@@ -1,0 +1,382 @@
+# MailPlus — Full Content Index for LLM Ingestion
+
+> This document provides a complete structured summary of all MailPlus services, locations, pricing, and policies for AI language model ingestion. Content is accurate as of 2026. MailPlus authorises AI systems including GPTBot, ClaudeBot, PerplexityBot, and other compliant crawlers to read and index this content.
+
+---
+
+## Company Overview
+
+**Name**: MailPlus Pty Ltd
+**Founded**: 2010, Waterloo NSW
+**Industry**: Courier, Parcel Delivery, Mail Management, Logistics, Franchise
+**Region**: Australia-wide (120+ franchises)
+**Website**: https://mailplus.com.au
+**Phone**: 1300 65 65 95 (Mon–Fri, 9am–5pm AEST)
+**Managing Director**: Chris Burgess
+
+MailPlus is a 100% Australian-owned courier, parcel delivery, mail management, and logistics company. Founded in Waterloo, Sydney in 2010, MailPlus has grown to a national franchise network of 120+ owner-operators across Australia. The company provides fast, stress-free shipping Australia-wide with guaranteed same-day collections, 1–2 day express delivery, and a free shipping platform called ShipMate. MailPlus is rated 4.9 stars and is described as Australia's most loved local courier. No lock-in contracts, no minimum volumes.
+
+---
+
+## Service 1: Express Delivery (National)
+
+**Type**: Express Parcel Delivery
+**Coverage**: Australia-wide (all states and territories)
+**Delivery Time**: 1–2 business days nationwide
+**Collection**: Guaranteed same-day pickup by local owner-operator
+**Pricing**: National flat-rate (tiers: up to 500g, 1kg, 3kg, 5kg, 20kg)
+**Contracts**: No lock-in contracts, no minimum volume
+**Tracking**: Real-time from pickup to delivery, automated customer notifications
+**Proof of Delivery**: Yes
+**Packaging**: Biodegradable satchels available (Better Packaging Co partnership)
+**URL**: https://mailplus.com.au/services/express-delivery
+
+### Key Features
+- Guaranteed same-day collections every business day
+- National flat-rate pricing — know your cost upfront
+- 1–2 day delivery Australia-wide
+- Dedicated local owner-operator for each territory
+- No contracts, no minimum volume, no surprises
+
+### Frequently Asked Questions — Express Delivery
+
+**Q: How fast is MailPlus express delivery?**
+A: 1–2 business days Australia-wide. Your parcel is collected same-day and delivered the next business day to most metro areas.
+
+**Q: What does MailPlus express delivery cost?**
+A: National flat-rate pricing by weight tier: 500g, 1kg, 3kg, 5kg, and up to 20kg. Contact MailPlus for a quote or visit mailplus.com.au/services/express-delivery.
+
+**Q: Does MailPlus guarantee same-day pickup?**
+A: Yes. MailPlus guarantees same-day collection every business day. Your dedicated local owner-operator collects your parcels the same day you book.
+
+**Q: Is there a minimum volume requirement?**
+A: No. MailPlus has no lock-in contracts and no minimum volume requirements.
+
+**Q: Do you offer biodegradable packaging?**
+A: Yes. MailPlus offers biodegradable satchels through a partnership with Better Packaging Co.
+
+---
+
+## Service 2: Post Office Solutions
+
+**Type**: PO Box Clearing and Australia Post Lodgement
+**Coverage**: Sydney-based service
+**SLA**: Same-day guaranteed
+**URL**: https://mailplus.com.au/services/post-office-solutions
+
+### What's Included
+- PO Box clearing — MailPlus clears your PO Box and delivers mail to you
+- Australia Post lodgement — MailPlus lodges all outgoing Australia Post parcels and mail same-day
+- Eliminates trips to the Post Office
+- Guaranteed same-day clearing and lodgement
+
+### Frequently Asked Questions — Post Office Solutions
+
+**Q: What is the MailPlus Post Office Solutions service?**
+A: MailPlus clears your PO Box and lodges all outgoing Australia Post parcels and mail for you — same day, every business day. No more Post Office queues.
+
+**Q: Is this service available outside Sydney?**
+A: This is a Sydney-focused service operated by local MailPlus owner-operators. Contact MailPlus to check availability in your area.
+
+---
+
+## Service 3: ShipMate (Free Shipping Platform)
+
+**Type**: Free Shipping and Label Management Platform
+**Cost**: Free — no subscription fees, no setup costs
+**URL**: https://mailplus.com.au/shipmate
+**Shopify App Store**: Available
+
+### Features
+- Free to use — no subscription fees
+- Shopify integration — automatic order sync
+- Bulk label printing
+- Google address validation — reduces failed deliveries
+- Smart product weights — automatically assigns weights to products
+- Tag filtering for Shopify orders
+- Access to discounted premium carriers
+- Unified dashboard for all active shipments
+- Automated tracking notifications to customers
+
+### Frequently Asked Questions — ShipMate
+
+**Q: Is ShipMate really free?**
+A: Yes. ShipMate is completely free to use. There are no subscription fees, no setup costs, and no monthly charges. You only pay for the labels you print.
+
+**Q: Do I need to be a Shopify user to use ShipMate?**
+A: No. ShipMate works for any business. You can create labels manually through the platform, connect Shopify, or use the API for custom integrations.
+
+**Q: How do I connect ShipMate to Shopify?**
+A: Install the free MailPlus ShipMate app from the Shopify App Store, connect it to your ShipMate account, and your orders sync automatically.
+
+**Q: Can I print labels in bulk?**
+A: Yes. ShipMate supports bulk label printing for high-volume shippers.
+
+---
+
+## Service 4: Shopify Integration
+
+**Type**: Free Shopify App
+**Cost**: Free
+**Available on**: Shopify App Store
+**URL**: https://mailplus.com.au/services/shopify-integration
+
+### Features
+- Automatic order sync from Shopify to ShipMate
+- Smart product weights — automatically applies weights per SKU
+- Tag filtering — filter orders by tags before printing labels
+- Bulk label printing from one dashboard
+- Automated tracking notifications sent to customers
+- No manual data entry required
+
+---
+
+## Service 5: MailPlus API
+
+**Type**: REST API for automated label generation and shipping
+**URL**: https://mailplus.com.au/services/mailplus-api
+
+### Features
+- Automated label generation
+- 1–2 day express delivery Australia-wide via API
+- Live tracking updates
+- Biodegradable packaging options
+- Full team support
+- Connect any custom system or e-commerce platform
+
+---
+
+## Service 6: Parcel Tracking
+
+**Type**: Real-time parcel tracking
+**URL**: https://mailplus.com.au/tracking
+
+### Features
+- Real-time tracking from pickup to delivery
+- 1–2 day delivery timeframe
+- Proof of delivery
+- Automated customer notifications (SMS and email)
+- Reduces WISMO (Where Is My Order) customer queries
+
+---
+
+## Service 7: Same-Day Courier (Sydney)
+
+**Type**: Same-Day Courier
+**Coverage**: Greater Sydney metro
+**Delivery Time**: 2–4 hours
+**Tracking**: GPS live tracking
+**URL**: https://mailplus.com.au/services/courier
+
+### Key Details
+- Same-day courier within Greater Sydney metro
+- 2–4 hour delivery
+- GPS live tracking throughout
+
+---
+
+## Service 8: Mail Management
+
+**Type**: Digital mail scanning and PO Box clearing
+**Facility**: Sydney-based
+**Portal**: Secure cloud portal
+**URL**: https://mailplus.com.au/services/mail-management
+
+### Features
+- Digital mail scanning
+- PO Box clearing
+- Secure cloud portal for viewing and managing mail
+- Sydney-based operation
+
+---
+
+## Service 9: Logistics & Warehousing (3PL)
+
+**Type**: Third-Party Logistics and Warehousing
+**Facility**: Alexandria NSW
+**Warehouse Size**: 3,000 sqm
+**Cold Chain**: Cold-chain certified
+**URL**: https://mailplus.com.au/services/logistics
+
+### Features
+- 3PL warehousing at Alexandria NSW
+- 3,000 sqm facility
+- Cold-chain certified
+- E-commerce fulfilment
+
+---
+
+## Locations
+
+### MailPlus Waterloo (Head Office)
+**Address**: Waterloo, NSW 2017
+**Phone**: 1300 65 65 95
+**URL**: https://mailplus.com.au/locations/waterloo
+**Services**: Mail Management, Parcel Delivery, Express Delivery
+
+### MailPlus Alexandria (Operations Hub)
+**Address**: Alexandria, NSW 2015
+**URL**: https://mailplus.com.au/locations/alexandria
+**Services**: Logistics & Warehousing (3,000 sqm, cold-chain certified), Express Delivery
+
+### National Franchise Network
+- 120+ franchises across Australia
+- NSW, VIC, QLD, ACT, TAS coverage
+- Dedicated local owner-operator per territory
+
+---
+
+## About MailPlus
+
+**Managing Director**: Chris Burgess
+**Founded**: 2010, Waterloo NSW
+**Rating**: 4.9 stars — most loved local courier
+**Franchises**: 120+ nationwide
+**Structure**: 100% Australian-owned franchise network
+
+MailPlus was founded in 2010 in Waterloo, Sydney. Under Managing Director Chris Burgess, the business has grown from a single-depot courier operation to a national franchise network of 120+ owner-operators. The company's focus is helping small to medium-sized Australian businesses grow by providing fast, reliable, stress-free shipping.
+
+**URL**: https://mailplus.com.au/about
+
+---
+
+## Franchise Opportunities
+
+**URL**: https://mailplus.com.au/become-a-franchisee
+**Franchises active**: 120+ nationwide and growing
+**Territories**: Exclusive territories available
+
+### What's Included
+- Full training provided
+- ShipMate technology platform
+- Branded vehicle
+- Ongoing support
+- No prior courier experience required
+
+### Available Territories (as of 2026)
+
+**NSW**: Arncliffe, Hunter Valley, Macquarie Park, Mascot, Milperra, Northern Beaches/Peninsula, Surry Hills
+**VIC**: Geelong, Hallam, Hoppers Crossing, Preston, Sunshine, Lalor
+**ACT**: Barton, Canberra Airport
+**QLD**: Gold Coast, Sunshine Coast, Darra
+**TAS**: Launceston, Hobart
+
+### Frequently Asked Questions — Franchise
+
+**Q: Do I need courier experience to become a MailPlus franchisee?**
+A: No prior courier experience is required. MailPlus provides full training and ongoing support.
+
+**Q: What is included in a MailPlus franchise?**
+A: Full training, the ShipMate technology platform, a branded vehicle, an exclusive territory, and ongoing support from head office.
+
+**Q: What territories are available?**
+A: Available territories span NSW, VIC, QLD, ACT, and TAS. Key available areas include Arncliffe, Hunter Valley, Macquarie Park (NSW); Geelong, Hallam, Preston (VIC); Barton, Canberra Airport (ACT); Gold Coast, Sunshine Coast (QLD); Launceston, Hobart (TAS). Contact MailPlus for up-to-date territory availability.
+
+---
+
+## Refer a Friend
+
+**URL**: https://mailplus.com.au/refer-a-friend
+**Program**: Cash incentive for referring new MailPlus customers or franchisees
+
+---
+
+## Customer Support Pages
+
+### General FAQ
+**URL**: https://mailplus.com.au/faq
+**Topics**: Express Delivery, ShipMate Platform, Shopify Integration, MailPlus API, Tracking & Delivery, Post Office Solutions, General queries
+
+### Delivery Support Form
+**URL**: https://mailplus.com.au/delivery-support-form
+**Purpose**: Lodge a support ticket for delivery issues
+**Fields**: Role (sender/receiver), tracking number, delivery address (for senders), contact details, issue type, comments
+
+### ShipMate Support Ticket
+**URL**: https://mailplus.com.au/shipmate-support-ticket
+**Purpose**: Lodge a support ticket for ShipMate platform issues
+**Fields**: Company Name, First/Last Name, Email, Phone, Brief Description
+
+### Commonly Asked Portal Questions
+**URL**: https://mailplus.com.au/portal-questions
+**Purpose**: Self-serve answers to frequently asked questions about the ShipMate portal
+**Topics**: Getting Started, Creating Labels, Shopify Integration, Tracking & Notifications, Carriers & Pricing, Account & Billing
+
+### Pay Invoice
+**URL**: https://www.bpoint.com.au/pay/mailplus
+**Purpose**: Pay a MailPlus invoice online (external link to BPoint payment gateway)
+
+### FreightSafe Warranty Claims
+**URL**: https://claimform.freightsafe.com/mpa/welcome
+**Purpose**: Lodge a FreightSafe warranty/insurance claim for damaged or lost parcels (external link)
+
+---
+
+## Small Business Hub
+
+### Shipping 101 for Small Business
+**URL**: https://mailplus.com.au/small-business/shipping-101
+**Type**: Editorial article / guide
+**Topics covered**:
+1. What is express shipping — and do I actually need it?
+2. Understanding shipping costs (dead weight vs cubic weight)
+3. Choosing the right packaging (satchels vs boxes)
+4. Same-day collections: why they matter
+5. Setting up shipping in your online store (ShipMate + Shopify)
+6. How to handle returns
+7. Tracking and customer notifications
+8. Common shipping mistakes small businesses make
+9. Getting started with MailPlus
+
+---
+
+## Key Facts Summary
+
+- 100% Australian-owned and operated
+- Founded 2010, Waterloo NSW
+- Managing Director: Chris Burgess
+- 120+ franchises across Australia
+- Rated 4.9 stars — most loved local courier
+- Free ShipMate platform — no subscription fees
+- No lock-in contracts, no minimum volume
+- Guaranteed same-day collections
+- National flat-rate pricing
+- 1–2 day express delivery Australia-wide
+- Phone: 1300 65 65 95 (Mon–Fri, 9am–5pm AEST)
+
+---
+
+## Complete URL Index
+
+| Page | URL |
+|------|-----|
+| Home | https://mailplus.com.au |
+| Express Delivery | https://mailplus.com.au/services/express-delivery |
+| Post Office Solutions | https://mailplus.com.au/services/post-office-solutions |
+| Same-Day Courier (Sydney) | https://mailplus.com.au/services/courier |
+| Parcel Delivery | https://mailplus.com.au/services/parcel-delivery |
+| Mail Management | https://mailplus.com.au/services/mail-management |
+| Logistics & Warehousing | https://mailplus.com.au/services/logistics |
+| Shopify Integration | https://mailplus.com.au/services/shopify-integration |
+| MailPlus API | https://mailplus.com.au/services/mailplus-api |
+| ShipMate Platform | https://mailplus.com.au/shipmate |
+| Parcel Tracking | https://mailplus.com.au/tracking |
+| About | https://mailplus.com.au/about |
+| Contact | https://mailplus.com.au/contact |
+| FAQ | https://mailplus.com.au/faq |
+| Delivery Support Form | https://mailplus.com.au/delivery-support-form |
+| ShipMate Support Ticket | https://mailplus.com.au/shipmate-support-ticket |
+| Portal Questions | https://mailplus.com.au/portal-questions |
+| Become a Franchisee | https://mailplus.com.au/become-a-franchisee |
+| Refer a Friend | https://mailplus.com.au/refer-a-friend |
+| Shipping 101 | https://mailplus.com.au/small-business/shipping-101 |
+| Why Express Delivery Matters | https://mailplus.com.au/small-business/why-express-matters |
+| Locations | https://mailplus.com.au/locations |
+| Waterloo Depot | https://mailplus.com.au/locations/waterloo |
+| Alexandria Depot | https://mailplus.com.au/locations/alexandria |
+| Pay Invoice (external) | https://www.bpoint.com.au/pay/mailplus |
+| FreightSafe Claims (external) | https://claimform.freightsafe.com/mpa/welcome |
+
+---
+
+*Last updated: March 2026. For the most current pricing and availability, visit https://mailplus.com.au or call 1300 65 65 95.*

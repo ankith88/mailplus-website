@@ -1,26 +1,289 @@
+@font-face {
+  font-family: 'ObjectSans';
+  src: url('/fonts/3830ObjectSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ObjectSans';
+  src: url('/fonts/2997ObjectSans-Slanted.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ObjectSans';
+  src: url('/fonts/4408ObjectSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ObjectSans';
+  src: url('/fonts/2834ObjectSans-Heavy.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── Design Tokens (Tailwind v4 theme) ───────────────────── */
+@theme {
+  /* Sage/green palette — mapped to site backgrounds */
+  --color-earth-950: #0D2A27;
+  --color-earth-900: #D1E0D1;
+  --color-earth-800: #DAE8DA;
+  --color-earth-700: #E1EDE1;
+  --color-earth-600: #8BAE8B;
+  --color-earth-500: #4A7A5A;
+  --color-earth-400: #2D5A42;
+  --color-earth-300: #1A4230;
+  --color-earth-200: #103d39;
+  --color-earth-100: #103d39;
+  --color-earth-50:  #EEF5EE;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Amber — kept for glow effects */
+  --color-amber-600: #B45309;
+  --color-amber-500: #D97706;
+  --color-amber-400: #F59E0B;
+  --color-amber-300: #FCD34D;
+  --color-amber-200: #FDE68A;
+  --color-amber-100: #FEF3C7;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Moss — teal/blue accent */
+  --color-moss-800: #063040;
+  --color-moss-600: #074A60;
+  --color-moss-500: #095c7b;
+  --color-moss-400: #0A7090;
+  --color-moss-300: #1A90B0;
+  --color-moss-200: #7EC8DA;
+
+  /* Clay — button yellow */
+  --color-clay-700: #C8CC00;
+  --color-clay-600: #D4DA10;
+  --color-clay-500: #EAF044;
+  --color-clay-400: #EEF466;
+  --color-clay-300: #F2F78A;
+
+  /* Fonts */
+  --font-display: 'ObjectSans', system-ui, sans-serif;
+  --font-body:    'ObjectSans', system-ui, sans-serif;
+
+  /* Box shadows */
+  --shadow-warm-sm: 0 2px 8px -2px rgba(180,83,9,0.12),0 1px 3px rgba(0,0,0,0.08);
+  --shadow-warm-md: 0 8px 24px -4px rgba(180,83,9,0.15),0 4px 8px rgba(0,0,0,0.12);
+  --shadow-warm-lg: 0 20px 48px -8px rgba(180,83,9,0.2),0 8px 16px rgba(0,0,0,0.16);
+  --shadow-warm-xl: 0 40px 80px -12px rgba(180,83,9,0.25),0 16px 32px rgba(0,0,0,0.2);
+  --shadow-glow-amber: 0 0 40px -5px rgba(245,158,11,0.5);
+  --shadow-card-3d: 0 25px 50px -12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);
+
+  /* Animations */
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-blob-morph: blob-morph 12s ease-in-out infinite;
+  --animate-shimmer:    shimmer 2.5s linear infinite;
+  --animate-fade-up:    fade-up 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+
+  @keyframes float-slow {
+    0%,100% { transform: translateY(0px) rotate(0deg); }
+    33%      { transform: translateY(-12px) rotate(1.5deg); }
+    66%      { transform: translateY(-6px) rotate(-1deg); }
+  }
+
+  @keyframes blob-morph {
+    0%,100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+    25%      { border-radius: 30% 70% 40% 60% / 40% 30% 70% 60%; }
+    50%      { border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%; }
+    75%      { border-radius: 40% 60% 60% 40% / 50% 70% 30% 50%; }
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes fade-up {
+    0%   { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%,100% { box-shadow: 0 0 20px rgba(245,158,11,0.3); }
+    50%      { box-shadow: 0 0 50px rgba(245,158,11,0.6); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Base Styles ──────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  background-color: #D1E0D1;
+  color: #103d39;
 }
+
+body {
+  font-family: 'ObjectSans', system-ui, sans-serif;
+  background-color: #D1E0D1;
+  color: #103d39;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'ObjectSans', system-ui, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #095c7b;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #D1E0D1; }
+::-webkit-scrollbar-thumb { background: #8BAE8B; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4A7A5A; }
+
+:focus-visible { outline: 2px solid #EAF044; outline-offset: 3px; }
+::selection { background: rgba(234,240,68,0.4); color: #103d39; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .parallax-layer, .card-3d, [data-parallax] {
+    transform: none !important;
+  }
+}
+
+/* ── 3D Parallax System ───────────────────────────────────── */
+.parallax-scene {
+  perspective: 1400px;
+  perspective-origin: 50% 30%;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.parallax-layer { transform-style: preserve-3d; will-change: transform; }
+.layer-back    { transform: translateZ(-200px) scale(1.22); }
+.layer-mid     { transform: translateZ(-80px) scale(1.08); }
+.layer-front   { transform: translateZ(0px); }
+.layer-surface { transform: translateZ(20px); }
+
+[data-parallax="slow"]   { transform: translateY(calc(var(--scroll-y, 0) * -0.03px)); }
+[data-parallax="medium"] { transform: translateY(calc(var(--scroll-y, 0) * -0.07px)); }
+[data-parallax="fast"]   { transform: translateY(calc(var(--scroll-y, 0) * -0.14px)); }
+
+/* ── Cards 3D scene — perspective container without overflow clip ── */
+.cards-3d-scene {
+  perspective: 1100px;
+  perspective-origin: 50% 30%;
+}
+
+/* ── 3D Card ──────────────────────────────────────────────── */
+.card-3d {
+  transition:
+    transform     0.45s cubic-bezier(0.23,1,0.32,1),
+    box-shadow    0.45s cubic-bezier(0.23,1,0.32,1);
+  transform:
+    perspective(900px)
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    translateZ(var(--tz, 0px));
+  transform-style: preserve-3d;
+  cursor: pointer;
+  /* Dynamic shadow — deepens as card tilts */
+  box-shadow:
+    0 var(--shadow-y, 6px) var(--shadow-blur, 16px) rgba(9,92,123, var(--shadow-a, 0.08)),
+    0 1px 3px rgba(0,0,0,0.04);
+}
+
+.card-3d__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 60%);
+  pointer-events: none;
+  opacity: var(--shine-opacity, 0);
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  z-index: 10;
+}
+
+/* Depth layers — each translateZ value floats element toward viewer */
+.card-3d__depth    { transform: translateZ(20px); }
+.card-3d__depth-sm { transform: translateZ(10px); }
+.card-3d__depth-lg { transform: translateZ(30px); }
+
+/* ── Organic Blobs ────────────────────────────────────────── */
+.organic-blob {
+  animation: blob-morph 12s ease-in-out infinite;
+  background: radial-gradient(ellipse, #EAF044 0%, #095c7b 100%);
+  opacity: 0.12;
+  filter: blur(50px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.organic-blob-moss {
+  animation: blob-morph 16s ease-in-out infinite reverse;
+  background: radial-gradient(ellipse, #095c7b 0%, #0A7090 100%);
+  opacity: 0.10;
+  filter: blur(60px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Glass Morphism ───────────────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(139,174,139,0.4);
+}
+
+.glass-dark {
+  background: rgba(209,224,209,0.72);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid rgba(139,174,139,0.35);
+}
+
+/* ── Gradient Text ────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #095c7b 0%, #0A7090 50%, #095c7b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+.gradient-text-moss {
+  background: linear-gradient(135deg, #095c7b 0%, #0A7090 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Shimmer ──────────────────────────────────────────────── */
+.shimmer-bg {
+  background: linear-gradient(90deg, rgba(86,69,53,0.1) 25%, rgba(160,136,112,0.2) 50%, rgba(86,69,53,0.1) 75%);
+  background-size: 400% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ── FAQ Accordion ────────────────────────────────────────── */
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .faq-chevron { transform: rotate(180deg); }
+
+/* ── Misc Utilities ───────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.cq { container-type: inline-size; }
