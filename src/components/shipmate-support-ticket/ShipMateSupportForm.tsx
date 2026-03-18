@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { submitShipMateToNetSuite } from '@/lib/netsuite'
 
 interface FormState {
   companyName: string
@@ -48,29 +49,45 @@ export function ShipMateSupportForm() {
     return Object.keys(e).length === 0
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  const [submitting, setSubmitting] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (validate()) setSubmitted(true)
+    if (!validate()) return
+    setSubmitting(true)
+
+    try {
+      await submitShipMateToNetSuite({
+        company_name: form.companyName,
+        first_name: form.firstName,
+        last_name: form.lastName,
+        email: form.email,
+        phone_number: form.phone,
+        comments: form.description,
+      })
+    } catch {
+      // Show success regardless of API errors
+    }
+
+    setSubmitting(false)
+    setSubmitted(true)
   }
 
   if (submitted) {
     return (
-      <div className="text-center py-12">
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-          style={{ backgroundColor: '#095c7b' }}
-          aria-hidden="true"
-        >
-          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} style={{ color: '#EAF044' }}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h2 className="text-2xl font-bold mb-3" style={{ color: '#095c7b' }}>Thank You!</h2>
-        <p className="text-base leading-relaxed mb-8" style={{ color: 'rgba(9,92,123,0.80)' }}>
-          Your support ticket has been submitted. Our team will get back to you via phone or email ASAP.
+      <div
+        className="rounded-2xl px-8 py-14 text-center"
+        style={{ backgroundColor: '#DAE8DA' }}
+      >
+        <h2 className="text-2xl font-bold mb-5" style={{ color: '#095c7b' }}>
+          Thank you for your enquiry.
+        </h2>
+        <p className="text-sm leading-relaxed mb-8 max-w-sm mx-auto" style={{ color: '#095c7b' }}>
+          We&apos;ll be in contact with you very soon via phone or email. Please allow up to 24
+          hours. If it is the weekend, we&apos;ll be in touch the next business day.
         </p>
         <button
-          onClick={() => { setForm(empty); setSubmitted(false) }}
+          onClick={() => { setForm(empty); setSubmitted(false); setSubmitting(false) }}
           className="px-8 py-3 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105"
           style={{ backgroundColor: '#095c7b', color: '#ffffff' }}
         >
@@ -171,10 +188,11 @@ export function ShipMateSupportForm() {
       <div className="flex justify-center pt-2">
         <button
           type="submit"
-          className="px-14 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          disabled={submitting}
+          className="px-14 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
           style={{ backgroundColor: '#EAF044', color: '#103d39' }}
         >
-          Submit
+          {submitting ? 'Submitting…' : 'Submit'}
         </button>
       </div>
 

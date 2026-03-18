@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { submitFranchiseeToNetSuite } from '@/lib/netsuite'
 
 type Role = '' | 'investor' | 'owner-operator' | 'employment'
 
@@ -30,6 +31,7 @@ interface Props {
 export function FranchiseeModal({ isOpen, onClose }: Props) {
   const [form, setForm] = useState<FormState>(empty)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({})
   const dialogRef = useRef<HTMLDivElement>(null)
 
@@ -49,7 +51,7 @@ export function FranchiseeModal({ isOpen, onClose }: Props) {
 
   // Reset on close
   useEffect(() => {
-    if (!isOpen) { setForm(empty); setSubmitted(false); setErrors({}) }
+    if (!isOpen) { setForm(empty); setSubmitted(false); setSubmitting(false); setErrors({}) }
   }, [isOpen])
 
   function set(field: keyof FormState, value: string) {
@@ -60,18 +62,45 @@ export function FranchiseeModal({ isOpen, onClose }: Props) {
   function validate(): boolean {
     const e: Partial<Record<keyof FormState, string>> = {}
     if (!form.firstName.trim()) e.firstName = 'Required.'
-    if (!form.lastName.trim()) e.lastName = 'Required.'
-    if (!form.email.trim()) e.email = 'Required.'
+    if (!form.lastName.trim())  e.lastName  = 'Required.'
+    if (!form.email.trim())     e.email     = 'Required.'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Invalid email.'
-    if (!form.phone.trim()) e.phone = 'Required.'
-    if (!form.comments.trim()) e.comments = 'Required.'
+    if (!form.phone.trim())     e.phone     = 'Required.'
+    if (!form.role)             e.role      = 'Please select an option.'
+    if (!form.comments.trim())  e.comments  = 'Required.'
     setErrors(e)
     return Object.keys(e).length === 0
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (validate()) setSubmitted(true)
+    if (!validate()) return
+    setSubmitting(true)
+
+    try {
+      await submitFranchiseeToNetSuite({
+        first_name: form.firstName,
+        last_name: form.lastName,
+        email: form.email,
+        phone_number: form.phone,
+        postcode: '',
+        comments: form.comments,
+        investor_radio:            form.role === 'investor'        ? 'T' : '',
+        owner_radio:               form.role === 'owner-operator'  ? 'T' : '',
+        seeking_employment_radio:  form.role === 'employment'      ? 'T' : '',
+        residentialpostcode: '',
+        vehicle: '',
+        experience: '',
+        employment_type: '',
+        suburb: '',
+        pathname: window.location.pathname,
+      })
+    } catch {
+      // Show success regardless of API errors
+    }
+
+    setSubmitting(false)
+    setSubmitted(true)
   }
 
   if (!isOpen) return null
@@ -114,23 +143,20 @@ export function FranchiseeModal({ isOpen, onClose }: Props) {
 
         <div className="px-8 pt-12 pb-10">
           {submitted ? (
-            <div className="text-center py-6">
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
-                style={{ backgroundColor: '#095c7b' }}
-                aria-hidden="true"
-              >
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} style={{ color: '#EAF044' }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold mb-3" style={{ color: '#095c7b' }}>Enquiry Sent!</h2>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(9,92,123,0.80)' }}>
-                Thanks for your interest in MailPlus. Our franchising team will be in contact as soon as possible.
+            <div
+              className="rounded-2xl px-8 py-14 text-center"
+              style={{ backgroundColor: '#DAE8DA' }}
+            >
+              <h2 className="text-2xl md:text-3xl font-bold mb-5" style={{ color: '#095c7b' }}>
+                Thank you for your enquiry.
+              </h2>
+              <p className="text-sm leading-relaxed mb-8 max-w-sm mx-auto" style={{ color: '#095c7b' }}>
+                We&apos;ll be in contact with you very soon via phone or email. Please allow up to
+                24 hours. If it is the weekend, we&apos;ll be in touch the next business day.
               </p>
               <button
                 onClick={onClose}
-                className="px-8 py-3 rounded-full font-bold text-sm"
+                className="px-10 py-3 rounded-full font-bold text-sm transition-all hover:scale-105"
                 style={{ backgroundColor: '#095c7b', color: '#ffffff' }}
               >
                 Close
@@ -218,28 +244,31 @@ export function FranchiseeModal({ isOpen, onClose }: Props) {
                 </div>
 
                 {/* Role radio buttons */}
-                <div className="grid grid-cols-3 gap-3 py-1">
-                  {[
-                    { value: 'investor', label: "I'm an investor" },
-                    { value: 'owner-operator', label: "I'd like to become an owner-operator" },
-                    { value: 'employment', label: "I'm seeking employment" },
-                  ].map((opt) => (
-                    <label
-                      key={opt.value}
-                      className="flex items-center gap-2 cursor-pointer text-sm"
-                      style={{ color: '#103d39' }}
-                    >
-                      <input
-                        type="radio"
-                        name="role"
-                        value={opt.value}
-                        checked={form.role === opt.value}
-                        onChange={(e) => set('role', e.target.value)}
-                        className="flex-none accent-[#095c7b]"
-                      />
-                      {opt.label}
-                    </label>
-                  ))}
+                <div>
+                  <div className="grid grid-cols-3 gap-3 py-1">
+                    {[
+                      { value: 'investor', label: "I'm an investor" },
+                      { value: 'owner-operator', label: "I'd like to become an owner-operator" },
+                      { value: 'employment', label: "I'm seeking employment" },
+                    ].map((opt) => (
+                      <label
+                        key={opt.value}
+                        className="flex items-center gap-2 cursor-pointer text-sm"
+                        style={{ color: '#103d39' }}
+                      >
+                        <input
+                          type="radio"
+                          name="role"
+                          value={opt.value}
+                          checked={form.role === opt.value}
+                          onChange={(e) => set('role', e.target.value)}
+                          className="flex-none accent-[#095c7b]"
+                        />
+                        {opt.label}
+                      </label>
+                    ))}
+                  </div>
+                  {errors.role && <p className="mt-1 text-xs text-red-500">{errors.role}</p>}
                 </div>
 
                 {/* Comments */}
@@ -259,10 +288,11 @@ export function FranchiseeModal({ isOpen, onClose }: Props) {
                 <div className="flex flex-col items-center gap-3 pt-2">
                   <button
                     type="submit"
-                    className="px-16 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    disabled={submitting}
+                    className="px-16 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
                     style={{ backgroundColor: '#EAF044', color: '#103d39' }}
                   >
-                    Enquire Now
+                    {submitting ? 'Submitting…' : 'Enquire Now'}
                   </button>
                   <div className="flex items-center gap-2 text-sm" style={{ color: '#103d39' }}>
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

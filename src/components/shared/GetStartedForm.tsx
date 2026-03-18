@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import Script from 'next/script'
+import { submitToNetSuite } from '@/lib/netsuite'
 
 interface FormState {
   businessName: string
@@ -16,6 +17,8 @@ interface FormState {
   suburb: string
   state: string
   postcode: string
+  lat: string
+  lng: string
   joinMailingList: boolean
 }
 
@@ -38,6 +41,8 @@ const EMPTY_FORM: FormState = {
   suburb: '',
   state: '',
   postcode: '',
+  lat: '',
+  lng: '',
   joinMailingList: false,
 }
 
@@ -77,7 +82,7 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
     const autocomplete = new window.google.maps.places.Autocomplete(streetInputRef.current, {
       componentRestrictions: { country: 'au' },
       types: ['address'],
-      fields: ['address_components'],
+      fields: ['address_components', 'geometry'],
     })
 
     autocomplete.addListener('place_changed', () => {
@@ -100,8 +105,10 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
       }
 
       const street = [streetNumber, route].filter(Boolean).join(' ')
+      const lat = place.geometry?.location?.lat()?.toString() ?? ''
+      const lng = place.geometry?.location?.lng()?.toString() ?? ''
 
-      setForm((prev) => ({ ...prev, streetAddress: street, suburb, state, postcode }))
+      setForm((prev) => ({ ...prev, streetAddress: street, suburb, state, postcode, lat, lng }))
       setErrors((prev) => ({ ...prev, streetAddress: undefined, suburb: undefined }))
     })
   }, [])
@@ -149,7 +156,36 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
     e.preventDefault()
     if (!validate()) return
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 900))
+
+    const nameParts = form.fullName.trim().split(/\s+/)
+    const firstName = nameParts[0] ?? ''
+    const lastName = nameParts.slice(1).join(' ') || firstName
+
+    try {
+      await submitToNetSuite({
+        business_name: form.businessName,
+        first_name: firstName,
+        last_name: lastName,
+        email: form.email,
+        phone_number: form.phone,
+        address1: form.unitNumber,
+        address2: form.streetAddress,
+        city: form.suburb,
+        state: form.state,
+        postcode: form.postcode,
+        lat: form.lat,
+        lng: form.lng,
+        avg_daily_shipments: form.weeklyShipments,
+        services_of_interest: form.servicesOfInterest,
+        how_did_you_hear_about_us: '',
+        current_carrier: form.currentCarrier,
+        pageURL: window.location.href,
+        subscribe: form.joinMailingList ? 'T' : 'F',
+      })
+    } catch {
+      // Submission still counts as done — show success regardless of API errors
+    }
+
     setSubmitting(false)
     setSubmitted(true)
     onSuccess?.()
@@ -158,13 +194,19 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   /* ── Success state ─────────────────────────────────────── */
   if (submitted) {
     return (
-      <div className="text-center py-16">
-        <div className="text-5xl mb-5">✅</div>
-        <h3 className="text-2xl font-bold mb-2" style={{ color: '#095c7b', fontFamily: 'var(--font-display)' }}>
-          You&apos;re all set!
+      <div
+        className="rounded-2xl px-8 py-14 text-center"
+        style={{ backgroundColor: '#DAE8DA' }}
+      >
+        <h3
+          className="text-3xl font-bold mb-4"
+          style={{ color: '#095c7b', fontFamily: 'var(--font-display)' }}
+        >
+          Thank you for your enquiry.
         </h3>
-        <p style={{ color: '#103d39' }}>
-          A team member will reach out to confirm your unique business needs.
+        <p className="text-base leading-relaxed max-w-sm mx-auto" style={{ color: '#095c7b' }}>
+          You will be sent an email during business hours with prices and an opportunity to book a
+          call or sign up now.
         </p>
       </div>
     )

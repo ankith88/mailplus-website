@@ -28,20 +28,6 @@ export default function ReferAFriendPage() {
 
           {/* Form */}
           <div>
-            <span
-              className="text-xs font-bold tracking-widest uppercase mb-4 block"
-              style={{ color: '#095c7b' }}
-            >
-              Referral Form
-            </span>
-            <h2
-              id="refer-form-heading"
-              className="text-3xl md:text-4xl font-bold mb-10 leading-tight"
-              style={{ color: '#095c7b' }}
-            >
-              Refer a friend for a{' '}
-              <span className="italic" style={{ color: '#103d39' }}>MailPlus franchise.</span>
-            </h2>
             <ReferForm />
           </div>
 

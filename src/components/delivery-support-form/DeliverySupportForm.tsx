@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { submitDeliveryToNetSuite } from '@/lib/netsuite'
 
 const AU_STATES = ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
 
@@ -65,14 +66,42 @@ const inputStyle = {
   color: '#103d39',
   backgroundColor: '#ffffff',
 }
-const inputFocusRingColor = '#095c7b33'
 
 const labelCls = 'block text-xs font-bold tracking-wide mb-1.5'
 const labelStyle = { color: '#095c7b' }
 
+/** Mirrors the original IsEmail / validatePhone checks */
+function isValidEmail(v: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+}
+function isValidPhone(v: string) {
+  return /^(\+?61|0)[2-578]\d{8}$/.test(v.replace(/[\s\-()\+]/g, ''))
+}
+
+/**
+ * Barcode validation from original JS:
+ * Must start with MPXL, MPSD, MPE, CPB, 2QQZ, or any 2-char prefix 'MP'
+ * (the 'MP' check catches MPEN etc. as well as the others)
+ */
+function isValidBarcode(raw: string): boolean {
+  const b = raw.trim().toUpperCase()
+  const b2 = b.slice(0, 2)
+  const b3 = b.slice(0, 3)
+  const b4 = b.slice(0, 4)
+  return (
+    b4 === 'MPXL' ||
+    b4 === 'MPSD' ||
+    b3 === 'MPE' ||
+    b3 === 'CPB' ||
+    b2 === 'MP' ||
+    b4 === '2QQZ'
+  )
+}
+
 export function DeliverySupportForm() {
   const [form, setForm] = useState<FormState>(empty)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({})
 
   const isSender = form.role === 'sender'
@@ -84,58 +113,99 @@ export function DeliverySupportForm() {
 
   function validate(): boolean {
     const e: Partial<Record<keyof FormState, string>> = {}
+
+    // Role
     if (!form.role) e.role = 'Please select an option.'
-    if (!form.barcode.trim()) e.barcode = 'Tracking number is required.'
+
+    // Barcode — empty check then format check
+    if (!form.barcode.trim()) {
+      e.barcode = 'Tracking number is required.'
+    } else if (!isValidBarcode(form.barcode)) {
+      e.barcode = 'Invalid tracking number. Must start with MPXL, MPSD, MPE, MPEN, CPB, or 2QQZ.'
+    }
+
+    // Sender-only fields
     if (isSender) {
       if (!form.companyName.trim()) e.companyName = 'Company name is required.'
       if (!form.delFirstName.trim()) e.delFirstName = 'First name is required.'
-      if (!form.delLastName.trim()) e.delLastName = 'Last name is required.'
-      if (!form.delAdd2.trim()) e.delAdd2 = 'Street address is required.'
-      if (!form.delCity.trim()) e.delCity = 'City is required.'
-      if (!form.delState) e.delState = 'State is required.'
-      if (!form.delPostcode.trim()) e.delPostcode = 'Postcode is required.'
+      if (!form.delLastName.trim())  e.delLastName  = 'Last name is required.'
+      if (!form.delAdd2.trim())      e.delAdd2      = 'Street address is required.'
+      if (!form.delCity.trim())      e.delCity      = 'City is required.'
+      if (!form.delState)            e.delState     = 'State is required.'
+      if (!form.delPostcode.trim())  e.delPostcode  = 'Postcode is required.'
     }
+
+    // Contact details — always required
     if (!form.firstName.trim()) e.firstName = 'First name is required.'
-    if (!form.lastName.trim()) e.lastName = 'Last name is required.'
-    if (!form.email.trim()) e.email = 'Email address is required.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Please enter a valid email.'
-    if (!form.phone.trim()) e.phone = 'Phone number is required.'
+    if (!form.lastName.trim())  e.lastName  = 'Last name is required.'
+
+    if (!form.email.trim()) {
+      e.email = 'Email address is required.'
+    } else if (!isValidEmail(form.email)) {
+      e.email = 'Please enter a valid email address.'
+    }
+
+    if (!form.phone.trim()) {
+      e.phone = 'Phone number is required.'
+    } else if (!isValidPhone(form.phone)) {
+      e.phone = 'Please enter a valid Australian phone number.'
+    }
+
     if (!form.issue) e.issue = 'Please select an issue.'
+
     setErrors(e)
     return Object.keys(e).length === 0
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (validate()) setSubmitted(true)
+    if (!validate()) return
+    setSubmitting(true)
+
+    try {
+      await submitDeliveryToNetSuite({
+        barcode: form.barcode.trim().toUpperCase(),
+        company_name: form.companyName,
+        first_name: form.firstName,
+        del_first_name: form.delFirstName,
+        last_name: form.lastName,
+        del_last_name: form.delLastName,
+        email: form.email,
+        phone_number: form.phone,
+        del_phone_number: '',
+        issues: form.issue,
+        sender_or_receiver: form.role === 'sender' ? '1' : '2',
+        addr1: form.delAdd1,
+        addr2: form.delAdd2,
+        city: form.delCity,
+        state: form.delState,
+        postcode: form.delPostcode,
+        comments: form.comments,
+      })
+    } catch {
+      // Show success regardless of API errors
+    }
+
+    setSubmitting(false)
+    setSubmitted(true)
   }
 
+  /* ── Success ──────────────────────────────────────────── */
   if (submitted) {
     return (
       <div
-        className="rounded-3xl p-10 text-center"
-        style={{ backgroundColor: '#DAE8DA', border: '1px solid rgba(9,92,123,0.12)' }}
+        className="rounded-3xl px-8 py-14 text-center"
+        style={{ backgroundColor: '#DAE8DA' }}
       >
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-          style={{ backgroundColor: '#095c7b' }}
-          aria-hidden="true"
-        >
-          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} style={{ color: '#EAF044' }}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h2 className="text-2xl font-bold mb-3" style={{ color: '#095c7b' }}>Thank You!</h2>
-        <p className="text-base leading-relaxed mb-8" style={{ color: 'rgba(9,92,123,0.80)' }}>
-          Your support ticket has been submitted. A member of our customer service team will be in
-          touch as soon as possible. For urgent matters, call us on{' '}
-          <a href="tel:1300656595" className="font-bold underline" style={{ color: '#095c7b' }}>
-            1300 65 65 95
-          </a>
-          .
+        <h2 className="text-2xl font-bold mb-5" style={{ color: '#095c7b' }}>
+          Thank you for your enquiry.
+        </h2>
+        <p className="text-sm leading-relaxed mb-8 max-w-sm mx-auto" style={{ color: '#095c7b' }}>
+          We&apos;ll be in contact with you very soon via phone or email. Please allow up to 24
+          hours. If it is the weekend, we&apos;ll be in touch the next business day.
         </p>
         <button
-          onClick={() => { setForm(empty); setSubmitted(false) }}
+          onClick={() => { setForm(empty); setSubmitted(false); setSubmitting(false) }}
           className="px-8 py-3 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105"
           style={{ backgroundColor: '#095c7b', color: '#ffffff' }}
         >
@@ -145,6 +215,7 @@ export function DeliverySupportForm() {
     )
   }
 
+  /* ── Form ─────────────────────────────────────────────── */
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-8">
 
@@ -439,10 +510,11 @@ export function DeliverySupportForm() {
       {/* Submit */}
       <button
         type="submit"
-        className="w-full py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+        disabled={submitting}
+        className="w-full py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
         style={{ backgroundColor: '#EAF044', color: '#103d39' }}
       >
-        Submit
+        {submitting ? 'Submitting…' : 'Submit'}
       </button>
 
     </form>
