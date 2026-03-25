@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer style={{ backgroundColor: '#2d5f7a' }}>
       {/* Main footer grid */}
-      <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
         {/* Brand */}
         <div>
@@ -111,6 +111,23 @@ export function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Surcharges */}
+        <div>
+          <h3 className="text-white font-bold text-sm mb-3" style={{ color: 'white' }}>Surcharges</h3>
+          <ul className="space-y-2">
+            {[
+              { href: '/surcharge', label: 'Surcharge' },
+              { href: '/shipping-surcharge', label: 'Shipping Surcharge' },
+            ].map((link) => (
+              <li key={link.label}>
+                <Link href={link.href} className="text-white text-sm hover:text-clay-400 transition-colors opacity-90 hover:opacity-100">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Contact */}
