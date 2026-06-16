@@ -1,165 +1,63 @@
 import Link from 'next/link'
-import { Card3D } from '@/components/shared/Card3D'
-
-const advantages = [
-  {
-    icon: '😌',
-    title: 'Less Stress',
-    description:
-      'You can depend on us and your local operator for VIP treatment. Shoot us a message or call us directly – we won\'t keep you waiting.',
-    color: 'from-moss-500/15 to-moss-800/15',
-    border: 'border-moss-500/20',
-    iconBg: 'from-moss-400 to-moss-600',
-  },
-  {
-    icon: '⏱️',
-    title: 'More Time',
-    description:
-      'Our express delivery and same-day pick-ups will save you from chasing couriers. We can even pick up and lodge your Australia Post mail and parcels, so you don\'t have to.',
-    color: 'from-amber-500/15 to-clay-600/15',
-    border: 'border-amber-500/20',
-    iconBg: 'from-amber-400 to-clay-500',
-  },
-  {
-    icon: '💰',
-    title: 'Exclusive Discounts',
-    description:
-      'Your free account with MailPlus will give you enterprise level shipping products at a discount, regardless of your volume. (And without the hassle of dealing with big corporate companies!)',
-    color: 'from-clay-600/15 to-clay-700/15',
-    border: 'border-clay-500/20',
-    iconBg: 'from-clay-400 to-clay-600',
-  },
-  {
-    icon: '🔗',
-    title: 'Integration Solutions',
-    description:
-      'We integrate with major carriers, allowing you to print labels with ease. Our (free) shipping platform, ShipMate, can be used on its own, with Shopify, or with our API.',
-    color: 'from-earth-600/20 to-earth-700/20',
-    border: 'border-earth-500/30',
-    iconBg: 'from-earth-300 to-earth-500',
-  },
-  {
-    icon: '🕊️',
-    title: 'Flexibility & Peace of Mind',
-    description:
-      'Opening a MailPlus account is free with no strings attached. Simply give us a go and experience the advantage for yourself. If our solution is not for you, you can cancel at any time.',
-    color: 'from-moss-500/15 to-amber-500/10',
-    border: 'border-moss-400/20',
-    iconBg: 'from-moss-300 to-moss-500',
-  },
-]
 
 export function AdvantageSection() {
   return (
-    <section
-      className="py-24 px-6 relative overflow-hidden"
-      aria-labelledby="advantage-heading"
-      style={{ backgroundColor: '#D1E0D1' }}
-    >
-      {/* Subtle blob */}
-      <div
-        className="organic-blob-moss absolute w-72 h-72 right-0 top-20 pointer-events-none"
-        aria-hidden="true"
-        style={{ opacity: 0.07 }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="max-w-2xl mb-16">
-          <span
-            className="text-xs font-bold tracking-widest uppercase mb-3 block"
-            style={{ color: '#095c7b' }}
-          >
-            The MailPlus Advantage
-          </span>
-          <h2
-            id="advantage-heading"
-            className="text-4xl md:text-5xl font-bold mb-5 leading-tight"
-            style={{ color: '#095c7b' }}
-          >
-            What&apos;s the MailPlus{' '}
-            <span className="italic" style={{ color: '#103d39' }}>Advantage?</span>
-          </h2>
-          <p className="text-lg leading-relaxed" style={{ color: '#103d39' }}>
-            Five reasons thousands of Aussie businesses trust MailPlus to handle their shipping.
-          </p>
+    <section className="section" id="services">
+      <div className="wrap">
+        <div className="section-head">
+          <div className="section-eyebrow">Three ways we save you time &amp; money</div>
+          <h2>Hand us the parcels and the Post Office run.</h2>
+          <p>Whether you&apos;re trying us free, shipping express at one flat rate, or handing over the Post Office run for every site — there&apos;s a MailPlus service that gives your team its time back and keeps your shipping costs down.</p>
         </div>
 
-        {/* Cards — first 4 in grid, 5th centred below */}
-        <div className="cards-3d-scene">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {advantages.slice(0, 4).map((adv, i) => (
-              <div
-                key={adv.title}
-                style={{
-                  transform: `translateY(calc(${i % 2 === 0 ? '0px' : '10px'} + var(--scroll-y, 0) * ${-0.02 - i * 0.005}px))`,
-                  willChange: 'transform',
-                  transition: 'transform 0.1s linear',
-                }}
-              >
-                <Card3D
-                  className={`rounded-2xl bg-gradient-to-br ${adv.color} border ${adv.border} overflow-hidden h-full`}
-                >
-                  <div className="p-6 h-full">
-                    <div className="card-3d__depth-lg mb-5">
-                      <div
-                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${adv.iconBg} flex items-center justify-center text-xl`}
-                        aria-hidden="true"
-                      >
-                        {adv.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-base font-bold mb-3" style={{ color: '#095c7b' }}>
-                      {adv.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: '#103d39' }}>
-                      {adv.description}
-                    </p>
-                  </div>
-                </Card3D>
-              </div>
-            ))}
+        <div className="pillars">
+
+          {/* PILLAR 1: 5 FREE COLLECTIONS */}
+          <div className="pillar featured" id="five-free">
+            <span className="pillar-badge free">★ Launch offer</span>
+            <div className="pillar-icon v-free">💰<span className="icon-sub">🎁</span></div>
+            <h3>5 Free Collections</h3>
+            <p>Five collections, completely on us. A local owner-operator comes to you, collects your parcels and mail, and lodges them at the Post Office — so your team stops losing hours to the queue. No card, no catch.</p>
+            <ul>
+              <li>Five collections completely free</li>
+              <li>No credit card, no obligation</li>
+              <li>Win back the time spent queueing</li>
+              <li>Same-day collection by your local driver</li>
+            </ul>
+            <Link href="#enquire" className="pillar-cta">Claim your 5 free collections →</Link>
           </div>
 
-          {/* 5th card — centred */}
-          <div className="flex justify-center">
-            <div className="w-full sm:w-1/2 lg:w-1/4">
-              <Card3D
-                className={`rounded-2xl bg-gradient-to-br ${advantages[4].color} border ${advantages[4].border} overflow-hidden`}
-              >
-                <div className="p-6">
-                  <div className="card-3d__depth-lg mb-5">
-                    <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${advantages[4].iconBg} flex items-center justify-center text-xl`}
-                      aria-hidden="true"
-                    >
-                      {advantages[4].icon}
-                    </div>
-                  </div>
-                  <h3 className="text-base font-bold mb-3" style={{ color: '#095c7b' }}>
-                    {advantages[4].title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#103d39' }}>
-                    {advantages[4].description}
-                  </p>
-                </div>
-              </Card3D>
-            </div>
+          {/* PILLAR 2: EXPRESS DELIVERY + SHIPMATE */}
+          <div className="pillar">
+            <span className="pillar-badge express">Australia-wide</span>
+            <div className="pillar-icon v-express">✈️<span className="icon-sub">📦</span></div>
+            <h3>Express Parcel Delivery</h3>
+            <p>Collected in Sydney today, delivered in Perth tomorrow. Flat-rate express across the whole country, up to 5kg — booked, labelled and tracked in ShipMate, our free shipping platform.</p>
+            <ul>
+              <li>Reach any address in Australia, fast</li>
+              <li>One flat rate up to 5kg — no surprises</li>
+              <li>Book, label and track in free ShipMate</li>
+              <li>Syncs straight to Shopify &amp; WooCommerce</li>
+            </ul>
+            <Link href="#enquire" className="pillar-cta">Start shipping with ShipMate →</Link>
           </div>
-        </div>
 
-        {/* CTA */}
-        <div className="mt-14 text-center">
-          <Link
-            href="#get-started"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            style={{ backgroundColor: '#EAF044', color: '#103d39' }}
-          >
-            START SAVING
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
+          {/* PILLAR 3: POST OFFICE BRIDGE */}
+          <div className="pillar">
+            <span className="pillar-badge po">Multi-site &amp; corporate</span>
+            <div className="pillar-icon v-po">🏢<span className="icon-sub">✉️</span></div>
+            <h3>Post Office Collect &amp; Lodge</h3>
+            <p>We run your Post Office for you, twice a day. An early-morning pickup delivers your inbound Australia Post mail and parcels so you start the day complete, and an end-of-day pickup lodges everything outbound — all handled by one trusted local operator across every site.</p>
+            <ul>
+              <li>Morning delivery of your inbound mail &amp; parcels (AMPO)</li>
+              <li>End-of-day pickup for same-day lodgement (PMPO)</li>
+              <li>PO Boxes cleared without leaving your desk</li>
+              <li>Express banking runs handled, deposits lodged same-day</li>
+              <li>The same trusted local operator, every site, every day</li>
+            </ul>
+            <Link href="#enquire" className="pillar-cta">Talk to us about your business →</Link>
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,119 +1,73 @@
-import Image from 'next/image'
+'use client'
+
+import Link from 'next/link'
 
 export function HeroSection() {
   return (
-    <section
-      className="relative w-full overflow-hidden"
-      aria-label="MailPlus hero"
-      style={{ backgroundColor: '#D1E0D1', minHeight: '100svh' }}
-    >
-      {/* ── Desktop: side-by-side ── */}
-      <div className="hidden md:flex h-screen max-w-none w-full">
-        {/* Left — copy */}
-        <div
-          className="relative z-10 flex flex-col justify-center px-12 lg:px-20 xl:px-28"
-          style={{ flex: '0 0 42%' }}
-        >
-          <h1
-            className="text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-            style={{ color: '#103d39' }}
-          >
-            Fast &amp;{' '}
-            <span
-              className="italic"
-              style={{
-                color: '#103d39',
-                textDecoration: 'underline',
-                textDecorationColor: '#EAF044',
-                textDecorationThickness: '4px',
-                textUnderlineOffset: '6px',
-              }}
-            >
-              Stress-Free
-            </span>
-            <br />
-            Shipping
-          </h1>
-          <p className="text-lg leading-relaxed mb-10 max-w-sm" style={{ color: '#103d39' }}>
-            Imagine cheap flat-rate prices, 1–2 day delivery across Australia, and
-            guaranteed same-day pickups. Well, all you need is a free MailPlus account.
-          </p>
-          <div>
-            <a
-              href="#get-started"
-              className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-base tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              style={{ backgroundColor: '#EAF044', color: '#103d39', minWidth: '220px' }}
-            >
-              START SAVING
-            </a>
+    <>
+      <section className="hero">
+        <div className="wrap">
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="hero-eyebrow">
+                <span className="dot"></span> Australian courier for small business
+              </div>
+              <h1>Ship overnight.<br /><span className="hl">Skip the queue.</span></h1>
+              <p className="hero-lead hero-lead-hook">
+                Fast, flat-rate delivery in 1–2 days Australia-wide — plus Post Office collect and lodge, all handled by your local owner-operator.
+              </p>
+              <div className="hero-cta-row">
+                <Link href="#five-free" className="btn btn-primary">Get 5 free collections →</Link>
+                <Link href="#enquire" className="btn btn-secondary">Enquire now</Link>
+              </div>
+            </div>
+
+            <div className="hero-side">
+              <div className="hero-card">
+                <h2>Why businesses choose MailPlus</h2>
+                <p className="hc-sub">Real benefits, backed by almost 30 years on the road.</p>
+                <div className="stat-grid">
+                  <div className="stat">
+                    <div className="stat-benefit">A local driver in your area</div>
+                    <div className="stat-proof"><span className="num" data-count="300" data-prefix="~">~300</span><span className="lbl">vehicles nationwide</span></div>
+                  </div>
+                  <div className="stat">
+                    <div className="stat-benefit">Sent today, there tomorrow</div>
+                    <div className="stat-proof"><span className="num">1–2</span><span className="num-suffix">days</span><span className="lbl">Australia-wide</span></div>
+                  </div>
+                  <div className="stat">
+                    <div className="stat-benefit">No surprise shipping bills</div>
+                    <div className="stat-proof"><span className="num">1</span><span className="num-suffix">flat rate</span><span className="lbl">up to 5kg</span></div>
+                  </div>
+                  <div className="stat">
+                    <div className="stat-benefit">A courier you can rely on</div>
+                    <div className="stat-proof"><span className="num" data-count="30" data-prefix="~">~30</span><span className="num-suffix">yrs</span><span className="lbl">since 1997</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Right — illustration */}
-        <div className="relative flex-1 z-10" aria-hidden="true">
-          <Image
-            src="/images/hero-illustration.png.png"
-            alt="MailPlus delivery van, airplane and parcels"
-            fill
-            priority
-            className="object-contain object-center"
-            sizes="58vw"
-          />
+      <section className="intro-band">
+        <div className="wrap">
+          <div className="intro-band-inner">
+            <div className="intro-band-label">Meet <span className="hl">MailPlus</span></div>
+            <div className="intro-band-copy">
+              <p><strong>MailPlus is an Australian courier and parcel delivery network founded in 1997</strong>, operating franchised territories across all metro areas and selected regional areas, with approximately 300 vehicles on the road.</p>
+              <div className="intro-more" id="introMore">
+                <p>We offer express parcel delivery in 1–2 business days Australia-wide with flat-rate pricing for items up to 5kg, same-day pickup through local owner-operators, and we bridge the gap between businesses and the Post Office — collecting and lodging mail and parcels on your behalf.</p>
+                <p>The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce. We&apos;re a reliable, independent alternative to Australia Post and traditional couriers.</p>
+              </div>
+              <button className="intro-toggle" id="introToggle" aria-expanded="false" aria-controls="introMore">
+                <span className="it-text">Read more</span>
+                <span className="it-icon">+</span>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* ── Mobile: stacked ── */}
-      <div className="flex flex-col md:hidden min-h-svh">
-        {/* Image */}
-        <div className="relative w-full z-10" style={{ flex: '1 1 55%', minHeight: '55vw' }}>
-          <Image
-            src="/images/hero-illustration.png.png"
-            alt="MailPlus delivery van, airplane and parcels"
-            fill
-            priority
-            className="object-contain object-bottom"
-            sizes="100vw"
-          />
-        </div>
-
-        {/* Text + CTA */}
-        <div
-          className="relative z-10 flex flex-col items-center text-center px-6 pb-14 pt-6"
-          style={{ flex: '0 0 auto' }}
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-bold mb-5 leading-tight"
-            style={{ color: '#103d39' }}
-          >
-            Fast &amp;{' '}
-            <span
-              className="italic"
-              style={{
-                color: '#103d39',
-                textDecoration: 'underline',
-                textDecorationColor: '#EAF044',
-                textDecorationThickness: '4px',
-                textUnderlineOffset: '6px',
-              }}
-            >
-              Stress-Free
-            </span>
-            <br />
-            Shipping
-          </h1>
-          <p className="text-base leading-relaxed mb-8 max-w-xs" style={{ color: '#103d39' }}>
-            Imagine cheap flat-rate prices, 1–2 day delivery across Australia, and
-            guaranteed same-day pickups. Well, all you need is a free MailPlus account.
-          </p>
-          <a
-            href="#get-started"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-base tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            style={{ backgroundColor: '#EAF044', color: '#103d39', minWidth: '220px' }}
-          >
-            START SAVING
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
