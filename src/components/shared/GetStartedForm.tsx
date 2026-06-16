@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import Script from 'next/script'
 import { submitToNetSuite } from '@/lib/netsuite'
 
@@ -112,6 +112,23 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
       setErrors((prev) => ({ ...prev, streetAddress: undefined, suburb: undefined }))
     })
   }, [])
+
+  useEffect(() => {
+    let placesInterval: ReturnType<typeof setInterval>
+    const checkAndInit = () => {
+      if (window.google?.maps?.places) {
+        initAutocomplete()
+        if (placesInterval) clearInterval(placesInterval)
+      }
+    }
+    checkAndInit()
+    if (!window.google?.maps?.places) {
+      placesInterval = setInterval(checkAndInit, 500)
+    }
+    return () => {
+      if (placesInterval) clearInterval(placesInterval)
+    }
+  }, [initAutocomplete])
 
   /* ── Validation ────────────────────────────────────────── */
   function validate(): boolean {

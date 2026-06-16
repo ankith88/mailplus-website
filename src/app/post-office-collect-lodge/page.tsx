@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import PostOfficeClient from './PostOfficeClient';
 import './styles.css';
 
@@ -10,6 +11,12 @@ export const metadata: Metadata = {
 export default function PostOfficeCollectLodgePage() {
   return (
     <>
+      {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          strategy="lazyOnload"
+        />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(
 {
   "@context": "https://schema.org",

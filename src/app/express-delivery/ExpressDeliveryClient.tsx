@@ -4,6 +4,39 @@ import { useEffect } from 'react';
 
 export default function ExpressDeliveryClient() {
   useEffect(() => {
+    // Google Places Autocomplete
+    let placesInterval: ReturnType<typeof setInterval>;
+    const initPlaces = () => {
+      const addressInput = document.getElementById('f-address') as HTMLInputElement;
+      if (!addressInput) return;
+      if (window.google && window.google.maps && window.google.maps.places) {
+        if (placesInterval) clearInterval(placesInterval);
+        const autocomplete = new window.google.maps.places.Autocomplete(addressInput, {
+          componentRestrictions: { country: 'au' },
+          types: ['address'],
+          fields: ['address_components'],
+        });
+        autocomplete.addListener('place_changed', () => {
+          const place = autocomplete.getPlace();
+          if (!place || !place.address_components) return;
+          let streetNumber = '';
+          let route = '';
+          for (const component of place.address_components) {
+            const types = component.types;
+            if (types.includes('street_number')) streetNumber = component.long_name;
+            if (types.includes('route')) route = component.long_name;
+          }
+          const street = [streetNumber, route].filter(Boolean).join(' ');
+          addressInput.value = street;
+          addressInput.style.borderColor = ''; // clear error state if any
+        });
+      }
+    };
+    initPlaces();
+    if (!(window.google && window.google.maps && window.google.maps.places)) {
+      placesInterval = setInterval(initPlaces, 500);
+    }
+
     // Meet MailPlus — read more / less
     const introToggle = document.getElementById('introToggle');
     const introMore = document.getElementById('introMore');
@@ -90,6 +123,9 @@ export default function ExpressDeliveryClient() {
       });
     }
 
+    return () => {
+      if (placesInterval) clearInterval(placesInterval);
+    };
   }, []);
 
   return null;
