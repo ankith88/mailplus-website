@@ -104,8 +104,10 @@ export default function ExpressDeliveryClient() {
         required.forEach(id => {
           const el = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | null;
           if (el) {
-            if (!el.value.trim()) { el.style.borderColor = '#E5484D'; ok = false; }
-            else { el.style.borderColor = ''; }
+            const wrapper = document.getElementById(`wrapper-${id}`);
+            const targetEl = wrapper ? (wrapper.querySelector('.custom-select-trigger') as HTMLElement || wrapper) : el;
+            if (!el.value.trim()) { targetEl.style.borderColor = '#E5484D'; ok = false; }
+            else { targetEl.style.borderColor = ''; }
           }
         });
         if (!ok) return;

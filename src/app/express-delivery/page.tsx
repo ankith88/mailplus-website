@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import ExpressDeliveryClient from './ExpressDeliveryClient';
+import { CustomSelect } from '@/components/shared/CustomSelect';
 import './styles.css';
 
 export const metadata: Metadata = {
@@ -374,26 +375,30 @@ export default function ExpressDeliveryPage() {
 
             <div className="field-group">
               <label className="field-label">What are you interested in? <span className="req">*</span></label>
-              <select className="field-select" id="f-interest">
-                <option value="">Please select…</option>
-                <option>Express parcel delivery &amp; ShipMate</option>
-                <option>Post Office collect &amp; lodge</option>
-                <option>Multi-site / corporate services</option>
-                <option>Something else</option>
-              </select>
+              <CustomSelect
+                id="f-interest"
+                options={[
+                  { value: 'Express parcel delivery & ShipMate', label: 'Express parcel delivery & ShipMate' },
+                  { value: 'Post Office collect & lodge', label: 'Post Office collect & lodge' },
+                  { value: 'Multi-site / corporate services', label: 'Multi-site / corporate services' },
+                  { value: 'Something else', label: 'Something else' },
+                ]}
+              />
             </div>
 
             <div className="field-group">
               <label className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
-              <select className="field-select" id="f-volume">
-                <option value="">Please select…</option>
-                <option>1–10 a week</option>
-                <option>11–50 a week</option>
-                <option>51–200 a week</option>
-                <option>201–500 a week</option>
-                <option>500+ a week</option>
-                <option>Not sure yet</option>
-              </select>
+              <CustomSelect
+                id="f-volume"
+                options={[
+                  { value: '1–10 a week', label: '1–10 a week' },
+                  { value: '11–50 a week', label: '11–50 a week' },
+                  { value: '51–200 a week', label: '51–200 a week' },
+                  { value: '201–500 a week', label: '201–500 a week' },
+                  { value: '500+ a week', label: '500+ a week' },
+                  { value: 'Not sure yet', label: 'Not sure yet' },
+                ]}
+              />
             </div>
 
             <button className="form-submit">Check my area →</button>

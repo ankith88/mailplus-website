@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import Script from 'next/script'
 import { submitToNetSuite } from '@/lib/netsuite'
+import { CustomSelect } from './CustomSelect'
 
 interface FormState {
   businessName: string
@@ -294,46 +295,31 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
           <div>
             <Label required>Average Weekly Shipments</Label>
-            <select
+            <CustomSelect
               value={form.weeklyShipments}
-              onChange={(e) => handleChange('weeklyShipments', e.target.value)}
-              className={inputCls(errors.weeklyShipments)}
-            >
-              <option value="" />
-              {WEEKLY_SHIPMENTS.map((o) => (
-                <option key={o} value={o}>{o}</option>
-              ))}
-            </select>
+              onChange={(val) => handleChange('weeklyShipments', val)}
+              options={WEEKLY_SHIPMENTS.map(o => ({ value: o, label: o }))}
+            />
             <FieldError msg={errors.weeklyShipments} />
           </div>
 
           <div>
             <Label required>Services of Interest?</Label>
-            <select
+            <CustomSelect
               value={form.servicesOfInterest}
-              onChange={(e) => handleChange('servicesOfInterest', e.target.value)}
-              className={inputCls(errors.servicesOfInterest)}
-            >
-              <option value="" />
-              {SERVICES.map((o) => (
-                <option key={o} value={o}>{o}</option>
-              ))}
-            </select>
+              onChange={(val) => handleChange('servicesOfInterest', val)}
+              options={SERVICES.map(o => ({ value: o, label: o }))}
+            />
             <FieldError msg={errors.servicesOfInterest} />
           </div>
 
           <div>
             <Label required>Current Carrier?</Label>
-            <select
+            <CustomSelect
               value={form.currentCarrier}
-              onChange={(e) => handleChange('currentCarrier', e.target.value)}
-              className={inputCls(errors.currentCarrier)}
-            >
-              <option value="" />
-              {CARRIERS.map((o) => (
-                <option key={o} value={o}>{o}</option>
-              ))}
-            </select>
+              onChange={(val) => handleChange('currentCarrier', val)}
+              options={CARRIERS.map(o => ({ value: o, label: o }))}
+            />
             <FieldError msg={errors.currentCarrier} />
           </div>
         </div>
