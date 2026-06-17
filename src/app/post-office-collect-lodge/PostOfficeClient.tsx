@@ -14,20 +14,31 @@ export default function PostOfficeClient() {
         const autocomplete = new window.google.maps.places.Autocomplete(addressInput, {
           componentRestrictions: { country: 'au' },
           types: ['address'],
-          fields: ['address_components'],
+          fields: ['address_components', 'geometry'],
         });
         autocomplete.addListener('place_changed', () => {
           const place = autocomplete.getPlace();
-          if (!place || !place.address_components) return;
+          if (!place || !place.address_components || !place.geometry) return;
           let streetNumber = '';
           let route = '';
+          let city = '';
+          let state = '';
+          let zip = '';
           for (const component of place.address_components) {
             const types = component.types;
             if (types.includes('street_number')) streetNumber = component.long_name;
             if (types.includes('route')) route = component.long_name;
+            if (types.includes('locality')) city = component.long_name;
+            if (types.includes('administrative_area_level_1')) state = component.long_name;
+            if (types.includes('postal_code')) zip = component.long_name;
           }
           const street = [streetNumber, route].filter(Boolean).join(' ');
           addressInput.value = street;
+          addressInput.dataset.lat = place.geometry.location?.lat().toString() || '';
+          addressInput.dataset.lng = place.geometry.location?.lng().toString() || '';
+          addressInput.dataset.city = city;
+          addressInput.dataset.state = state;
+          addressInput.dataset.zip = zip;
           addressInput.style.borderColor = ''; // clear error state if any
         });
       }
@@ -100,7 +111,7 @@ export default function PostOfficeClient() {
     // Form submission
     const formBtn = document.querySelector('.form-submit');
     if (formBtn) {
-      formBtn.addEventListener('click', (e) => {
+      formBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const required = ['f-fname', 'f-lname', 'f-company', 'f-address', 'f-email', 'f-phone', 'f-interest', 'f-volume'];
         let ok = true;
@@ -120,11 +131,45 @@ export default function PostOfficeClient() {
         if (formInner) formInner.style.display = 'none';
         if (checking) checking.classList.add('show');
 
-        setTimeout(() => {
-          if (checking) checking.classList.remove('show');
-          const success = document.getElementById('enquirySuccess');
-          if (success) success.classList.add('show');
-        }, 1600);
+        // Dynamic import to avoid SSR issues with utils
+        const { submitLead } = await import('@/utils/submitLead');
+        const { showLeadModal } = await import('@/utils/LeadModal');
+
+        const addressEl = document.getElementById('f-address') as HTMLInputElement;
+        const payload = {
+          companyName: (document.getElementById('f-company') as HTMLInputElement).value,
+          customerPhone: (document.getElementById('f-phone') as HTMLInputElement).value,
+          customerServiceEmail: (document.getElementById('f-email') as HTMLInputElement).value,
+          interestedIn: (document.getElementById('f-interest') as HTMLInputElement).value,
+          weeklyParcels: (document.getElementById('f-volume') as HTMLInputElement).value,
+          bucket: 'inbound',
+          address: {
+            address1: '',
+            street: addressEl.value,
+            city: addressEl.dataset.city || '',
+            state: addressEl.dataset.state || '',
+            zip: addressEl.dataset.zip || '',
+            latitude: parseFloat(addressEl.dataset.lat || '0'),
+            longitude: parseFloat(addressEl.dataset.lng || '0')
+          },
+          contacts: [{
+            name: `${(document.getElementById('f-fname') as HTMLInputElement).value} ${(document.getElementById('f-lname') as HTMLInputElement).value}`,
+            email: (document.getElementById('f-email') as HTMLInputElement).value,
+            phone: (document.getElementById('f-phone') as HTMLInputElement).value
+          }]
+        };
+
+        const result = await submitLead(payload);
+
+        if (checking) checking.classList.remove('show');
+        
+        if (result.success) {
+          showLeadModal(!!result.outOfTerritory);
+        } else {
+          // If failed, just show a fallback success or error message inline.
+          const successMsg = document.getElementById('enquirySuccess');
+          if (successMsg) successMsg.classList.add('show');
+        }
       });
     }
 

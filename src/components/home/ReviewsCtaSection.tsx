@@ -8,7 +8,7 @@ export function ReviewsCtaSection() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const addressInputRef = useRef<HTMLInputElement>(null)
-  const [location, setLocation] = useState<{lat: number, lng: number} | null>(null)
+  const [location, setLocation] = useState<{lat: number, lng: number, city: string, state: string, zip: string, street: string} | null>(null)
 
   const autocompleteInitialized = useRef(false)
 
@@ -20,15 +20,36 @@ export function ReviewsCtaSection() {
 
     const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
       componentRestrictions: { country: 'au' },
-      fields: ['geometry', 'formatted_address']
+      fields: ['geometry', 'address_components']
     })
 
     autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace()
-      if (place.geometry && place.geometry.location) {
+      if (place.geometry && place.geometry.location && place.address_components) {
+        let streetNumber = '';
+        let route = '';
+        let city = '';
+        let state = '';
+        let zip = '';
+        for (const component of place.address_components) {
+          const types = component.types;
+          if (types.includes('street_number')) streetNumber = component.long_name;
+          if (types.includes('route')) route = component.long_name;
+          if (types.includes('locality')) city = component.long_name;
+          if (types.includes('administrative_area_level_1')) state = component.long_name;
+          if (types.includes('postal_code')) zip = component.long_name;
+        }
+        
+        const street = [streetNumber, route].filter(Boolean).join(' ');
+        if (addressInputRef.current) addressInputRef.current.value = street;
+
         setLocation({
           lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng()
+          lng: place.geometry.location.lng(),
+          city,
+          state,
+          zip,
+          street
         })
       }
     })
@@ -51,17 +72,50 @@ export function ReviewsCtaSection() {
     }
   }, [initAutocomplete])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
     
-    // In a real implementation, you would send `location` along with form data.
-    console.log("Submitting form with location:", location)
-    
-    setTimeout(() => {
-      setSubmitting(false)
+    // Dynamic import
+    const { submitLead } = await import('@/utils/submitLead');
+    const { showLeadModal } = await import('@/utils/LeadModal');
+
+    const fname = (document.getElementById('fname') as HTMLInputElement).value;
+    const lname = (document.getElementById('lname') as HTMLInputElement).value;
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const phone = (document.getElementById('phone') as HTMLInputElement).value;
+
+    const payload = {
+      companyName: (document.getElementById('businessName') as HTMLInputElement).value,
+      customerPhone: phone,
+      customerServiceEmail: email,
+      interestedIn: (document.getElementById('interest') as HTMLInputElement).value,
+      weeklyParcels: (document.getElementById('volume') as HTMLInputElement).value,
+      bucket: 'inbound',
+      address: {
+        address1: '',
+        street: location?.street || (addressInputRef.current?.value || ''),
+        city: location?.city || '',
+        state: location?.state || '',
+        zip: location?.zip || '',
+        latitude: location?.lat || 0,
+        longitude: location?.lng || 0
+      },
+      contacts: [{
+        name: `${fname} ${lname}`,
+        email: email,
+        phone: phone
+      }]
+    };
+
+    const result = await submitLead(payload);
+    setSubmitting(false)
+
+    if (result.success) {
+      showLeadModal(!!result.outOfTerritory);
+    } else {
       setSuccess(true)
-    }, 1200)
+    }
   }
 
   return (
