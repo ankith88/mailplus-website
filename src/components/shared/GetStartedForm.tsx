@@ -76,9 +76,13 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
 
   const streetInputRef = useRef<HTMLInputElement>(null)
 
+  const autocompleteInitialized = useRef(false)
+
   /* ── Google Places Autocomplete ────────────────────────── */
   const initAutocomplete = useCallback(() => {
+    if (autocompleteInitialized.current) return
     if (!streetInputRef.current || !window.google?.maps?.places) return
+    autocompleteInitialized.current = true
 
     const autocomplete = new window.google.maps.places.Autocomplete(streetInputRef.current, {
       componentRestrictions: { country: 'au' },
@@ -299,6 +303,7 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
               value={form.weeklyShipments}
               onChange={(val) => handleChange('weeklyShipments', val)}
               options={WEEKLY_SHIPMENTS.map(o => ({ value: o, label: o }))}
+              triggerClassName={inputCls(errors.weeklyShipments)}
             />
             <FieldError msg={errors.weeklyShipments} />
           </div>
@@ -309,6 +314,7 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
               value={form.servicesOfInterest}
               onChange={(val) => handleChange('servicesOfInterest', val)}
               options={SERVICES.map(o => ({ value: o, label: o }))}
+              triggerClassName={inputCls(errors.servicesOfInterest)}
             />
             <FieldError msg={errors.servicesOfInterest} />
           </div>
@@ -319,6 +325,7 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
               value={form.currentCarrier}
               onChange={(val) => handleChange('currentCarrier', val)}
               options={CARRIERS.map(o => ({ value: o, label: o }))}
+              triggerClassName={inputCls(errors.currentCarrier)}
             />
             <FieldError msg={errors.currentCarrier} />
           </div>

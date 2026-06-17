@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Script from 'next/script'
+import { CustomSelect } from '@/components/shared/CustomSelect'
 
 export function ReviewsCtaSection() {
   const [submitting, setSubmitting] = useState(false)
@@ -9,9 +10,13 @@ export function ReviewsCtaSection() {
   const addressInputRef = useRef<HTMLInputElement>(null)
   const [location, setLocation] = useState<{lat: number, lng: number} | null>(null)
 
-  const initAutocomplete = () => {
-    if (!window.google || !window.google.maps || !window.google.maps.places) return
+  const autocompleteInitialized = useRef(false)
+
+  const initAutocomplete = useCallback(() => {
+    if (autocompleteInitialized.current) return
+    if (!window.google?.maps?.places) return
     if (!addressInputRef.current) return
+    autocompleteInitialized.current = true
 
     const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
       componentRestrictions: { country: 'au' },
@@ -27,7 +32,24 @@ export function ReviewsCtaSection() {
         })
       }
     })
-  }
+  }, [])
+
+  useEffect(() => {
+    let placesInterval: ReturnType<typeof setInterval>
+    const checkAndInit = () => {
+      if (window.google?.maps?.places) {
+        initAutocomplete()
+        if (placesInterval) clearInterval(placesInterval)
+      }
+    }
+    checkAndInit()
+    if (!window.google?.maps?.places) {
+      placesInterval = setInterval(checkAndInit, 500)
+    }
+    return () => {
+      if (placesInterval) clearInterval(placesInterval)
+    }
+  }, [initAutocomplete])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -136,24 +158,33 @@ export function ReviewsCtaSection() {
 
                     <div className="field-group">
                       <label htmlFor="interest" className="field-label">What are you interested in? <span className="req">*</span></label>
-                      <select id="interest" className="field-select" required>
-                        <option value="">Please select...</option>
-                        <option value="express">Express Parcel Delivery</option>
-                        <option value="post-office">Post Office Collect &amp; Lodge</option>
-                        <option value="local">Local Delivery</option>
-                        <option value="other">Other</option>
-                      </select>
+                      <CustomSelect
+                        id="interest"
+                        triggerClassName="field-select"
+                        required
+                        options={[
+                          { value: 'express', label: 'Express Parcel Delivery' },
+                          { value: 'post-office', label: 'Post Office Collect & Lodge' },
+                          { value: 'local', label: 'Local Delivery' },
+                          { value: 'other', label: 'Other' }
+                        ]}
+                      />
                     </div>
 
                     <div className="field-group">
                       <label htmlFor="volume" className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
-                      <select id="volume" className="field-select" required>
-                        <option value="">Please select...</option>
-                        <option value="1-10">1 - 10</option>
-                        <option value="11-50">11 - 50</option>
-                        <option value="51-200">51 - 200</option>
-                        <option value="201+">201+</option>
-                      </select>
+                      <CustomSelect
+                        id="volume"
+                        triggerClassName="field-select"
+                        required
+                        dropdownPosition="top"
+                        options={[
+                          { value: '1-10', label: '1 - 10' },
+                          { value: '11-50', label: '11 - 50' },
+                          { value: '51-200', label: '51 - 200' },
+                          { value: '201+', label: '201+' }
+                        ]}
+                      />
                     </div>
 
                     <button type="submit" className="form-submit" disabled={submitting} style={{ marginTop: '16px' }}>

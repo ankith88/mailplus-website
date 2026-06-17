@@ -14,9 +14,12 @@ export interface CustomSelectProps {
   onChange?: (value: string) => void;
   placeholder?: string;
   className?: string;
+  triggerClassName?: string;
+  required?: boolean;
+  dropdownPosition?: 'top' | 'bottom';
 }
 
-export function CustomSelect({ id, options, value: propValue, onChange, placeholder = "Please select...", className = '' }: CustomSelectProps) {
+export function CustomSelect({ id, options, value: propValue, onChange, placeholder = "Please select...", className = '', triggerClassName, required, dropdownPosition = 'bottom' }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [internalValue, setInternalValue] = useState(propValue || '');
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,15 +42,18 @@ export function CustomSelect({ id, options, value: propValue, onChange, placehol
     <div className={`relative ${className}`} ref={containerRef} id={id ? `wrapper-${id}` : undefined}>
       {id && (
         <input 
-          type="hidden" 
+          type="text"
+          className="absolute opacity-0 w-0 h-0 pointer-events-none"
+          tabIndex={-1}
           id={id} 
           value={value} 
           ref={hiddenInputRef} 
           onChange={() => {}} 
+          required={required}
         />
       )}
       <div 
-        className={`custom-select-trigger w-full bg-[var(--card)] border rounded-[10px] px-[14px] py-[12px] text-[14px] cursor-pointer flex justify-between items-center transition-shadow ${isOpen ? 'border-[var(--brand)] ring-2 ring-[var(--brand)]/10' : 'border-[var(--line)]'}`}
+        className={`custom-select-trigger cursor-pointer flex justify-between items-center transition-shadow ${triggerClassName || 'w-full bg-[var(--card)] border rounded-[10px] px-[14px] py-[12px] text-[14px] border-[var(--line)]'} ${isOpen && !triggerClassName ? 'border-[var(--brand)] ring-2 ring-[var(--brand)]/10' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
         style={{ color: selectedOption ? 'var(--ink)' : 'var(--muted)' }}
       >
@@ -58,24 +64,11 @@ export function CustomSelect({ id, options, value: propValue, onChange, placehol
       </div>
 
       {isOpen && (
-        <div 
-          className="absolute left-0 right-0 top-[calc(100%+4px)] bg-[var(--card)] border border-[var(--brand)] rounded-[10px] py-1 z-[9999] overflow-hidden"
-          style={{ boxShadow: '0 4px 12px rgba(10,50,66,.1)' }}
-        >
+        <div className={`absolute left-0 right-0 ${dropdownPosition === 'top' ? 'bottom-full mb-1' : 'top-full'} pac-container`}>
           {options.map((option, idx) => (
             <div
               key={option.value}
-              className={`px-[14px] py-[10px] text-[14px] cursor-pointer transition-colors duration-150 flex items-center ${idx !== 0 ? 'border-t border-[var(--line)]' : ''}`}
-              style={{
-                color: value === option.value ? 'var(--brand)' : 'var(--ink-2)',
-                fontWeight: value === option.value ? '700' : '400',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--info-tint)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-              }}
+              className={`pac-item ${value === option.value ? 'pac-item-selected' : ''}`}
               onClick={() => {
                 if (propValue === undefined) setInternalValue(option.value);
                 if (onChange) onChange(option.value);
@@ -88,7 +81,7 @@ export function CustomSelect({ id, options, value: propValue, onChange, placehol
                 }
               }}
             >
-              {option.label}
+              <span className="pac-item-query">{option.label}</span>
             </div>
           ))}
         </div>

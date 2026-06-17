@@ -377,6 +377,7 @@ export default function ExpressDeliveryPage() {
               <label className="field-label">What are you interested in? <span className="req">*</span></label>
               <CustomSelect
                 id="f-interest"
+                triggerClassName="field-select"
                 options={[
                   { value: 'Express parcel delivery & ShipMate', label: 'Express parcel delivery & ShipMate' },
                   { value: 'Post Office collect & lodge', label: 'Post Office collect & lodge' },
@@ -390,6 +391,7 @@ export default function ExpressDeliveryPage() {
               <label className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
               <CustomSelect
                 id="f-volume"
+                triggerClassName="field-select"
                 options={[
                   { value: '1–10 a week', label: '1–10 a week' },
                   { value: '11–50 a week', label: '11–50 a week' },
