@@ -76,7 +76,7 @@ export function Navbar() {
                 </span>
               </Link>
               <div className="dd-divider"></div>
-              <Link className="dd-item" href="#enquire" role="menuitem" onClick={() => setServicesOpen(false)}>
+              <Link className="dd-item" href="/5-free-collections" role="menuitem" onClick={() => setServicesOpen(false)}>
                 <span className="dd-ic">💰</span>
                 <span className="dd-tx">
                   <span className="dd-title">5 Free Collections</span>
@@ -120,7 +120,7 @@ export function Navbar() {
           <Link className="mob-sub" href="/post-office-collect-lodge" onClick={() => setMenuOpen(false)}>Post Office Collect &amp; Lodge</Link>
           <Link className="mob-sub" href="/local-delivery" onClick={() => setMenuOpen(false)}>Local Hand-to-Hand Delivery</Link>
           <Link className="mob-sub" href="/shipmate" onClick={() => setMenuOpen(false)}>ShipMate Platform</Link>
-          <Link className="mob-sub" href="#enquire" onClick={() => setMenuOpen(false)}>5 Free Collections</Link>
+          <Link className="mob-sub" href="/5-free-collections" onClick={() => setMenuOpen(false)}>5 Free Collections</Link>
           <a href="https://shipmate.mailplus.com.au">🔑 ShipMate Login</a>
           <a href="tel:1300656595">📞 1300 65 65 95</a>
           <Link className="mob-track" href="/track" onClick={() => setMenuOpen(false)}>📍 Track a parcel</Link>

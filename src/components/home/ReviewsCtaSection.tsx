@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Script from 'next/script'
-import { CustomSelect } from '@/components/shared/CustomSelect'
+import { CustomSelect } from '../shared/CustomSelect'
 
 export function ReviewsCtaSection() {
   const [submitting, setSubmitting] = useState(false)
