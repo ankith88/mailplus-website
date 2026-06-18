@@ -1,8 +1,17 @@
+import { LeadPayload, LeadResponse } from './submitLead';
+
 export function showLeadModal(
-  outOfTerritory: boolean,
-  accountManagerName?: string,
-  accountManagerCalendly?: string
+  result: LeadResponse,
+  payload: LeadPayload
 ) {
+  const outOfTerritory = !!result.outOfTerritory;
+  const { accountManagerName, accountManagerCalendly, internalid, customerEntityId } = result;
+  
+  // Extract contact info from payload
+  const contact = payload.contacts && payload.contacts.length > 0 ? payload.contacts[0] : null;
+  const leadName = contact ? contact.name : '';
+  const leadEmail = contact ? contact.email : '';
+
   // Remove existing if any
   const existing = document.getElementById('lead-modal-overlay');
   if (existing) existing.remove();
@@ -115,6 +124,26 @@ export function showLeadModal(
     
     // Calendly Card
     if (accountManagerCalendly) {
+      // Format calendly URL
+      let calendlyUrl = accountManagerCalendly;
+      try {
+        const urlObj = new URL(calendlyUrl);
+        if (leadName) urlObj.searchParams.set('name', leadName);
+        if (leadEmail) urlObj.searchParams.set('email', leadEmail);
+        if (internalid) urlObj.searchParams.set('a1', internalid);
+        if (customerEntityId) urlObj.searchParams.set('a2', customerEntityId);
+        urlObj.searchParams.set('a3', 'website');
+        
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        urlObj.searchParams.set('month', `${yyyy}-${mm}`);
+        
+        calendlyUrl = urlObj.toString();
+      } catch (e) {
+        console.error("Invalid calendly URL", e);
+      }
+
       const card = document.createElement('div');
       card.style.backgroundColor = '#fff';
       card.style.borderRadius = '16px';
@@ -159,7 +188,7 @@ export function showLeadModal(
       
       const calendlyWrap = document.createElement('div');
       calendlyWrap.className = 'calendly-inline-widget';
-      calendlyWrap.dataset.url = accountManagerCalendly;
+      calendlyWrap.dataset.url = calendlyUrl;
       calendlyWrap.style.minWidth = '320px';
       calendlyWrap.style.height = '600px';
       card.appendChild(calendlyWrap);

@@ -164,7 +164,7 @@ export default function PostOfficeClient() {
         if (checking) checking.classList.remove('show');
         
         if (result.success) {
-          showLeadModal(!!result.outOfTerritory, result.accountManagerName, result.accountManagerCalendly);
+          showLeadModal(result, payload);
         } else {
           // If failed, just show a fallback success or error message inline.
           const successMsg = document.getElementById('enquirySuccess');

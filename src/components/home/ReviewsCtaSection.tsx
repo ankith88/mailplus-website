@@ -112,7 +112,7 @@ export function ReviewsCtaSection() {
     setSubmitting(false)
 
     if (result.success) {
-      showLeadModal(!!result.outOfTerritory, result.accountManagerName, result.accountManagerCalendly);
+      showLeadModal(result, payload);
     } else {
       setSuccess(true)
     }

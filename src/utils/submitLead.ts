@@ -30,6 +30,8 @@ export interface LeadResponse {
   message?: string;
   accountManagerName?: string;
   accountManagerCalendly?: string;
+  internalid?: string;
+  customerEntityId?: string;
 }
 
 export async function submitLead(data: LeadPayload): Promise<LeadResponse> {
