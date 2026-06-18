@@ -1,0 +1,1537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShipMate | Free Shipping Platform for Small Business | MailPlus</title>
+<meta name="description" content="ShipMate is the free MailPlus shipping platform — book pickups and express shipments, print labels in a few clicks, and manage every order in one dashboard. Integrates with Shopify and WooCommerce, and works on its own for any business that needs reliable shipping." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ============= SCHEMA: Service ============= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Online shipping platform",
+  "name": "MailPlus ShipMate",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "MailPlus",
+    "url": "https://mailplus.com.au",
+    "telephone": "+61-1300-65-65-95",
+    "foundingDate": "1997",
+    "areaServed": "AU"
+  },
+  "areaServed": { "@type": "Country", "name": "Australia" },
+  "description": "ShipMate is the free MailPlus shipping platform. Book pickups and express shipments, print labels in a few clicks, and manage orders in one dashboard. It integrates with Shopify and WooCommerce, works on its own for any business that needs reliable shipping, and gives real-time tracking for you and your customers.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AUD",
+    "description": "Free MailPlus shipping platform with no minimum volume requirements."
+  }
+}
+</script>
+
+<!-- ============= SCHEMA: FAQPage ============= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ShipMate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ShipMate is the free MailPlus shipping platform. From one dashboard you can book pickups and express shipments, print labels in a few clicks, and manage every order in one place. It connects to Shopify and WooCommerce, gives you real-time tracking, and works on its own for any business that needs reliable shipping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does ShipMate cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ShipMate is the free MailPlus shipping platform — there's no cost to use it and no minimum volume requirements. You get discounted, flat-rate pricing across premium carriers in one place. A collection fee may apply for lower-volume businesses, but it's agreed upfront at signup, so your pricing is always known in advance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ShipMate integrate with Shopify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ShipMate syncs your Shopify orders automatically, so labels and tracking are handled without manual entry. Orders flow straight into your dashboard, you can print shipping labels in bulk in seconds, and both you and your customers get real-time tracking. Setup is free and requires no technical expertise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ShipMate work with WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ShipMate connects to your WooCommerce store, so your orders sync automatically and you can print labels and track shipments from one dashboard. You manage everything in a single place, with discounted flat-rate pricing across premium carriers and real-time tracking for you and your customers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can any type of business use ShipMate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ShipMate works for any business that needs reliable, affordable shipping, not just online stores. As well as merchants on Shopify or WooCommerce, it suits any office or professional service — from dentists and medical practices to law firms, schools and retail — that needs to send something, including urgent items, using the platform on its own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I connect ShipMate to my own systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ShipMate is the platform you use directly to book, label and track. If you'd rather build shipping into your own systems with code, that's the MailPlus API, which connects your systems directly to MailPlus for automated bookings, labels and tracking at scale. See the MailPlus API page for details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my customers track their orders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ShipMate gives real-time parcel tracking for you and your customers, with clear delivery updates at every scan. Built-in email updates keep your customers informed automatically as their parcel moves, and Shopify and WooCommerce stores also send their own shipping updates. You can follow every shipment from your dashboard."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    /* MailPlus palette — from tracking mockup / mailplus.com.au */
+    --ink: #0A3242;          /* dark teal — primary text */
+    --ink-2: #14506B;
+    --paper: #CFE0CE;        /* sage green page background */
+    --card: #FFFFFF;
+    --line: #DCE5DB;
+    --line-2: #C3D2C2;
+    --muted: #5B6E66;
+    --muted-2: #93A49B;
+    --brand: #025D7C;        /* MailPlus deep teal blue */
+    --brand-2: #0E7396;
+    --accent: #3DA14B;       /* MailPlus logo green — success/status */
+    --accent-tint: #E4F3E5;
+    --cta: #E3F046;          /* MailPlus lime — primary CTAs */
+    --cta-hover: #D6E62F;
+    --warn: #FFB800;
+    --warn-tint: #FFF6DC;
+    --info: #095C7C;
+    --info-tint: #E3F1F6;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 1px 2px rgba(10,50,66,.05), 0 0 0 1px rgba(10,50,66,.04);
+    --shadow-md: 0 4px 12px rgba(10,50,66,.07), 0 0 0 1px rgba(10,50,66,.04);
+    --shadow-lg: 0 12px 32px rgba(10,50,66,.12), 0 0 0 1px rgba(10,50,66,.04);
+    --font-display: "Source Serif 4", Georgia, serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ========== TOP BANNER ========== */
+  .topbar { background: var(--brand); width: 100%; position: sticky; top: 0; z-index: 50; }
+  .topbar-inner {
+    max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .logo {
+    display: inline-flex; align-items: baseline;
+    font-family: var(--font-display); font-weight: 700; font-size: 28px;
+    letter-spacing: -.015em; line-height: 1; text-decoration: none; flex-shrink: 0;
+  }
+  .logo .mail { color: #FFFFFF; }
+  .logo .plus { color: var(--cta); }
+
+  /* primary nav */
+  .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+  .nav-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,.92); text-decoration: none;
+    font-size: 15px; font-weight: 500; line-height: 1;
+    padding: 10px 14px; border-radius: 9px;
+    background: none; border: none; cursor: pointer; font-family: var(--font-body);
+    transition: background .15s, color .15s;
+  }
+  .nav-link:hover { background: rgba(255,255,255,.1); color: #fff; }
+  .nav-link .caret { font-size: 10px; opacity: .8; transition: transform .2s; }
+
+  /* services dropdown */
+  .nav-dd { position: relative; }
+  .nav-dd-menu {
+    position: absolute; top: calc(100% + 8px); left: 0;
+    background: var(--card); border-radius: 12px; min-width: 268px; padding: 8px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .18s, transform .18s, visibility .18s;
+  }
+  .nav-dd:hover .nav-dd-menu,
+  .nav-dd.open .nav-dd-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-dd:hover .caret, .nav-dd.open .caret { transform: rotate(180deg); }
+  .nav-dd-menu::before {
+    content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px;
+  }
+  .dd-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 12px; border-radius: 9px; text-decoration: none;
+    transition: background .14s;
+  }
+  .dd-item:hover { background: var(--paper); }
+  .dd-item .dd-ic {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px;
+    background: var(--info-tint); display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+  }
+  .dd-item .dd-tx { display: flex; flex-direction: column; gap: 2px; }
+  .dd-item .dd-title { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+  .dd-item .dd-sub { font-size: 12px; color: var(--muted); line-height: 1.35; }
+  .dd-divider { height: 1px; background: var(--line); margin: 6px 8px; }
+
+  /* phone + track + shipmate */
+  .topbar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .strip-phone {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(255,255,255,.45); color: #fff;
+    padding: 9px 16px; border-radius: 999px;
+    font-size: 14px; font-weight: 500; text-decoration: none; transition: all .15s;
+  }
+  .strip-phone:hover { background: #fff; color: var(--brand); border-color: #fff; }
+  .strip-phone .sp-num { font-family: var(--font-mono); font-weight: 600; }
+  .track-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--cta); color: var(--ink);
+    padding: 10px 20px; border-radius: 999px;
+    font-size: 14px; font-weight: 700; text-decoration: none; transition: background .15s;
+  }
+  .track-btn:hover { background: var(--cta-hover); }
+  .shipmate-login {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.45); color: #fff;
+    padding: 9px 16px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; text-decoration: none; transition: all .15s;
+  }
+  .shipmate-login:hover { background: #fff; color: var(--brand); border-color: #fff; }
+
+  .hamburger {
+    display: none; background: none; border: none; color: #fff; cursor: pointer;
+    padding: 6px; font-size: 24px; line-height: 1; margin-left: auto;
+  }
+
+  /* ===== Mid-page CTA band ===== */
+  .cta-band {
+    background: linear-gradient(150deg, var(--ink) 0%, var(--ink-2) 100%);
+    border-radius: var(--radius-lg); padding: 40px 44px;
+    display: flex; align-items: center; justify-content: space-between; gap: 28px;
+    position: relative; overflow: hidden; box-shadow: var(--shadow-md);
+  }
+  .cta-band::before {
+    content: ''; position: absolute; top: -60px; right: -40px; width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(227,240,70,.16) 0%, transparent 65%); pointer-events: none;
+  }
+  .cta-band-text { position: relative; z-index: 2; }
+  .cta-band-text h2 {
+    font-family: var(--font-display); font-size: 26px; font-weight: 700;
+    letter-spacing: -.02em; line-height: 1.15; color: #fff; margin-bottom: 6px;
+  }
+  .cta-band-text p { font-size: 14.5px; color: rgba(255,255,255,.72); line-height: 1.55; max-width: 520px; }
+  .cta-band-actions { position: relative; z-index: 2; display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+  .cta-band .btn-call {
+    background: rgba(255,255,255,.06); color: #fff; border: 1px solid rgba(255,255,255,.28);
+  }
+  .cta-band .btn-call:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  @media (max-width: 720px) {
+    .cta-band { flex-direction: column; align-items: flex-start; padding: 32px 26px; gap: 20px; }
+    .cta-band-actions { width: 100%; }
+    .cta-band-actions .btn { flex: 1; justify-content: center; }
+  }
+
+  /* mobile slide-down panel */
+  .mobile-nav { display: none; background: var(--ink); border-top: 1px solid rgba(255,255,255,.1); }
+  .mobile-nav.open { display: block; }
+  .mobile-nav-inner { max-width: 1200px; margin: 0 auto; padding: 14px 24px 20px; }
+  .mobile-nav a, .mobile-nav .mob-group-label {
+    display: block; color: #fff; text-decoration: none;
+    font-size: 16px; font-weight: 500; padding: 12px 4px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .mobile-nav .mob-group-label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: .12em; color: rgba(255,255,255,.5); font-weight: 600;
+    padding-bottom: 6px; border-bottom: none;
+  }
+  .mobile-nav .mob-sub { padding-left: 16px; font-weight: 400; color: rgba(255,255,255,.85); }
+  .mobile-nav .mob-track {
+    background: var(--cta); color: var(--ink); font-weight: 700; text-align: center;
+    border-radius: 999px; margin-top: 14px; border-bottom: none; padding: 13px;
+  }
+
+  /* ========== HERO ========== */
+  .hero { padding: 72px 0 56px; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 12px; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--brand); font-weight: 600; margin-bottom: 18px;
+  }
+  .hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; font-size: 60px;
+    line-height: 1.02; letter-spacing: -.03em; color: var(--ink); margin-bottom: 22px;
+  }
+  .hero h1 .hl { color: var(--brand); }
+  .hero-lead { font-size: 17px; line-height: 1.6; color: var(--ink-2); margin-bottom: 18px; max-width: 560px; }
+  .hero-lead strong { color: var(--ink); font-weight: 600; }
+  .hero-lead-hook { font-size: 19px; line-height: 1.55; max-width: 520px; }
+
+  /* ========== ANSWER-FIRST INTRO BAND (AEO) ========== */
+  .intro-band { padding: 8px 0 8px; }
+  .intro-band-inner {
+    background: var(--card); border-radius: var(--radius-lg);
+    padding: 40px 44px; box-shadow: var(--shadow-sm);
+    display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: start;
+  }
+  .intro-band-label {
+    font-family: var(--font-display); font-size: 24px; font-weight: 700;
+    letter-spacing: -.02em; color: var(--ink); line-height: 1.15; max-width: 200px;
+    padding-top: 2px;
+  }
+  .intro-band-label .hl { color: var(--brand); }
+  .intro-band-copy { display: flex; flex-direction: column; gap: 16px; }
+  .intro-band p { font-size: 15px; line-height: 1.7; color: var(--ink-2); margin: 0; }
+  .intro-band p strong { color: var(--ink); font-weight: 600; }
+  /* Collapsible: content stays in DOM (crawlable), folded visually for humans */
+  .intro-more {
+    display: flex; flex-direction: column; gap: 16px;
+    max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height .35s ease, opacity .3s ease, margin .35s ease;
+  }
+  .intro-more.open { opacity: 1; }
+  .intro-toggle {
+    align-self: flex-start; display: inline-flex; align-items: center; gap: 8px;
+    background: none; border: none; cursor: pointer; padding: 4px 0; margin-top: 2px;
+    font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--brand);
+    transition: color .15s;
+  }
+  .intro-toggle:hover { color: var(--ink); }
+  .intro-toggle .it-icon {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--paper);
+    border: 1px solid var(--line-2); display: flex; align-items: center; justify-content: center;
+    font-size: 15px; line-height: 1; transition: transform .25s;
+  }
+  .intro-toggle.open .it-icon { transform: rotate(45deg); }
+  @media (max-width: 920px) {
+    .intro-band-inner { grid-template-columns: 1fr; gap: 18px; padding: 30px 24px; }
+    .intro-band-label { max-width: none; font-size: 21px; }
+  }
+  .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 26px; border-radius: 999px;
+    font-family: var(--font-body); font-size: 15px; font-weight: 600;
+    cursor: pointer; border: none; text-decoration: none; transition: all .15s;
+  }
+  .btn-primary { background: var(--cta); color: var(--ink); }
+  .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+  .btn-secondary { background: var(--card); color: var(--ink); border: 1px solid var(--line-2); }
+  .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+  .btn-ghost-dark { background: var(--brand); color: #fff; }
+  .btn-ghost-dark:hover { background: var(--ink); }
+
+  /* hero stat card */
+  .hero-card {
+    background: linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+    border-radius: var(--radius-lg);
+    padding: 32px; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+  }
+  .hero-card::before {
+    content: ''; position: absolute; top: -50px; right: -50px; width: 180px; height: 180px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: .28;
+  }
+  .hero-card h2 {
+    font-family: var(--font-display); font-size: 20px; font-weight: 600;
+    margin-bottom: 4px; letter-spacing: -.01em; color: #fff; position: relative;
+  }
+  .hero-card .hc-sub { font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 22px; position: relative; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; }
+  .stat {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+    border-radius: var(--radius-sm); padding: 18px 16px; transition: all .18s;
+  }
+  .stat:hover { background: rgba(255,255,255,.1); border-color: rgba(227,240,70,.4); transform: translateY(-2px); }
+  .stat .stat-benefit {
+    font-family: var(--font-display); font-size: 16px; font-weight: 600;
+    color: #fff; line-height: 1.2; margin-bottom: 8px; letter-spacing: -.01em;
+  }
+  .stat .stat-proof { display: flex; align-items: baseline; gap: 4px; }
+  .stat .num {
+    font-family: var(--font-display); font-size: 22px; font-weight: 700;
+    color: var(--cta); line-height: 1; letter-spacing: -.02em;
+  }
+  .stat .num-suffix { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--cta); }
+  .stat .lbl { font-size: 11px; color: rgba(255,255,255,.6); line-height: 1.35; }
+  .stat .lbl-lg {
+    font-family: var(--font-display); font-size: 15px; font-weight: 600;
+    color: var(--cta); line-height: 1.25; letter-spacing: -.01em;
+  }
+
+  /* ========== TRACKING STRIP ========== */
+  .track-strip {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+    padding: 20px 24px; margin-top: 8px;
+    display: flex; align-items: center; gap: 22px; position: relative; overflow: hidden;
+  }
+  .track-strip::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(180deg, var(--brand), var(--accent));
+  }
+  .track-strip .ts-label { flex-shrink: 0; padding-left: 4px; }
+  .track-strip .ts-label h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; }
+  .track-strip .ts-label p { font-size: 12px; color: var(--muted); }
+  .track-strip .ts-input-wrap { flex: 1; display: flex; gap: 8px; }
+  .track-strip input {
+    flex: 1; background: var(--paper); border: 1px solid var(--line);
+    padding: 12px 16px; border-radius: 10px; font-family: var(--font-mono);
+    font-size: 14px; outline: none; color: var(--ink); min-width: 0;
+  }
+  .track-strip input:focus { border-color: var(--brand); background: #fff; box-shadow: 0 0 0 3px rgba(9,92,124,.08); }
+  .track-strip .ts-btn {
+    background: var(--brand); color: #fff; border: none; padding: 0 22px;
+    border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  }
+  .track-strip .ts-btn:hover { background: var(--ink); }
+  /* ========== SECTION HEADERS ========== */
+  .section { padding: 64px 0; }
+  .section-head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+  .section-eyebrow {
+    font-family: var(--font-mono); font-size: 12px; text-transform: uppercase;
+    letter-spacing: .14em; color: var(--brand); font-weight: 600; margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: var(--font-display); font-size: 38px; font-weight: 700;
+    letter-spacing: -.025em; line-height: 1.1; color: var(--ink); margin-bottom: 14px;
+  }
+  .section-head p { font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+
+  /* ========== 3 SERVICE PILLARS ========== */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pillar {
+    background: var(--card); border-radius: var(--radius-lg); padding: 32px;
+    box-shadow: var(--shadow-md); display: flex; flex-direction: column;
+    position: relative; overflow: hidden; transition: transform .18s, box-shadow .18s;
+  }
+  .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .pillar-badge {
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; font-weight: 600; padding: 5px 10px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .pillar-badge.free { background: var(--cta); color: var(--ink); }
+  .pillar-badge.express { background: var(--accent-tint); color: #2F7A3C; }
+  .pillar-badge.po { background: var(--info-tint); color: var(--brand); }
+  .pillar-icon {
+    width: 72px; height: 72px; border-radius: 20px; display: flex; align-items: center;
+    justify-content: center; font-size: 36px; margin-bottom: 20px; position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+  .pillar-icon.v-free { background: linear-gradient(150deg, #F4FAD0 0%, #E3F046 100%); }
+  .pillar-icon.v-express { background: linear-gradient(150deg, #DFF1F7 0%, #B7D6E2 100%); }
+  .pillar-icon.v-po { background: linear-gradient(150deg, #E4F3E5 0%, #CFE0CE 100%); }
+  .pillar-icon .icon-sub {
+    position: absolute; bottom: -6px; right: -6px; font-size: 20px;
+    background: #fff; border-radius: 50%; width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);
+  }
+  .pillar h3 {
+    font-family: var(--font-display); font-size: 22px; font-weight: 600;
+    letter-spacing: -.015em; margin-bottom: 10px; line-height: 1.15;
+  }
+  .pillar p { font-size: 14px; line-height: 1.6; color: var(--ink-2); margin-bottom: 16px; flex: 1; }
+  .pillar ul { list-style: none; margin-bottom: 22px; }
+  .pillar li {
+    font-size: 13px; color: var(--ink-2); padding: 6px 0 6px 24px; position: relative; line-height: 1.4;
+  }
+  .pillar li::before {
+    content: '✓'; position: absolute; left: 0; top: 6px;
+    color: var(--accent); font-weight: 700; font-size: 13px;
+  }
+  .pillar .pillar-cta {
+    display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+    font-size: 14px; font-weight: 600; text-decoration: none; color: var(--brand);
+    padding: 11px 20px; border-radius: 999px; border: 1px solid var(--line-2); transition: all .15s;
+  }
+  .pillar .pillar-cta:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .pillar.featured { border: 2px solid var(--cta); }
+
+  /* ========== DIFFERENTIATORS ========== */
+  .diff-band { background: var(--ink); color: #fff; border-radius: var(--radius-lg); position: relative; overflow: hidden; }
+  .diff-band::before {
+    content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: .2; z-index: 1;
+  }
+  .diff-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; position: relative; z-index: 2; }
+  .diff-photo { position: relative; min-height: 100%; overflow: hidden; }
+  .diff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .diff-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 60%, var(--ink) 100%);
+    pointer-events: none;
+  }
+  .diff-photo .photo-tag {
+    position: absolute; left: 20px; bottom: 20px; z-index: 2;
+    background: rgba(10,50,66,.78); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,.16); border-radius: 999px;
+    padding: 8px 16px; font-size: 13px; font-weight: 600; color: #fff;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .diff-photo .photo-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cta); }
+  .diff-content { padding: 48px; }
+  .diff-intro h2 {
+    font-family: var(--font-display); font-size: 32px; font-weight: 700;
+    letter-spacing: -.02em; line-height: 1.12; margin-bottom: 16px;
+  }
+  .diff-intro h2 .hl { color: var(--cta); }
+  .diff-intro p { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,.7); margin-bottom: 28px; }
+  .diff-items { display: grid; gap: 18px; }
+  .diff-item { display: flex; gap: 16px; align-items: flex-start; }
+  .diff-item .di-ic {
+    width: 44px; height: 44px; flex-shrink: 0; border-radius: 11px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .diff-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .diff-item p { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.65); }
+
+  /* ========== TESTIMONIAL (Reviews.io) ========== */
+  .testimonial-section { text-align: center; }
+  .reviews-badge {
+    display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+    padding: 10px 20px; box-shadow: var(--shadow-sm);
+  }
+  .reviews-badge .stars { color: #FFB800; font-size: 18px; letter-spacing: 2px; }
+  .reviews-badge .rb-text { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .reviews-badge .rb-text strong { color: var(--ink); }
+  .review-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+  .review-card { background: var(--card); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); }
+  .review-card .rc-stars { color: #FFB800; font-size: 15px; letter-spacing: 1px; margin-bottom: 14px; }
+  .review-card .rc-quote { font-size: 14px; line-height: 1.6; color: var(--ink-2); margin-bottom: 18px; }
+  .review-card .rc-author { display: flex; align-items: center; gap: 12px; }
+  .review-card .rc-avatar {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--brand); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 15px; flex-shrink: 0;
+  }
+  .review-card .rc-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .review-card .rc-meta { font-size: 12px; color: var(--muted); }
+  .reviews-widget-note {
+    margin-top: 28px; font-family: var(--font-mono); font-size: 11px; color: var(--muted-2);
+    background: rgba(255,255,255,.5); border: 1px dashed var(--line-2); border-radius: 8px;
+    padding: 10px 14px; display: inline-block;
+  }
+
+  /* ========== FAQ ========== */
+  .faq-section { }
+  .faq-list { max-width: 820px; margin: 0 auto; }
+  .faq-item { background: var(--card); border-radius: var(--radius); margin-bottom: 12px; box-shadow: var(--shadow-sm); overflow: hidden; }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink);
+  }
+  .faq-q .faq-toggle {
+    flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--paper); border: 1px solid var(--line-2); color: var(--brand);
+    display: flex; align-items: center; justify-content: center; font-size: 16px; transition: transform .2s;
+  }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+  .faq-a-inner { padding: 0 26px 24px; font-size: 14px; line-height: 1.65; color: var(--ink-2); }
+  .faq-a-inner a { color: var(--brand); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .faq-a-inner a:hover { color: var(--ink); }
+
+  /* ========== ENQUIRY FORM ========== */
+  .enquiry-band { background: var(--brand); border-radius: var(--radius-lg); overflow: hidden; }
+  .enquiry-grid { display: grid; grid-template-columns: .9fr 1.1fr; }
+  .enquiry-left { padding: 48px; color: #fff; position: relative; }
+  .enquiry-left::before {
+    content: ''; position: absolute; bottom: -50px; left: -50px; width: 180px; height: 180px;
+    background: radial-gradient(circle, var(--cta) 0%, transparent 70%); opacity: .2;
+  }
+  .enquiry-left h2 {
+    font-family: var(--font-display); font-size: 32px; font-weight: 700;
+    letter-spacing: -.02em; line-height: 1.12; margin-bottom: 16px; position: relative;
+  }
+  .enquiry-left p { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,.78); margin-bottom: 28px; position: relative; }
+  .enquiry-contacts { display: grid; gap: 14px; position: relative; }
+  .enquiry-contact { display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; }
+  .enquiry-contact .ec-ic {
+    width: 42px; height: 42px; border-radius: 11px; background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .enquiry-contact .ec-lbl { font-size: 12px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-mono); }
+  .enquiry-contact .ec-val { font-size: 16px; font-weight: 600; }
+  .enquiry-contact .ec-val.mono { font-family: var(--font-mono); }
+
+  .enquiry-form { background: var(--card); padding: 44px; }
+  .enquiry-form h3 { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+  .enquiry-form .ef-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .ef-intro {
+    font-size: 14px; line-height: 1.55; color: var(--ink);
+    background: rgba(9,92,124,.05); border: 1px solid rgba(9,92,124,.12);
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 22px;
+  }
+  .field-group { margin-bottom: 16px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field-label { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .field-label .req { color: #E5484D; }
+  .field-label .opt { color: var(--muted); font-weight: 400; }
+  .field-input, .field-select, .field-textarea {
+    width: 100%; background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 12px 14px; font-family: var(--font-body);
+    font-size: 14px; color: var(--ink); outline: none; transition: border-color .15s, box-shadow .15s;
+  }
+  .field-input:focus, .field-select:focus, .field-textarea:focus {
+    border-color: var(--brand); box-shadow: 0 0 0 3px rgba(9,92,124,.1);
+  }
+  .field-textarea { resize: vertical; min-height: 90px; }
+  .addr-wrap { position: relative; }
+  .addr-pin { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 15px; pointer-events: none; opacity: .7; }
+  .addr-input { padding-left: 38px; }
+  .field-hint { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+  .fs-ic.checking { animation: pinPulse 1.1s ease-in-out infinite; }
+  @keyframes pinPulse { 0%,100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.15); opacity: 1; } }
+  .form-submit {
+    width: 100%; background: var(--cta); color: var(--ink); border: none;
+    padding: 15px; border-radius: 999px; font-family: var(--font-body);
+    font-size: 15px; font-weight: 700; cursor: pointer; transition: background .15s; margin-top: 6px;
+  }
+  .form-submit:hover { background: var(--cta-hover); }
+  .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 14px; line-height: 1.5; }
+  .form-success {
+    display: none; text-align: center; padding: 30px 10px;
+  }
+  .form-success.show { display: block; }
+  .form-success .fs-ic {
+    width: 60px; height: 60px; border-radius: 50%; background: var(--accent-tint);
+    display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 18px;
+  }
+  .form-success h3 { font-family: var(--font-display); font-size: 22px; margin-bottom: 8px; }
+  .form-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ========== FOOTER ========== */
+  footer { background: var(--ink); color: #fff; margin-top: 64px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 24px 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 40px; }
+  .footer-brand .logo { font-size: 30px; margin-bottom: 16px; }
+  .footer-brand p { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,.6); max-width: 300px; margin-bottom: 18px; }
+  .footer-address {
+    font-style: normal; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.6);
+    margin-top: 22px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .footer-address .fa-label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: .12em; color: rgba(255,255,255,.5); font-weight: 600;
+  }
+  .footer-phone {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+    font-family: var(--font-mono); font-size: 16px; font-weight: 600;
+    color: var(--cta); text-decoration: none;
+  }
+  .footer-phone:hover { color: #fff; }
+  .footer-col h4 {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: .12em; color: rgba(255,255,255,.5); margin-bottom: 16px; font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 11px; }
+  .footer-col a { font-size: 14px; color: rgba(255,255,255,.78); text-decoration: none; transition: color .15s; }
+  .footer-col a:hover { color: var(--cta); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,.5); }
+  .footer-hours { font-size: 12px; color: rgba(255,255,255,.5); font-family: var(--font-mono); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero h1 { font-size: 42px; }
+    .pillars { grid-template-columns: 1fr; }
+    .diff-grid { grid-template-columns: 1fr; gap: 0; }
+    .diff-photo { min-height: 420px; max-height: 460px; }
+    .diff-photo img { object-position: center top; }
+    .diff-photo::after { background: linear-gradient(180deg, transparent 55%, var(--ink) 100%); }
+    .diff-content { padding: 36px 28px; }
+    .review-cards { grid-template-columns: 1fr; }
+    .enquiry-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .track-strip { flex-direction: column; align-items: stretch; gap: 14px; }
+    .section-head h2 { font-size: 30px; }
+    .nav, .topbar-actions { display: none; }
+    .hamburger { display: inline-flex; }
+  }
+  @media (max-width: 560px) {
+    .hero h1 { font-size: 34px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .enquiry-left, .enquiry-form { padding: 32px 24px; }
+    .diff-content { padding: 30px 22px; }
+    .field-row { grid-template-columns: 1fr; }
+    .section { padding: 48px 0; }
+  }
+
+  /* ===== Express page additions (reuse base classes elsewhere) ===== */
+  .breadcrumb { padding: 14px 0 0; font-size: 13px; color: var(--muted); }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { margin: 0 8px; color: var(--muted-2); }
+
+  /* how-it-works steps */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 8px; }
+  .step-card {
+    background: var(--card); border-radius: var(--radius); padding: 26px 22px;
+    box-shadow: var(--shadow-sm); position: relative; border: 1px solid var(--line);
+  }
+  .step-card .step-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .step-card .step-no {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+    color: var(--brand);
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent-tint);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-card .sc-emoji { font-size: 26px; line-height: 1; }
+  .step-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: 6px; letter-spacing: -.01em; }
+  .step-card p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+  /* spec / facts table */
+  .spec-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; border: 1px solid var(--line); }
+  .spec-row { display: grid; grid-template-columns: 240px 1fr; gap: 0; }
+  .spec-row + .spec-row { border-top: 1px solid var(--line); }
+  .spec-row .sr-key {
+    background: var(--paper); padding: 18px 24px; font-weight: 600; font-size: 14px;
+    color: var(--ink); border-right: 1px solid var(--line);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .spec-row .sr-key .sr-ic { font-size: 17px; }
+  .spec-row .sr-val { padding: 18px 24px; font-size: 14.5px; color: var(--ink-2); line-height: 1.55; display: flex; align-items: center; }
+  .spec-val-strong { color: var(--ink); font-weight: 600; }
+
+  /* coverage band */
+  .coverage-band { background: var(--brand); color: #fff; border-radius: var(--radius-lg); padding: 44px; position: relative; overflow: hidden; }
+  .coverage-band::before {
+    content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: .22;
+  }
+  .coverage-band h2 { font-family: var(--font-display); font-size: 30px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 10px; max-width: 620px; position: relative; }
+  .coverage-band > p { color: rgba(255,255,255,.78); font-size: 15.5px; max-width: 620px; line-height: 1.6; margin-bottom: 26px; position: relative; }
+  .chip-group { position: relative; margin-bottom: 18px; }
+  .chip-group:last-of-type { margin-bottom: 0; }
+  .chip-label {
+    display: block; font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: .12em;
+    color: rgba(255,255,255,.55); margin-bottom: 10px;
+  }
+  .city-chips { display: flex; flex-wrap: wrap; gap: 10px; position: relative; }
+  .city-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+    color: #fff; padding: 9px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;
+  }
+  .city-chip .cc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cta); }
+  .coverage-note { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,.6); position: relative; }
+
+  @media (max-width: 900px) {
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .spec-row { grid-template-columns: 1fr; }
+    .spec-row .sr-key { border-right: none; border-bottom: 1px solid var(--line); }
+    .spec-row .sr-val { display: block; }
+    .coverage-band { padding: 32px 24px; }
+  }
+
+  /* ============================================================
+     ELEVATION PASS — high-end / product-software detailing
+     (palette, fonts, header & footer unchanged)
+     ============================================================ */
+
+  /* Eyebrow tick — small mono detail before section eyebrows */
+  .section-eyebrow, .hero-eyebrow { position: relative; }
+
+  /* ---- HERO: darker techy band with image slot ---- */
+  .hero.hero-elevated { padding: 0; margin-top: 8px; }
+  .hero-elevated .hero-panel {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(120% 140% at 88% 8%, rgba(14,115,150,.55) 0%, transparent 55%),
+      linear-gradient(158deg, #0A3242 0%, #093A4E 48%, #0A2B39 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 60px 56px 56px;
+  }
+  /* fine dot-matrix texture */
+  .hero-elevated .hero-panel::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1.4px);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(135deg, #000 0%, transparent 72%);
+    -webkit-mask-image: linear-gradient(135deg, #000 0%, transparent 72%);
+  }
+  /* hairline grid sweep accent */
+  .hero-elevated .hero-panel::after {
+    content: ''; position: absolute; top: -40%; right: -10%; width: 460px; height: 460px;
+    background: radial-gradient(circle, rgba(227,240,70,.16) 0%, transparent 62%);
+    pointer-events: none;
+  }
+  .hero-elevated .hero-grid { position: relative; z-index: 2; align-items: center; }
+  .hero-elevated .hero-eyebrow { color: var(--cta); }
+  .hero-elevated .hero-eyebrow .dot { background: var(--cta); box-shadow: 0 0 0 4px rgba(227,240,70,.16); }
+  .hero-elevated h1 { color: #fff; }
+  .hero-elevated h1 .hl { color: var(--cta); }
+  .hero-elevated .hero-lead { color: rgba(255,255,255,.82); }
+  .hero-elevated .hero-lead strong { color: #fff; }
+  .hero-elevated .btn-secondary {
+    background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.28);
+  }
+  .hero-elevated .btn-secondary:hover { background: #fff; color: var(--ink); border-color: #fff; }
+
+  /* mono meta strip under hero headline */
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px;
+    font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em;
+    color: rgba(255,255,255,.55); text-transform: uppercase;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--cta); opacity: .8; }
+
+  /* hero card sits inside the dark panel now — lift + glass edge */
+  .hero-elevated .hero-card {
+    background: linear-gradient(160deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.04) 100%);
+    border: 1px solid rgba(255,255,255,.14);
+    backdrop-filter: blur(2px);
+  }
+  .hero-elevated .hero-card::before { opacity: .4; }
+  .hero-elevated .stat { background: rgba(255,255,255,.05); }
+
+  /* optional image slot for the designer's hero art */
+  .hero-figure {
+    position: relative; border-radius: var(--radius); overflow: hidden;
+    border: 1px solid rgba(255,255,255,.14); min-height: 280px;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 2px, transparent 2px 16px),
+      linear-gradient(160deg, rgba(14,115,150,.30), rgba(10,43,57,.5));
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .hero-figure .hf-note {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(255,255,255,.4); border: 1px dashed rgba(255,255,255,.22);
+    border-radius: 8px; padding: 10px 14px;
+  }
+
+  /* ---- SURFACE DETAIL: refined hovers + hairlines ---- */
+  .step-card { transition: transform .18s, box-shadow .18s, border-color .18s; }
+  .step-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--line-2); }
+  .step-card .step-no {
+    background: transparent; border: 1px solid var(--line-2); color: var(--brand);
+  }
+  .spec-card { box-shadow: var(--shadow-md); }
+  .spec-row { transition: background .15s; }
+  .spec-row:hover { background: rgba(2,93,124,.025); }
+  .faq-item { transition: box-shadow .18s, transform .18s; }
+  .faq-item:hover { box-shadow: var(--shadow-md); }
+  .faq-item.open { box-shadow: var(--shadow-md); }
+
+  /* corner ticks on dark bands for a blueprint feel */
+  .coverage-band, .enquiry-band, .diff-band { position: relative; }
+  .coverage-band { background-image:
+      radial-gradient(rgba(255,255,255,.05) 1px, transparent 1.4px); background-size: 22px 22px; }
+
+  @media (max-width: 920px) {
+    .hero-elevated .hero-panel { padding: 40px 26px 36px; }
+    .hero-figure { min-height: 200px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+</style>
+
+</head>
+<body>
+
+
+
+<!-- ============= TOP BANNER (shared across all pages) ============= -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="logo"><span class="mail">mail</span><span class="plus">plus</span></a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-dd" id="servicesDd">
+        <button class="nav-link" id="servicesBtn" aria-haspopup="true" aria-expanded="false">
+          Services <span class="caret">▾</span>
+        </button>
+        <div class="nav-dd-menu" role="menu" aria-label="Services">
+          <a class="dd-item" href="/express-delivery" role="menuitem">
+            <span class="dd-ic">✈️</span>
+            <span class="dd-tx"><span class="dd-title">Express Parcel Delivery</span><span class="dd-sub">1–2 day flat-rate delivery Australia-wide</span></span>
+          </a>
+          <a class="dd-item" href="/post-office-collect-lodge" role="menuitem">
+            <span class="dd-ic">📮</span>
+            <span class="dd-tx"><span class="dd-title">Post Office Collect &amp; Lodge</span><span class="dd-sub">We run your Post Office trips for you</span></span>
+          </a>
+          <a class="dd-item" href="/local-delivery" role="menuitem">
+            <span class="dd-ic">📍</span>
+            <span class="dd-tx"><span class="dd-title">Local Hand-to-Hand Delivery</span><span class="dd-sub">Same-day, handed straight to the recipient</span></span>
+          </a>
+          <a class="dd-item" href="/shipmate" role="menuitem">
+            <span class="dd-ic">📦</span>
+            <span class="dd-tx"><span class="dd-title">ShipMate Platform</span><span class="dd-sub">Free shipping software for your store</span></span>
+          </a>
+          <div class="dd-divider"></div>
+          <a class="dd-item" href="#enquire" role="menuitem">
+            <span class="dd-ic">💰</span>
+            <span class="dd-tx"><span class="dd-title">5 Free Collections</span><span class="dd-sub">Try MailPlus free — no card, no catch</span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar-actions">
+      <a href="tel:1300656595" class="strip-phone">
+        <span>📞</span>
+        <span class="sp-num">1300 65 65 95</span>
+      </a>
+      <a href="/track" class="track-btn">
+        <span>📍</span><span>Track a parcel</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
+  </div>
+
+  <!-- mobile menu -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-inner">
+      <div class="mob-group-label">Services</div>
+      <a class="mob-sub" href="/express-delivery">Express Parcel Delivery</a>
+      <a class="mob-sub" href="/post-office-collect-lodge">Post Office Collect &amp; Lodge</a>
+      <a class="mob-sub" href="/local-delivery">Local Hand-to-Hand Delivery</a>
+      <a class="mob-sub" href="/shipmate">ShipMate Platform</a>
+      <a class="mob-sub" href="#enquire">5 Free Collections</a>
+      <a href="tel:1300656595">📞 1300 65 65 95</a>
+      <a class="mob-track" href="/track">📍 Track a parcel</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============= BREADCRUMB ============= -->
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><a href="/#services">Services</a><span class="sep">/</span><span>ShipMate</span>
+  </nav>
+</div>
+
+<!-- ============= HERO ============= -->
+<section class="hero hero-elevated">
+  <div class="wrap">
+    <div class="hero-panel">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-eyebrow"><span class="dot"></span> The free shipping platform</div>
+          <h1>One dashboard.<br><span class="hl">Every shipment.</span></h1>
+          <p class="hero-lead hero-lead-hook">
+            ShipMate is the free MailPlus shipping platform — book pickups, print labels in a few clicks, and manage every order in one place. Connects straight to Shopify and WooCommerce.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#enquire" class="btn btn-primary">Enquire now →</a>
+            <a href="tel:1300656595" class="btn btn-secondary">Call 1300 65 65 95</a>
+          </div>
+          <div class="hero-meta">
+            <span>Free platform</span>
+            <span>No minimum volume</span>
+            <span>Shopify &amp; WooCommerce</span>
+            <span>Real-time tracking</span>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-card">
+            <h2>Built to ship faster</h2>
+            <p class="hc-sub">Book, label, track — all in one place.</p>
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="stat-benefit">Free to use</div>
+                <div class="stat-proof"><span class="num">$0</span><span class="num-suffix">platform</span><span class="lbl">no minimum volume</span></div>
+              </div>
+              <div class="stat">
+                <div class="stat-benefit">Labels in a few clicks</div>
+                <div class="stat-proof"><span class="lbl"><span class="num-suffix">Bulk labels</span>, or create them as you go</span></div>
+              </div>
+              <div class="stat">
+                <div class="stat-benefit">Plug in your store</div>
+                <div class="stat-proof"><span class="num">2</span><span class="num-suffix">integrations</span><span class="lbl">Shopify &amp; WooCommerce</span></div>
+              </div>
+              <div class="stat">
+                <div class="stat-benefit">Track every parcel</div>
+                <div class="stat-proof"><span class="num">Real</span><span class="num-suffix">-time</span><span class="lbl">tracking for you &amp; customers</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= ANSWER-FIRST INTRO BAND (AEO) ============= -->
+<section class="intro-band">
+  <div class="wrap">
+    <div class="intro-band-inner">
+      <div class="intro-band-label">Ship<span class="hl">Mate</span></div>
+      <div class="intro-band-copy">
+        <p><strong>ShipMate is the free MailPlus shipping platform — book pickups and express shipments, print labels in a few clicks, and manage orders in one dashboard.</strong> It connects to Shopify and WooCommerce, so online merchants can sync orders, print labels and track from a single place.</p>
+        <div class="intro-more" id="introMore">
+          <p>Connect Shopify or WooCommerce and your orders flow straight into ShipMate — no copying details across by hand. From there you can print shipping labels for multiple orders at once, in seconds, and manage every order from a single dashboard.</p>
+          <p>ShipMate gives you discounted, flat-rate pricing across premium carriers in one place, with no minimum volume requirements. Google address lookup automatically validates suburb, state and postcode to prevent delivery delays and address errors, and you get real-time parcel tracking for you and your customers, with clear updates at every scan. You can also stay in contact with your local MailPlus operator through built-in messaging on the platform.</p>
+          <p>ShipMate isn't just for online stores. It works for any business that needs reliable, affordable shipping — from dentists and law firms to schools and retail — used on its own to send something the moment it's urgent. Whether you connect a store integration or use ShipMate on its own, MailPlus is a reliable, independent alternative to Australia Post and traditional couriers.</p>
+        </div>
+        <button class="intro-toggle" id="introToggle" aria-expanded="false">
+          <span class="it-text">Read more</span> <span class="it-caret">▾</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= HOW IT WORKS ============= -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">How ShipMate works</div>
+      <h2>From your store to shipped, in four steps.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-head"><span class="step-no">1</span><span class="sc-emoji">🔌</span></div>
+        <h3>Connect your store</h3>
+        <p>Link your Shopify or WooCommerce store to ShipMate — or just use the platform on its own for any business that needs shipping.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-no">2</span><span class="sc-emoji">🔄</span></div>
+        <h3>Orders sync automatically</h3>
+        <p>Your orders sync automatically, so labels and tracking are handled without manual entry — everything lands in one dashboard.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-no">3</span><span class="sc-emoji">🏷️</span></div>
+        <h3>Print labels in a few clicks</h3>
+        <p>Print shipping labels for multiple orders at once, in seconds, with no manual data entry — and choose from premium carriers on flat-rate pricing.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-no">4</span><span class="sc-emoji">📍</span></div>
+        <h3>Pickup &amp; tracking, handled</h3>
+        <p>Printing a label sends the job to your local owner-operator for pickup. From there, every major scan updates your dashboard, and built-in email updates keep your customers in the loop automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= INTEGRATIONS ============= -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Built for your business</div>
+      <h2>Plug ShipMate into your store — or use it on its own.</h2>
+      <p>Connect Shopify or WooCommerce for automatic order sync, or run ShipMate on its own for any business that needs reliable shipping.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar featured">
+        <span class="pillar-badge free">Most popular</span>
+        <div class="pillar-icon v-express">🛍️<span class="icon-sub">🔄</span></div>
+        <h3>Shopify</h3>
+        <p>Your Shopify orders sync automatically, with customer details carried across — so labels are ready without any retyping.</p>
+        <ul>
+          <li>Orders sync automatically</li>
+          <li>Bulk label printing in seconds</li>
+          <li>Real-time tracking for you and your customers</li>
+        </ul>
+        <a href="#enquire" class="pillar-cta">Enquire now →</a>
+      </div>
+      <div class="pillar">
+        <span class="pillar-badge po">Integration</span>
+        <div class="pillar-icon v-po">🧩</div>
+        <h3>WooCommerce</h3>
+        <p>Running your store on WooCommerce? Connect it to ShipMate and your orders are ready to ship, labelled and tracked, without leaving the platform.</p>
+        <ul>
+          <li>Sync orders from your store</li>
+          <li>Print labels in a few clicks</li>
+          <li>One dashboard for every order</li>
+        </ul>
+        <a href="#enquire" class="pillar-cta">Enquire now →</a>
+      </div>
+      <div class="pillar">
+        <span class="pillar-badge express">No store needed</span>
+        <div class="pillar-icon v-free">🏢</div>
+        <h3>Any business</h3>
+        <p>No online store? No problem. Dentists, law firms, schools, retail — any business that needs to get something out the door can use ShipMate on its own, no integration required.</p>
+        <ul>
+          <li>No online store required</li>
+          <li>Smart address validation built in</li>
+          <li>Same dashboard, labels and tracking</li>
+        </ul>
+        <a href="#enquire" class="pillar-cta">Enquire now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SPEC TABLE ============= -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">The details</div>
+      <h2>Everything ShipMate gives you.</h2>
+    </div>
+    <div class="spec-card">
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">💰</span> Price</div>
+        <div class="sr-val"><span class="spec-val-strong">Free MailPlus shipping platform.</span> No minimum volume requirements. A collection fee may apply for lower-volume businesses, agreed upfront at signup.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">📦</span> What it does</div>
+        <div class="sr-val">Book pickups and express shipments, print labels in a few clicks, and manage every order in one dashboard.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">🛍️</span> Integrations</div>
+        <div class="sr-val"><span class="spec-val-strong">Shopify and WooCommerce.</span> Shopify orders sync automatically, so labels and tracking are handled without manual entry.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">🏢</span> Who it's for</div>
+        <div class="sr-val">Any business that needs reliable shipping — online stores and offices alike, from dentists and law firms to schools and retail. No online store required.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">🚚</span> Carriers</div>
+        <div class="sr-val">Discounted, flat-rate pricing across premium carriers in one place, with no minimum volume requirements.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">🏷️</span> Labels</div>
+        <div class="sr-val">Print shipping labels for multiple orders at once, in seconds, with no manual data entry.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">✅</span> Address validation</div>
+        <div class="sr-val">Google address lookup with automatic suburb, state and postcode validation to prevent delivery delays.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">📍</span> Tracking</div>
+        <div class="sr-val">Real-time parcel tracking for you and your customers, with clear delivery updates at every scan.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">✉️</span> Customer updates</div>
+        <div class="sr-val">Built-in email updates keep customers informed as their parcel moves. Shopify and WooCommerce stores also send their own automatic shipping updates.</div>
+      </div>
+      <div class="spec-row">
+        <div class="sr-key"><span class="sr-ic">💬</span> Operator messaging</div>
+        <div class="sr-val">Stay in contact with your local MailPlus operator through built-in messaging on the platform.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= MID-PAGE CTA BAND ============= -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-band-text">
+        <h2>Ready to ship smarter?</h2>
+        <p>Enter your address and we'll check for a local MailPlus driver in your area, then get you set up on ShipMate — free to use, with no minimum volume.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="#enquire" class="btn btn-primary">Enquire now →</a>
+        <a href="tel:1300656595" class="btn btn-call">Call 1300 65 65 95</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FAQ ============= -->
+<section class="section faq-section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Frequently asked questions</div>
+      <h2>ShipMate, answered.</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What is ShipMate? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">ShipMate is the free MailPlus shipping platform. From one dashboard you can book pickups and express shipments, print labels in a few clicks, and manage every order in one place. It connects to Shopify and WooCommerce, gives you real-time tracking, and works on its own for any business that needs reliable shipping.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How much does ShipMate cost? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">ShipMate is the free MailPlus shipping platform — there's no cost to use it and no minimum volume requirements. You get discounted, flat-rate pricing across premium carriers in one place. A collection fee may apply for lower-volume businesses, but it's agreed upfront at signup, so your pricing is always known in advance.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does ShipMate integrate with Shopify? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. ShipMate syncs your Shopify orders automatically, so labels and tracking are handled without manual entry. Orders flow straight into your dashboard, you can print shipping labels in bulk in seconds, and both you and your customers get real-time tracking. Setup is free and requires no technical expertise.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does ShipMate work with WooCommerce? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. ShipMate connects to your WooCommerce store, so your orders sync automatically and you can print labels and track shipments from one dashboard. You manage everything in a single place, with discounted flat-rate pricing across premium carriers and real-time tracking for you and your customers.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can any type of business use ShipMate? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. ShipMate works for any business that needs reliable, affordable shipping, not just online stores. As well as merchants on Shopify or WooCommerce, it suits any office or professional service — from dentists and medical practices to law firms, schools and retail — that needs to send something, including urgent items, using the platform on its own.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I connect ShipMate to my own systems? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">ShipMate is the platform you use directly to book, label and track. If you'd rather build shipping into your own systems with code, that's the <a href="/api">MailPlus API</a>, which connects your systems directly to MailPlus for automated bookings, labels and tracking at scale. See the MailPlus API page for details.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can my customers track their orders? <span class="faq-toggle">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. ShipMate gives real-time parcel tracking for you and your customers, with clear delivery updates at every scan. Built-in email updates keep your customers informed automatically as their parcel moves, and Shopify and WooCommerce stores also send their own shipping updates. You can follow every shipment from your dashboard.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= POST-FAQ CTA BAND ============= -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-band-text">
+        <h2>Still have questions?</h2>
+        <p>Get tailored pricing for your pickup address, or talk it through with our Aussie-based team — Monday to Friday, 9am–5pm AEST.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="#enquire" class="btn btn-primary">Enquire now →</a>
+        <a href="tel:1300656595" class="btn btn-call">Call 1300 65 65 95</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= ENQUIRY FORM ============= -->
+<section class="section" id="enquire" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="enquiry-band">
+      <div class="enquiry-grid">
+        <div class="enquiry-left">
+          <h2>Start shipping with ShipMate — this week.</h2>
+          <p>Enter your address and we'll instantly check for a local MailPlus driver in your area, then connect you with your account manager to get set up on ShipMate. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
+          <div class="enquiry-contacts">
+            <a href="tel:1300656595" class="enquiry-contact">
+              <div class="ec-ic">📞</div>
+              <div>
+                <div class="ec-lbl">Call us</div>
+                <div class="ec-val mono">1300 65 65 95</div>
+              </div>
+            </a>
+            <div class="enquiry-contact">
+              <div class="ec-ic">🕘</div>
+              <div>
+                <div class="ec-lbl">Hours</div>
+                <div class="ec-val">Mon–Fri, 9am–5pm AEST</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="enquiry-form">
+          <div id="enquiryFormInner">
+            <p class="ef-intro">Pop in your pickup address and we'll check for a local MailPlus driver in your area — then take you to the next step.</p>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">First name <span class="req">*</span></label>
+                <input type="text" class="field-input" id="f-fname" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Last name <span class="req">*</span></label>
+                <input type="text" class="field-input" id="f-lname" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Business name <span class="req">*</span></label>
+              <input type="text" class="field-input" id="f-company" />
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Pickup address <span class="req">*</span></label>
+              <div class="addr-wrap">
+                <span class="addr-pin" aria-hidden="true">📍</span>
+                <input type="text" class="field-input addr-input" id="f-address" placeholder="Start typing your business address…" autocomplete="off" />
+              </div>
+              <p class="field-hint">We use this to find your local driver.</p>
+              <!-- DEV NOTE: Attach Google Places Autocomplete to #f-address (Places API key + script required).
+                   On a verified address selection, store the place_id / lat-lng on a hidden field for the
+                   territory lookup. The submit handler below currently routes to a placeholder next page —
+                   replace TERRITORY_CHECK_ENDPOINT and NEXT_PAGE_URL with the real territory-check service
+                   and the "local driver found" page (Calendly + Account Manager intro). -->
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Email <span class="req">*</span></label>
+                <input type="email" class="field-input" id="f-email" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Phone <span class="req">*</span></label>
+                <input type="tel" class="field-input" id="f-phone" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">What are you interested in? <span class="req">*</span></label>
+              <select class="field-select" id="f-interest">
+                <option value="">Please select…</option>
+                <option>ShipMate &amp; express parcel delivery</option>
+                <option>Shopify integration</option>
+                <option>WooCommerce integration</option>
+                <option>Post Office collect &amp; lodge</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Roughly how many parcels do you send a week? <span class="req">*</span></label>
+              <select class="field-select" id="f-volume">
+                <option value="">Please select…</option>
+                <option>1–10 a week</option>
+                <option>11–50 a week</option>
+                <option>51–200 a week</option>
+                <option>201–500 a week</option>
+                <option>500+ a week</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+
+            <button class="form-submit" onclick="submitEnquiry()">Enquire now →</button>
+          </div>
+
+          <div class="form-success" id="enquiryChecking">
+            <div class="fs-ic checking">📍</div>
+            <h3>Checking your area…</h3>
+            <p>Looking for a local MailPlus driver near your pickup address. This will only take a moment.</p>
+          </div>
+
+          <div class="form-success" id="enquirySuccess">
+            <div class="fs-ic">✓</div>
+            <h3>Thanks — we've got it.</h3>
+            <p>A member of the MailPlus team will be in touch within one business day. Need us sooner? Call <strong>1300 65 65 95</strong>, Mon–Fri 9am–5pm AEST.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER (shared across all pages) ============= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span class="mail">mail</span><span class="plus">plus</span></div>
+        <p>An Australian courier and parcel delivery network for small to medium sized business, founded in 1997. Express delivery, Post Office collect &amp; lodge, and local hand-to-hand delivery — backed by local owner-operators.</p>
+        <a href="tel:1300656595" class="footer-phone"><span>📞</span> 1300 65 65 95</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#enquire">5 Free Collections</a></li>
+          <li><a href="/express-delivery">Express Delivery</a></li>
+          <li><a href="/post-office-collect-lodge">Post Office Collect &amp; Lodge</a></li>
+          <li><a href="#enquire">Corporate &amp; Multi-site</a></li>
+          <li><a href="/local-delivery">Hand-to-Hand Delivery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="/shipmate">ShipMate</a></li>
+          <li><a href="https://localmile.plus">LocalMile</a></li>
+          <li><a href="/shipmate#integrations">Integrations</a></li>
+          <li><a href="/track">Track a Parcel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About MailPlus</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="/franchise">Become a Franchisee</a></li>
+        </ul>
+        <address class="footer-address">
+          <span class="fa-label">Head office</span>
+          <span>L16, 175 Pitt Street,<br>Sydney NSW 2000</span>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 MailPlus Pty Ltd.</p>
+      <span class="footer-hours">Mon–Fri 9am–5pm AEST</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ===== Header: Services dropdown (hover via CSS; click/keyboard here) =====
+  const servicesDd = document.getElementById('servicesDd');
+  const servicesBtn = document.getElementById('servicesBtn');
+  if (servicesDd && servicesBtn) {
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = servicesDd.classList.toggle('open');
+      servicesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!servicesDd.contains(e.target)) {
+        servicesDd.classList.remove('open');
+        servicesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        servicesDd.classList.remove('open');
+        servicesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // ===== Header: mobile menu =====
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.textContent = open ? '✕' : '☰';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.textContent = '☰';
+    }));
+  }
+
+  // Intro band — read more / less (content stays in DOM for crawlers)
+  const introToggle = document.getElementById('introToggle');
+  const introMore = document.getElementById('introMore');
+  if (introToggle && introMore) {
+    introToggle.addEventListener('click', () => {
+      const isOpen = introMore.classList.toggle('open');
+      introToggle.classList.toggle('open', isOpen);
+      introToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      introToggle.querySelector('.it-text').textContent = isOpen ? 'Read less' : 'Read more';
+      introMore.style.maxHeight = isOpen ? introMore.scrollHeight + 'px' : null;
+      introMore.style.marginTop = isOpen ? '0' : null;
+    });
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Enquiry form (front-end demo — dev to wire to CRM / ProspectPlus)
+  function submitEnquiry() {
+    const required = ['f-fname', 'f-lname', 'f-company', 'f-address', 'f-email', 'f-phone', 'f-interest', 'f-volume'];
+    let ok = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) { el.style.borderColor = '#E5484D'; ok = false; }
+      else { el.style.borderColor = ''; }
+    });
+    if (!ok) return;
+
+    // Show the "checking your area" interstitial while we look up the territory.
+    document.getElementById('enquiryFormInner').style.display = 'none';
+    document.getElementById('enquiryChecking').classList.add('show');
+
+    // DEV NOTE: Replace this simulated delay with a real call to the territory-check
+    // service (TERRITORY_CHECK_ENDPOINT) using the verified address / place_id.
+    // - If the address is inside a MailPlus territory -> redirect to NEXT_PAGE_URL
+    //   ("Good news! There's a local MailPlus driver in your area" + Account Manager
+    //   intro + Calendly booking link).
+    // - If outside a territory -> show the fallback success state below (team will be
+    //   in touch) or a dedicated "not yet in your area" page.
+    const NEXT_PAGE_URL = '#'; // TODO: point at the "local driver found" page
+    setTimeout(() => {
+      if (NEXT_PAGE_URL && NEXT_PAGE_URL !== '#') {
+        window.location.href = NEXT_PAGE_URL;
+      } else {
+        // Placeholder until the next page is built: fall back to the thank-you state.
+        document.getElementById('enquiryChecking').classList.remove('show');
+        document.getElementById('enquirySuccess').classList.add('show');
+      }
+    }, 1600);
+  }
+  window.submitEnquiry = submitEnquiry;
+
+  // Count-up animation for hero stats
+  function animateCount(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const prefix = el.dataset.prefix || '';
+    const dur = 1100, start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.num[data-count]').forEach(animateCount);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  const heroCard = document.querySelector('.hero-card');
+  if (heroCard) statObserver.observe(heroCard);
+</script>
+
+</body>
+</html>

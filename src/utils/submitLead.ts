@@ -28,6 +28,8 @@ export interface LeadResponse {
   syncedWithNetSuite?: boolean;
   outOfTerritory?: boolean;
   message?: string;
+  accountManagerName?: string;
+  accountManagerCalendly?: string;
 }
 
 export async function submitLead(data: LeadPayload): Promise<LeadResponse> {

@@ -20,7 +20,7 @@ export function Footer() {
               <li><a href="/express-delivery">Express Delivery</a></li>
               <li><a href="/post-office-collect-lodge">Post Office Solutions</a></li>
               <li><a href="/local-delivery">Local Hand-to-Hand</a></li>
-              <li><a href="/shipmate">ShipMate Platform</a></li>
+              <li><a href="/shipmate-platform">ShipMate Platform</a></li>
             </ul>
           </div>
 
