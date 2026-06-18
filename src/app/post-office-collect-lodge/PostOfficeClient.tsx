@@ -133,7 +133,6 @@ export default function PostOfficeClient() {
 
         // Dynamic import to avoid SSR issues with utils
         const { submitLead } = await import('@/utils/submitLead');
-        const { showLeadModal } = await import('@/utils/LeadModal');
 
         const addressEl = document.getElementById('f-address') as HTMLInputElement;
         const payload = {
@@ -164,7 +163,8 @@ export default function PostOfficeClient() {
         if (checking) checking.classList.remove('show');
         
         if (result.success) {
-          showLeadModal(result, payload);
+          sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
+          window.location.href = '/confirmation';
         } else {
           // If failed, just show a fallback success or error message inline.
           const successMsg = document.getElementById('enquirySuccess');

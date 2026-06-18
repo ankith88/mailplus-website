@@ -78,7 +78,6 @@ export function ReviewsCtaSection() {
     
     // Dynamic import
     const { submitLead } = await import('@/utils/submitLead');
-    const { showLeadModal } = await import('@/utils/LeadModal');
 
     const fname = (document.getElementById('fname') as HTMLInputElement).value;
     const lname = (document.getElementById('lname') as HTMLInputElement).value;
@@ -112,7 +111,8 @@ export function ReviewsCtaSection() {
     setSubmitting(false)
 
     if (result.success) {
-      showLeadModal(result, payload);
+      sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
+      window.location.href = '/confirmation';
     } else {
       setSuccess(true)
     }
