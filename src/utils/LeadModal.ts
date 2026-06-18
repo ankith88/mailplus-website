@@ -1,4 +1,8 @@
-export function showLeadModal(outOfTerritory: boolean) {
+export function showLeadModal(
+  outOfTerritory: boolean,
+  accountManagerName?: string,
+  accountManagerCalendly?: string
+) {
   // Remove existing if any
   const existing = document.getElementById('lead-modal-overlay');
   if (existing) existing.remove();
@@ -17,131 +21,199 @@ export function showLeadModal(outOfTerritory: boolean) {
   overlay.style.zIndex = '99999';
   overlay.style.opacity = '0';
   overlay.style.transition = 'opacity 0.2s ease-in-out';
+  overlay.style.padding = '20px';
 
   const modal = document.createElement('div');
-  modal.style.backgroundColor = '#fff';
-  modal.style.borderRadius = '16px';
-  modal.style.width = '90%';
-  modal.style.maxWidth = '400px';
   modal.style.position = 'relative';
-  modal.style.overflow = 'hidden';
+  modal.style.width = '100%';
+  modal.style.maxWidth = '700px';
+  modal.style.maxHeight = '90vh';
+  modal.style.overflowY = 'auto';
+  modal.style.borderRadius = '16px';
   modal.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
   modal.style.fontFamily = 'var(--font-primary, sans-serif)';
 
   const closeBtn = document.createElement('button');
   closeBtn.innerHTML = '✕';
   closeBtn.style.position = 'absolute';
-  closeBtn.style.top = '12px';
-  closeBtn.style.right = '12px';
-  closeBtn.style.background = 'none';
+  closeBtn.style.top = '16px';
+  closeBtn.style.right = '16px';
+  closeBtn.style.background = 'rgba(255, 255, 255, 0.8)';
   closeBtn.style.border = '1px solid #E4E4E7';
-  closeBtn.style.borderRadius = '6px';
-  closeBtn.style.width = '28px';
-  closeBtn.style.height = '28px';
+  closeBtn.style.borderRadius = '50%';
+  closeBtn.style.width = '32px';
+  closeBtn.style.height = '32px';
   closeBtn.style.cursor = 'pointer';
   closeBtn.style.display = 'flex';
   closeBtn.style.alignItems = 'center';
   closeBtn.style.justifyContent = 'center';
-  closeBtn.style.color = '#71717A';
-  closeBtn.style.fontSize = '14px';
+  closeBtn.style.color = '#003e48';
+  closeBtn.style.fontSize = '16px';
+  closeBtn.style.zIndex = '10';
   closeBtn.onclick = () => {
     overlay.style.opacity = '0';
     setTimeout(() => overlay.remove(), 200);
   };
-
-  const contentDiv = document.createElement('div');
-  contentDiv.style.padding = '40px 30px';
-  contentDiv.style.textAlign = 'center';
+  modal.appendChild(closeBtn);
 
   if (!outOfTerritory) {
-    // In territory (Success)
-    const topBg = document.createElement('div');
-    topBg.style.background = 'linear-gradient(135deg, #0f384f 0%, #174b68 100%)';
-    topBg.style.padding = '40px 20px';
-    topBg.style.textAlign = 'center';
-    topBg.style.color = '#fff';
+    // New In-Territory Success Screen (matching screenshot)
+    modal.style.backgroundColor = '#D5E0D5'; // Pale green from screenshot
+    modal.style.padding = '40px 40px 60px 40px';
+    modal.style.color = '#004751'; // Dark blue text
     
-    const iconWrap = document.createElement('div');
-    iconWrap.style.width = '56px';
-    iconWrap.style.height = '56px';
-    iconWrap.style.borderRadius = '50%';
-    iconWrap.style.border = '1px solid rgba(255,255,255,0.2)';
-    iconWrap.style.display = 'flex';
-    iconWrap.style.alignItems = 'center';
-    iconWrap.style.justifyContent = 'center';
-    iconWrap.style.margin = '0 auto 20px auto';
-    iconWrap.style.fontSize = '24px';
-    iconWrap.innerHTML = '🎉';
+    // Top Badge: "✓ YOU'RE IN TERRITORY"
+    const badge = document.createElement('div');
+    badge.style.display = 'inline-flex';
+    badge.style.alignItems = 'center';
+    badge.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+    badge.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+    badge.style.borderRadius = '20px';
+    badge.style.padding = '4px 12px';
+    badge.style.marginBottom = '24px';
+    badge.style.fontSize = '12px';
+    badge.style.fontWeight = '700';
+    badge.style.letterSpacing = '1px';
+    badge.style.color = '#2E6E45'; // Darker green text
     
+    const badgeIcon = document.createElement('span');
+    badgeIcon.innerHTML = '✓';
+    badgeIcon.style.backgroundColor = '#4A8C5B'; // Green circle
+    badgeIcon.style.color = '#fff';
+    badgeIcon.style.borderRadius = '50%';
+    badgeIcon.style.width = '16px';
+    badgeIcon.style.height = '16px';
+    badgeIcon.style.display = 'inline-flex';
+    badgeIcon.style.alignItems = 'center';
+    badgeIcon.style.justifyContent = 'center';
+    badgeIcon.style.marginRight = '8px';
+    badgeIcon.style.fontSize = '10px';
+    
+    badge.appendChild(badgeIcon);
+    badge.appendChild(document.createTextNode("YOU'RE IN TERRITORY"));
+    modal.appendChild(badge);
+    
+    // Heading
     const title = document.createElement('h2');
-    title.style.margin = '0';
-    title.style.fontSize = '24px';
+    title.style.margin = '0 0 16px 0';
+    title.style.fontSize = '46px';
     title.style.fontWeight = '700';
-    title.innerHTML = 'Great news — <span style="color: #FFDE33;">you\'re in our patch.</span>';
+    title.style.lineHeight = '1.1';
+    title.style.fontFamily = 'var(--font-heading, serif)';
+    title.innerHTML = `Good news — you're in our patch.`;
+    modal.appendChild(title);
     
-    topBg.appendChild(iconWrap);
-    topBg.appendChild(title);
-    
+    // Text
     const text = document.createElement('p');
-    text.style.color = '#3F3F46';
-    text.style.fontSize = '15px';
+    text.style.fontSize = '18px';
     text.style.lineHeight = '1.5';
-    text.style.margin = '0';
-    text.innerHTML = 'Your Account Manager will be in touch shortly to help you get started.';
+    text.style.margin = '0 0 32px 0';
+    text.style.opacity = '0.9';
+    const amString = accountManagerName ? accountManagerName : 'an Account Manager';
+    text.innerHTML = `There's a local MailPlus owner-operator covering your area. <strong>We've got your details</strong>, and ${amString} will call within one business day — or pick a time that suits you below.`;
+    modal.appendChild(text);
     
-    contentDiv.appendChild(text);
+    // Calendly Card
+    if (accountManagerCalendly) {
+      const card = document.createElement('div');
+      card.style.backgroundColor = '#fff';
+      card.style.borderRadius = '16px';
+      card.style.padding = '32px';
+      card.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+      
+      const cardBadge = document.createElement('div');
+      cardBadge.style.display = 'inline-flex';
+      cardBadge.style.alignItems = 'center';
+      cardBadge.style.fontSize = '12px';
+      cardBadge.style.fontWeight = '700';
+      cardBadge.style.letterSpacing = '1px';
+      cardBadge.style.color = '#1A3D33';
+      cardBadge.style.marginBottom = '12px';
+      
+      const dot = document.createElement('span');
+      dot.style.width = '8px';
+      dot.style.height = '8px';
+      dot.style.borderRadius = '50%';
+      dot.style.backgroundColor = '#4A8C5B';
+      dot.style.marginRight = '8px';
+      
+      cardBadge.appendChild(dot);
+      cardBadge.appendChild(document.createTextNode('BOOK A TIME'));
+      card.appendChild(cardBadge);
+      
+      const cardTitle = document.createElement('h3');
+      cardTitle.style.margin = '0 0 12px 0';
+      cardTitle.style.fontSize = '24px';
+      cardTitle.style.fontWeight = '700';
+      cardTitle.style.fontFamily = 'var(--font-heading, serif)';
+      cardTitle.innerHTML = 'Pick a time that suits you';
+      card.appendChild(cardTitle);
+      
+      const cardText = document.createElement('p');
+      cardText.style.margin = '0 0 24px 0';
+      cardText.style.fontSize = '15px';
+      cardText.style.lineHeight = '1.5';
+      cardText.style.color = '#3F3F46';
+      cardText.innerHTML = `<strong>Prefer we just call you?</strong> No need to do anything — ${amString} will be in touch within one business day (Mon–Fri 9am–5pm AEST).`;
+      card.appendChild(cardText);
+      
+      const calendlyWrap = document.createElement('div');
+      calendlyWrap.className = 'calendly-inline-widget';
+      calendlyWrap.dataset.url = accountManagerCalendly;
+      calendlyWrap.style.minWidth = '320px';
+      calendlyWrap.style.height = '600px';
+      card.appendChild(calendlyWrap);
+      
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      card.appendChild(script);
+      
+      modal.appendChild(card);
+    }
     
-    modal.appendChild(topBg);
-    modal.appendChild(contentDiv);
   } else {
-    // Out of territory
+    // Out of territory layout matching design
+    modal.style.backgroundColor = '#fff';
+    modal.style.maxWidth = '540px';
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.style.padding = '60px 50px';
+    contentDiv.style.textAlign = 'center';
+
     const iconWrap = document.createElement('div');
-    iconWrap.style.width = '56px';
-    iconWrap.style.height = '56px';
+    iconWrap.style.width = '80px';
+    iconWrap.style.height = '80px';
     iconWrap.style.borderRadius = '50%';
-    iconWrap.style.backgroundColor = '#dbe8d9';
+    iconWrap.style.backgroundColor = '#D5E0D5';
     iconWrap.style.display = 'flex';
     iconWrap.style.alignItems = 'center';
     iconWrap.style.justifyContent = 'center';
-    iconWrap.style.margin = '0 auto 20px auto';
-    iconWrap.style.fontSize = '24px';
+    iconWrap.style.margin = '0 auto 30px auto';
+    iconWrap.style.fontSize = '36px';
     iconWrap.innerHTML = '📍';
     
     const title = document.createElement('h2');
-    title.style.margin = '0 0 16px 0';
-    title.style.fontSize = '22px';
+    title.style.margin = '0 0 24px 0';
+    title.style.fontSize = '32px';
     title.style.fontWeight = '700';
-    title.style.color = '#0f384f';
+    title.style.color = '#004751';
+    title.style.fontFamily = 'var(--font-heading, serif)';
     title.innerHTML = 'We\'re not in your area just yet.';
     
     const text = document.createElement('p');
-    text.style.color = '#3F3F46';
-    text.style.fontSize = '15px';
-    text.style.lineHeight = '1.5';
-    text.style.margin = '0 0 24px 0';
-    text.innerHTML = 'We couldn\'t find a local MailPlus driver covering your address right now — so we can\'t start your free trial here today. You\'re welcome to check back any time.';
-    
-    const callBtn = document.createElement('a');
-    callBtn.href = 'tel:1300656595';
-    callBtn.style.display = 'block';
-    callBtn.style.width = '100%';
-    callBtn.style.padding = '12px';
-    callBtn.style.borderRadius = '24px';
-    callBtn.style.border = '1px solid #dbe8d9';
-    callBtn.style.color = '#0f384f';
-    callBtn.style.fontWeight = '600';
-    callBtn.style.textDecoration = 'none';
-    callBtn.style.fontSize = '15px';
-    callBtn.innerHTML = 'Call 1300 65 65 95';
+    text.style.color = '#386373';
+    text.style.fontSize = '17px';
+    text.style.lineHeight = '1.6';
+    text.style.margin = '0';
+    text.innerHTML = 'Sorry, but we couldn\'t find a local MailPlus driver covering your address right now. You\'re welcome to check back any time.';
     
     contentDiv.appendChild(iconWrap);
     contentDiv.appendChild(title);
     contentDiv.appendChild(text);
-    contentDiv.appendChild(callBtn);
     modal.appendChild(contentDiv);
   }
 
-  modal.appendChild(closeBtn);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 
