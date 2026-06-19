@@ -21,25 +21,6 @@ export default function ConfirmationPage() {
     setLoading(false);
   }, []);
 
-  useEffect(() => {
-    if (!data) return;
-
-    const outOfTerritory = !!data.result.outOfTerritory;
-    const { accountManagerCalendly, accountManagerName, internalid, customerEntityId } = data.result;
-
-    if (!outOfTerritory && accountManagerCalendly) {
-      // Dynamic import or loading of Calendly script
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.body.appendChild(script);
-
-      return () => {
-        script.remove();
-      };
-    }
-  }, [data]);
-
   if (loading) {
     return (
       <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-body, sans-serif)' }}>
@@ -63,35 +44,10 @@ export default function ConfirmationPage() {
   }
 
   const outOfTerritory = !!data.result.outOfTerritory;
-  const { accountManagerName, accountManagerCalendly, internalid, customerEntityId } = data.result;
-  
-  // Extract contact info from payload
-  const contact = data.payload.contacts && data.payload.contacts.length > 0 ? data.payload.contacts[0] : null;
-  const leadName = contact ? contact.name : '';
-  const leadEmail = contact ? contact.email : '';
-
-  let calendlyUrl = accountManagerCalendly || '';
-  if (accountManagerCalendly) {
-    try {
-      const urlObj = new URL(accountManagerCalendly);
-      if (leadName) urlObj.searchParams.set('name', leadName);
-      if (leadEmail) urlObj.searchParams.set('email', leadEmail);
-      if (internalid) urlObj.searchParams.set('a1', internalid);
-      if (customerEntityId) urlObj.searchParams.set('a2', customerEntityId);
-      urlObj.searchParams.set('a3', 'website');
-      
-      const now = new Date();
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth() + 1).padStart(2, '0');
-      urlObj.searchParams.set('month', `${yyyy}-${mm}`);
-      
-      calendlyUrl = urlObj.toString();
-    } catch (e) {
-      console.error("Invalid calendly URL", e);
-    }
-  }
+  const { accountManagerName, bookingUrlId } = data.result;
 
   const amString = accountManagerName ? accountManagerName : 'an Account Manager';
+  const iframeUrl = bookingUrlId ? `https://prospectplus.com.au/book/${bookingUrlId}?embed=true` : '';
 
   return (
     <div style={{ minHeight: '90vh', backgroundColor: outOfTerritory ? '#fff' : '#f4f7f5', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', fontFamily: 'var(--font-body, sans-serif)' }}>
@@ -99,7 +55,7 @@ export default function ConfirmationPage() {
         // In-Territory Page
         <div style={{
           width: '100%',
-          maxWidth: '700px',
+          maxWidth: '780px',
           backgroundColor: '#D5E0D5', // Pale green
           borderRadius: '16px',
           boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
@@ -157,12 +113,12 @@ export default function ConfirmationPage() {
             There&apos;s a local MailPlus owner-operator covering your area. <strong>We&apos;ve got your details</strong>, and {amString} will call within one business day — or pick a time that suits you below.
           </p>
           
-          {/* Calendly Card */}
-          {calendlyUrl && (
+          {/* Booking Embed Card */}
+          {iframeUrl && (
             <div style={{
               backgroundColor: '#fff',
               borderRadius: '16px',
-              padding: '32px',
+              padding: '24px',
               boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
             }}>
               <div style={{
@@ -203,10 +159,16 @@ export default function ConfirmationPage() {
                 <strong>Prefer we just call you?</strong> No need to do anything — {amString} will be in touch within one business day (Mon–Fri 9am–5pm AEST).
               </p>
               
-              <div 
-                className="calendly-inline-widget" 
-                data-url={calendlyUrl} 
-                style={{ minWidth: '320px', height: '600px' }} 
+              <iframe 
+                src={iframeUrl}
+                style={{
+                  width: '100%',
+                  height: '680px',
+                  border: 'none',
+                  borderRadius: '12px',
+                  backgroundColor: '#fff'
+                }}
+                title="Schedule Discussion"
               />
             </div>
           )}

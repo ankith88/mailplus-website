@@ -32,6 +32,7 @@ export interface LeadResponse {
   accountManagerCalendly?: string;
   internalid?: string;
   customerEntityId?: string;
+  bookingUrlId?: string;
 }
 
 export async function submitLead(data: LeadPayload): Promise<LeadResponse> {
