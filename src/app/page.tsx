@@ -15,20 +15,32 @@ export const metadata: Metadata = {
 
 const homeFaqs = [
   {
-    question: 'Are there any hidden fuel surcharges or residential fees?',
-    answer: 'No. MailPlus operates on a strictly flat-rate basis up to 5kg. The price you are quoted is the exact price you pay, regardless of whether the delivery is to a residential address or a business address.'
+    question: 'What does MailPlus do?',
+    answer: 'MailPlus is an Australian courier network for small business, founded in 1997, with around 300 vehicles on the road across all metro areas and regional hubs. We do three things: express parcel delivery in 1–2 days Australia-wide, Post Office collect & lodge so you never queue, and same-day local hand-to-hand delivery — all from one trusted local driver.'
   },
   {
-    question: 'How do the 5 free collections work?',
-    answer: 'When you enquire, your local MailPlus operator will contact you to set up your account. Your first 5 collections are completely free, with no credit card required and no obligation to continue. It allows you to trial our express delivery and Post Office solutions risk-free.'
+    question: 'How much does MailPlus cost?',
+    answer: "Express parcels are flat-rate for anything up to 5kg, so your shipping costs stay predictable with no surprise bills. There's no lock-in contract, and no minimum volume — you only pay for what you send. New businesses can also start with five free collections, with no card required."
   },
   {
-    question: 'Do you really go to the Post Office for me?',
-    answer: 'Yes. As part of our Post Office Collect & Lodge service, we collect your mail from the PO Box in the morning and deliver it to your office. In the afternoon, we collect your outbound mail and parcels and lodge them directly at the Post Office for you.'
+    question: 'Can MailPlus handle my Post Office run?',
+    answer: "Yes — that's one of the things we're known for. Your local owner-operator collects your parcels and mail, lodges them at the Post Office for you, and clears your business PO Boxes, all same-day. Your team never has to queue or leave the office, which is ideal for busy multi-site and corporate operations."
   },
   {
-    question: 'Does ShipMate integrate with my online store?',
-    answer: 'ShipMate integrates directly with Shopify and WooCommerce, automatically importing your orders and syncing tracking data back to your store. For custom setups, we provide a full API and bulk CSV upload options.'
+    question: 'How fast can MailPlus deliver across Australia?',
+    answer: 'MailPlus delivers parcels in 1–2 business days anywhere in Australia, with 95% of shipments arriving overnight on business days — collected in Sydney today, in Perth tomorrow. Book same-day collection with your local owner-operator before the daily cut-off, or set up a scheduled service so your regular pickups just happen without you having to book each time.'
+  },
+  {
+    question: 'Does MailPlus work with Shopify and my online store?',
+    answer: 'Yes. Our free shipping platform, ShipMate, plugs straight into Shopify and WooCommerce — orders sync automatically, labels print in a few clicks, and tracking updates in real time. Prefer to build your own setup? The MailPlus API connects your systems directly for automated bookings, labels and tracking at scale.'
+  },
+  {
+    question: 'How are the 5 free collections free?',
+    answer: "We'd rather show you than tell you. New business customers get five parcel collections completely free — your local owner-operator comes to you, collects, and delivers, whether that's lodging your Australia Post parcels or a hand-to-hand local delivery. No credit card and no obligation — it's the simplest way to see how much time the service saves before you commit."
+  },
+  {
+    question: 'Why choose MailPlus over Australia Post?',
+    answer: "You get a dedicated local owner-operator who comes to you and knows your business — not a depot drop-off or a different contract driver with no stake in your service. Flat-rate pricing keeps costs predictable, and a local Aussie support team answers fast — no hold times, no bots. We're an independent alternative to Australia Post and traditional couriers."
   }
 ]
 

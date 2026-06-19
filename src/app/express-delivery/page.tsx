@@ -315,7 +315,7 @@ export default function ExpressDeliveryPage() {
                 <div className="ec-val mono">1300 65 65 95</div>
               </div>
             </a>
-            <a href="https://shipmate.mailplus.com.au" className="enquiry-contact">
+            <a href="https://customer.mailplus.com.au/" className="enquiry-contact" target="_blank" rel="noopener noreferrer">
               <div className="ec-ic">🔑</div>
               <div>
                 <div className="ec-lbl">Existing customer</div>

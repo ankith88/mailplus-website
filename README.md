@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Footer Styling Guidelines
+
+The global footer layout is defined in [globals.css](file:///Users/ankithravindran/Development/Antigravity/mailplus-website/src/app/globals.css) and uses a 5-column grid (`1.4fr 1fr 1fr 1fr 1fr`). 
+
+To ensure all future pages have the same footer styling and column layout:
+1. Do not duplicate or copy-paste footer stylesheet rules (such as `.footer-grid`) into page-specific `styles.css` files.
+2. If page-specific overrides are necessary, always ensure the columns match the 5-column layout configuration (`1.4fr 1fr 1fr 1fr 1fr`).
+

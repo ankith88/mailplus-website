@@ -9,7 +9,7 @@ export function NetworkSection() {
           <div className="diff-grid">
             <div className="diff-photo">
               {/* Note: Use standard img or next/image as appropriate. Make sure the source exists, using a placeholder or the actual image path */}
-              <Image src="/images/mailplus-van-driver.jpg" alt="MailPlus local driver with van" fill style={{ objectFit: 'cover' }} />
+              <Image src="/images/mailplus-homepage-alistair.png" alt="MailPlus local driver with van" fill style={{ objectFit: 'cover' }} />
               <div className="photo-tag"><span className="dot"></span> 100% locally owned franchises</div>
             </div>
             

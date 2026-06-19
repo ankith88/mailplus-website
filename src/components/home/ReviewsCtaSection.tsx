@@ -143,7 +143,7 @@ export function ReviewsCtaSection() {
                       <div className="ec-val mono">1300 65 65 95</div>
                     </div>
                   </a>
-                  <a href="https://shipmate.mailplus.com.au" className="enquiry-contact">
+                  <a href="https://customer.mailplus.com.au/" className="enquiry-contact" target="_blank" rel="noopener noreferrer">
                     <div className="ec-ic">🔑</div>
                     <div className="ec-text">
                       <div className="ec-lbl">EXISTING CUSTOMER</div>
@@ -217,10 +217,11 @@ export function ReviewsCtaSection() {
                         triggerClassName="field-select"
                         required
                         options={[
-                          { value: 'express', label: 'Express Parcel Delivery' },
-                          { value: 'post-office', label: 'Post Office Collect & Lodge' },
-                          { value: 'local', label: 'Local Delivery' },
-                          { value: 'other', label: 'Other' }
+                          { value: '5-free', label: '5 free collections offer' },
+                          { value: 'express', label: 'Express parcel delivery & ShipMate' },
+                          { value: 'post-office', label: 'Post Office collect & lodge' },
+                          { value: 'corporate', label: 'Multi-site / corporate services' },
+                          { value: 'other', label: 'Something else' }
                         ]}
                       />
                     </div>
@@ -233,10 +234,12 @@ export function ReviewsCtaSection() {
                         required
                         dropdownPosition="top"
                         options={[
-                          { value: '1-10', label: '1 - 10' },
-                          { value: '11-50', label: '11 - 50' },
-                          { value: '51-200', label: '51 - 200' },
-                          { value: '201+', label: '201+' }
+                          { value: '1-10', label: '1–10 a week' },
+                          { value: '11-50', label: '11–50 a week' },
+                          { value: '51-200', label: '51–200 a week' },
+                          { value: '201-500', label: '201–500 a week' },
+                          { value: '500+', label: '500+ a week' },
+                          { value: 'unsure', label: 'Not sure yet' }
                         ]}
                       />
                     </div>

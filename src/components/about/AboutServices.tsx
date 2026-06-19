@@ -22,7 +22,7 @@ const services = [
     desc: 'Automatic order sync, smart product weights, tag filtering, bulk label printing — all free.',
   },
   {
-    href: '/services/mailplus-api',
+    href: '/mailplus-api',
     label: 'MailPlus API',
     desc: 'Automated label generation, live tracking, and biodegradable packaging for developers and 3PLs.',
   },

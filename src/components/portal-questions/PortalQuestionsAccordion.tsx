@@ -275,7 +275,7 @@ export function PortalQuestionsAccordion() {
                 {[
                   { href: '/shipmate', label: 'ShipMate Platform' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
-                  { href: '/services/mailplus-api', label: 'MailPlus API' },
+                  { href: '/mailplus-api', label: 'MailPlus API' },
                   { href: '/tracking', label: 'Track a Parcel' },
                   { href: '/shipmate-support-ticket', label: 'Support Ticket' },
                   { href: '/faq', label: 'General FAQs' },

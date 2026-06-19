@@ -17,34 +17,43 @@ export function HeroSection() {
                 Fast, flat-rate delivery in 1–2 days Australia-wide — plus Post Office collect and lodge, all handled by your local owner-operator.
               </p>
               <div className="hero-cta-row">
-                <Link href="#five-free" className="btn btn-primary">Get 5 free collections →</Link>
-                <Link href="#enquire" className="btn btn-secondary">Enquire now</Link>
+                <Link href="#enquire" className="btn btn-primary">Check my area →</Link>
               </div>
             </div>
 
             <div className="hero-side">
-              <div className="hero-card">
-                <h2>Why businesses choose MailPlus</h2>
-                <p className="hc-sub">Real benefits, backed by almost 30 years on the road.</p>
-                <div className="stat-grid">
-                  <div className="stat">
-                    <div className="stat-benefit">A local driver in your area</div>
-                    <div className="stat-proof"><span className="num" data-count="300" data-prefix="~">~300</span><span className="lbl">vehicles nationwide</span></div>
-                  </div>
-                  <div className="stat">
-                    <div className="stat-benefit">Sent today, there tomorrow</div>
-                    <div className="stat-proof"><span className="num">1–2</span><span className="num-suffix">days</span><span className="lbl">Australia-wide</span></div>
-                  </div>
-                  <div className="stat">
-                    <div className="stat-benefit">No surprise shipping bills</div>
-                    <div className="stat-proof"><span className="num">1</span><span className="num-suffix">flat rate</span><span className="lbl">up to 5kg</span></div>
-                  </div>
-                  <div className="stat">
-                    <div className="stat-benefit">A courier you can rely on</div>
-                    <div className="stat-proof"><span className="num" data-count="30" data-prefix="~">~30</span><span className="num-suffix">yrs</span><span className="lbl">since 1997</span></div>
-                  </div>
+              <div className="hero-placeholder" role="img" aria-label="Hero image placeholder">
+                <div className="hero-placeholder-inner">
+                  <span className="hp-icon">🖼️</span>
+                  <span className="hp-title">Hero image placeholder</span>
+                  <span className="hp-sub">Replace with final hero artwork</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="fact-banner-section">
+        <div className="wrap">
+          <div className="fact-banner">
+            <div className="fact">
+              <span className="fact-num" data-count="300" data-prefix="~">~300</span>
+              <span className="fact-label">vehicles on the road<br />nationwide</span>
+            </div>
+            <div className="fact">
+              <span className="fact-num" data-pop>1–2</span>
+              <span className="fact-label">day delivery<br />95% overnight</span>
+            </div>
+            <div className="fact">
+              <span className="fact-num" data-pop>1</span>
+              <span className="fact-label">flat rate<br />up to 5kg</span>
+            </div>
+            <div className="fact">
+              <span className="fact-num">
+                <strong style={{ fontWeight: 800 }} data-count="1997" data-from="1990">1997</strong>
+              </span>
+              <span className="fact-label">~30 years<br />experience</span>
             </div>
           </div>
         </div>
@@ -57,7 +66,7 @@ export function HeroSection() {
             <div className="intro-band-copy">
               <p><strong>MailPlus is an Australian courier and parcel delivery network founded in 1997</strong>, operating franchised territories across all metro areas and selected regional areas, with approximately 300 vehicles on the road.</p>
               <div className="intro-more" id="introMore">
-                <p>We offer express parcel delivery in 1–2 business days Australia-wide with flat-rate pricing for items up to 5kg, same-day pickup through local owner-operators, and we bridge the gap between businesses and the Post Office — collecting and lodging mail and parcels on your behalf.</p>
+                <p>We offer express parcel delivery in 1–2 business days Australia-wide — with 95% of shipments arriving overnight on business days — plus flat-rate pricing for items up to 5kg, same-day pickup through local owner-operators, and we bridge the gap between businesses and the Post Office — collecting and lodging mail and parcels on your behalf.</p>
                 <p>The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce. We&apos;re a reliable, independent alternative to Australia Post and traditional couriers.</p>
               </div>
               <button className="intro-toggle" id="introToggle" aria-expanded="false" aria-controls="introMore">

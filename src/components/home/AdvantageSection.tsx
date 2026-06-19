@@ -5,7 +5,7 @@ export function AdvantageSection() {
     <section className="section" id="services">
       <div className="wrap">
         <div className="section-head">
-          <div className="section-eyebrow">Three ways we save you time &amp; money</div>
+          <div className="section-eyebrow">Three ways we save you <span className="hl-marker">time &amp; money</span></div>
           <h2>Hand us the parcels and the Post Office run.</h2>
           <p>Whether you&apos;re trying us free, shipping express at one flat rate, or handing over the Post Office run for every site — there&apos;s a MailPlus service that gives your team its time back and keeps your shipping costs down.</p>
         </div>

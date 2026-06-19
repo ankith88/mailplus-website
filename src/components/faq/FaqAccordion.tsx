@@ -314,7 +314,7 @@ export function FaqAccordion() {
                   { href: '/services/post-office-solutions', label: 'Post Office Solutions' },
                   { href: '/shipmate', label: 'ShipMate' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
-                  { href: '/services/mailplus-api', label: 'MailPlus API' },
+                  { href: '/mailplus-api', label: 'MailPlus API' },
                   { href: '/tracking', label: 'Track a Parcel' },
                   { href: '/contact', label: 'Contact Us' },
                 ].map((link) => (
