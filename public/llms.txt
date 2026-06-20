@@ -48,14 +48,15 @@
 
 - Home: https://mailplus.com.au
 - Services Overview: https://mailplus.com.au/services
-- Express Delivery: https://mailplus.com.au/services/express-delivery
-- Post Office Solutions: https://mailplus.com.au/services/post-office-solutions
+- Express Delivery: https://mailplus.com.au/express-delivery
+- Post Office Solutions: https://mailplus.com.au/post-office-collect-lodge
 - Same-Day Courier (Sydney): https://mailplus.com.au/services/courier
 - Parcel Delivery: https://mailplus.com.au/services/parcel-delivery
 - Mail Management: https://mailplus.com.au/services/mail-management
 - Logistics & Warehousing: https://mailplus.com.au/services/logistics
 - Shopify Integration: https://mailplus.com.au/services/shopify-integration
-- MailPlus API: https://mailplus.com.au/services/mailplus-api
+- MailPlus API: https://mailplus.com.au/mailplus-api
+- 5 Free Collections: https://mailplus.com.au/5-free-collections
 - ShipMate Platform: https://mailplus.com.au/shipmate
 - Tracking: https://mailplus.com.au/tracking
 - About: https://mailplus.com.au/about

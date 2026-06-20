@@ -7,6 +7,18 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'MailPlus API | Connect Your Systems to MailPlus | MailPlus',
   description: "The MailPlus API lets developers and higher-volume businesses connect their own systems directly to MailPlus for automated bookings, labels and tracking at scale. It's the code-level option, distinct from ShipMate — most businesses use our free ShipMate platform instead.",
+  alternates: { canonical: 'https://mailplus.com.au/mailplus-api' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function MailPlusApiPage() {

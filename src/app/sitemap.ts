@@ -60,13 +60,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/post-office-solutions`,
+      url: `${baseUrl}/post-office-collect-lodge`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services/express-delivery`,
+      url: `${baseUrl}/express-delivery`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
@@ -79,6 +79,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/mailplus-api`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/5-free-collections`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.8,

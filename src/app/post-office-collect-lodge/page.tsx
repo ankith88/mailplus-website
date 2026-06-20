@@ -7,6 +7,18 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'Post Office Collect & Lodge | We Run Your Post Office Trips | MailPlus',
   description: 'MailPlus collects and lodges your parcels and mail and clears your business PO Boxes, with same-day collection through a local owner-operator. Skip the Post Office queue — your team never has to leave the office.',
+  alternates: { canonical: 'https://mailplus.com.au/post-office-collect-lodge' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function PostOfficeCollectLodgePage() {

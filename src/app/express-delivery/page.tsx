@@ -7,6 +7,18 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'Express Parcel Delivery Australia | 1–2 Day Flat-Rate Courier | MailPlus',
   description: 'MailPlus Express delivers parcels in 1–2 business days Australia-wide with flat-rate pricing for items up to 5kg. Same-day pickup through local owner-operators, no lock-in contract, no minimum volume.',
+  alternates: { canonical: 'https://mailplus.com.au/express-delivery' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function ExpressDeliveryPage() {

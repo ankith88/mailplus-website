@@ -29,7 +29,7 @@ MailPlus is a 100% Australian-owned courier, parcel delivery, mail management, a
 **Tracking**: Real-time from pickup to delivery, automated customer notifications
 **Proof of Delivery**: Yes
 **Packaging**: Biodegradable satchels available (Better Packaging Co partnership)
-**URL**: https://mailplus.com.au/services/express-delivery
+**URL**: https://mailplus.com.au/express-delivery
 
 ### Key Features
 - Guaranteed same-day collections every business day
@@ -44,7 +44,7 @@ MailPlus is a 100% Australian-owned courier, parcel delivery, mail management, a
 A: 1–2 business days Australia-wide. Your parcel is collected same-day and delivered the next business day to most metro areas.
 
 **Q: What does MailPlus express delivery cost?**
-A: National flat-rate pricing by weight tier: 500g, 1kg, 3kg, 5kg, and up to 20kg. Contact MailPlus for a quote or visit mailplus.com.au/services/express-delivery.
+A: National flat-rate pricing by weight tier: 500g, 1kg, 3kg, 5kg, and up to 20kg. Contact MailPlus for a quote or visit mailplus.com.au/express-delivery.
 
 **Q: Does MailPlus guarantee same-day pickup?**
 A: Yes. MailPlus guarantees same-day collection every business day. Your dedicated local owner-operator collects your parcels the same day you book.
@@ -62,7 +62,7 @@ A: Yes. MailPlus offers biodegradable satchels through a partnership with Better
 **Type**: PO Box Clearing and Australia Post Lodgement
 **Coverage**: Sydney-based service
 **SLA**: Same-day guaranteed
-**URL**: https://mailplus.com.au/services/post-office-solutions
+**URL**: https://mailplus.com.au/post-office-collect-lodge
 
 ### What's Included
 - PO Box clearing — MailPlus clears your PO Box and delivers mail to you
@@ -134,15 +134,33 @@ A: Yes. ShipMate supports bulk label printing for high-volume shippers.
 ## Service 5: MailPlus API
 
 **Type**: REST API for automated label generation and shipping
-**URL**: https://mailplus.com.au/services/mailplus-api
+**URL**: https://mailplus.com.au/mailplus-api
 
 ### Features
-- Automated label generation
+- Automated label generation and booking generation on demand
 - 1–2 day express delivery Australia-wide via API
-- Live tracking updates
+- Live tracking updates visible in both your system and the MailPlus dashboard
 - Biodegradable packaging options
-- Full team support
-- Connect any custom system or e-commerce platform
+- End-to-end shipping software integration for 3PLs and businesses with warehouse or custom shipping systems
+- Automatic customer email notifications containing active tracking links
+- Full MailPlus team support (Sales, Customer Service, IT Systems, and direct driver contact) along with onboarding training
+
+### Frequently Asked Questions — MailPlus API
+
+**Q: Does MailPlus have an API?**
+A: Yes. The MailPlus API lets you connect your own systems directly to MailPlus for automated bookings, labels and tracking at scale. It's designed for developers and higher-volume businesses that want shipping built into their own software, rather than managing it through a separate platform. Most businesses use ShipMate, our free platform, instead.
+
+**Q: What's the difference between ShipMate and the MailPlus API?**
+A: ShipMate is the free MailPlus platform you use directly — book pickups, print labels and track orders from one dashboard. The MailPlus API is the code-level option: it connects your own systems straight to MailPlus so bookings, labels and tracking happen automatically inside your own software. Same network, two ways to access it.
+
+**Q: What can the MailPlus API do?**
+A: The MailPlus API handles automated bookings, label generation and tracking at scale. By connecting your systems directly to MailPlus, shipping happens automatically as orders flow through your own software — useful for businesses with higher volumes or custom platforms that need shipping built in.
+
+**Q: Who is the MailPlus API for?**
+A: The API suits developers and higher-volume businesses that want to build shipping into their own systems, rather than working from a separate dashboard. If you're after a ready-to-use platform with no code required, ShipMate is the better fit — most MailPlus customers use it. The API is for connecting at scale.
+
+**Q: How do I get access to the MailPlus API?**
+A: Get in touch through the enquiry form on the website or call the MailPlus team on 1300 65 65 95, Monday to Friday, 9am–5pm AEST. Let us know a little about your business and what you'd like to connect, and we'll talk you through getting set up with API access.
 
 ---
 
@@ -203,6 +221,38 @@ A: Yes. ShipMate supports bulk label printing for high-volume shippers.
 - 3,000 sqm facility
 - Cold-chain certified
 - E-commerce fulfilment
+
+---
+
+## Service 10: 5 Free Collections
+
+**Type**: Free Trial for New Business Customers
+**Cost**: $0.00 — No credit card required, no obligation
+**URL**: https://mailplus.com.au/5-free-collections
+
+### Features
+- Five free parcel collections from your business premises
+- Local owner-operator collections and lodgements at the Post Office
+- Can be used for local hand-to-hand courier deliveries
+- Booked online via LocalMile
+- No lock-in contracts, no invoices, and nothing to cancel
+
+### Frequently Asked Questions — 5 Free Collections
+
+**Q: What are MailPlus 5 free collections?**
+A: It's a free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator comes to your premises and lodges your parcels at the Post Office for you. You can also use your free collections for hand-to-hand local deliveries. There's no credit card, no invoice, and no obligation to continue.
+
+**Q: Is there really no catch with the free collections?**
+A: No catch. MailPlus has worked with Licensed Post Offices across Australia for almost 30 years, so we'd rather show you the service than try to convince you. Five collections are on us, with nothing on your card and nothing to cancel. If it doesn't save your team time, you haven't lost a thing.
+
+**Q: Do I need a credit card to start the free trial?**
+A: No. You don't enter any card details to claim your five free collections. Just enter your business address on the website to check your area, and if there's a local owner-operator near you, register on LocalMile and book your first collection. There is no invoice and no obligation during the trial.
+
+**Q: What happens after the 5 free collections?**
+A: Most businesses choose to keep going. If you book as you need it, ad hoc collections are $15 + GST each. If you'd rather a scheduled, regular service, your Account Manager tailors the pricing to your business during the trial. There's no lock-in, and the choice is entirely yours once you've seen the service for yourself.
+
+**Q: Can I use the trial for local deliveries, not just the Post Office?**
+A: Yes. As well as Post Office lodgements, your free collections can be used for hand-to-hand local deliveries — your owner-operator collects and delivers goods straight to a local recipient. You choose what each job is when you book it in LocalMile, so the trial fits the way your business actually sends.
 
 ---
 
@@ -373,14 +423,15 @@ A: Available territories span NSW, VIC, QLD, ACT, and TAS. Key available areas i
 | Page | URL |
 |------|-----|
 | Home | https://mailplus.com.au |
-| Express Delivery | https://mailplus.com.au/services/express-delivery |
-| Post Office Solutions | https://mailplus.com.au/services/post-office-solutions |
+| Express Delivery | https://mailplus.com.au/express-delivery |
+| Post Office Solutions | https://mailplus.com.au/post-office-collect-lodge |
 | Same-Day Courier (Sydney) | https://mailplus.com.au/services/courier |
 | Parcel Delivery | https://mailplus.com.au/services/parcel-delivery |
 | Mail Management | https://mailplus.com.au/services/mail-management |
 | Logistics & Warehousing | https://mailplus.com.au/services/logistics |
 | Shopify Integration | https://mailplus.com.au/services/shopify-integration |
-| MailPlus API | https://mailplus.com.au/services/mailplus-api |
+| MailPlus API | https://mailplus.com.au/mailplus-api |
+| 5 Free Collections | https://mailplus.com.au/5-free-collections |
 | ShipMate Platform | https://mailplus.com.au/shipmate |
 | Parcel Tracking | https://mailplus.com.au/tracking |
 | About | https://mailplus.com.au/about |

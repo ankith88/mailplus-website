@@ -5,6 +5,18 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'Become a MailPlus Franchisee | Franchises for Sale Across Australia',
   description: 'Own a local MailPlus franchise. 120+ franchises and 300+ owner-operators across Australia. Exclusive territories, no shopfront, recurring B2B income and daily head-office support. See available franchises for sale in NSW, ACT, QLD, VIC and TAS.',
+  alternates: { canonical: 'https://mailplus.com.au/become-a-franchisee' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function BecomeAFranchiseePage() {
