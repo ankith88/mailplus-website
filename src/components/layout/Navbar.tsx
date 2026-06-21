@@ -61,13 +61,13 @@ export function Navbar() {
                   <span className="dd-sub">We run your Post Office trips for you</span>
                 </span>
               </Link>
-              <Link className="dd-item" href="/local-delivery" role="menuitem" onClick={() => setServicesOpen(false)}>
+              {/* <Link className="dd-item" href="/local-delivery" role="menuitem" onClick={() => setServicesOpen(false)}>
                 <span className="dd-ic">📍</span>
                 <span className="dd-tx">
                   <span className="dd-title">Local Hand-to-Hand Delivery</span>
                   <span className="dd-sub">Same-day, handed straight to the recipient</span>
                 </span>
-              </Link>
+              </Link> */}
               <Link className="dd-item" href="/shipmate-platform" role="menuitem" onClick={() => setServicesOpen(false)}>
                 <span className="dd-ic">📦</span>
                 <span className="dd-tx">
@@ -118,7 +118,7 @@ export function Navbar() {
           <div className="mob-group-label">Services</div>
           <Link className="mob-sub" href="/express-delivery" onClick={() => setMenuOpen(false)}>Express Parcel Delivery</Link>
           <Link className="mob-sub" href="/post-office-collect-lodge" onClick={() => setMenuOpen(false)}>Post Office Collect &amp; Lodge</Link>
-          <Link className="mob-sub" href="/local-delivery" onClick={() => setMenuOpen(false)}>Local Hand-to-Hand Delivery</Link>
+          {/* <Link className="mob-sub" href="/local-delivery" onClick={() => setMenuOpen(false)}>Local Hand-to-Hand Delivery</Link> */}
           <Link className="mob-sub" href="/shipmate-platform" onClick={() => setMenuOpen(false)}>ShipMate Platform</Link>
           <Link className="mob-sub" href="/5-free-collections" onClick={() => setMenuOpen(false)}>5 Free Collections</Link>
           <a href="https://customer.mailplus.com.au/" target="_blank" rel="noopener noreferrer">🔑 ShipMate Login</a>
