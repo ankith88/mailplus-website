@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Source_Serif_4, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
+// Trigger next layout stylesheet reload
 import './globals.css'
+import './v2-mockup.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SchemaScript } from '@/components/shared/SchemaScript'

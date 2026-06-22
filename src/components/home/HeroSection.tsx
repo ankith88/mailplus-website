@@ -16,12 +16,16 @@ export function HeroSection() {
               <div className="hero-eyebrow">
                 <span className="dot"></span> Australian courier for small business
               </div>
-              <h1>Ship overnight.<br /><span className="hl">Skip the queue.</span></h1>
+              <h1>Ship <span className="hl-marker hl-marker-draw">overnight</span>.<br /><span className="hl">Skip the queue.</span></h1>
               <p className="hero-lead hero-lead-hook">
                 Fast, flat-rate delivery in 1–2 days Australia-wide — plus Post Office collect and lodge, all handled by your local owner-operator.
               </p>
               <div className="hero-cta-row">
                 <Link href="#enquire" className="btn btn-primary">Check my area →</Link>
+              </div>
+              <div className="hero-trust">
+                <span className="ht-stars" aria-hidden="true">★★★★★</span>
+                <span className="ht-text">5-star reviews from Aussie businesses</span>
               </div>
             </div>
 

@@ -6,6 +6,31 @@ export function ClientScripts() {
   // 1. RAG Explainer Toggle handled in React (HeroSection.tsx)
   useEffect(() => {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    if (!targets.length) return;
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          o.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    targets.forEach(el => obs.observe(el));
+    return () => {
+      obs.disconnect();
+    }
+  }, []);
+
+  useEffect(() => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const animateCount = (el: Element) => {
       const targetStr = el.getAttribute('data-count') || '0';

@@ -153,7 +153,7 @@ img { max-width: 100%; display: block; }
 /* ========== HERO ========== */
 .hero { padding: 72px 0 56px; }
 .hero-grid {
-  display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center;
+  display: grid; grid-template-columns: 1fr .95fr; gap: 56px; align-items: center;
 }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;

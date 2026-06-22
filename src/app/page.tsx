@@ -74,7 +74,7 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section className="section faq-section">
         <div className="wrap">
-          <div className="section-head">
+          <div className="section-head reveal">
             <div className="section-eyebrow">Common Questions</div>
             <h2>Got questions? <span className="hl">We&apos;ve got answers.</span></h2>
           </div>

@@ -129,7 +129,7 @@ export function ReviewsCtaSection() {
       )}
       <section className="section" id="enquire">
         <div className="wrap">
-          <div className="enquiry-band">
+          <div className="enquiry-band reveal">
             <div className="enquiry-grid">
               <div className="enquiry-left">
                 <h2>Get your time back — starting this week.</h2>

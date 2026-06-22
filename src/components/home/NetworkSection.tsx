@@ -5,7 +5,7 @@ export function NetworkSection() {
   return (
     <section className="section">
       <div className="wrap">
-        <div className="diff-band">
+        <div className="diff-band reveal">
           <div className="diff-grid">
             <div className="diff-photo">
               {/* Note: Use standard img or next/image as appropriate. Make sure the source exists, using a placeholder or the actual image path */}
@@ -19,7 +19,7 @@ export function NetworkSection() {
                 <p>MailPlus operates on a franchise model. That means the courier who collects your parcels owns their territory. It&apos;s their business, which means they actually care about yours.</p>
               </div>
 
-              <div className="diff-items">
+              <div className="diff-items reveal-stagger">
                 <div className="diff-item">
                   <div className="di-ic">🤝</div>
                   <div className="di-text">
