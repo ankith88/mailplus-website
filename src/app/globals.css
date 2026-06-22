@@ -206,6 +206,19 @@ img { max-width: 100%; display: block; }
   font-size: 15px; line-height: 1; transition: transform .25s;
 }
 .intro-toggle.open .it-icon { transform: rotate(45deg); }
+.intro-toggle .it-icon-close {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+}
 @media (max-width: 920px) {
   .intro-band-inner { grid-template-columns: 1fr; gap: 18px; padding: 30px 24px; }
   .intro-band-label { max-width: none; font-size: 21px; }

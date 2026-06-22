@@ -1,8 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function HeroSection() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <>
       <section className="hero">
@@ -22,13 +26,14 @@ export function HeroSection() {
             </div>
 
             <div className="hero-side">
-              <div className="hero-placeholder" role="img" aria-label="Hero image placeholder">
-                <div className="hero-placeholder-inner">
-                  <span className="hp-icon">🖼️</span>
-                  <span className="hp-title">Hero image placeholder</span>
-                  <span className="hp-sub">Replace with final hero artwork</span>
-                </div>
-              </div>
+              <Image
+                src="/images/Homepage Hero.png"
+                alt="MailPlus Australian courier and parcel delivery"
+                width={600}
+                height={500}
+                className="hero-image"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -65,13 +70,27 @@ export function HeroSection() {
             <div className="intro-band-label">Meet <span className="hl">MailPlus</span></div>
             <div className="intro-band-copy">
               <p><strong>MailPlus is an Australian courier and parcel delivery network founded in 1997</strong>, operating franchised territories across all metro areas and selected regional areas, with approximately 300 vehicles on the road.</p>
-              <div className="intro-more" id="introMore">
+              <div 
+                className={`intro-more ${isOpen ? 'open' : ''}`} 
+                id="introMore"
+                style={{ 
+                  maxHeight: isOpen ? '500px' : '0px', 
+                  opacity: isOpen ? 1 : 0,
+                  margin: isOpen ? '8px 0' : '0'
+                }}
+              >
                 <p>We offer express parcel delivery in 1–2 business days Australia-wide — with 95% of shipments arriving overnight on business days — plus flat-rate pricing for items up to 5kg, same-day pickup through local owner-operators, and we bridge the gap between businesses and the Post Office — collecting and lodging mail and parcels on your behalf.</p>
                 <p>The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce. We&apos;re a reliable, independent alternative to Australia Post and traditional couriers.</p>
               </div>
-              <button className="intro-toggle" id="introToggle" aria-expanded="false" aria-controls="introMore">
-                <span className="it-text">Read more</span>
-                <span className="it-icon">+</span>
+              <button 
+                className={`intro-toggle ${isOpen ? 'open' : ''}`} 
+                id="introToggle" 
+                onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen} 
+                aria-controls="introMore"
+              >
+                <span className="it-text">{isOpen ? 'Read less' : 'Read More'}</span>
+                {isOpen && <span className="it-icon-close">×</span>}
               </button>
             </div>
           </div>

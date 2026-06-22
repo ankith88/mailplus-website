@@ -3,28 +3,7 @@
 import { useEffect } from 'react'
 
 export function ClientScripts() {
-  useEffect(() => {
-    // 1. RAG Explainer Toggle
-    const introToggle = document.getElementById('introToggle')
-    const introMore = document.getElementById('introMore')
-    
-    if (introToggle && introMore) {
-      const handleToggle = () => {
-        const isOpen = introMore.style.maxHeight !== '0px' && introMore.style.maxHeight !== ''
-        if (isOpen) {
-          introMore.style.maxHeight = '0px'
-          introToggle.textContent = 'Read More'
-        } else {
-          introMore.style.maxHeight = introMore.scrollHeight + 'px'
-          introToggle.textContent = 'Read Less'
-        }
-      }
-      introToggle.addEventListener('click', handleToggle)
-      // Cleanup
-      return () => introToggle.removeEventListener('click', handleToggle)
-    }
-  }, [])
-
+  // 1. RAG Explainer Toggle handled in React (HeroSection.tsx)
   useEffect(() => {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
