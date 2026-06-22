@@ -46,12 +46,10 @@
     display: flex; align-items: center; justify-content: space-between; gap: 24px;
   }
   .logo {
-    display: inline-flex; align-items: baseline;
-    font-family: var(--font-display); font-weight: 700; font-size: 28px;
-    letter-spacing: -.015em; line-height: 1; text-decoration: none; flex-shrink: 0;
+    display: inline-flex; align-items: center;
+    line-height: 1; text-decoration: none; flex-shrink: 0;
   }
-  .logo .mail { color: #FFFFFF; }
-  .logo .plus { color: var(--cta); }
+  .logo img { height: 26px; width: auto; display: block; }
 
   /* primary nav */
   .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
@@ -405,7 +403,7 @@
   footer { background: var(--ink); color: #fff; margin-top: 64px; }
   .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 24px 28px; }
   .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 40px; }
-  .footer-brand .logo { font-size: 30px; margin-bottom: 16px; }
+  .footer-brand .logo img { height: 30px; margin-bottom: 16px; }
   .footer-brand p { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,.6); max-width: 300px; margin-bottom: 18px; }
   .footer-address {
     font-style: normal; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.6);
@@ -421,6 +419,12 @@
     color: var(--cta); text-decoration: none;
   }
   .footer-phone:hover { color: #fff; }
+  .footer-social { display: flex; gap: 18px; margin-top: 18px; }
+  .social-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.6); transition: color .15s;
+  }
+  .social-link:hover { color: var(--cta); }
   .footer-col h4 {
     font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
     letter-spacing: .12em; color: rgba(255,255,255,.5); margin-bottom: 16px; font-weight: 600;
@@ -434,7 +438,9 @@
     display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   }
   .footer-bottom p { font-size: 12px; color: rgba(255,255,255,.5); }
-  .footer-hours { font-size: 12px; color: rgba(255,255,255,.5); font-family: var(--font-mono); }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s; }
+  .footer-legal a:hover { color: var(--cta); }
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 920px) {
@@ -775,3 +781,64 @@
   /* sorry-state lead line on the dark intro is white inside success only;
      sorry keeps a clean light header */
   .mp-modal.is-sorry .mp-modal-top { padding-bottom: 4px; }
+
+  /* hero image placeholder (grey, dashed border) — matches V3 homepage/post-office */
+  .hero-img {
+    width: 100%; height: auto; display: block;
+    filter: drop-shadow(0 24px 48px rgba(10,50,66,.16));
+  }
+
+  /* ========== "HERE'S THE DEAL" CARD (dark treatment, lime callout, DM Sans bold) ========== */
+  .deal-section { padding: 8px 0 16px; }
+  .deal-card {
+    background: linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    position: relative; overflow: hidden;
+    padding: 30px 12px;
+  }
+  .deal-card::before {
+    content: ''; position: absolute; top: -60px; right: -50px; width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: .24; pointer-events: none;
+  }
+  .deal-head {
+    position: relative; z-index: 1; text-align: center; margin-bottom: 22px;
+    padding: 0 16px;
+  }
+  .deal-head h2 {
+    font-family: var(--font-display); font-size: 22px; font-weight: 600;
+    color: #fff; letter-spacing: -.01em; margin-bottom: 4px;
+  }
+  .deal-head p { font-size: 13px; color: rgba(255,255,255,.62); }
+  .deal-grid {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .deal-fact {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 28px; position: relative;
+  }
+  .deal-fact + .deal-fact { border-left: 1px solid rgba(255,255,255,.12); }
+  /* DM Sans bold callout — kept per brief, in MailPlus lime on the dark card */
+  .deal-num {
+    font-family: var(--font-body); font-weight: 700; color: var(--cta);
+    font-size: 32px; line-height: 1; letter-spacing: -.02em; flex-shrink: 0;
+  }
+  .deal-label { font-size: 13px; line-height: 1.35; color: rgba(255,255,255,.72); }
+
+  /* Responsive — placed after base rules so overrides win (source order) */
+  @media (max-width: 920px) {
+    .deal-grid { grid-template-columns: 1fr 1fr; }
+    .deal-fact { padding: 16px 22px; }
+    .deal-fact + .deal-fact { border-left: none; }
+    .deal-fact:nth-child(even) { border-left: 1px solid rgba(255,255,255,.12); }
+    .deal-fact:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.12); }
+  }
+  @media (max-width: 560px) {
+    .deal-card { padding: 26px 10px; }
+    .deal-grid { grid-template-columns: 1fr; }
+    .deal-fact { padding: 16px 22px; }
+    .deal-fact:nth-child(even) { border-left: none; }
+    .deal-fact + .deal-fact { border-top: 1px solid rgba(255,255,255,.12); }
+  }
+

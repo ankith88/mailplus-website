@@ -4,8 +4,8 @@ import FiveFreeCollectionsClient from './FiveFreeCollectionsClient';
 import './styles.css';
 
 export const metadata: Metadata = {
-  title: '5 Free Collections | Try MailPlus Free | MailPlus',
-  description: 'Try MailPlus for free. New business customers get five free parcel collections. A local owner-operator collects and lodges your mail and parcels. No credit card, no obligation.',
+  title: '5 Free Collections | Try MailPlus Free — No Card, No Catch | MailPlus',
+  description: 'New business customers get 5 free parcel collections from MailPlus — your local owner-operator collects from your premises and lodges at the Post Office for you. No credit card, no obligation, no contract.',
   alternates: { canonical: 'https://mailplus.com.au/5-free-collections' },
   robots: {
     index: true,
@@ -33,8 +33,8 @@ export default function FiveFreeCollectionsPage() {
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "5 free collections",
-  "name": "5 Free Collections Trial",
+  "serviceType": "Parcel collection and Post Office lodgement",
+  "name": "MailPlus 5 Free Collections",
   "provider": {
     "@type": "LocalBusiness",
     "name": "MailPlus",
@@ -44,12 +44,12 @@ export default function FiveFreeCollectionsPage() {
     "areaServed": "AU"
   },
   "areaServed": { "@type": "Country", "name": "Australia" },
-  "description": "A free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator collects your parcels and mail and lodges them at the Post Office for you.",
+  "description": "New MailPlus business customers get five free parcel collections. A local owner-operator collects parcels from your premises and lodges them at the Post Office for you, removing the Post Office run. No credit card and no obligation to continue.",
   "offers": {
     "@type": "Offer",
-    "price": "0.00",
     "priceCurrency": "AUD",
-    "description": "Five free collections with no credit card and no obligation."
+    "price": "0",
+    "description": "Five free parcel collections for new business customers. No credit card required, no obligation, no contract. A local MailPlus owner-operator collects from your premises and lodges at the Post Office on your behalf."
   }
 }
       ) }} />
@@ -97,6 +97,38 @@ export default function FiveFreeCollectionsPage() {
         "@type": "Answer",
         "text": "Yes. As well as Post Office lodgements, your free collections can be used for hand-to-hand local deliveries — your owner-operator collects and delivers goods straight to a local recipient. You choose what each job is when you book it in LocalMile, so the trial fits the way your business actually sends."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How soon will my parcels be collected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During the trial, same-day collections need to be booked before 12pm, so your local owner-operator has plenty of time to fit you into their run. Book after that and your collection rolls to the next business day. Either way, you'll see it confirmed in LocalMile, so you always know a pickup is on the way."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I already use another courier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still driving parcels in or dropping things across town, your owner-operator can take that off your hands, alongside whatever courier you already use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does MailPlus collection work with my local Post Office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MailPlus is the collection arm for Licensed Post Offices across Australia. Your local owner-operator comes to your business, collects your parcels and mail, and lodges them at the Post Office for you. It bridges the gap between your business and the Post Office, on a schedule that suits you, so your team never has to make the run themselves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is LocalMile and how do I book my collections?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, you register on LocalMile and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard."
+      }
     }
   ]
 }
@@ -105,3 +137,4 @@ export default function FiveFreeCollectionsPage() {
     </>
   );
 }
+
