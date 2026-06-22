@@ -11,26 +11,16 @@ export const metadata: Metadata = {
 export default function ShipMatePlatformPage() {
   return (
     <ShipMateClientWrapper>
-      {/* The converted HTML content */}
-      
 
 
-
-{/*  ============= TOP BANNER (shared across all pages) =============  */}
-
-
-
-{/*  ============= BREADCRUMB =============  */}
-<div className="wrap">
-  <nav className="breadcrumb" aria-label="Breadcrumb">
-    <Link href="/">Home</Link><span className="sep">/</span><Link href="/#services">Services</Link><span className="sep">/</span><span>ShipMate</span>
-  </nav>
-</div>
-
-{/*  ============= HERO =============  */}
-<section className="hero hero-elevated">
+{/* ============= HERO ============= */}
+<section className="hero">
+  <div className="wrap breadcrumb-on-hero">
+    <nav className="breadcrumb" aria-label="Breadcrumb">
+      <Link href="/">Home</Link><span className="sep">/</span><Link href="/#services">Services</Link><span className="sep">/</span><span>ShipMate</span>
+    </nav>
+  </div>
   <div className="wrap">
-    <div className="hero-panel">
       <div className="hero-grid">
         <div className="hero-copy">
           <div className="hero-eyebrow"><span className="dot"></span> The free shipping platform</div>
@@ -50,36 +40,39 @@ export default function ShipMatePlatformPage() {
           </div>
         </div>
 
-        <div className="hero-side">
-          <div className="hero-card">
-            <h2>Built to ship faster</h2>
-            <p className="hc-sub">Book, label, track — all in one place.</p>
-            <div className="stat-grid">
-              <div className="stat">
-                <div className="stat-benefit">Free to use</div>
-                <div className="stat-proof"><span className="num">$0</span><span className="num-suffix">platform</span><span className="lbl">no minimum volume</span></div>
-              </div>
-              <div className="stat">
-                <div className="stat-benefit">Labels in a few clicks</div>
-                <div className="stat-proof"><span className="lbl"><span className="num-suffix">Bulk labels</span>, or create them as you go</span></div>
-              </div>
-              <div className="stat">
-                <div className="stat-benefit">Plug in your store</div>
-                <div className="stat-proof"><span className="num">2</span><span className="num-suffix">integrations</span><span className="lbl">Shopify &amp; WooCommerce</span></div>
-              </div>
-              <div className="stat">
-                <div className="stat-benefit">Track every parcel</div>
-                <div className="stat-proof"><span className="num">Real</span><span className="num-suffix">-time</span><span className="lbl">tracking for you &amp; customers</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+              <div className="hero-side">
+        <img className="hero-img" src="/images/ShipMate%20Hero.png" alt="ShipMate mockup screenshot" />
+      </div>
+      </div>
+  </div>
+</section>
+
+{/* ============= FACT BANNER (white, blue bold treatment, 4 facts) ============= */}
+<section className="fact-banner-section">
+  <div className="wrap">
+    <div className="fact-banner">
+      <div className="fact">
+        <span className="fact-num">$0</span>
+        <span className="fact-label">platform<br />no minimum volume</span>
+      </div>
+      <div className="fact">
+        <span className="fact-num">Bulk</span>
+        <span className="fact-label">labels, or create<br />them as you go</span>
+      </div>
+      <div className="fact">
+        <span className="fact-num">2</span>
+        <span className="fact-label">integrations<br />Shopify &amp; WooCommerce</span>
+      </div>
+      <div className="fact">
+        <span className="fact-num">Real</span>
+        <span className="fact-label">-time tracking<br />for you &amp; customers</span>
       </div>
     </div>
   </div>
 </section>
 
-{/*  ============= ANSWER-FIRST INTRO BAND (AEO) =============  */}
+
+{/* ============= ANSWER-FIRST INTRO BAND (AEO) ============= */}
 <section className="intro-band">
   <div className="wrap">
     <div className="intro-band-inner">
@@ -99,7 +92,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= HOW IT WORKS =============  */}
+{/* ============= HOW IT WORKS ============= */}
 <section className="section">
   <div className="wrap">
     <div className="section-head">
@@ -131,7 +124,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= INTEGRATIONS =============  */}
+{/* ============= INTEGRATIONS ============= */}
 <section className="section" style={{ paddingTop: 0 }}>
   <div className="wrap">
     <div className="section-head">
@@ -180,7 +173,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= SPEC TABLE =============  */}
+{/* ============= SPEC TABLE ============= */}
 <section className="section" style={{ paddingTop: 0 }}>
   <div className="wrap">
     <div className="section-head">
@@ -232,7 +225,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= MID-PAGE CTA BAND =============  */}
+{/* ============= MID-PAGE CTA BAND ============= */}
 <section className="section" style={{ paddingTop: 0 }}>
   <div className="wrap">
     <div className="cta-band">
@@ -248,7 +241,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= FAQ =============  */}
+{/* ============= FAQ ============= */}
 <section className="section faq-section" id="faq">
   <div className="wrap">
     <div className="section-head">
@@ -279,7 +272,7 @@ export default function ShipMatePlatformPage() {
       </div>
       <div className="faq-item">
         <button className="faq-q">Can I connect ShipMate to my own systems? <span className="faq-toggle">+</span></button>
-        <div className="faq-a"><div className="faq-a-inner">ShipMate is the platform you use directly to book, label and track. If you'd rather build shipping into your own systems with code, that's the <a href="/api">MailPlus API</a>, which connects your systems directly to MailPlus for automated bookings, labels and tracking at scale. See the MailPlus API page for details.</div></div>
+        <div className="faq-a"><div className="faq-a-inner">ShipMate is the platform you use directly to book, label and track. If you'd rather build shipping into your own systems with code, that's the <Link href="/mailplus-api">MailPlus API</Link>, which connects your systems directly to MailPlus for automated bookings, labels and tracking at scale. See the MailPlus API page for details.</div></div>
       </div>
       <div className="faq-item">
         <button className="faq-q">Can my customers track their orders? <span className="faq-toggle">+</span></button>
@@ -289,23 +282,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= POST-FAQ CTA BAND =============  */}
-<section className="section" style={{ paddingTop: 0 }}>
-  <div className="wrap">
-    <div className="cta-band">
-      <div className="cta-band-text">
-        <h2>Still have questions?</h2>
-        <p>Get tailored pricing for your pickup address, or talk it through with our Aussie-based team — Monday to Friday, 9am–5pm AEST.</p>
-      </div>
-      <div className="cta-band-actions">
-        <a href="#enquire" className="btn btn-primary">Enquire now →</a>
-        <a href="tel:1300656595" className="btn btn-call">Call 1300 65 65 95</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/*  ============= ENQUIRY FORM =============  */}
+{/* ============= ENQUIRY FORM ============= */}
 <section className="section" id="enquire" style={{ paddingTop: 0 }}>
   <div className="wrap">
     <div className="enquiry-band">
@@ -421,13 +398,7 @@ export default function ShipMatePlatformPage() {
   </div>
 </section>
 
-{/*  ============= FOOTER (shared across all pages) =============  */}
-
-
-
-
-
-
+{/* ============= FOOTER (shared across all pages) ============= */}
     </ShipMateClientWrapper>
   )
 }
