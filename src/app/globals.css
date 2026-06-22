@@ -628,6 +628,11 @@ footer { background: var(--ink); color: #fff; margin-top: 64px; }
   .section-head h2 { font-size: 30px; }
   .nav, .topbar-actions { display: none; }
   .hamburger { display: inline-flex; }
+  .fact-banner { grid-template-columns: 1fr 1fr; padding: 14px 8px; }
+  .fact { padding: 16px 18px; }
+  .fact + .fact { border-left: none; }
+  .fact:nth-child(even) { border-left: 1px solid var(--line); }
+  .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
 @media (max-width: 560px) {
   .hero h1 { font-size: 34px; }
@@ -637,6 +642,10 @@ footer { background: var(--ink); color: #fff; margin-top: 64px; }
   .diff-content { padding: 30px 22px; }
   .field-row { grid-template-columns: 1fr; }
   .section { padding: 48px 0; }
+  .fact-banner { grid-template-columns: 1fr; padding: 8px; }
+  .fact { padding: 16px 20px; }
+  .fact:nth-child(even) { border-left: none; }
+  .fact + .fact { border-top: 1px solid var(--line); }
 }
 
 /* ========== GOOGLE PLACES AUTOCOMPLETE ========== */
