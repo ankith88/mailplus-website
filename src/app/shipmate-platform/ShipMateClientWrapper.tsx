@@ -138,5 +138,5 @@ export function ShipMateClientWrapper({ children }: { children: React.ReactNode 
     }
   }, [])
 
-  return <div ref={containerRef}>{children}</div>
+  return <div ref={containerRef} className="shipmate-platform-page">{children}</div>
 }

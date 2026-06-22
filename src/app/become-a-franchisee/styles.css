@@ -30,6 +30,7 @@
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
   }
 
+.become-a-franchisee-page {
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
@@ -796,3 +797,4 @@
   @media (prefers-reduced-motion: reduce) {
     .fr-card, .fr-card::before { transition: none; }
   }
+}

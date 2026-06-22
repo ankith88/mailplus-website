@@ -30,6 +30,7 @@
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
   }
 
+.mailplus-api-page {
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
@@ -821,4 +822,5 @@
     .fact:nth-child(even) { border-left: none; }
     .fact + .fact { border-top: 1px solid var(--line); }
   }
+}
 
