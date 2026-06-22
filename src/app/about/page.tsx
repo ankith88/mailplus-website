@@ -185,13 +185,8 @@ export default function AboutPage() {
               <div className="intro-band-copy">
                 <p><strong>MailPlus is an Australian express parcel delivery network for small business, founded in 1997, with approximately 300 vehicles on the road.</strong></p>
                 <p>We offer a range of services, from express parcel delivery in 1–2 business days Australia-wide with flat-rate pricing for items up to 5kg, to same-day pickup through local owner-operators. MailPlus also bridges the gap between businesses and the Post Office — collecting and lodging mail and parcels on their behalf — and provides local hand-to-hand deliveries.</p>
-                <div className="intro-more" id="introMore">
-                  <p>Customers can book pickups and deliveries online, or set up a scheduled service so they don’t need to book at all. The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce for online merchants.</p>
-                  <p>MailPlus serves small and medium-sized businesses as a reliable, independent alternative to Australia Post and traditional couriers.</p>
-                </div>
-                <button className="intro-toggle" id="introToggle" aria-expanded="false">
-                  <span className="it-text">Read more</span> <span className="it-caret">▾</span>
-                </button>
+                <p>Customers can book pickups and deliveries online, or set up a scheduled service so they don’t need to book at all. The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce for online merchants.</p>
+                <p>MailPlus serves small and medium-sized businesses as a reliable, independent alternative to Australia Post and traditional couriers.</p>
               </div>
             </div>
           </div>
