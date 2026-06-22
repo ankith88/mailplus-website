@@ -32,7 +32,7 @@ export function HeroSection() {
             <div className="hero-side">
               <Image
                 src="/images/Homepage Hero.png"
-                alt="MailPlus Australian courier and parcel delivery"
+                alt="A MailPlus delivery van on a winding road with parcels, a clock, a kangaroo road sign and a location pin — fast, trackable parcel delivery for small business across Australia."
                 width={600}
                 height={500}
                 className="hero-image"
