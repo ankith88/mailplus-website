@@ -1,35 +1,15 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import ExpressDeliveryClient from './ExpressDeliveryClient';
-import { CustomSelect } from '@/components/shared/CustomSelect';
 import './styles.css';
 
 export const metadata: Metadata = {
   title: 'Express Parcel Delivery Australia | 1–2 Day Flat-Rate Courier | MailPlus',
   description: 'MailPlus Express delivers parcels in 1–2 business days Australia-wide with flat-rate pricing for items up to 5kg. Same-day pickup through local owner-operators, no lock-in contract, no minimum volume.',
-  alternates: { canonical: 'https://mailplus.com.au/express-delivery' },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
 };
 
 export default function ExpressDeliveryPage() {
   return (
     <>
-      {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
-        <Script
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-          strategy="lazyOnload"
-        />
-      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(
 {
   "@context": "https://schema.org",
@@ -115,9 +95,9 @@ export default function ExpressDeliveryPage() {
     <div className="hero-grid">
       <div className="hero-copy">
         <div className="hero-eyebrow"><span className="dot"></span> Express parcel delivery</div>
-        <h1>Sent today.<br/><span className="hl">There tomorrow.</span></h1>
+        <h1>Sent today.<br/>There <span className="hl-marker hl-marker-draw">tomorrow</span>.</h1>
         <p className="hero-lead hero-lead-hook">
-          Get your parcels across Australia in 1–2 business days, at one flat rate up to 5kg — with same-day pickup from your local owner-operator.
+          Get your parcels across Australia in 1–2 business days, national flat rates up to 5kg — with same-day pickup from your local owner-operator.
         </p>
         <div className="hero-cta-row">
           <a href="#enquire" className="btn btn-primary">Check for a driver near you →</a>
@@ -144,9 +124,9 @@ export default function ExpressDeliveryPage() {
         <span className="fact-num">95%</span>
         <span className="fact-label">overnight<br/>on business days</span>
       </div>
-      <div className="fact">
-        <span className="fact-num">1</span>
-        <span className="fact-label">flat rate<br/>up to 5kg</span>
+      <div className="fact fact-text">
+        <span className="fact-num">National flat-rates</span>
+        <span className="fact-label">Up to 5kg</span>
       </div>
       <div className="fact">
         <span className="fact-num">Every</span>
@@ -391,35 +371,29 @@ export default function ExpressDeliveryPage() {
 
             <div className="field-group">
               <label className="field-label">What are you interested in? <span className="req">*</span></label>
-              <CustomSelect
-                id="f-interest"
-                triggerClassName="field-select"
-                options={[
-                  { value: 'Express parcel delivery & ShipMate', label: 'Express parcel delivery & ShipMate' },
-                  { value: 'Post Office collect & lodge', label: 'Post Office collect & lodge' },
-                  { value: 'Multi-site / corporate services', label: 'Multi-site / corporate services' },
-                  { value: 'Something else', label: 'Something else' },
-                ]}
-              />
+              <select className="field-select" id="f-interest">
+                <option value="">Please select…</option>
+                <option>Express parcel delivery &amp; ShipMate</option>
+                <option>Post Office collect &amp; lodge</option>
+                <option>Multi-site / corporate services</option>
+                <option>Something else</option>
+              </select>
             </div>
 
             <div className="field-group">
               <label className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
-              <CustomSelect
-                id="f-volume"
-                triggerClassName="field-select"
-                options={[
-                  { value: '1–10 a week', label: '1–10 a week' },
-                  { value: '11–50 a week', label: '11–50 a week' },
-                  { value: '51–200 a week', label: '51–200 a week' },
-                  { value: '201–500 a week', label: '201–500 a week' },
-                  { value: '500+ a week', label: '500+ a week' },
-                  { value: 'Not sure yet', label: 'Not sure yet' },
-                ]}
-              />
+              <select className="field-select" id="f-volume">
+                <option value="">Please select…</option>
+                <option>1–10 a week</option>
+                <option>11–50 a week</option>
+                <option>51–200 a week</option>
+                <option>201–500 a week</option>
+                <option>500+ a week</option>
+                <option>Not sure yet</option>
+              </select>
             </div>
 
-            <button className="form-submit">Check my area →</button>
+            <button className="form-submit" >Check my area →</button>
           </div>
 
           <div className="form-success" id="enquiryChecking">
@@ -438,6 +412,8 @@ export default function ExpressDeliveryPage() {
     </div>
   </div>
 </section>
+
+
       </div>
       <ExpressDeliveryClient />
     </>

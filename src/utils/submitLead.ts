@@ -5,6 +5,7 @@ export interface LeadPayload {
   interestedIn: string;
   weeklyParcels: string;
   bucket: string;
+  isFiveFreeCollections?: boolean;
   address: {
     address1: string;
     street: string;
@@ -33,6 +34,8 @@ export interface LeadResponse {
   internalid?: string;
   customerEntityId?: string;
   bookingUrlId?: string;
+  franchiseeName?: string;
+  localMilePlusAuthLink?: string;
 }
 
 export async function submitLead(data: LeadPayload): Promise<LeadResponse> {

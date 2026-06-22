@@ -1,4 +1,65 @@
-"use client";
+const fs = require('fs');
+
+const html = fs.readFileSync('./mockups/V2-final-express-delivery.html', 'utf8');
+
+const styleMatch = html.match(/<style>([\s\S]*?)<\/style>/);
+const css = styleMatch ? styleMatch[1] : '';
+
+// Extract schemas
+const schemaMatches = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+const schemas = schemaMatches.map(m => m[1]);
+
+// Extract content between header and footer
+let body = html.substring(html.indexOf('<!-- ============= BREADCRUMB ============= -->'), html.indexOf('<footer>'));
+
+// Convert class to className, for to htmlFor, etc.
+body = body.replace(/class=/g, 'className=')
+           .replace(/for=/g, 'htmlFor=')
+           .replace(/<!--[\s\S]*?-->/g, '') // remove comments
+           .replace(/<br>/g, '<br/>')
+           .replace(/<hr>/g, '<hr/>')
+           .replace(/<img([^>]*[^/])>/g, '<img$1/>')
+           .replace(/<input([^>]*[^/])>/g, '<input$1/>')
+           .replace(/autocomplete="off"/g, 'autoComplete="off"')
+           .replace(/onclick="[^"]*"/g, '') // Remove inline onclick
+           .replace(/style="([^"]*)"/g, (match, p1) => {
+               const rules = p1.split(';').filter(Boolean);
+               const styleObj = rules.reduce((acc, rule) => {
+                   let [key, val] = rule.split(':');
+                   if (!key || !val) return acc;
+                   key = key.trim().replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+                   acc[key] = val.trim();
+                   return acc;
+               }, {});
+               return `style={${JSON.stringify(styleObj)}}`;
+           });
+
+// Ensure any missing closing tags in inputs are fixed properly
+// It's mostly handled above but some edge cases might be present.
+
+const pageContent = `import type { Metadata } from 'next';
+import ExpressDeliveryClient from './ExpressDeliveryClient';
+import './styles.css';
+
+export const metadata: Metadata = {
+  title: 'Express Parcel Delivery Australia | 1–2 Day Flat-Rate Courier | MailPlus',
+  description: 'MailPlus Express delivers parcels in 1–2 business days Australia-wide with flat-rate pricing for items up to 5kg. Same-day pickup through local owner-operators, no lock-in contract, no minimum volume.',
+};
+
+export default function ExpressDeliveryPage() {
+  return (
+    <>
+      ${schemas.map((s, i) => `<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(${s}) }} />`).join('\n      ')}
+      <div className="express-delivery-page">
+        ${body}
+      </div>
+      <ExpressDeliveryClient />
+    </>
+  );
+}
+`;
+
+const clientContent = `"use client";
 
 import { useEffect } from 'react';
 
@@ -94,3 +155,10 @@ export default function ExpressDeliveryClient() {
 
   return null;
 }
+`;
+
+fs.writeFileSync('./src/app/express-delivery/page.tsx', pageContent);
+fs.writeFileSync('./src/app/express-delivery/ExpressDeliveryClient.tsx', clientContent);
+fs.writeFileSync('./src/app/express-delivery/styles.css', css);
+
+console.log("Files updated successfully.");

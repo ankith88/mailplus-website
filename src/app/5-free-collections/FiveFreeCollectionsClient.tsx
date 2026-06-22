@@ -13,6 +13,8 @@ export default function FiveFreeCollectionsClient() {
   const [introOpen, setIntroOpen] = useState(false);
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
   const [enquiryState, setEnquiryState] = useState<'form' | 'checking'>('form');
+  const [localMileLink, setLocalMileLink] = useState('https://localmile.plus/register');
+  const [assignedFranchiseeName, setAssignedFranchiseeName] = useState<string | null>(null);
 
   const [formFields, setFormFields] = useState({
     fname: '',
@@ -131,6 +133,7 @@ export default function FiveFreeCollectionsClient() {
         interestedIn: formFields.interest,
         weeklyParcels: formFields.volume,
         bucket: '5-free-trial',
+        isFiveFreeCollections: true,
         address: {
           address1: '',
           street: addressDetails.street || formFields.address,
@@ -151,6 +154,14 @@ export default function FiveFreeCollectionsClient() {
       setEnquiryState('form');
 
       if (result.success && !result.outOfTerritory) {
+        if (result.localMilePlusAuthLink) {
+          setLocalMileLink(result.localMilePlusAuthLink);
+        }
+        if (result.franchiseeName) {
+          setAssignedFranchiseeName(result.franchiseeName);
+        } else {
+          setAssignedFranchiseeName(null);
+        }
         openModal('success');
       } else {
         openModal('sorry');
@@ -572,10 +583,21 @@ export default function FiveFreeCollectionsClient() {
               <h3>Great news — <span className="hl">you're in our patch.</span></h3>
             </div>
             <div className="mp-modal-body">
-              <p>There's a local MailPlus driver covering your area, so your five free collections are ready to go. The last step is quick: register on LocalMile, and you can book your first pickup straight away.</p>
-              <div className="mp-actions">
-                <a href="https://localmile.plus/register" className="btn btn-primary">Register now on LocalMile →</a>
-              </div>
+              {assignedFranchiseeName === 'MailPlus Pty Ltd' ? (
+                <>
+                  <p>There's a local MailPlus driver covering your area, so your five free collections are ready to go. We are assigning your local operator and you will receive an email shortly with your access details to LocalMile.</p>
+                  <div className="mp-actions">
+                    <button className="btn btn-primary" onClick={closeModal}>Got it, thanks!</button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p>There's a local MailPlus driver covering your area, so your five free collections are ready to go. The last step is quick: register on LocalMile, and you can book your first pickup straight away.</p>
+                  <div className="mp-actions">
+                    <a href={localMileLink} className="btn btn-primary">Register now on LocalMile →</a>
+                  </div>
+                </>
+              )}
               <p className="mp-foot">Rather talk it through first? Call <a href="tel:1300656595">1300 65 65 95</a>, Mon–Fri 9am–5pm AEST.</p>
             </div>
           </div>
