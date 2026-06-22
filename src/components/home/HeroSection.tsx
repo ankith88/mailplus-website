@@ -29,9 +29,9 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="hero-side">
+            <div className="hero-side" data-parallax-speed="-0.08">
               <Image
-                src="/images/Homepage Hero.png"
+                src="/images/MP_home_HERO_v3.png"
                 alt="A MailPlus delivery van on a winding road with parcels, a clock, a kangaroo road sign and a location pin — fast, trackable parcel delivery for small business across Australia."
                 width={600}
                 height={500}

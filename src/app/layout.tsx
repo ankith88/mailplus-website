@@ -9,6 +9,7 @@ import { Footer } from '@/components/layout/Footer'
 import { SchemaScript } from '@/components/shared/SchemaScript'
 import { buildOrganizationGraph } from '@/lib/schema/entity-graph'
 import { ParallaxInit } from '@/components/shared/ParallaxInit'
+import { ScrollProgressBar } from '@/components/shared/ScrollProgressBar'
 import { GetStartedModal } from '@/components/shared/GetStartedModal'
 import { GlobalFloatingBg } from '@/components/shared/GlobalFloatingBg'
 import { ScrollRevealProvider } from '@/components/shared/ScrollRevealProvider'
@@ -127,6 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="afterInteractive"
           />
         )}
+        <ScrollProgressBar />
         <GlobalFloatingBg />
         <ScrollRevealProvider />
         <ParallaxInit />
