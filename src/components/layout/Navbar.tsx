@@ -28,7 +28,7 @@ export function Navbar() {
     <header className="topbar">
       <div className="topbar-inner">
         <Link href="/" className="logo">
-          <span className="mail">mail</span><span className="plus">plus</span>
+          <img src="/images/mailplus new logo solo copy.png" alt="MailPlus" style={{ height: '35px', width: 'auto', display: 'block' }} />
         </Link>
 
         <nav className="nav" aria-label="Primary">
