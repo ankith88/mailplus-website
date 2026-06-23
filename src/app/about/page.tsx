@@ -3,6 +3,7 @@ import Script from 'next/script'
 import Image from 'next/image'
 import AboutClient from './AboutClient'
 import { CustomSelect } from '@/components/shared/CustomSelect'
+import ReviewsCarouselWidget from '@/components/shared/ReviewsCarouselWidget'
 import './styles.css'
 
 export const metadata: Metadata = {
@@ -298,51 +299,7 @@ export default function AboutPage() {
         {/* ============= TESTIMONIALS ============= */}
         <section className="section testimonial-section" style={{ paddingTop: 0 }}>
           <div className="wrap">
-            <div className="reviews-badge">
-              <span className="stars">★★★★★</span>
-              <span className="rb-text">Rated <strong>4.8 / 5</strong> on Reviews.io</span>
-            </div>
-            <div className="review-cards">
-              <div className="review-card">
-                <div className="rc-stars">★★★★★</div>
-                <div className="rc-quote">
-                  &quot;MailPlus has completely changed how we handle shipping. Our local driver is outstanding, always on time, and knows our team. Skipping the daily post office queue has saved us hours every single week.&quot;
-                </div>
-                <div className="rc-author">
-                  <div className="rc-avatar">SM</div>
-                  <div>
-                    <div className="rc-name">Sarah Jenkins</div>
-                    <div className="rc-meta">Verified Business Customer</div>
-                  </div>
-                </div>
-              </div>
-              <div className="review-card">
-                <div className="rc-stars">★★★★★</div>
-                <div className="rc-quote">
-                  &quot;The flat-rate pricing up to 5kg has made our eCommerce margins much easier to calculate. Combine that with the ShipMate integration for Shopify, and our packaging flow is twice as fast as before.&quot;
-                </div>
-                <div className="rc-author">
-                  <div className="rc-avatar">DK</div>
-                  <div>
-                    <div className="rc-name">David K.</div>
-                    <div className="rc-meta">eCommerce Store Owner</div>
-                  </div>
-                </div>
-              </div>
-              <div className="review-card">
-                <div className="rc-stars">★★★★★</div>
-                <div className="rc-quote">
-                  &quot;Whenever we have an issue, a real person answers the phone in seconds. No automated menus or bots. The customer service alone is worth the switch from traditional couriers.&quot;
-                </div>
-                <div className="rc-author">
-                  <div className="rc-avatar">LH</div>
-                  <div>
-                    <div className="rc-name">Lisa H.</div>
-                    <div className="rc-meta">Operations Manager</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ReviewsCarouselWidget />
           </div>
         </section>
 
