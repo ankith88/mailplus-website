@@ -310,8 +310,8 @@ export function FaqAccordion() {
               <p className="font-bold text-sm mb-4" style={{ color: '#095c7b' }}>Related Pages</p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { href: '/services/express-delivery', label: 'MailPlus Express' },
-                  { href: '/services/post-office-solutions', label: 'Post Office Solutions' },
+                  { href: '/express-delivery', label: 'MailPlus Express' },
+                  { href: '/post-office-collect-lodge', label: 'Post Office Solutions' },
                   { href: '/shipmate', label: 'ShipMate' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
                   { href: '/mailplus-api', label: 'MailPlus API' },

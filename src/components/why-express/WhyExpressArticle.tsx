@@ -305,10 +305,10 @@ export function WhyExpressArticle() {
               <p className="font-bold text-sm mb-4" style={{ color: '#EAF044' }}>MailPlus Services</p>
               <div className="space-y-2">
                 {[
-                  { href: '/services/express-delivery', label: 'Express Delivery' },
+                  { href: '/express-delivery', label: 'Express Delivery' },
                   { href: '/shipmate', label: 'ShipMate (Free Platform)' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
-                  { href: '/services/post-office-solutions', label: 'Post Office Solutions' },
+                  { href: '/post-office-collect-lodge', label: 'Post Office Solutions' },
                 ].map((link) => (
                   <Link
                     key={link.label}

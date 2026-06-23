@@ -2,12 +2,12 @@ import Link from 'next/link'
 
 const services = [
   {
-    href: '/services/express-delivery',
+    href: '/express-delivery',
     label: 'MailPlus Express',
     desc: '1–2 day express delivery nationwide. Flat-rate prices. Guaranteed same-day pickups. No contracts.',
   },
   {
-    href: '/services/post-office-solutions',
+    href: '/post-office-collect-lodge',
     label: 'Post Office Solutions',
     desc: 'We clear your PO Box and lodge all outgoing Australia Post parcels same-day. No more Post Office queues.',
   },
