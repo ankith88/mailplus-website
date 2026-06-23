@@ -28,6 +28,11 @@
     --font-display: "Source Serif 4", Georgia, serif;
     --font-body: "DM Sans", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --fr-ink: #08323F;        /* deep ink-teal — franchise anchor bands (darker than --brand) */
+    --fr-ink-2: #0C485C;      /* lifted ink-teal for layering on dark */
+    --fr-lime: var(--cta);    /* lime, promoted from button-only to signature accent */
+    --fr-lime-soft: #F1F8B8;  /* pale lime — tints on light bands */
+    --fr-line-dark: rgba(227,240,70,.22); /* lime hairline on dark */
   }
 
 .become-a-franchisee-page {
