@@ -24,7 +24,7 @@ export function AdvantageSection() {
               <li>Win back the time spent queueing</li>
               <li>Same-day collection by your local driver</li>
             </ul>
-            <Link href="#enquire" className="pillar-cta">Claim your 5 free collections →</Link>
+            <Link href="/5-free-collections" className="pillar-cta">Claim your 5 free collections →</Link>
           </div>
 
           {/* PILLAR 2: EXPRESS DELIVERY + SHIPMATE */}

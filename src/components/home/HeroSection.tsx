@@ -93,8 +93,8 @@ export function HeroSection() {
                 aria-expanded={isOpen} 
                 aria-controls="introMore"
               >
-                <span className="it-text">{isOpen ? 'Read less' : 'Read More'}</span>
-                {isOpen && <span className="it-icon-close">×</span>}
+                <span className="it-text">{isOpen ? 'Read less' : 'Read more'}</span>
+                <span className="it-icon">+</span>
               </button>
             </div>
           </div>

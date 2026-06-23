@@ -21,24 +21,23 @@ export default function FranchiseeClient() {
     }
 
     // FAQ accordion
-    const faqQuestions = document.querySelectorAll('.faq-q');
-    faqQuestions.forEach(btn => {
-      const faqHandler = () => {
-        const item = btn.closest('.faq-item');
-        if (!item) return;
-        const answer = item.querySelector('.faq-a') as HTMLElement;
-        if (!answer) return;
-        const isOpen = item.classList.contains('open');
-        if (isOpen) {
-          item.classList.remove('open');
-          answer.style.maxHeight = '';
-        } else {
-          item.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      };
-      btn.addEventListener('click', faqHandler);
-    });
+    const handleFaqClick = (e: Event) => {
+      const btn = (e.target as HTMLElement).closest('.faq-q');
+      if (!btn) return;
+      const item = btn.closest('.faq-item');
+      if (!item) return;
+      const answer = item.querySelector('.faq-a') as HTMLElement;
+      if (!answer) return;
+      const isOpen = item.classList.contains('open');
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = '';
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    };
+    document.addEventListener('click', handleFaqClick);
 
     // Franchise listing -> form location wiring
     const select = document.getElementById('f-location') as HTMLSelectElement | null;
@@ -122,6 +121,9 @@ export default function FranchiseeClient() {
       });
     }
 
+    return () => {
+      document.removeEventListener('click', handleFaqClick);
+    };
   }, []);
 
   return null;

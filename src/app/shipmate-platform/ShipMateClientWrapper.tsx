@@ -26,31 +26,26 @@ export function ShipMateClientWrapper({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     // FAQ accordion
-    const handleFaqClick = (btn: Element) => {
+    const handleFaqClick = (e: Event) => {
+      const btn = (e.target as HTMLElement).closest('.faq-q')
+      if (!btn) return
       const item = btn.closest('.faq-item')
       if (!item) return
       const answer = item.querySelector('.faq-a') as HTMLElement
+      if (!answer) return
       const isOpen = item.classList.contains('open')
       if (isOpen) {
         item.classList.remove('open')
-        if (answer) answer.style.maxHeight = ''
+        answer.style.maxHeight = ''
       } else {
         item.classList.add('open')
-        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px'
+        answer.style.maxHeight = answer.scrollHeight + 'px'
       }
     }
     
-    const faqButtons = document.querySelectorAll('.faq-q')
-    const listeners: { btn: Element, handler: EventListener }[] = []
-    
-    faqButtons.forEach(btn => {
-      const handler = () => handleFaqClick(btn)
-      btn.addEventListener('click', handler)
-      listeners.push({ btn, handler })
-    })
-
+    document.addEventListener('click', handleFaqClick)
     return () => {
-      listeners.forEach(({ btn, handler }) => btn.removeEventListener('click', handler))
+      document.removeEventListener('click', handleFaqClick)
     }
   }, [])
 

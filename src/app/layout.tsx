@@ -14,6 +14,8 @@ import { GetStartedModal } from '@/components/shared/GetStartedModal'
 import { GlobalFloatingBg } from '@/components/shared/GlobalFloatingBg'
 import { ScrollRevealProvider } from '@/components/shared/ScrollRevealProvider'
 import { ScrollToTop } from '@/components/shared/ScrollToTop'
+import { NavigationScrollToTop } from '@/components/shared/NavigationScrollToTop'
+
 
 const sourceSerif = Source_Serif_4({ 
   subsets: ["latin"],
@@ -133,6 +135,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollRevealProvider />
         <ParallaxInit />
         <Navbar />
+        <NavigationScrollToTop />
         <main>{children}</main>
         <GetStartedModal />
         <ScrollToTop />

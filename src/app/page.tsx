@@ -81,17 +81,17 @@ export default function HomePage() {
 
           <div className="faq-list">
             {homeFaqs.map((faq, idx) => (
-              <details key={idx} className="faq-item group">
-                <summary className="faq-q">
+              <div key={idx} className="faq-item">
+                <button className="faq-q">
                   <span>{faq.question}</span>
-                  <div className="faq-toggle">+</div>
-                </summary>
+                  <span className="faq-toggle">+</span>
+                </button>
                 <div className="faq-a">
                   <div className="faq-a-inner">
                     {faq.answer}
                   </div>
                 </div>
-              </details>
+              </div>
             ))}
           </div>
         </div>
