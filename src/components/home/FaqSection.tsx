@@ -37,17 +37,9 @@ export function FaqSection({ faqs }: FaqSectionProps) {
                   aria-expanded={isOpen}
                 >
                   <span>{faq.question}</span>
-                  <span className="faq-toggle">{isOpen ? '−' : '+'}</span>
+                  <span className="faq-toggle">+</span>
                 </button>
-                <div 
-                  className="faq-a" 
-                  style={{ 
-                    maxHeight: isOpen ? '500px' : '0px',
-                    opacity: isOpen ? 1 : 0,
-                    overflow: 'hidden',
-                    transition: 'all 0.3s ease-in-out'
-                  }}
-                >
+                <div className="faq-a">
                   <div className="faq-a-inner">
                     {faq.answer}
                   </div>

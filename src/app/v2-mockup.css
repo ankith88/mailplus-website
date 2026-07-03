@@ -308,3 +308,7 @@
 .fact-text .fact-num {
   font-size: 19px; line-height: 1.15; letter-spacing: -.01em;
 }
+
+/* ===== FAQ open transition ===== */
+.faq-item.open .faq-a { max-height: 500px; }
+
