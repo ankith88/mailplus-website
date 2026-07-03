@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: '/mailplus-api',
         permanent: true,
       },
+      {
+        source: '/shipmate',
+        destination: '/shipmate-platform',
+        permanent: true,
+      },
     ]
   },
 };

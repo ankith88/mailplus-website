@@ -312,7 +312,7 @@ export function FaqAccordion() {
                 {[
                   { href: '/express-delivery', label: 'MailPlus Express' },
                   { href: '/post-office-collect-lodge', label: 'Post Office Solutions' },
-                  { href: '/shipmate', label: 'ShipMate' },
+                  { href: '/shipmate-platform', label: 'ShipMate' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
                   { href: '/mailplus-api', label: 'MailPlus API' },
                   { href: '/tracking', label: 'Track a Parcel' },

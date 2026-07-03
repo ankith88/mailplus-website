@@ -12,7 +12,7 @@ const services = [
     desc: 'We clear your PO Box and lodge all outgoing Australia Post parcels same-day. No more Post Office queues.',
   },
   {
-    href: '/shipmate',
+    href: '/shipmate-platform',
     label: 'ShipMate (Free Platform)',
     desc: 'Free shipping platform with Shopify integration, bulk label printing, and discounted carriers.',
   },

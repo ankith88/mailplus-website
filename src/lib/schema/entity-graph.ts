@@ -14,7 +14,7 @@ export function buildOrganizationGraph() {
           height: 60,
         },
         description: 'Australian courier, parcel delivery, mail management and logistics company serving Sydney from depots in Waterloo and Alexandria, NSW.',
-        foundingDate: '2010',
+        foundingDate: '1997',
         areaServed: {
           '@type': 'Country',
           name: 'Australia',
@@ -27,7 +27,7 @@ export function buildOrganizationGraph() {
           postalCode: '2017',
           addressCountry: 'AU',
         },
-        telephone: '+61290000001',
+        telephone: '+61-1300-65-65-95',
         email: 'info@mailplus.com.au',
         sameAs: [
           'https://www.facebook.com/mailplusau',
@@ -38,7 +38,7 @@ export function buildOrganizationGraph() {
         contactPoint: [
           {
             '@type': 'ContactPoint',
-            telephone: '+61290000001',
+            telephone: '+61-1300-65-65-95',
             contactType: 'customer service',
             areaServed: 'AU',
             availableLanguage: 'English',
@@ -51,7 +51,7 @@ export function buildOrganizationGraph() {
           },
           {
             '@type': 'ContactPoint',
-            telephone: '+61290000001',
+            telephone: '+61-1300-65-65-95',
             contactType: 'sales',
             areaServed: 'AU',
             availableLanguage: 'English',

@@ -306,7 +306,7 @@ export function WhyExpressArticle() {
               <div className="space-y-2">
                 {[
                   { href: '/express-delivery', label: 'Express Delivery' },
-                  { href: '/shipmate', label: 'ShipMate (Free Platform)' },
+                  { href: '/shipmate-platform', label: 'ShipMate (Free Platform)' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
                   { href: '/post-office-collect-lodge', label: 'Post Office Solutions' },
                 ].map((link) => (

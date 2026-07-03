@@ -166,7 +166,7 @@ export default function MailPlusApiPage() {
         <p><strong>The MailPlus API connects your own systems directly to MailPlus, so you can generate labels for MailPlus&#x2019; express service and track shipments without leaving your own software.</strong> It's the developer, code-level option — for businesses that want shipping built into their own systems, rather than managed through a separate platform.</p>
         <div className="intro-more" id="introMore">
           <p>It's end-to-end shipping software integration for 3PLs and businesses with warehouse or custom shipping systems. By connecting your systems straight to MailPlus, shipping happens automatically as orders flow through your own software — generate labels on demand, get live tracking visible in both your system and the MailPlus dashboard, and send automatic customer email notifications. Parcels move on the MailPlus network with 1–2 day express delivery Australia-wide.</p>
-          <p>The API is distinct from ShipMate. ShipMate is the platform you use directly — book pickups, print labels and track orders from one dashboard, with no code required. The API is for building that same shipping into your own systems instead. Same network, two ways to access it. Most businesses use <a href="/shipmate">ShipMate, our free platform</a> — the API is for connecting your own systems at scale.</p>
+          <p>The API is distinct from ShipMate. ShipMate is the platform you use directly — book pickups, print labels and track orders from one dashboard, with no code required. The API is for building that same shipping into your own systems instead. Same network, two ways to access it. Most businesses use <a href="/shipmate-platform">ShipMate, our free platform</a> — the API is for connecting your own systems at scale.</p>
           <p>And you're not on your own once you're connected: API customers get full MailPlus team support — Sales, Customer Service &amp; Retention, IT Systems, and direct contact with their local MailPlus Operator — plus team training on the shipping solution. Whether you connect through the API or use ShipMate on its own, MailPlus is a reliable, independent alternative to Australia Post and traditional couriers.</p>
         </div>
         <button className="intro-toggle" id="introToggle" aria-expanded="false">
@@ -188,7 +188,7 @@ export default function MailPlusApiPage() {
     <div className="faq-list">
       <div className="faq-item">
         <button className="faq-q">Does MailPlus have an API? <span className="faq-toggle">+</span></button>
-        <div className="faq-a"><div className="faq-a-inner">Yes. The MailPlus API lets you connect your own systems directly to MailPlus for automated bookings, labels and tracking at scale. It's designed for developers and higher-volume businesses that want shipping built into their own software, rather than managing it through a separate platform. Most businesses use <a href="/shipmate">ShipMate</a>, our free platform, instead.</div></div>
+        <div className="faq-a"><div className="faq-a-inner">Yes. The MailPlus API lets you connect your own systems directly to MailPlus for automated bookings, labels and tracking at scale. It's designed for developers and higher-volume businesses that want shipping built into their own software, rather than managing it through a separate platform. Most businesses use <a href="/shipmate-platform">ShipMate</a>, our free platform, instead.</div></div>
       </div>
       <div className="faq-item">
         <button className="faq-q">What's the difference between ShipMate and the MailPlus API? <span className="faq-toggle">+</span></button>
@@ -200,7 +200,7 @@ export default function MailPlusApiPage() {
       </div>
       <div className="faq-item">
         <button className="faq-q">Who is the MailPlus API for? <span className="faq-toggle">+</span></button>
-        <div className="faq-a"><div className="faq-a-inner">The API suits developers and higher-volume businesses that want to build shipping into their own systems, rather than working from a separate dashboard. If you're after a ready-to-use platform with no code required, <a href="/shipmate">ShipMate</a> is the better fit — most MailPlus customers use it. The API is for connecting at scale.</div></div>
+        <div className="faq-a"><div className="faq-a-inner">The API suits developers and higher-volume businesses that want to build shipping into their own systems, rather than working from a separate dashboard. If you're after a ready-to-use platform with no code required, <a href="/shipmate-platform">ShipMate</a> is the better fit — most MailPlus customers use it. The API is for connecting at scale.</div></div>
       </div>
       <div className="faq-item">
         <button className="faq-q">How do I get access to the MailPlus API? <span className="faq-toggle">+</span></button>

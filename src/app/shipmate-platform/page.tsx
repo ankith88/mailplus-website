@@ -6,7 +6,9 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'ShipMate | Free Shipping Platform for Small Business | MailPlus',
   description: 'ShipMate is the free MailPlus shipping platform — book pickups and express shipments, print labels in a few clicks, and manage every order in one dashboard.',
+  alternates: { canonical: 'https://mailplus.com.au/shipmate-platform' },
 }
+
 
 export default function ShipMatePlatformPage() {
   return (

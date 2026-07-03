@@ -273,7 +273,7 @@ export function PortalQuestionsAccordion() {
               <p className="font-bold text-sm mb-4" style={{ color: '#095c7b' }}>Related Pages</p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { href: '/shipmate', label: 'ShipMate Platform' },
+                  { href: '/shipmate-platform', label: 'ShipMate Platform' },
                   { href: '/services/shopify-integration', label: 'Shopify Integration' },
                   { href: '/mailplus-api', label: 'MailPlus API' },
                   { href: '/tracking', label: 'Track a Parcel' },

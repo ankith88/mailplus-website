@@ -24,7 +24,7 @@ export function ShipMateSection() {
             </h2>
             <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--line-2)' }}>
               Watch how ShipMate can optimise your shipping — or{' '}
-              <Link href="/shipmate" className="underline hover:opacity-80" style={{ color: 'var(--cta)' }}>
+              <Link href="/shipmate-platform" className="underline hover:opacity-80" style={{ color: 'var(--cta)' }}>
                 visit our ShipMate info page here
               </Link>
               .
