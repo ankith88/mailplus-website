@@ -31,10 +31,6 @@
   }
 
 .express-delivery-page {
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
-  body { min-height: 100vh; }
   a { color: inherit; }
   img { max-width: 100%; display: block; }
 

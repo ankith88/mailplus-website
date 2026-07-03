@@ -62,37 +62,31 @@ export default function ExpressDeliveryClient() {
     const heroCard = document.querySelector('.hero-card');
     if (heroCard) statObserver.observe(heroCard);
 
-    // Form submission
-    const formBtn = document.querySelector('.form-submit');
-    if (formBtn) {
-      formBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const required = ['f-fname', 'f-lname', 'f-company', 'f-address', 'f-email', 'f-phone', 'f-interest', 'f-volume'];
-        let ok = true;
-        required.forEach(id => {
-          const el = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | null;
-          if (el) {
-            if (!el.value.trim()) { el.style.borderColor = '#E5484D'; ok = false; }
-            else { el.style.borderColor = ''; }
-          }
-        });
-        if (!ok) return;
-
-        const formInner = document.getElementById('enquiryFormInner');
-        const checking = document.getElementById('enquiryChecking');
-        if (formInner) formInner.style.display = 'none';
-        if (checking) checking.classList.add('show');
-
-        setTimeout(() => {
-          if (checking) checking.classList.remove('show');
-          const success = document.getElementById('enquirySuccess');
-          if (success) success.classList.add('show');
-        }, 1600);
-      });
+    // Scroll reveal animation for .reveal / .reveal-stagger elements
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    let revealObserver: IntersectionObserver | null = null;
+    if (targets.length) {
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('in-view'));
+      } else {
+        revealObserver = new IntersectionObserver((entries, o) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              o.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        targets.forEach(el => revealObserver?.observe(el));
+      }
     }
 
     return () => {
       document.removeEventListener('click', handleFaqClick);
+      if (revealObserver) {
+        revealObserver.disconnect();
+      }
     };
   }, []);
 

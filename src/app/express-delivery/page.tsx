@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ExpressDeliveryClient from './ExpressDeliveryClient';
+import { ReviewsCtaSection } from '@/components/home/ReviewsCtaSection';
 import './styles.css';
 
 export const metadata: Metadata = {
@@ -296,122 +297,7 @@ export default function ExpressDeliveryPage() {
 </section>
 
 
-<section className="section" id="enquire" style={{"paddingTop":"0"}}>
-  <div className="wrap">
-    <div className="enquiry-band">
-      <div className="enquiry-grid">
-        <div className="enquiry-left">
-          <h2>Start shipping with MailPlus — this week.</h2>
-          <p>Enter your address and we'll instantly check for a local MailPlus driver in your area, then connect you with your account manager to get set up. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
-          <div className="enquiry-contacts">
-            <a href="tel:1300656595" className="enquiry-contact">
-              <div className="ec-ic">📞</div>
-              <div>
-                <div className="ec-lbl">Call us</div>
-                <div className="ec-val mono">1300 65 65 95</div>
-              </div>
-            </a>
-            <a href="https://shipmate.mailplus.com.au" className="enquiry-contact">
-              <div className="ec-ic">🔑</div>
-              <div>
-                <div className="ec-lbl">Existing customer</div>
-                <div className="ec-val">ShipMate Login</div>
-              </div>
-            </a>
-            <div className="enquiry-contact">
-              <div className="ec-ic">🕘</div>
-              <div>
-                <div className="ec-lbl">Hours</div>
-                <div className="ec-val">Mon–Fri, 9am–5pm AEST</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="enquiry-form">
-          <div id="enquiryFormInner">
-            <p className="ef-intro">Pop in your pickup address and we'll check for a local MailPlus driver in your area — then take you to the next step.</p>
-
-            <div className="field-row">
-              <div className="field-group">
-                <label className="field-label">First name <span className="req">*</span></label>
-                <input type="text" className="field-input" id="f-fname" />
-              </div>
-              <div className="field-group">
-                <label className="field-label">Last name <span className="req">*</span></label>
-                <input type="text" className="field-input" id="f-lname" />
-              </div>
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Business name <span className="req">*</span></label>
-              <input type="text" className="field-input" id="f-company" />
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Pickup address <span className="req">*</span></label>
-              <div className="addr-wrap">
-                <span className="addr-pin" aria-hidden="true">📍</span>
-                <input type="text" className="field-input addr-input" id="f-address" placeholder="Start typing your business address…" autoComplete="off" />
-              </div>
-              <p className="field-hint">We use this to find your local driver.</p>
-              
-            </div>
-
-            <div className="field-row">
-              <div className="field-group">
-                <label className="field-label">Email <span className="req">*</span></label>
-                <input type="email" className="field-input" id="f-email" />
-              </div>
-              <div className="field-group">
-                <label className="field-label">Phone <span className="req">*</span></label>
-                <input type="tel" className="field-input" id="f-phone" />
-              </div>
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">What are you interested in? <span className="req">*</span></label>
-              <select className="field-select" id="f-interest">
-                <option value="">Please select…</option>
-                <option>Express parcel delivery &amp; ShipMate</option>
-                <option>Post Office collect &amp; lodge</option>
-                <option>Multi-site / corporate services</option>
-                <option>Something else</option>
-              </select>
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
-              <select className="field-select" id="f-volume">
-                <option value="">Please select…</option>
-                <option>1–10 a week</option>
-                <option>11–50 a week</option>
-                <option>51–200 a week</option>
-                <option>201–500 a week</option>
-                <option>500+ a week</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-
-            <button className="form-submit" >Check my area →</button>
-          </div>
-
-          <div className="form-success" id="enquiryChecking">
-            <div className="fs-ic checking">📍</div>
-            <h3>Checking your area…</h3>
-            <p>Looking for a local MailPlus driver near your pickup address. This will only take a moment.</p>
-          </div>
-
-          <div className="form-success" id="enquirySuccess">
-            <div className="fs-ic">✓</div>
-            <h3>Thanks — we've got it.</h3>
-            <p>A member of the MailPlus team will be in touch within one business day. Need us sooner? Call <strong>1300 65 65 95</strong>, Mon–Fri 9am–5pm AEST.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<ReviewsCtaSection />
 
 
       </div>
