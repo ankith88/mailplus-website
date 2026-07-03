@@ -2,13 +2,27 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Script from 'next/script'
-import { CustomSelect } from '../shared/CustomSelect'
 
 export function ReviewsCtaSection() {
+  const [step, setStep] = useState<1 | 2 | 3>(1)
+  const [checkingArea, setCheckingArea] = useState(false)
+  const [selectedService, setSelectedService] = useState<string>('')
+  const [isSorryOpen, setIsSorryOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
+  
   const addressInputRef = useRef<HTMLInputElement>(null)
   const [location, setLocation] = useState<{lat: number, lng: number, city: string, state: string, zip: string, street: string} | null>(null)
+  const [addressError, setAddressError] = useState(false)
+
+  const [formFields, setFormFields] = useState({
+    fname: '',
+    lname: '',
+    company: '',
+    email: '',
+    phone: '',
+    volume: ''
+  })
+  const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({})
 
   const autocompleteInitialized = useRef(false)
 
@@ -41,7 +55,10 @@ export function ReviewsCtaSection() {
         }
         
         const street = [streetNumber, route].filter(Boolean).join(' ');
-        if (addressInputRef.current) addressInputRef.current.value = street;
+        if (addressInputRef.current) {
+          addressInputRef.current.value = place.formatted_address || [street, city, state, zip].filter(Boolean).join(', ');
+        }
+        setAddressError(false)
 
         setLocation({
           lat: place.geometry.location.lat(),
@@ -49,7 +66,7 @@ export function ReviewsCtaSection() {
           city,
           state,
           zip,
-          street
+          street: street || place.formatted_address || ''
         })
       }
     })
@@ -72,49 +89,128 @@ export function ReviewsCtaSection() {
     }
   }, [initAutocomplete])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleCheckArea = async () => {
+    if (!addressInputRef.current?.value.trim()) {
+      setAddressError(true)
+      if (addressInputRef.current) addressInputRef.current.style.borderColor = '#E5484D'
+      return
+    }
+
+    if (!location || !location.zip || !location.city) {
+      setAddressError(true)
+      if (addressInputRef.current) addressInputRef.current.style.borderColor = '#E5484D'
+      alert('Please select a business address from the suggestions dropdown.')
+      return
+    }
+
+    setAddressError(false)
+    if (addressInputRef.current) addressInputRef.current.style.borderColor = ''
+
+    setCheckingArea(true)
+    try {
+      const res = await fetch('/api/territory/check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postcode: location.zip, city: location.city })
+      })
+
+      if (!res.ok) {
+        throw new Error('Territory check failed')
+      }
+
+      const data = await res.json()
+      setCheckingArea(false)
+
+      if (data.serviceable) {
+        setStep(2)
+      } else {
+        setIsSorryOpen(true)
+      }
+    } catch (err) {
+      console.error('Territory check error:', err)
+      setCheckingArea(false)
+      setIsSorryOpen(true)
+    }
+  }
+
+  const handleSelectService = (svc: string) => {
+    setSelectedService(svc)
+  }
+
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { id, value } = e.target
+    const fieldName = id.replace('f-', '')
+    setFormFields(prev => ({ ...prev, [fieldName]: value }))
+    if (fieldErrors[id]) {
+      setFieldErrors(prev => ({ ...prev, [id]: false }))
+      e.target.style.borderColor = ''
+    }
+  }
+
+  const handleSubmit = async () => {
+    const requiredIds = ['f-fname', 'f-lname', 'f-company', 'f-email', 'f-phone', 'f-volume']
+    let ok = true
+    const newErrors: Record<string, boolean> = {}
+
+    requiredIds.forEach(id => {
+      const el = document.getElementById(id) as HTMLInputElement | HTMLSelectElement
+      if (!el || !el.value.trim()) {
+        if (el) el.style.borderColor = '#E5484D'
+        newErrors[id] = true
+        ok = false
+      } else {
+        if (el) el.style.borderColor = ''
+      }
+    })
+
+    setFieldErrors(newErrors)
+    if (!ok) return
+
     setSubmitting(true)
-    
-    // Dynamic import
-    const { submitLead } = await import('@/utils/submitLead');
+    try {
+      const { submitLead } = await import('@/utils/submitLead')
 
-    const fname = (document.getElementById('fname') as HTMLInputElement).value;
-    const lname = (document.getElementById('lname') as HTMLInputElement).value;
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const phone = (document.getElementById('phone') as HTMLInputElement).value;
+      const payload = {
+        companyName: formFields.company,
+        customerPhone: formFields.phone,
+        customerServiceEmail: formFields.email,
+        interestedIn: selectedService === 'five-free' ? '5-free' : selectedService,
+        weeklyParcels: formFields.volume,
+        bucket: selectedService === 'five-free' ? '5-free-trial' : 'inbound',
+        isFiveFreeCollections: selectedService === 'five-free',
+        address: {
+          address1: '',
+          street: location?.street || addressInputRef.current?.value || '',
+          city: location?.city || '',
+          state: location?.state || '',
+          zip: location?.zip || '',
+          latitude: location?.lat || 0,
+          longitude: location?.lng || 0
+        },
+        contacts: [{
+          name: `${formFields.fname} ${formFields.lname}`,
+          email: formFields.email,
+          phone: formFields.phone
+        }]
+      }
 
-    const payload = {
-      companyName: (document.getElementById('businessName') as HTMLInputElement).value,
-      customerPhone: phone,
-      customerServiceEmail: email,
-      interestedIn: (document.getElementById('interest') as HTMLInputElement).value,
-      weeklyParcels: (document.getElementById('volume') as HTMLInputElement).value,
-      bucket: 'inbound',
-      address: {
-        address1: '',
-        street: location?.street || (addressInputRef.current?.value || ''),
-        city: location?.city || '',
-        state: location?.state || '',
-        zip: location?.zip || '',
-        latitude: location?.lat || 0,
-        longitude: location?.lng || 0
-      },
-      contacts: [{
-        name: `${fname} ${lname}`,
-        email: email,
-        phone: phone
-      }]
-    };
+      const result = await submitLead(payload)
+      setSubmitting(false)
 
-    const result = await submitLead(payload);
-    setSubmitting(false)
-
-    if (result.success) {
-      sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
-      window.location.href = '/confirmation';
-    } else {
-      setSuccess(true)
+      if (result.success) {
+        if (result.outOfTerritory) {
+          setIsSorryOpen(true)
+        } else {
+          sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
+          window.location.href = '/confirmation'
+        }
+      } else {
+        setIsSorryOpen(true)
+      }
+    } catch (err) {
+      console.error('Error submitting lead:', err)
+      setSubmitting(false)
+      setIsSorryOpen(true)
     }
   }
 
@@ -127,139 +223,216 @@ export function ReviewsCtaSection() {
           onLoad={initAutocomplete}
         />
       )}
-      <section className="section" id="enquire">
+
+      {/* Enquiry & Progressive Form Section */}
+      <section className="section" id="enquire" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="enquiry-band reveal">
             <div className="enquiry-grid">
               <div className="enquiry-left">
                 <h2>Get your time back — starting this week.</h2>
-                <p>Start with five free collections — no card, no catch. Enter your address and we&apos;ll instantly check for a local MailPlus driver in your area, then connect you with your account manager. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
-                
+                <p>Start with five free collections — no card, no catch. Enter your address and we'll instantly check for a local MailPlus driver in your area, then connect you with your account manager. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
                 <div className="enquiry-contacts">
                   <a href="tel:1300656595" className="enquiry-contact">
                     <div className="ec-ic">📞</div>
-                    <div className="ec-text">
-                      <div className="ec-lbl">CALL US</div>
+                    <div>
+                      <div className="ec-lbl">Call us</div>
                       <div className="ec-val mono">1300 65 65 95</div>
                     </div>
                   </a>
-                  <a href="https://customer.mailplus.com.au/" className="enquiry-contact" target="_blank" rel="noopener noreferrer">
-                    <div className="ec-ic">🔑</div>
-                    <div className="ec-text">
-                      <div className="ec-lbl">EXISTING CUSTOMER</div>
-                      <div className="ec-val">ShipMate Login</div>
-                    </div>
-                  </a>
                   <div className="enquiry-contact">
-                    <div className="ec-ic">🕐</div>
-                    <div className="ec-text">
-                      <div className="ec-lbl">HOURS</div>
-                      <div className="ec-val">Mon-Fri, 9am–5pm AEST</div>
+                    <div className="ec-ic">🕘</div>
+                    <div>
+                      <div className="ec-lbl">Hours</div>
+                      <div className="ec-val">Mon–Fri, 9am–5pm AEST</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="enquiry-form">
-                {!success ? (
-                  <form id="enquiryForm" onSubmit={handleSubmit}>
-                    <div className="ef-intro" style={{ backgroundColor: 'var(--paper)', borderColor: 'var(--line)', color: 'var(--ink-2)', marginBottom: '32px' }}>
-                      Pop in your pickup address and we&apos;ll check for a local MailPlus driver in your area — then take you to the next step.
-                    </div>
+                {/* Progressive enquiry: Step 1 address gate -> Step 2 service -> Step 3 details */}
+                <div className="ef-progress" aria-hidden="true">
+                  <span className={`ef-dot ${step === 1 ? 'active' : ''} ${step > 1 ? 'done' : ''}`} data-s="1"></span>
+                  <span className={`ef-bar ${step > 1 ? 'done' : ''}`}></span>
+                  <span className={`ef-dot ${step === 2 ? 'active' : ''} ${step > 2 ? 'done' : ''}`} data-s="2"></span>
+                  <span className={`ef-bar ${step > 2 ? 'done' : ''}`}></span>
+                  <span className={`ef-dot ${step === 3 ? 'active' : ''}`} data-s="3"></span>
+                </div>
 
-                    <div className="field-row">
-                      <div className="field-group">
-                        <label htmlFor="fname" className="field-label">First name <span className="req">*</span></label>
-                        <input type="text" id="fname" className="field-input" required />
-                      </div>
-                      <div className="field-group">
-                        <label htmlFor="lname" className="field-label">Last name <span className="req">*</span></label>
-                        <input type="text" id="lname" className="field-input" required />
-                      </div>
-                    </div>
-
-                    <div className="field-group">
-                      <label htmlFor="businessName" className="field-label">Business name <span className="req">*</span></label>
-                      <input type="text" id="businessName" className="field-input" required />
-                    </div>
-
-                    <div className="field-group">
-                      <label htmlFor="address" className="field-label">Pickup address <span className="req">*</span></label>
-                      <div className="addr-wrap">
-                        <span className="addr-pin">📍</span>
-                        <input 
-                          type="text" 
-                          id="address" 
-                          ref={addressInputRef}
-                          className="field-input addr-input" 
-                          required 
-                          placeholder="Start typing your business address..." 
-                        />
-                      </div>
-                      <div className="field-hint">We use this to find your local driver.</div>
-                    </div>
-
-                    <div className="field-row">
-                      <div className="field-group">
-                        <label htmlFor="email" className="field-label">Email <span className="req">*</span></label>
-                        <input type="email" id="email" className="field-input" required />
-                      </div>
-                      <div className="field-group">
-                        <label htmlFor="phone" className="field-label">Phone <span className="req">*</span></label>
-                        <input type="tel" id="phone" className="field-input" required />
-                      </div>
-                    </div>
-
-                    <div className="field-group">
-                      <label htmlFor="interest" className="field-label">What are you interested in? <span className="req">*</span></label>
-                      <CustomSelect
-                        id="interest"
-                        triggerClassName="field-select"
-                        required
-                        options={[
-                          { value: '5-free', label: '5 free collections offer' },
-                          { value: 'express', label: 'Express parcel delivery & ShipMate' },
-                          { value: 'post-office', label: 'Post Office collect & lodge' },
-                          { value: 'corporate', label: 'Multi-site / corporate services' },
-                          { value: 'other', label: 'Something else' }
-                        ]}
+                {/* STEP 1: Address gate */}
+                <div className={`ef-pane ${step === 1 && !checkingArea ? 'show' : ''}`}>
+                  <p className="ef-intro">Pop in your pickup address and we’ll instantly check for a local MailPlus driver in your area.</p>
+                  <div className="field-group">
+                    <label className="field-label">Pickup address <span className="req">*</span></label>
+                    <div className="addr-wrap">
+                      <span className="addr-pin" aria-hidden="true">📍</span>
+                      <input 
+                        type="text" 
+                        className="field-input addr-input" 
+                        id="f-address" 
+                        ref={addressInputRef}
+                        placeholder="Start typing your business address…" 
+                        autoComplete="off"
+                        onChange={() => {
+                          if (addressError) {
+                            setAddressError(false)
+                            if (addressInputRef.current) addressInputRef.current.style.borderColor = ''
+                          }
+                        }}
                       />
                     </div>
-
-                    <div className="field-group">
-                      <label htmlFor="volume" className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
-                      <CustomSelect
-                        id="volume"
-                        triggerClassName="field-select"
-                        required
-                        dropdownPosition="top"
-                        options={[
-                          { value: '1-10', label: '1–10 a week' },
-                          { value: '11-50', label: '11–50 a week' },
-                          { value: '51-200', label: '51–200 a week' },
-                          { value: '201-500', label: '201–500 a week' },
-                          { value: '500+', label: '500+ a week' },
-                          { value: 'unsure', label: 'Not sure yet' }
-                        ]}
-                      />
-                    </div>
-
-                    <button type="submit" className="form-submit" disabled={submitting} style={{ marginTop: '16px' }}>
-                      {submitting ? 'Checking...' : 'Check my area →'}
-                    </button>
-                  </form>
-                ) : (
-                  <div className="form-success show">
-                    <div className="fs-ic">✅</div>
-                    <h3>Request received</h3>
-                    <p>Thanks for reaching out! We&apos;ve routed your details to your local MailPlus operator. They will call you shortly to arrange your 5 free collections.</p>
+                    <p className="field-hint">We use this to find your local driver.</p>
                   </div>
-                )}
+                  <button className="form-submit" type="button" onClick={handleCheckArea}>Check my area &rarr;</button>
+                </div>
+
+                {/* CHECKING INTERSTITIAL */}
+                <div className={`form-success ${checkingArea ? 'show' : ''}`} id="enquiryChecking">
+                  <div className="fs-ic checking">📍</div>
+                  <h3>Checking your area…</h3>
+                  <p>Looking for a local MailPlus driver near your pickup address. This will only take a moment.</p>
+                </div>
+
+                {/* STEP 2: Service selection */}
+                <div className={`ef-pane ${step === 2 ? 'show' : ''}`} id="efStep2">
+                  <div className="ef-instep-head">
+                    <span className="ef-badge"><span className="efb-tick">✓</span> You’re in our patch</span>
+                    <p className="ef-instep-note">There’s a local driver covering your area. What can we help you with?</p>
+                  </div>
+                  <div className="svc-cards" role="radiogroup" aria-label="What are you interested in?">
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
+                      onClick={() => handleSelectService('five-free')}
+                      role="radio" 
+                      aria-checked={selectedService === 'five-free'}
+                    >
+                      <span className="svc-ic">🎁</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">5 Free Collections</span>
+                        <span className="svc-desc">We’ll deliver your items to the Post Office. Five free pickups, no card, no catch.</span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'express' ? 'selected' : ''}`} 
+                      onClick={() => handleSelectService('express')}
+                      role="radio" 
+                      aria-checked={selectedService === 'express'}
+                    >
+                      <span className="svc-ic">⚡</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">Express Delivery &amp; ShipMate</span>
+                        <span className="svc-desc">1–2 day delivery + Shopify &amp; WooCommerce plugins.</span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'corporate' ? 'selected' : ''}`} 
+                      onClick={() => handleSelectService('corporate')}
+                      role="radio" 
+                      aria-checked={selectedService === 'corporate'}
+                    >
+                      <span className="svc-ic">🏢</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">Corporate / Multi-site</span>
+                        <span className="svc-desc">Tailored Post Office services for business.</span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                  </div>
+                  <div className="ef-nav">
+                    <button className="ef-back" type="button" onClick={() => setStep(1)}>&larr; Back</button>
+                    <button 
+                      className="form-submit ef-inline" 
+                      type="button" 
+                      id="toStep3Btn" 
+                      onClick={() => setStep(3)} 
+                      disabled={!selectedService}
+                    >
+                      Continue &rarr;
+                    </button>
+                  </div>
+                </div>
+
+                {/* STEP 3: Details */}
+                <div className={`ef-pane ${step === 3 ? 'show' : ''}`} id="efStep3">
+                  <p className="ef-intro" id="efStep3Intro">
+                    {selectedService === 'five-free' ? 'Last step to create your free account.' : 'Last step — tell us where to reach you.'}
+                  </p>
+                  <div className="field-row">
+                    <div className="field-group">
+                      <label className="field-label">First name <span className="req">*</span></label>
+                      <input type="text" className="field-input" id="f-fname" value={formFields.fname} onChange={handleFieldChange} />
+                    </div>
+                    <div className="field-group">
+                      <label className="field-label">Last name <span className="req">*</span></label>
+                      <input type="text" className="field-input" id="f-lname" value={formFields.lname} onChange={handleFieldChange} />
+                    </div>
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Business name <span className="req">*</span></label>
+                    <input type="text" className="field-input" id="f-company" value={formFields.company} onChange={handleFieldChange} />
+                  </div>
+                  <div className="field-row">
+                    <div className="field-group">
+                      <label className="field-label">Email <span className="req">*</span></label>
+                      <input type="email" className="field-input" id="f-email" value={formFields.email} onChange={handleFieldChange} />
+                    </div>
+                    <div className="field-group">
+                      <label className="field-label">Phone <span className="req">*</span></label>
+                      <input type="tel" className="field-input" id="f-phone" value={formFields.phone} onChange={handleFieldChange} />
+                    </div>
+                  </div>
+                  <div className="field-group">
+                    <label className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
+                    <select className="field-select" id="f-volume" value={formFields.volume} onChange={handleFieldChange}>
+                      <option value="">Please select…</option>
+                      <option value="1-10">1–10 a week</option>
+                      <option value="11-50">11–50 a week</option>
+                      <option value="51-200">51–200 a week</option>
+                      <option value="201-500">201–500 a week</option>
+                      <option value="500+">500+ a week</option>
+                      <option value="unsure">Not sure yet</option>
+                    </select>
+                  </div>
+                  <div className="ef-nav">
+                    <button className="ef-back" type="button" onClick={() => setStep(2)}>&larr; Back</button>
+                    <button className="form-submit ef-inline" type="button" onClick={handleSubmit} disabled={submitting}>
+                      {submitting ? 'Submitting...' : 'Submit enquiry →'}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* SORRY MODAL OVERLAY */}
+      <div 
+        className={`mp-modal-overlay ${isSorryOpen ? 'open' : ''}`} 
+        role="dialog" 
+        aria-modal="true" 
+        aria-labelledby="mpSorryTitle"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) setIsSorryOpen(false)
+        }}
+      >
+        <div className="mp-modal is-sorry">
+          <button className="mp-close" onClick={() => setIsSorryOpen(false)} aria-label="Close">✕</button>
+          <div className="mp-modal-top">
+            <div className="mp-icon">📍</div>
+            <h3 id="mpSorryTitle">We’re not in your area just yet.</h3>
+          </div>
+          <div className="mp-modal-body">
+            <p>We couldn’t find a local MailPlus driver covering your address right now — so we can’t start your enquiry here today. You’re welcome to check back any time.</p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

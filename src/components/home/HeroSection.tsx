@@ -9,7 +9,8 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="hero">
+      {/* Hero Section */}
+      <section className="hero" id="main">
         <div className="wrap">
           <div className="hero-grid">
             <div className="hero-copy">
@@ -24,15 +25,17 @@ export function HeroSection() {
                 <Link href="#enquire" className="btn btn-primary">Check my area →</Link>
               </div>
               <div className="hero-trust">
-                <span className="ht-stars" aria-hidden="true">★★★★★</span>
-                <span className="ht-text">5-star reviews from Aussie businesses</span>
+                <a className="hero-trust-link" href="https://www.reviews.io/company-reviews/store/mailplus.com.au" target="_blank" rel="noopener noreferrer">
+                  <span className="ht-stars" aria-hidden="true">★★★★★</span>
+                  <span className="ht-text">5-star reviews from Aussie businesses</span>
+                </a>
               </div>
             </div>
 
-            <div className="hero-side" data-parallax-speed="-0.08">
+            <div className="hero-side">
               <Image
                 src="/images/MP_home_HERO_v3.png"
-                alt="A MailPlus delivery van on a winding road with parcels, a clock, a kangaroo road sign and a location pin — fast, trackable parcel delivery for small business across Australia."
+                alt="A MailPlus delivery van on a winding road with a plane, parcels, a clock, a kangaroo road sign and a location pin — fast, trackable parcel delivery for small business across Australia."
                 width={600}
                 height={500}
                 className="hero-image"
@@ -43,6 +46,7 @@ export function HeroSection() {
         </div>
       </section>
 
+      {/* Fact Banner Section */}
       <section className="fact-banner-section">
         <div className="wrap">
           <div className="fact-banner">
@@ -54,9 +58,9 @@ export function HeroSection() {
               <span className="fact-num" data-pop>1–2</span>
               <span className="fact-label">day delivery<br />95% overnight</span>
             </div>
-            <div className="fact">
-              <span className="fact-num" data-pop>1</span>
-              <span className="fact-label">flat rate<br />up to 5kg</span>
+            <div className="fact fact-text">
+              <span className="fact-num" data-pop>National flat-rates</span>
+              <span className="fact-label">Up to 5kg</span>
             </div>
             <div className="fact">
               <span className="fact-num">
@@ -68,6 +72,7 @@ export function HeroSection() {
         </div>
       </section>
 
+      {/* Intro Band Section */}
       <section className="intro-band">
         <div className="wrap">
           <div className="intro-band-inner">

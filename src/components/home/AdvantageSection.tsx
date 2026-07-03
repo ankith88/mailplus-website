@@ -7,7 +7,7 @@ export function AdvantageSection() {
         <div className="section-head reveal">
           <div className="section-eyebrow">Three ways we save you <span className="hl-marker">time &amp; money</span></div>
           <h2>Hand us the parcels and the Post Office run.</h2>
-          <p>Whether you&apos;re trying us free, shipping express at one flat rate, or handing over the Post Office run for every site — there&apos;s a MailPlus service that gives your team its time back and keeps your shipping costs down.</p>
+          <p>Whether you're trying us free, shipping express at one flat rate, or handing over the Post Office run for every site — there's a MailPlus service that gives your team its time back and keeps your shipping costs down.</p>
         </div>
 
         <div className="pillars reveal-stagger">
@@ -24,7 +24,7 @@ export function AdvantageSection() {
               <li>Win back the time spent queueing</li>
               <li>Same-day collection by your local driver</li>
             </ul>
-            <Link href="/5-free-collections" className="pillar-cta">Claim your 5 free collections →</Link>
+            <Link href="#enquire" className="pillar-cta">Claim your 5 free collections →</Link>
           </div>
 
           {/* PILLAR 2: EXPRESS DELIVERY + SHIPMATE */}

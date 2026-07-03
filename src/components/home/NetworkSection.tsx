@@ -3,44 +3,45 @@ import Link from 'next/link'
 
 export function NetworkSection() {
   return (
-    <section className="section">
+    <section className="section" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <div className="diff-band reveal">
           <div className="diff-grid">
             <div className="diff-photo">
-              {/* Note: Use standard img or next/image as appropriate. Make sure the source exists, using a placeholder or the actual image path */}
-              <Image src="/images/mailplus-homepage-alistair.png" alt="MailPlus local driver with van" fill style={{ objectFit: 'cover' }} />
-              <div className="photo-tag"><span className="dot"></span> 100% locally owned franchises</div>
+              <Image 
+                src="/images/mailplus-homepage-alistair-v7.webp" 
+                alt="A local MailPlus owner-operator standing in a Melbourne laneway in branded uniform" 
+                fill 
+                style={{ objectFit: 'cover' }} 
+              />
+              <span className="photo-tag"><span className="dot"></span> Your local MailPlus owner-operator</span>
             </div>
-            
             <div className="diff-content">
               <div className="diff-intro">
-                <h2>A network of locals. <br /><span className="hl">Not a faceless corporation.</span></h2>
-                <p>MailPlus operates on a franchise model. That means the courier who collects your parcels owns their territory. It&apos;s their business, which means they actually care about yours.</p>
+                <h2>One person who <span className="hl">knows your business</span> — not a call centre.</h2>
+                <p>With MailPlus you get a local owner-operator who turns up, knows your name, and gets it done — backed by an Aussie support team that actually answers. No depots, no hold music, no bots. It's how we've looked after Australian businesses for almost 30 years.</p>
+                <Link href="#" className="diff-compare-link">See how MailPlus compares <span aria-hidden="true">&rarr;</span></Link>
               </div>
-
               <div className="diff-items reveal-stagger">
                 <div className="diff-item">
                   <div className="di-ic">🤝</div>
-                  <div className="di-text">
-                    <h4>Direct accountability</h4>
-                    <p>No call centres. You have the direct mobile number of the operator handling your freight.</p>
+                  <div>
+                    <h4>The same driver, every time</h4>
+                    <p>Your courier is a local owner-operator who services your suburb and knows how your business runs — not a different stranger from a national depot each week.</p>
                   </div>
                 </div>
-                
                 <div className="diff-item">
-                  <div className="di-ic">⏱️</div>
-                  <div className="di-text">
-                    <h4>Same-day collection guaranteed</h4>
-                    <p>We don&apos;t bounce pickups to tomorrow. Your local driver is always in your area.</p>
+                  <div className="di-ic">🇦🇺</div>
+                  <div>
+                    <h4>A real person answers</h4>
+                    <p>When you need a hand, you reach a local Aussie support team that responds fast — no long hold times, no bots, no being bounced around.</p>
                   </div>
                 </div>
-                
                 <div className="diff-item">
-                  <div className="di-ic">🛡️</div>
-                  <div className="di-text">
-                    <h4>Secure chain of custody</h4>
-                    <p>Your freight goes from your hands, to your local driver, directly into the express network.</p>
+                  <div className="di-ic">⚡</div>
+                  <div>
+                    <h4>Picked up the same day</h4>
+                    <p>Your local owner-operator collects same-day, at one flat rate up to 5kg, with delivery anywhere in Australia in 1–2 days. Less waiting, more shipping.</p>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import { HeroSection } from '@/components/home/HeroSection'
 import { AdvantageSection } from '@/components/home/AdvantageSection'
 import { NetworkSection } from '@/components/home/NetworkSection'
 import { TestimonialsSection } from '@/components/home/TestimonialsSection'
+import { FaqSection } from '@/components/home/FaqSection'
 import { ReviewsCtaSection } from '@/components/home/ReviewsCtaSection'
 import { ClientScripts } from '@/components/home/ClientScripts'
 
@@ -70,33 +71,7 @@ export default function HomePage() {
       <AdvantageSection />
       <NetworkSection />
       <TestimonialsSection />
-
-      {/* FAQ Section */}
-      <section className="section faq-section">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <div className="section-eyebrow">Common Questions</div>
-            <h2>Got questions? <span className="hl">We&apos;ve got answers.</span></h2>
-          </div>
-
-          <div className="faq-list">
-            {homeFaqs.map((faq, idx) => (
-              <div key={idx} className="faq-item">
-                <button className="faq-q">
-                  <span>{faq.question}</span>
-                  <span className="faq-toggle">+</span>
-                </button>
-                <div className="faq-a">
-                  <div className="faq-a-inner">
-                    {faq.answer}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <FaqSection faqs={homeFaqs} />
       <ReviewsCtaSection />
     </>
   )
