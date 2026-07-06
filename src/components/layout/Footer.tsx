@@ -75,7 +75,7 @@ export function Footer() {
               <li><Link href="/about">About MailPlus</Link></li>
               <li><Link href="/#faq">FAQs</Link></li>
               <li><Link href="/track#support">Create a Support Ticket</Link></li>
-              <li><Link href="/pay-invoice">Pay My Invoice</Link></li>
+              <li><a href="https://www.bpoint.com.au/pay/mailplus" target="_blank" rel="noopener noreferrer">Pay My Invoice</a></li>
               <li><Link href="/become-a-franchisee">Become a Franchisee</Link></li>
             </ul>
             <address className="footer-address">
