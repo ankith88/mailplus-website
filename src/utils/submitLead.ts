@@ -6,6 +6,8 @@ export interface LeadPayload {
   weeklyParcels: string;
   bucket: string;
   isFiveFreeCollections?: boolean;
+  noFranchisees?: boolean;
+  sourcePage?: string;
   address: {
     address1: string;
     street: string;

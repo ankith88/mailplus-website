@@ -31,6 +31,7 @@ export default function PostOfficeClient() {
   const [submitting, setSubmitting] = useState(false);
   const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [serviceable, setServiceable] = useState(true);
 
   const addressInputRef = useRef<HTMLInputElement>(null);
   const [location, setLocation] = useState<{lat: number, lng: number, city: string, state: string, zip: string, street: string} | null>(null);
@@ -137,6 +138,8 @@ export default function PostOfficeClient() {
       });
 
       if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error('Territory check API returned error status:', res.status, errorData);
         throw new Error('Territory check failed');
       }
 
@@ -144,14 +147,17 @@ export default function PostOfficeClient() {
       setCheckingArea(false);
 
       if (data.serviceable) {
+        setServiceable(true);
         setStep(2);
       } else {
-        setIsSorryOpen(true);
+        setServiceable(false);
+        setStep(2);
       }
     } catch (err) {
       console.error('Territory check error:', err);
       setCheckingArea(false);
-      setIsSorryOpen(true);
+      setServiceable(false);
+      setStep(2);
     }
   };
 
@@ -200,6 +206,8 @@ export default function PostOfficeClient() {
         weeklyParcels: formFields.volume,
         bucket: selectedService === 'five-free' ? '5-free-trial' : 'inbound',
         isFiveFreeCollections: selectedService === 'five-free',
+        noFranchisees: !serviceable,
+        sourcePage: 'Post Office Collect & Lodge',
         address: {
           address1: '',
           street: location?.street || addressInputRef.current?.value || '',
@@ -519,10 +527,25 @@ export default function PostOfficeClient() {
 
                   {/* STEP 2: service selection */}
                   <div className={`ef-pane ${step === 2 ? 'show' : ''}`} id="efStep2">
+                  {serviceable ? (
                     <div className="ef-instep-head">
                       <span className="ef-badge"><span className="efb-tick">✓</span> You’re in our patch</span>
                       <p className="ef-instep-note">There’s a local driver covering your area. What can we help you with?</p>
                     </div>
+                  ) : (
+                    <div className="ef-instep-head">
+                      <span className="ef-badge" style={{ backgroundColor: '#FFFBEB', color: '#B45309', borderColor: '#FDE68A', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ display: 'inline-flex', gap: '3px' }}>
+                          <span style={{ width: '6px', height: '6px', backgroundColor: '#D97706', borderRadius: '50%' }}></span>
+                          <span style={{ width: '6px', height: '6px', backgroundColor: '#D97706', borderRadius: '50%' }}></span>
+                        </span>
+                        Almost there
+                      </span>
+                      <p className="ef-instep-note">
+                        Your address sits right on the edge of a local driver’s run. Choose a service and add your details — we’ll confirm coverage with our drivers and come straight back to you.
+                      </p>
+                    </div>
+                  )}
                     <div className="svc-cards" role="radiogroup" aria-label="What are you interested in?">
                       <button 
                         type="button" 

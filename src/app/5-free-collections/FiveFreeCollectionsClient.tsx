@@ -11,11 +11,12 @@ interface FAQ {
 export default function FiveFreeCollectionsClient() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [checkingArea, setCheckingArea] = useState(false);
-  const [selectedService, setSelectedService] = useState<string>('five-free');
+  const [selectedService, setSelectedService] = useState<string>('');
   const [isSorryOpen, setIsSorryOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [introOpen, setIntroOpen] = useState(false);
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
+  const [serviceable, setServiceable] = useState(true);
 
   const addressInputRef = useRef<HTMLInputElement>(null);
   const [location, setLocation] = useState<{
@@ -130,6 +131,8 @@ export default function FiveFreeCollectionsClient() {
       });
 
       if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error('Territory check API returned error status:', res.status, errorData);
         throw new Error('Territory check failed');
       }
 
@@ -137,15 +140,18 @@ export default function FiveFreeCollectionsClient() {
       setCheckingArea(false);
 
       if (data.serviceable) {
+        setServiceable(true);
         setSelectedService('five-free');
         setStep(3); // Go straight to step 3 details
       } else {
-        setIsSorryOpen(true);
+        setServiceable(false);
+        setStep(2);
       }
     } catch (err) {
       console.error('Territory check error:', err);
       setCheckingArea(false);
-      setIsSorryOpen(true);
+      setServiceable(false);
+      setStep(2);
     }
   };
 
@@ -186,10 +192,12 @@ export default function FiveFreeCollectionsClient() {
         companyName: formFields.company,
         customerPhone: formFields.phone,
         customerServiceEmail: formFields.email,
-        interestedIn: '5-free',
+        interestedIn: selectedService === 'five-free' ? '5-free' : selectedService,
         weeklyParcels: formFields.volume,
-        bucket: '5-free-trial',
-        isFiveFreeCollections: true,
+        bucket: selectedService === 'five-free' ? '5-free-trial' : 'inbound',
+        isFiveFreeCollections: selectedService === 'five-free',
+        noFranchisees: !serviceable,
+        sourcePage: '5 Free Collections',
         address: {
           address1: '',
           street: location?.street || addressInputRef.current?.value || '',
@@ -784,6 +792,85 @@ export default function FiveFreeCollectionsClient() {
                   </p>
                 </div>
 
+                {/* STEP 2: Service selection */}
+                <div className={`ef-pane ${step === 2 ? 'show' : ''}`} id="efStep2">
+                  {serviceable ? (
+                    <div className="ef-instep-head">
+                      <span className="ef-badge"><span className="efb-tick">✓</span> You’re in our patch</span>
+                      <p className="ef-instep-note">There’s a local driver covering your area. What can we help you with?</p>
+                    </div>
+                  ) : (
+                    <div className="ef-instep-head">
+                      <span className="ef-badge" style={{ backgroundColor: '#FFFBEB', color: '#B45309', borderColor: '#FDE68A', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ display: 'inline-flex', gap: '3px' }}>
+                          <span style={{ width: '6px', height: '6px', backgroundColor: '#D97706', borderRadius: '50%' }}></span>
+                          <span style={{ width: '6px', height: '6px', backgroundColor: '#D97706', borderRadius: '50%' }}></span>
+                        </span>
+                        Almost there
+                      </span>
+                      <p className="ef-instep-note">
+                        Your address sits right on the edge of a local driver’s run. Choose a service and add your details — we’ll confirm coverage with our drivers and come straight back to you.
+                      </p>
+                    </div>
+                  )}
+                  <div className="svc-cards" role="radiogroup" aria-label="What are you interested in?">
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
+                      onClick={() => setSelectedService('five-free')}
+                      role="radio" 
+                      aria-checked={selectedService === 'five-free'}
+                    >
+                      <span className="svc-ic">🎁</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">5 Free Collections</span>
+                        <span className="svc-desc">We’ll deliver your items to the Post Office. Five free pickups, no card, no catch.</span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'express' ? 'selected' : ''}`} 
+                      onClick={() => setSelectedService('express')}
+                      role="radio" 
+                      aria-checked={selectedService === 'express'}
+                    >
+                      <span className="svc-ic">⚡</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">Express Delivery &amp; ShipMate</span>
+                        <span className="svc-desc">1–2 day delivery + Shopify &amp; WooCommerce plugins.</span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'corporate' ? 'selected' : ''}`} 
+                      onClick={() => setSelectedService('corporate')}
+                      role="radio" 
+                      aria-checked={selectedService === 'corporate'}
+                    >
+                      <span className="svc-ic">🏢</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">Corporate / Multi-site</span>
+                        <span className="svc-desc">Tailored Post Office services for business.</span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                  </div>
+                  <div className="ef-nav">
+                    <button className="ef-back" type="button" onClick={() => setStep(1)}>&larr; Back</button>
+                    <button 
+                      className="form-submit ef-inline" 
+                      type="button" 
+                      id="toStep3Btn" 
+                      onClick={() => setStep(3)} 
+                      disabled={!selectedService}
+                    >
+                      Continue &rarr;
+                    </button>
+                  </div>
+                </div>
+
                 {/* STEP 3: Details */}
                 <div className={`ef-pane ${step === 3 ? 'show' : ''}`} id="efStep3">
                   <p className="ef-intro" id="efStep3Intro">
@@ -879,7 +966,7 @@ export default function FiveFreeCollectionsClient() {
                     </select>
                   </div>
                   <div className="ef-nav">
-                    <button className="ef-back" type="button" onClick={() => setStep(1)}>
+                    <button className="ef-back" type="button" onClick={() => setStep(serviceable ? 1 : 2)}>
                       &larr; Back
                     </button>
                     <button
