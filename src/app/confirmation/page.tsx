@@ -22,6 +22,33 @@ export default function ConfirmationPage() {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    if (!data) return;
+
+    const outOfTerritory = !!data.result.outOfTerritory;
+    const interestedIn = data.payload.interestedIn;
+
+    let contentName = 'Corporate / Multi-site';
+    let coverageStatus = 'confirmed';
+
+    if (outOfTerritory) {
+      contentName = 'Pending coverage check';
+      coverageStatus = 'pending_manual_check';
+    } else if (interestedIn === '5-free') {
+      contentName = '5 Free Collections';
+    } else if (interestedIn === 'express') {
+      contentName = 'Express & ShipMate';
+    }
+
+    if (window.fbq) {
+      window.fbq('track', 'Lead', {
+        content_name: contentName,
+        content_category: 'enquiry',
+        coverage_status: coverageStatus,
+      });
+    }
+  }, [data]);
+
   if (loading) {
     return (
       <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-body, sans-serif)' }}>

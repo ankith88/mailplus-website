@@ -15,6 +15,8 @@ import { GlobalFloatingBg } from '@/components/shared/GlobalFloatingBg'
 import { ScrollRevealProvider } from '@/components/shared/ScrollRevealProvider'
 import { ScrollToTop } from '@/components/shared/ScrollToTop'
 import { NavigationScrollToTop } from '@/components/shared/NavigationScrollToTop'
+import { FacebookPixel } from '@/components/shared/FacebookPixel'
+
 
 
 const sourceSerif = Source_Serif_4({ 
@@ -131,7 +133,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         )}
         <ScrollProgressBar />
+        <FacebookPixel />
         <GlobalFloatingBg />
+
         <ScrollRevealProvider />
         <ParallaxInit />
         <Navbar />
