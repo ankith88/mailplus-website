@@ -228,12 +228,8 @@ export default function PostOfficeClient() {
       setSubmitting(false);
 
       if (result.success) {
-        if (result.outOfTerritory) {
-          setIsSorryOpen(true);
-        } else {
-          sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
-          window.location.href = '/confirmation';
-        }
+        sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
+        window.location.href = '/confirmation';
       } else {
         setIsSorryOpen(true);
       }

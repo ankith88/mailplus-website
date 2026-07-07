@@ -51,57 +51,58 @@ export default function ConfirmationPage() {
   const iframeUrl = bookingUrlId ? `https://prospectplus.com.au/book/${bookingUrlId}?embed=true` : '';
   const localMileLink = localMilePlusAuthLink || 'https://localmile.plus/register';
 
-  // 1. OUT OF TERRITORY PAGE
+  // 1. OUT OF TERRITORY PAGE (Pending/Edge-of-run/Out-of-territory manual confirmation)
   if (outOfTerritory) {
     return (
-      <div style={{ minHeight: '90vh', backgroundColor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', fontFamily: 'var(--font-body, sans-serif)' }}>
-        <div style={{
-          width: '100%',
-          maxWidth: '540px',
-          backgroundColor: '#fff',
-          borderRadius: '16px',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
-          padding: '60px 50px',
-          textAlign: 'center',
-          color: '#004751'
-        }}>
-          <div style={{
-            width: '80px',
-            height: '80px',
-            borderRadius: '50%',
-            backgroundColor: '#D5E0D5',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 30px auto',
-            fontSize: '36px'
-          }}>
-            📍
+      <div style={{ minHeight: '90vh', background: 'var(--paper)', padding: '0 0 60px 0' }}>
+        <section className="res-hero" id="main">
+          <div className="res-hero-inner">
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span className="sep">/</span>
+              <span>Enquiry received</span>
+            </nav>
+            <h1>Thank you — <span className="hl">we&rsquo;re confirming who covers you.</span></h1>
+            <p className="res-lead">
+              Your address sits right on the edge of a local driver&rsquo;s run, so we&rsquo;re checking with the drivers nearby to confirm your coverage. <strong>We&rsquo;ll be in touch within one business day</strong> (Mon&ndash;Fri 9am&ndash;5pm AEST) — usually sooner.
+            </p>
           </div>
-          
-          <h1 style={{
-            margin: '0 0 24px 0',
-            fontSize: '32px',
-            fontWeight: '700',
-            fontFamily: 'var(--font-display, serif)',
-            color: '#004751'
-          }}>
-            We&apos;re not in your area just yet.
-          </h1>
-          
-          <p style={{
-            color: '#386373',
-            fontSize: '17px',
-            lineHeight: '1.6',
-            margin: '0 0 32px 0'
-          }}>
-            Sorry, but we couldn&apos;t find a local MailPlus driver covering your address right now. You&apos;re welcome to check back any time.
-          </p>
+        </section>
 
-          <Link href="/" style={{ display: 'inline-block', backgroundColor: '#004751', color: '#fff', padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', fontWeight: '600' }}>
-            Back to Home
-          </Link>
-        </div>
+        <section className="res-body">
+          <div className="res-cards">
+            <div className="res-card">
+              <span className="rc-tag">● What happens next</span>
+              <h2>We&rsquo;re checking with our drivers</h2>
+              <p>Nothing more to do on your end — here&rsquo;s what happens behind the scenes:</p>
+              <ol className="next-steps" style={{ marginTop: '16px', paddingLeft: '20px', lineHeight: '1.8' }}>
+                <li style={{ marginBottom: '12px' }}>
+                  <strong>We check the runs around you.</strong> Our team looks at the local driver runs near your address to see who&rsquo;s best placed to cover you.
+                </li>
+                <li style={{ marginBottom: '12px' }}>
+                  <strong>We confirm your local driver.</strong> A team member confirms coverage with the drivers nearby — most checks are sorted the same day.
+                </li>
+                <li style={{ marginBottom: '12px' }}>
+                  <strong>We come straight back to you.</strong> You&rsquo;ll hear from us within one business day to get you set up.
+                </li>
+              </ol>
+              <p className="rc-foot" style={{ marginTop: '24px' }}>
+                Need us sooner? Call <a href="tel:1300656595" style={{ fontWeight: '600', color: 'var(--brand)' }}>1300 65 65 95</a>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="res-body res-body-tail">
+          <div className="res-card res-card-solo">
+            <span className="rc-tag">● Learn more</span>
+            <h2>While you wait</h2>
+            <p>Meet the network of local owner-drivers who&rsquo;ll be looking after your parcels.</p>
+            <Link href="/about" className="btn btn-outline" style={{ marginTop: '16px', display: 'inline-block' }}>
+              About MailPlus &rarr;
+            </Link>
+          </div>
+        </section>
       </div>
     );
   }
