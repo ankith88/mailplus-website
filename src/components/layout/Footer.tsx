@@ -17,7 +17,7 @@ export function Footer() {
             </a>
             <div className="footer-social">
               <a 
-                href="https://www.instagram.com/mailplus" 
+                href="https://www.instagram.com/mailplusau/?hl=en" 
                 className="social-link" 
                 aria-label="MailPlus on Instagram" 
                 target="_blank" 
@@ -28,7 +28,7 @@ export function Footer() {
                 </svg>
               </a>
               <a 
-                href="https://www.facebook.com/mailplus" 
+                href="https://www.facebook.com/mailplusAustralia/" 
                 className="social-link" 
                 aria-label="MailPlus on Facebook" 
                 target="_blank" 

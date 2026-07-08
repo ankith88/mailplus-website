@@ -30,10 +30,10 @@ export function buildOrganizationGraph() {
         telephone: '+61-1300-65-65-95',
         email: 'info@mailplus.com.au',
         sameAs: [
-          'https://www.facebook.com/mailplusau',
+          'https://www.facebook.com/mailplusAustralia/',
           'https://www.linkedin.com/company/mailplusau',
           'https://twitter.com/mailplusau',
-          'https://www.instagram.com/mailplusau',
+          'https://www.instagram.com/mailplusau/?hl=en',
         ],
         contactPoint: [
           {
