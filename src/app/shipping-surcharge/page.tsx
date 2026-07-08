@@ -1,132 +1,53 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+import './styles.css';
 
 export const metadata: Metadata = {
   title: 'Shipping Surcharge | MailPlus',
-  description:
-    'With fluctuations in logistics industry costs, the surcharge may increase, decrease, remain constant, or be removed, depending on fuel price movement, security and surcharge levies incurred.',
-  alternates: { canonical: 'https://mailplus.com.au/shipping-surcharge' },
-}
+  description: 'With fluctuations in logistics industry costs, the surcharge may increase, decrease, remain constant, or be removed, depending on fuel price movement, security and surcharge levies incurred.',
+};
 
-const RATES = [
-  { date: 'March 2026', express: '21.28%', premium: '22.25%' },
-  { date: 'February 2026', express: '21.32%', premium: '23.75%' },
-  { date: 'January 2026', express: '22.99%', premium: '23.25%' },
-]
-
-const PDF_URL =
-  'https://mailplus.com.au/wp-content/uploads/2023/06/TGE-Fees-Surcharges.pdf'
-
-export default function ShippingSurchargePage() {
+export default function Page() {
   return (
-    <main style={{ backgroundColor: '#DAE8DA' }} className="min-h-screen py-20 px-6">
-      <div className="max-w-3xl mx-auto">
+    <div className="surcharge-page-layout">
+      <section className="legal-hero">
+  <div className="wrap">
+    <div className="crumb"><a href="/">Home</a> <span>/</span> Shipping Surcharge</div>
+    <div className="hero-eyebrow"><span className="dot"></span> Pricing reference</div>
+    <h1>Shipping Surcharge</h1>
+    <p className="legal-lead">With fluctuations in logistics industry costs, the surcharge may increase, decrease, remain constant, or be removed, depending on fuel price movement, security and surcharge levies incurred.</p>
+  </div>
+</section>
 
-        {/* Heading */}
-        <h1
-          className="text-5xl font-bold text-center mb-8"
-          style={{ color: '#063040' }}
-        >
-          Shipping Surcharge
-        </h1>
 
-        {/* Intro */}
-        <p
-          className="text-center text-lg leading-relaxed mb-12 max-w-2xl mx-auto"
-          style={{ color: '#063040' }}
-        >
-          With fluctuations in logistics industry costs, the surcharge may increase, decrease,
-          remain constant, or be removed, depending on fuel price movement, security and
-          surcharge levies incurred.
-        </p>
-
-        {/* Table */}
-        <div className="rounded-xl overflow-hidden shadow-sm mb-12">
-          <table className="w-full text-center">
-            <thead>
-              <tr>
-                <th
-                  className="py-4 px-6 text-white font-semibold text-base w-1/3"
-                  style={{ backgroundColor: '#063040' }}
-                >
-                  Effective Date*
-                </th>
-                <th
-                  className="py-4 px-6 text-white font-semibold text-base w-1/3"
-                  style={{ backgroundColor: '#095c7b' }}
-                >
-                  Express
-                </th>
-                <th
-                  className="py-4 px-6 text-white font-semibold text-base w-1/3"
-                  style={{ backgroundColor: '#4a9aba' }}
-                >
-                  Premium
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {RATES.map(({ date, express, premium }, i) => (
-                <tr key={date} style={{ backgroundColor: i % 2 === 0 ? 'white' : '#f5f9f5' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: '#063040' }}>
-                    {date}
-                  </td>
-                  <td
-                    className="py-4 px-6 font-semibold"
-                    style={{ backgroundColor: '#095c7b', color: 'white' }}
-                  >
-                    {express}
-                  </td>
-                  <td
-                    className="py-4 px-6 font-semibold"
-                    style={{ backgroundColor: '#4a9aba', color: 'white' }}
-                  >
-                    {premium}
-                  </td>
-                </tr>
-              ))}
-              {/* Additional Charges row */}
-              <tr style={{ backgroundColor: '#f5f9f5' }}>
-                <td className="py-4 px-6 font-medium" style={{ color: '#063040' }}>
-                  Additional Charges
-                </td>
-                <td
-                  className="py-4 px-6"
-                  style={{ backgroundColor: '#095c7b' }}
-                >
-                  <a
-                    href={PDF_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold hover:opacity-80 transition-opacity"
-                    style={{ color: '#EAF044' }}
-                  >
-                    LINK
-                  </a>
-                </td>
-                <td
-                  className="py-4 px-6"
-                  style={{ backgroundColor: '#4a9aba' }}
-                >
-                  <a
-                    href={PDF_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold hover:opacity-80 transition-opacity"
-                    style={{ color: '#EAF044' }}
-                  >
-                    LINK
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {/* Footnote */}
-        <p className="text-center text-sm" style={{ color: '#063040', opacity: 0.7 }}>
-          * Unless otherwise stated, the published surcharge will apply for the entire calendar month.
-        </p>
+<section className="section" style={{"paddingTop":"36px"}}>
+  <div className="wrap">
+    <div className="surcharge-wrap">
+      <div className="surcharge-card">
+        <table className="surcharge-table">
+          <thead>
+            <tr><th scope="col">Effective Date*</th><th scope="col">Express</th><th scope="col">Premium</th></tr>
+          </thead>
+          <tbody>
+        <tr><td>July 6th 2026</td><td className="pct">31.14%</td><td className="pct">29.35%</td></tr>
+        <tr><td>June 29th 2026</td><td className="pct">32.13%</td><td className="pct">29.35%</td></tr>
+        <tr><td>June 22nd 2026</td><td className="pct">33.55%</td><td className="pct">36.55%</td></tr>
+        <tr><td>June 15th 2026</td><td className="pct">34.94%</td><td className="pct">36.55%</td></tr>
+        <tr><td>June 8th 2026</td><td className="pct">36.30%</td><td className="pct">36.55%</td></tr>
+        <tr><td>June 1st 2026</td><td className="pct">38.11%</td><td className="pct">36.55%</td></tr>
+        <tr><td>May 25th 2026</td><td className="pct">37.81%</td><td className="pct">29.05%</td></tr>
+        <tr><td>May 18th 2026</td><td className="pct">37.77%</td><td className="pct">29.05%</td></tr>
+        <tr><td>May 11th 2026</td><td className="pct">38.81%</td><td className="pct">29.05%</td></tr>
+        <tr><td>May 4th 2026</td><td className="pct">40.12%</td><td className="pct">29.05%</td></tr>
+            <tr className="links"><td>Additional Charges</td><td><a href="https://mailplus.com.au/wp-content/uploads/2023/07/2023-TGE-Surcharges.pdf" target="_blank" rel="noopener">TGE surcharges (PDF) ↗</a></td><td><a href="https://startrack.com.au/pricing-updates" target="_blank" rel="noopener">StarTrack pricing updates ↗</a></td></tr>
+          </tbody>
+        </table>
       </div>
-    </main>
-  )
+      <p className="table-note">* Unless otherwise stated, the published surcharge will apply for the entire calendar month.</p>
+    </div>
+  </div>
+</section>
+
+
+    </div>
+  );
 }

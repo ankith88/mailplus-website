@@ -1,0 +1,56 @@
+
+  .legal-hero { background: var(--paper); padding: 56px 0 28px; }
+  .legal-hero .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--brand); margin-bottom: 16px;
+  }
+  .legal-hero h1 { font-family: var(--font-display); font-size: 46px; line-height: 1.05; color: var(--ink); margin: 0 0 14px; font-weight: 700; }
+  .legal-hero .legal-lead { font-size: 18px; line-height: 1.6; color: var(--ink-2); max-width: 640px; margin: 0 0 14px; }
+  .legal-meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); letter-spacing: .02em; }
+
+  .crumb { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .crumb a { color: var(--brand); text-decoration: none; }
+  .crumb a:hover { text-decoration: underline; }
+  .crumb span { color: var(--muted); }
+
+  .surcharge-wrap { max-width: 760px; margin: 0 auto; }
+  .surcharge-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow-sm); overflow: hidden;
+  }
+  .surcharge-table { width: 100%; border-collapse: collapse; }
+  .surcharge-table th {
+    background: var(--brand); color: #fff; text-align: left;
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: .12em; font-weight: 600; padding: 14px 22px;
+  }
+  .surcharge-table td { padding: 13px 22px; border-bottom: 1px solid var(--line); font-size: 14.5px; color: var(--ink-2); }
+  .surcharge-table tbody tr:last-child td { border-bottom: none; }
+  .surcharge-table .pct { font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
+  .surcharge-table tr.current td { background: var(--accent-tint); }
+  .surcharge-table tr.links td { background: var(--paper); font-weight: 600; color: var(--ink); }
+  .surcharge-table a { color: var(--brand); font-weight: 600; text-decoration: none; }
+  .surcharge-table a:hover { text-decoration: underline; }
+  .table-note { font-size: 13px; color: var(--muted); margin: 16px 4px 0; line-height: 1.55; }
+
+  .xlink-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow-sm); padding: 22px 26px; margin-top: 24px;
+  }
+  .xlink-card .xl-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .xlink-card .xl-sub { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .xlink-card .xl-btn {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 7px;
+    font-size: 14px; font-weight: 600; text-decoration: none; color: var(--brand);
+    padding: 11px 20px; border-radius: 999px; border: 1px solid var(--line-2); transition: all .15s;
+    white-space: nowrap;
+  }
+  .xlink-card .xl-btn:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+  @media (max-width: 720px) { .xlink-card { flex-direction: column; align-items: flex-start; } }
+
+  @media (max-width: 720px) {
+    .legal-hero h1 { font-size: 32px; }
+    .surcharge-table th, .surcharge-table td { padding: 11px 14px; }
+  }
