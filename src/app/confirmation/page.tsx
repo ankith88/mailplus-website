@@ -97,7 +97,6 @@ function ConfirmationContent() {
   const { bookingUrlId, localMilePlusAuthLink } = data.result;
 
   const iframeUrl = bookingUrlId ? `https://prospectplus.com.au/book/${bookingUrlId}?embed=true` : '';
-  const localMileLink = localMilePlusAuthLink || 'https://localmile.plus/register';
 
   // 1. OUT OF TERRITORY PAGE (Pending/Edge-of-run/Out-of-territory manual confirmation)
   if (outOfTerritory) {
@@ -174,12 +173,16 @@ function ConfirmationContent() {
         <section className="res-body">
           <div className="res-cards two">
             <div className="res-card">
-              <span className="rc-tag">● Fastest way to start</span>
-              <h2>Register on LocalMile</h2>
-              <p>Set up your free LocalMile account and book your first of five pickups straight away — your local driver comes to you.</p>
-              <a href={localMileLink} className="btn btn-cta">Register now on LocalMile &rarr;</a>
-              <p className="rc-foot">Takes about 2 minutes. No card required.</p>
-              <div className="rc-divider"></div>
+              {localMilePlusAuthLink ? (
+                <>
+                  <span className="rc-tag">● Fastest way to start</span>
+                  <h2>Register on LocalMile</h2>
+                  <p>Set up your free LocalMile account and book your first of five pickups straight away — your local driver comes to you.</p>
+                  <a href={localMilePlusAuthLink} className="btn btn-cta">Register now on LocalMile &rarr;</a>
+                  <p className="rc-foot">Takes about 2 minutes. No card required.</p>
+                  <div className="rc-divider"></div>
+                </>
+              ) : null}
               <span className="rc-tag">● Know the details</span>
               <h2>Not sure how it works yet?</h2>
               <p>If you jumped straight to the free offer, it&rsquo;s worth a quick read first — see exactly what&rsquo;s included in your five free collections, with no card and no catch, so you know what to expect.</p>
