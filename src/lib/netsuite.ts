@@ -190,9 +190,40 @@ export function submitReferralToNetSuite(payload: NetSuiteReferralPayload): Prom
   return jsonpCall(NS_REFER_URL, params)
 }
 
+/* ─── LPO Owner enquiry endpoint (script 1843) ──────────── */
+
+const NS_LPO_OWNER_URL =
+  'https://1048144.extforms.netsuite.com/app/site/hosting/scriptlet.nl' +
+  '?script=1843&deploy=1&compid=1048144' +
+  '&ns-at=AAEJ7tMQBvcOUQrfciNCfzfflF0RT0houlAVIroi9QOZe0o69qY'
+
+export interface NetSuiteLpoOwnerPayload {
+  business_name?: string
+  lpo_owner_name?: string
+  email?: string
+  phone_number?: string
+  address1?: string
+  address2?: string
+  city?: string
+  state?: string
+  postcode?: string
+  lat?: string
+  lng?: string
+  notes?: string
+  pageURL?: string
+}
+
+export function submitLpoOwnerToNetSuite(payload: NetSuiteLpoOwnerPayload): Promise<unknown> {
+  const params = Object.fromEntries(
+    Object.entries(payload).map(([k, v]) => [k, v ?? ''])
+  )
+  return jsonpCall(NS_LPO_OWNER_URL, params)
+}
+
 export function submitToNetSuite(payload: NetSuitePayload): Promise<unknown> {
   const params = Object.fromEntries(
     Object.entries(payload).map(([k, v]) => [k, v ?? ''])
   )
   return jsonpCall(NS_URL, params)
 }
+
