@@ -55,7 +55,7 @@ export function Footer() {
             <ul>
               <li><Link href="/shipmate-platform">ShipMate</Link></li>
               <li><Link href="/mailplus-api">MailPlus API</Link></li>
-              <li><Link href="/track">Track a Parcel</Link></li>
+              <li><a href="https://track.mailplus.com.au/" target="_blank" rel="noopener noreferrer">Track a Parcel</a></li>
             </ul>
           </div>
 
@@ -74,7 +74,7 @@ export function Footer() {
             <ul>
               <li><Link href="/about">About MailPlus</Link></li>
               <li><Link href="/#faq">FAQs</Link></li>
-              <li><Link href="/track#support">Create a Support Ticket</Link></li>
+              <li><a href="https://track.mailplus.com.au/#support" target="_blank" rel="noopener noreferrer">Create a Support Ticket</a></li>
               <li><a href="https://www.bpoint.com.au/pay/mailplus" target="_blank" rel="noopener noreferrer">Pay My Invoice</a></li>
               <li><Link href="/become-a-franchisee">Become a Franchisee</Link></li>
             </ul>

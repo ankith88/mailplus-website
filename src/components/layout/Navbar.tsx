@@ -95,9 +95,9 @@ export function Navbar() {
           <a href="https://customer.mailplus.com.au/" className="shipmate-login" target="_blank" rel="noopener noreferrer">
             <span>🔑</span><span>ShipMate Login</span>
           </a>
-          <Link href="/track" className="track-btn">
+          <a href="https://track.mailplus.com.au/" className="track-btn" target="_blank" rel="noopener noreferrer">
             <span>📍</span><span>Track a parcel</span>
-          </Link>
+          </a>
         </div>
 
         <button 
@@ -123,7 +123,7 @@ export function Navbar() {
           <Link className="mob-sub" href="/5-free-collections" onClick={() => setMenuOpen(false)}>5 Free Collections</Link>
           <a href="https://customer.mailplus.com.au/" target="_blank" rel="noopener noreferrer">🔑 ShipMate Login</a>
           <a href="tel:1300656595">📞 1300 65 65 95</a>
-          <Link className="mob-track" href="/track" onClick={() => setMenuOpen(false)}>📍 Track a parcel</Link>
+          <a className="mob-track" href="https://track.mailplus.com.au/" onClick={() => setMenuOpen(false)} target="_blank" rel="noopener noreferrer">📍 Track a parcel</a>
         </div>
       </div>
     </header>
