@@ -1,14 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { LeadPayload, LeadResponse } from '@/utils/submitLead';
 
-export default function ConfirmationPage() {
+function ConfirmationContent() {
+  const searchParams = useSearchParams();
+  const isLpo = searchParams.get('type') === 'lpo';
   const [data, setData] = useState<{ result: LeadResponse; payload: LeadPayload } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (isLpo) {
+      setLoading(false);
+      return;
+    }
     // Read from sessionStorage
     const stored = sessionStorage.getItem('lead_submission_data');
     if (stored) {
@@ -53,6 +60,20 @@ export default function ConfirmationPage() {
     return (
       <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-body, sans-serif)' }}>
         <p style={{ fontSize: '18px', color: '#004751' }}>Loading confirmation...</p>
+      </div>
+    );
+  }
+
+  if (isLpo) {
+    return (
+      <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-body, sans-serif)', padding: '40px 20px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '32px', fontWeight: '700', color: '#004751', fontFamily: 'var(--font-display, serif)', marginBottom: '16px' }}>Thank you for your enquiry.</h2>
+        <p style={{ fontSize: '18px', color: '#386373', maxWidth: '600px', margin: '0 0 32px 0', lineHeight: '1.6' }}>
+          You will be sent an email during business hours with prices and an opportunity to book a call or sign up now.
+        </p>
+        <Link href="/" style={{ display: 'inline-block', backgroundColor: '#004751', color: '#fff', padding: '12px 28px', borderRadius: '30px', textDecoration: 'none', fontWeight: '600', transition: 'background-color 0.2s' }}>
+          Back to Home
+        </Link>
       </div>
     );
   }
@@ -314,5 +335,17 @@ export default function ConfirmationPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function ConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-body, sans-serif)' }}>
+        <p style={{ fontSize: '18px', color: '#004751' }}>Loading confirmation...</p>
+      </div>
+    }>
+      <ConfirmationContent />
+    </Suspense>
   );
 }

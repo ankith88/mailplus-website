@@ -181,11 +181,11 @@ export default function LpoOwnerInfoClient() {
 
       setSuccess(true);
       setTimeout(() => {
-        window.location.href = '/confirmation';
+        window.location.href = '/confirmation?type=lpo';
       }, 1000);
     } catch (err) {
       console.error('Unhandled form submission error:', err);
-      window.location.href = '/confirmation';
+      window.location.href = '/confirmation?type=lpo';
     } finally {
       setSubmitting(false);
     }
