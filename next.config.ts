@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         destination: '/shipmate-platform',
         permanent: true,
       },
+      {
+        source: '/surcharge',
+        destination: '/surcharges',
+        permanent: true,
+      },
     ]
   },
 };

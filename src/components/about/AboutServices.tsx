@@ -17,11 +17,6 @@ const services = [
     desc: 'Free shipping platform with Shopify integration, bulk label printing, and discounted carriers.',
   },
   {
-    href: '/services/shopify-integration',
-    label: 'Shopify Integration',
-    desc: 'Automatic order sync, smart product weights, tag filtering, bulk label printing — all free.',
-  },
-  {
     href: '/mailplus-api',
     label: 'MailPlus API',
     desc: 'Automated label generation, live tracking, and biodegradable packaging for developers and 3PLs.',

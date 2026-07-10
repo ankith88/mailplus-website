@@ -4,6 +4,7 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'Surcharge | MailPlus',
   description: 'To account for variations in fuel prices and logistics industry costs, we apply a surcharge to our services. This surcharge is subject to change based on market conditions.',
+  alternates: { canonical: 'https://mailplus.com.au/surcharges' },
 };
 
 export default function Page() {

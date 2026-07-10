@@ -4,6 +4,7 @@ import './styles.css';
 export const metadata: Metadata = {
   title: 'Shipping Surcharge | MailPlus',
   description: 'With fluctuations in logistics industry costs, the surcharge may increase, decrease, remain constant, or be removed, depending on fuel price movement, security and surcharge levies incurred.',
+  alternates: { canonical: 'https://mailplus.com.au/shipping-surcharge' },
 };
 
 export default function Page() {

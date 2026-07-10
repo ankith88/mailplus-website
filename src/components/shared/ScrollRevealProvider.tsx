@@ -29,7 +29,7 @@ export function ScrollRevealProvider() {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('scroll-revealed')
+            entry.target.classList.add('in-view')
             observer.unobserve(entry.target)
           }
         })
@@ -46,7 +46,7 @@ export function ScrollRevealProvider() {
         el.setAttribute('data-reveal', 'up')
       }
 
-      el.classList.add('scroll-reveal')
+      el.classList.add('reveal')
 
       const rect = el.getBoundingClientRect()
       const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0
@@ -54,7 +54,7 @@ export function ScrollRevealProvider() {
       if (alreadyVisible) {
         // Reveal after two frames so the CSS hidden state registers first
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => el.classList.add('scroll-revealed'))
+          requestAnimationFrame(() => el.classList.add('in-view'))
         })
       } else {
         observer.observe(el)
@@ -64,11 +64,11 @@ export function ScrollRevealProvider() {
     // Also observe any manually marked [data-reveal] elements (non-sections)
     const manualEls = document.querySelectorAll('[data-reveal]:not(section)')
     manualEls.forEach(el => {
-      el.classList.add('scroll-reveal')
+      el.classList.add('reveal')
       const rect = el.getBoundingClientRect()
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => el.classList.add('scroll-revealed'))
+          requestAnimationFrame(() => el.classList.add('in-view'))
         })
       } else {
         observer.observe(el)

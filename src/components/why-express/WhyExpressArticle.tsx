@@ -285,14 +285,14 @@ export function WhyExpressArticle() {
               <p className="font-bold text-sm mb-4" style={{ color: '#095c7b' }}>Related Articles</p>
               <div className="space-y-3">
                 <Link
-                  href="/small-business/shipping-101"
+                  href="/resources/how-to-choose-a-courier"
                   className="flex items-start gap-2 text-sm transition-opacity hover:opacity-70"
                   style={{ color: '#095c7b' }}
                 >
                   <svg className="w-3.5 h-3.5 flex-none mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
-                  Shipping 101 for Small Business
+                  How to Choose a Courier for Your Business
                 </Link>
               </div>
             </div>
@@ -307,7 +307,6 @@ export function WhyExpressArticle() {
                 {[
                   { href: '/express-delivery', label: 'Express Delivery' },
                   { href: '/shipmate-platform', label: 'ShipMate (Free Platform)' },
-                  { href: '/services/shopify-integration', label: 'Shopify Integration' },
                   { href: '/post-office-collect-lodge', label: 'Post Office Solutions' },
                 ].map((link) => (
                   <Link
