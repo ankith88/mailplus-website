@@ -192,12 +192,29 @@ export default function LpoOwnerInfoClient() {
   };
 
   return (
-    <div className="lpo-owner-page">
+    <main className="lpo-owner-page">
       <div className="lpo-container">
-        <h2 className="main-text-form">Express Your Interest</h2>
+        <h1 className="main-text-form">Express Your Interest</h1>
+        
+        {/* BLUF Summary Paragraph under 160 chars for AI Overview citation */}
+        <p className="lpo-bluf-summary">
+          MailPlus is launching a Licensed Post Office (LPO) owner partnership program in 2026 to optimize commercial logistics partnerships across Australia.
+        </p>
+
         <h4 className="sub-text-form">
           We’re launching a new program in 2026. If you’re interested in exploring how a commercial relationship with MailPlus could benefit your operations, express your interest today.
         </h4>
+
+        {/* Indexable LPO Program Highlights list for AI Overview lists extraction */}
+        <div className="lpo-program-highlights">
+          <h3 className="highlights-title">LPO Program Highlights</h3>
+          <ul className="highlights-list">
+            <li><strong>Who it is for:</strong> Licensed Post Office (LPO) owners looking to expand logistics operations.</li>
+            <li><strong>What is offered:</strong> Dedicated driver collections, same-day dispatch integration, and direct API support.</li>
+            <li><strong>Launch year:</strong> 2026 operations window.</li>
+            <li><strong>Availability:</strong> All metro and selected regional hubs across Australia.</li>
+          </ul>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="lpo-row">
@@ -357,6 +374,6 @@ export default function LpoOwnerInfoClient() {
           </div>
         </form>
       </div>
-    </div>
+    </main>
   );
 }
