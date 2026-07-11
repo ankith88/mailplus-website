@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, Fragment } from 'react'
 import { getFirebaseClient } from '@/lib/firebase/client'
 import {
   collection,
@@ -514,13 +514,15 @@ export function SupportTicketWizard() {
               const isDone = stepNum < currentStep || formSuccess
 
               return (
-                <li key={label} className={`${isActive ? 'active' : ''} ${isDone ? 'done' : ''}`} data-step={stepNum}>
-                  <span className="st-node">
-                    <span className="st-dot">{stepNum}</span>
-                    <span className="st-label">{label}</span>
-                  </span>
+                <Fragment key={label}>
+                  <li className={`${isActive ? 'active' : ''} ${isDone ? 'done' : ''}`} data-step={stepNum}>
+                    <span className="st-node">
+                      <span className="st-dot">{stepNum}</span>
+                      <span className="st-label">{label}</span>
+                    </span>
+                  </li>
                   {stepNum < TOTAL_STEPS && <span className={`st-sep ${isDone ? 'done' : ''}`}></span>}
-                </li>
+                </Fragment>
               )
             })}
           </ol>
