@@ -1,0 +1,2725 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+      Raise a Support Ticket | Track & Resolve a Parcel Issue | MailPlus
+    </title>
+    <meta
+      name="description"
+      content="Raise a support ticket for a MailPlus parcel — report a delayed item, request an ETA, proof of delivery, ATL photo, redelivery, return to sender and more. Enter your barcode and we'll do the rest."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        /* MailPlus palette — from tracking mockup / mailplus.com.au */
+        --ink: #0a3242; /* dark teal — primary text */
+        --ink-2: #14506b;
+        --paper: #cfe0ce; /* sage green page background */
+        --card: #ffffff;
+        --line: #dce5db;
+        --line-2: #c3d2c2;
+        --muted: #5b6e66;
+        --muted-2: #93a49b;
+        --brand: #025d7c; /* MailPlus deep teal blue */
+        --brand-2: #0e7396;
+        --accent: #3da14b; /* MailPlus logo green — success/status */
+        --accent-tint: #e4f3e5;
+        --cta: #e3f046; /* MailPlus lime — primary CTAs */
+        --cta-hover: #d6e62f;
+        --warn: #ffb800;
+        --warn-tint: #fff6dc;
+        --info: #095c7c;
+        --info-tint: #e3f1f6;
+        --danger: #e5484d;
+        --danger-tint: #fcebec;
+        --radius: 14px;
+        --radius-sm: 10px;
+        --radius-lg: 20px;
+        --shadow-sm:
+          0 1px 2px rgba(10, 50, 66, 0.05), 0 0 0 1px rgba(10, 50, 66, 0.04);
+        --shadow-md:
+          0 4px 12px rgba(10, 50, 66, 0.07), 0 0 0 1px rgba(10, 50, 66, 0.04);
+        --shadow-lg:
+          0 12px 32px rgba(10, 50, 66, 0.12), 0 0 0 1px rgba(10, 50, 66, 0.04);
+        --font-display: "Source Serif 4", Georgia, serif;
+        --font-body: "DM Sans", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .wrap-narrow {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ========== TOP BANNER ========== */
+      .topbar {
+        background: var(--brand);
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .topbar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: baseline;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: -0.015em;
+        line-height: 1;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+      .logo .mail {
+        color: #ffffff;
+      }
+      .logo .plus {
+        color: var(--cta);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: auto;
+      }
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.92);
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1;
+        padding: 10px 14px;
+        border-radius: 9px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+      .nav-link .caret {
+        font-size: 10px;
+        opacity: 0.8;
+        transition: transform 0.2s;
+      }
+
+      .nav-dd {
+        position: relative;
+      }
+      .nav-dd-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        background: var(--card);
+        border-radius: 12px;
+        min-width: 268px;
+        padding: 8px;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition:
+          opacity 0.18s,
+          transform 0.18s,
+          visibility 0.18s;
+      }
+      .nav-dd:hover .nav-dd-menu,
+      .nav-dd.open .nav-dd-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .nav-dd:hover .caret,
+      .nav-dd.open .caret {
+        transform: rotate(180deg);
+      }
+      .nav-dd-menu::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 0;
+        right: 0;
+        height: 8px;
+      }
+      .dd-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 12px;
+        border-radius: 9px;
+        text-decoration: none;
+        transition: background 0.14s;
+      }
+      .dd-item:hover {
+        background: var(--paper);
+      }
+      .dd-item .dd-ic {
+        flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        background: var(--info-tint);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+      }
+      .dd-item .dd-tx {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .dd-item .dd-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1.2;
+      }
+      .dd-item .dd-sub {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+      .dd-divider {
+        height: 1px;
+        background: var(--line);
+        margin: 6px 8px;
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .strip-phone {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        color: #fff;
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.15s;
+      }
+      .strip-phone:hover {
+        background: #fff;
+        color: var(--brand);
+        border-color: #fff;
+      }
+      .strip-phone .sp-num {
+        font-family: var(--font-mono);
+        font-weight: 600;
+      }
+      .track-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--cta);
+        color: var(--ink);
+        padding: 10px 20px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.15s;
+      }
+      .track-btn:hover {
+        background: var(--cta-hover);
+      }
+      .shipmate-login {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        color: #fff;
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.15s;
+      }
+      .shipmate-login:hover {
+        background: #fff;
+        color: var(--brand);
+        border-color: #fff;
+      }
+
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 6px;
+        font-size: 24px;
+        line-height: 1;
+        margin-left: auto;
+      }
+      .mobile-nav {
+        display: none;
+        background: var(--ink);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .mobile-nav.open {
+        display: block;
+      }
+      .mobile-nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 14px 24px 20px;
+      }
+      .mobile-nav a,
+      .mobile-nav .mob-group-label {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 12px 4px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .mobile-nav .mob-group-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+        padding-bottom: 6px;
+        border-bottom: none;
+      }
+      .mobile-nav .mob-sub {
+        padding-left: 16px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .mobile-nav .mob-track {
+        background: var(--cta);
+        color: var(--ink);
+        font-weight: 700;
+        text-align: center;
+        border-radius: 999px;
+        margin-top: 14px;
+        border-bottom: none;
+        padding: 13px;
+      }
+
+      /* ========== BREADCRUMB ========== */
+      .breadcrumb {
+        padding: 14px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .breadcrumb a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        text-decoration: underline;
+      }
+      .breadcrumb .sep {
+        margin: 0 8px;
+        color: var(--muted-2);
+      }
+
+      /* ========== TICKET HERO ========== */
+      .ticket-hero {
+        padding: 40px 0 8px;
+      }
+      .ticket-hero .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--brand);
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+      .ticket-hero .hero-eyebrow .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .ticket-hero h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+        margin-bottom: 14px;
+      }
+      .ticket-hero h1 .hl {
+        color: var(--brand);
+      }
+      .ticket-hero p {
+        font-size: 17px;
+        line-height: 1.6;
+        color: var(--ink-2);
+        max-width: 640px;
+      }
+
+      /* ========== STEPPER ========== */
+      .stepper-wrap {
+        padding: 26px 0 4px;
+      }
+      .stepper {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        list-style: none;
+        background: var(--card);
+        border-radius: 999px;
+        padding: 10px 18px;
+        box-shadow: var(--shadow-sm);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .stepper::-webkit-scrollbar {
+        display: none;
+      }
+      .stepper li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 0 0 auto;
+      }
+      .stepper .st-node {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 4px 6px;
+        white-space: nowrap;
+      }
+      .stepper .st-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+        background: var(--paper);
+        color: var(--muted);
+        border: 1px solid var(--line-2);
+        transition: all 0.2s;
+      }
+      .stepper .st-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .stepper li.active .st-dot {
+        background: var(--brand);
+        color: #fff;
+        border-color: var(--brand);
+      }
+      .stepper li.active .st-label {
+        color: var(--ink);
+      }
+      .stepper li.done .st-dot {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      .stepper li.done .st-label {
+        color: var(--ink-2);
+      }
+      .stepper .st-sep {
+        width: 26px;
+        height: 2px;
+        background: var(--line);
+        border-radius: 2px;
+        flex: 0 0 auto;
+      }
+      .stepper li.done + .st-sep,
+      .st-sep.done {
+        background: var(--accent);
+      }
+      .stepper-mobile {
+        display: none;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        color: var(--brand);
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      /* ========== WIZARD SHELL ========== */
+      .wizard-section {
+        padding: 28px 0 72px;
+      }
+      .wizard {
+        background: var(--card);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+      }
+      .wizard-body {
+        padding: 40px 44px;
+      }
+      .step {
+        display: none;
+        animation: fadeStep 0.3s ease;
+      }
+      .step.active {
+        display: block;
+      }
+      @keyframes fadeStep {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .step-title {
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+        color: var(--ink);
+      }
+      .step-sub {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.55;
+        margin-bottom: 28px;
+        max-width: 620px;
+      }
+
+      /* selected-category context chip shown on later steps */
+      .context-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        background: var(--info-tint);
+        border: 1px solid rgba(2, 93, 124, 0.16);
+        border-radius: 999px;
+        padding: 8px 8px 8px 16px;
+        font-size: 13px;
+        color: var(--ink);
+      }
+      .context-chip .cc-emoji {
+        font-size: 16px;
+      }
+      .context-chip strong {
+        font-weight: 600;
+      }
+      .context-chip .cc-edit {
+        background: #fff;
+        border: 1px solid var(--line-2);
+        color: var(--brand);
+        border-radius: 999px;
+        padding: 5px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition: all 0.15s;
+      }
+      .context-chip .cc-edit:hover {
+        background: var(--brand);
+        color: #fff;
+        border-color: var(--brand);
+      }
+
+      /* ---- Step 1: category cards ---- */
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .cat-card {
+        position: relative;
+        text-align: left;
+        cursor: pointer;
+        background: var(--card);
+        border: 1.5px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: var(--font-body);
+        transition:
+          transform 0.16s,
+          box-shadow 0.16s,
+          border-color 0.16s,
+          background 0.16s;
+      }
+      .cat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--line-2);
+      }
+      .cat-card:focus-visible {
+        outline: none;
+        border-color: var(--brand);
+        box-shadow: 0 0 0 3px rgba(2, 93, 124, 0.18);
+      }
+      .cat-card.selected {
+        border-color: var(--brand);
+        background: var(--info-tint);
+        box-shadow: 0 0 0 3px rgba(2, 93, 124, 0.14);
+      }
+      .cat-card .cat-ic {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        background: linear-gradient(150deg, #e4f3e5 0%, #cfe0ce 100%);
+        box-shadow: var(--shadow-sm);
+      }
+      .cat-card.selected .cat-ic {
+        background: linear-gradient(150deg, #dff1f7 0%, #b7d6e2 100%);
+      }
+      .cat-card h3 {
+        font-family: var(--font-display);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        line-height: 1.2;
+      }
+      .cat-card p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .cat-card .cat-check {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--brand);
+        color: #fff;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .cat-card.selected .cat-check {
+        display: flex;
+      }
+
+      /* ---- Forms (shared with base) ---- */
+      .field-group {
+        margin-bottom: 18px;
+      }
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .field-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink);
+        margin-bottom: 6px;
+      }
+      .field-label .req {
+        color: var(--danger);
+      }
+      .field-label .opt {
+        color: var(--muted);
+        font-weight: 400;
+      }
+      .field-input,
+      .field-select,
+      .field-textarea {
+        width: 100%;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-family: var(--font-body);
+        font-size: 14px;
+        color: var(--ink);
+        outline: none;
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+      }
+      .field-input:focus,
+      .field-select:focus,
+      .field-textarea:focus {
+        border-color: var(--brand);
+        box-shadow: 0 0 0 3px rgba(2, 93, 124, 0.12);
+      }
+      .field-input.err,
+      .field-select.err,
+      .field-textarea.err {
+        border-color: var(--danger);
+        box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.12);
+      }
+      .field-textarea {
+        resize: vertical;
+        min-height: 110px;
+        line-height: 1.55;
+      }
+      .field-hint {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 6px;
+        line-height: 1.45;
+      }
+      .field-mono {
+        font-family: var(--font-mono);
+        letter-spacing: 0.04em;
+      }
+      .addr-wrap {
+        position: relative;
+      }
+      .addr-pin {
+        position: absolute;
+        left: 12px;
+        top: 21px;
+        font-size: 15px;
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      .addr-input {
+        padding-left: 38px;
+      }
+
+      /* ---- Step 2: barcode lookup ---- */
+      .lookup-row {
+        display: flex;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .lookup-row .field-input {
+        flex: 1;
+        font-family: var(--font-mono);
+        letter-spacing: 0.06em;
+        font-size: 15px;
+      }
+      .lookup-btn {
+        background: var(--brand);
+        color: #fff;
+        border: none;
+        padding: 0 26px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+      }
+      .lookup-btn:hover {
+        background: var(--ink);
+      }
+      .lookup-btn:disabled {
+        opacity: 0.6;
+        cursor: default;
+      }
+      .lookup-status {
+        margin-top: 14px;
+        font-size: 14px;
+        display: none;
+        align-items: center;
+        gap: 10px;
+      }
+      .lookup-status.show {
+        display: flex;
+      }
+      .lookup-status.searching {
+        color: var(--brand);
+      }
+      .lookup-status.error {
+        color: var(--danger);
+      }
+      .lookup-status.ok {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .lookup-status .spin {
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(2, 93, 124, 0.25);
+        border-top-color: var(--brand);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ---- Step 3: receiver ---- */
+      .receiver-summary {
+        background: var(--paper);
+        border: 1px solid var(--line-2);
+        border-radius: var(--radius);
+        padding: 22px 24px;
+        margin-bottom: 18px;
+      }
+      .receiver-summary .rs-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .receiver-summary .rs-head h4 {
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .receiver-summary .rs-badge {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: var(--accent-tint);
+        color: #2f7a3c;
+      }
+      .rs-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 24px;
+      }
+      .rs-field .rs-k {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-bottom: 3px;
+      }
+      .rs-field .rs-v {
+        font-size: 14.5px;
+        color: var(--ink);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .rs-field.full {
+        grid-column: 1 / -1;
+      }
+      .rs-actions {
+        margin-top: 18px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: #fff;
+        border: 1px solid var(--line-2);
+        color: var(--brand);
+        border-radius: 999px;
+        padding: 9px 18px;
+        font-size: 13.5px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition: all 0.15s;
+      }
+      .link-btn:hover {
+        background: var(--brand);
+        color: #fff;
+        border-color: var(--brand);
+      }
+      .link-btn.subtle {
+        color: var(--muted);
+      }
+      .link-btn.subtle:hover {
+        background: var(--ink);
+        color: #fff;
+        border-color: var(--ink);
+      }
+      .receiver-edit {
+        display: none;
+      }
+      .receiver-edit.show {
+        display: block;
+      }
+      .edit-callout {
+        font-size: 13.5px;
+        line-height: 1.5;
+        color: var(--ink);
+        background: var(--warn-tint);
+        border: 1px solid rgba(255, 184, 0, 0.4);
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 20px;
+      }
+
+      /* google places predictions (custom dropdown fallback) */
+      .pac-note {
+        font-size: 11px;
+        color: var(--muted-2);
+        font-family: var(--font-mono);
+        margin-top: 6px;
+      }
+
+      /* ---- Nav buttons ---- */
+      .wizard-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 22px 44px;
+        border-top: 1px solid var(--line);
+        background: #fbfdfb;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 13px 26px;
+        border-radius: 999px;
+        font-family: var(--font-body);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        transition: all 0.15s;
+      }
+      .btn-primary {
+        background: var(--cta);
+        color: var(--ink);
+      }
+      .btn-primary:hover {
+        background: var(--cta-hover);
+        transform: translateY(-1px);
+      }
+      .btn-primary:disabled {
+        background: var(--line);
+        color: var(--muted);
+        cursor: default;
+        transform: none;
+      }
+      .btn-secondary {
+        background: var(--card);
+        color: var(--ink);
+        border: 1px solid var(--line-2);
+      }
+      .btn-secondary:hover {
+        border-color: var(--brand);
+        color: var(--brand);
+      }
+      .btn-ghost {
+        background: none;
+        color: var(--muted);
+      }
+      .btn-ghost:hover {
+        color: var(--ink);
+      }
+      .nav-spacer {
+        flex: 1;
+      }
+
+      /* ---- Review + success ---- */
+      .review-card {
+        background: var(--paper);
+        border: 1px solid var(--line-2);
+        border-radius: var(--radius);
+        padding: 8px 24px;
+        margin-bottom: 18px;
+      }
+      .review-row {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line-2);
+      }
+      .review-row:last-child {
+        border-bottom: none;
+      }
+      .review-row .rv-k {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .review-row .rv-v {
+        font-size: 14px;
+        color: var(--ink);
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .review-row .rv-v.mono {
+        font-family: var(--font-mono);
+      }
+      .review-row .rv-v .empty {
+        color: var(--muted-2);
+        font-style: italic;
+      }
+
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 40px 10px;
+      }
+      .form-success.show {
+        display: block;
+      }
+      .form-success .fs-ic {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: var(--accent-tint);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        margin: 0 auto 20px;
+      }
+      .form-success h3 {
+        font-family: var(--font-display);
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+      .form-success p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 460px;
+        margin: 0 auto;
+      }
+      .ticket-ref {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 22px 0 6px;
+        font-family: var(--font-mono);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--ink);
+        background: var(--paper);
+        border: 1px dashed var(--line-2);
+        border-radius: 10px;
+        padding: 12px 22px;
+      }
+
+      .field-error-msg {
+        display: none;
+        color: var(--danger);
+        font-size: 12.5px;
+        margin-top: 6px;
+      }
+      .field-error-msg.show {
+        display: block;
+      }
+
+      /* ========== FOOTER ========== */
+      footer {
+        background: var(--ink);
+        color: #fff;
+        margin-top: 0;
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 56px 24px 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 36px;
+        margin-bottom: 40px;
+      }
+      .footer-brand .logo {
+        font-size: 30px;
+        margin-bottom: 16px;
+      }
+      .footer-brand p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.6);
+        max-width: 300px;
+        margin-bottom: 18px;
+      }
+      .footer-address {
+        font-style: normal;
+        font-size: 13px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .footer-address .fa-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+      }
+      .footer-phone {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+        font-family: var(--font-mono);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--cta);
+        text-decoration: none;
+      }
+      .footer-phone:hover {
+        color: #fff;
+      }
+      .footer-col h4 {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col li {
+        margin-bottom: 11px;
+      }
+      .footer-col a {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.78);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .footer-col a:hover {
+        color: var(--cta);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .footer-bottom p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .footer-hours {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: var(--font-mono);
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 920px) {
+        .nav,
+        .topbar-actions {
+          display: none;
+        }
+        .hamburger {
+          display: inline-flex;
+        }
+        .ticket-hero h1 {
+          font-size: 34px;
+        }
+        .cat-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .wizard-body {
+          padding: 30px 24px;
+        }
+        .wizard-nav {
+          padding: 18px 24px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+        }
+        .stepper {
+          display: none;
+        }
+        .stepper-mobile {
+          display: block;
+        }
+      }
+      @media (max-width: 620px) {
+        .cat-grid {
+          grid-template-columns: 1fr;
+        }
+        .field-row {
+          grid-template-columns: 1fr;
+        }
+        .rs-grid {
+          grid-template-columns: 1fr;
+        }
+        .review-row {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+        .lookup-row {
+          flex-direction: column;
+        }
+        .lookup-btn {
+          padding: 13px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .btn {
+          flex: 1;
+        }
+      }
+
+      /* Google Places Autocomplete dropdown z-index above sticky header */
+      .pac-container {
+        z-index: 10000 !important;
+        border-radius: 10px;
+        box-shadow: var(--shadow-lg);
+        font-family: var(--font-body);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============= TOP BANNER (shared across all pages) ============= -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a href="/" class="logo"
+          ><span class="mail">mail</span><span class="plus">plus</span></a
+        >
+
+        <nav class="nav" aria-label="Primary">
+          <div class="nav-dd" id="servicesDd">
+            <button
+              class="nav-link"
+              id="servicesBtn"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Services <span class="caret">▾</span>
+            </button>
+            <div class="nav-dd-menu" role="menu" aria-label="Services">
+              <a class="dd-item" href="/express-delivery" role="menuitem">
+                <span class="dd-ic">✈️</span>
+                <span class="dd-tx"
+                  ><span class="dd-title">Express Parcel Delivery</span
+                  ><span class="dd-sub"
+                    >1–2 day flat-rate delivery Australia-wide</span
+                  ></span
+                >
+              </a>
+              <a
+                class="dd-item"
+                href="/post-office-collect-lodge"
+                role="menuitem"
+              >
+                <span class="dd-ic">📮</span>
+                <span class="dd-tx"
+                  ><span class="dd-title">Post Office Collect &amp; Lodge</span
+                  ><span class="dd-sub"
+                    >We run your Post Office trips for you</span
+                  ></span
+                >
+              </a>
+              <a class="dd-item" href="/local-delivery" role="menuitem">
+                <span class="dd-ic">📍</span>
+                <span class="dd-tx"
+                  ><span class="dd-title">Local Hand-to-Hand Delivery</span
+                  ><span class="dd-sub"
+                    >Same-day, handed straight to the recipient</span
+                  ></span
+                >
+              </a>
+              <a class="dd-item" href="/shipmate" role="menuitem">
+                <span class="dd-ic">📦</span>
+                <span class="dd-tx"
+                  ><span class="dd-title">ShipMate Platform</span
+                  ><span class="dd-sub"
+                    >Free shipping software for your store</span
+                  ></span
+                >
+              </a>
+              <div class="dd-divider"></div>
+              <a class="dd-item" href="/support-ticket" role="menuitem">
+                <span class="dd-ic">🎫</span>
+                <span class="dd-tx"
+                  ><span class="dd-title">Raise a Support Ticket</span
+                  ><span class="dd-sub"
+                    >Report an issue with a parcel</span
+                  ></span
+                >
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="topbar-actions">
+          <a href="tel:1300656595" class="strip-phone">
+            <span>📞</span>
+            <span class="sp-num">1300 65 65 95</span>
+          </a>
+          <a href="https://shipmate.mailplus.com.au" class="shipmate-login">
+            <span>🔑</span><span>ShipMate Login</span>
+          </a>
+          <a href="/track" class="track-btn">
+            <span>📍</span><span>Track a parcel</span>
+          </a>
+        </div>
+
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          ☰
+        </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-inner">
+          <div class="mob-group-label">Services</div>
+          <a class="mob-sub" href="/express-delivery"
+            >Express Parcel Delivery</a
+          >
+          <a class="mob-sub" href="/post-office-collect-lodge"
+            >Post Office Collect &amp; Lodge</a
+          >
+          <a class="mob-sub" href="/local-delivery"
+            >Local Hand-to-Hand Delivery</a
+          >
+          <a class="mob-sub" href="/shipmate">ShipMate Platform</a>
+          <a class="mob-sub" href="/support-ticket">Raise a Support Ticket</a>
+          <a href="https://shipmate.mailplus.com.au">🔑 ShipMate Login</a>
+          <a href="tel:1300656595">📞 1300 65 65 95</a>
+          <a class="mob-track" href="/track">📍 Track a parcel</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============= BREADCRUMB ============= -->
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span
+        ><a href="/support">Support</a><span class="sep">/</span
+        ><span>Raise a Ticket</span>
+      </nav>
+    </div>
+
+    <!-- ============= HERO ============= -->
+    <section class="ticket-hero">
+      <div class="wrap">
+        <div class="hero-eyebrow"><span class="dot"></span> Parcel support</div>
+        <h1>Raise a <span class="hl">support ticket</span></h1>
+        <p>
+          Something not right with a delivery? Tell us what's happening and pop
+          in your barcode — we'll pull up the parcel and get the right person
+          onto it. Real Australian people, no hold queues, no bots.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============= STEPPER ============= -->
+    <div class="stepper-wrap">
+      <div class="wrap">
+        <div class="stepper-mobile" id="stepperMobile">
+          Step 1 of 6 · What can we help with?
+        </div>
+        <ol class="stepper" id="stepper" aria-label="Progress">
+          <li data-step="1" class="active">
+            <span class="st-node"
+              ><span class="st-dot">1</span
+              ><span class="st-label">Help topic</span></span
+            >
+          </li>
+          <span class="st-sep"></span>
+          <li data-step="2">
+            <span class="st-node"
+              ><span class="st-dot">2</span
+              ><span class="st-label">Barcode</span></span
+            >
+          </li>
+          <span class="st-sep"></span>
+          <li data-step="3">
+            <span class="st-node"
+              ><span class="st-dot">3</span
+              ><span class="st-label">Receiver</span></span
+            >
+          </li>
+          <span class="st-sep"></span>
+          <li data-step="4">
+            <span class="st-node"
+              ><span class="st-dot">4</span
+              ><span class="st-label">Your details</span></span
+            >
+          </li>
+          <span class="st-sep"></span>
+          <li data-step="5">
+            <span class="st-node"
+              ><span class="st-dot">5</span
+              ><span class="st-label">Freight</span></span
+            >
+          </li>
+          <span class="st-sep"></span>
+          <li data-step="6">
+            <span class="st-node"
+              ><span class="st-dot">6</span
+              ><span class="st-label">Notes</span></span
+            >
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ============= WIZARD ============= -->
+    <section class="wizard-section">
+      <div class="wrap-narrow">
+        <div class="wizard" id="wizard">
+          <div class="wizard-body">
+            <!-- ===== STEP 1 : Help topic ===== -->
+            <div class="step active" data-step="1">
+              <div class="step-title">What can we help with?</div>
+              <p class="step-sub">
+                Choose the option that best matches your enquiry. This helps us
+                route your ticket to the right team straight away.
+              </p>
+              <div
+                class="cat-grid"
+                id="catGrid"
+                role="radiogroup"
+                aria-label="What can we help with"
+              >
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="Delayed Item"
+                  data-emoji="⏱️"
+                >
+                  <span class="cat-ic">⏱️</span>
+                  <h3>Delayed Item</h3>
+                  <p>Parcel taking longer than expected</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="ETA Request"
+                  data-emoji="📅"
+                >
+                  <span class="cat-ic">📅</span>
+                  <h3>ETA Request</h3>
+                  <p>Ask for an estimated delivery date</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="Dispute of Delivery"
+                  data-emoji="⚠️"
+                >
+                  <span class="cat-ic">⚠️</span>
+                  <h3>Dispute of Delivery</h3>
+                  <p>Marked delivered but not received</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="POD Request"
+                  data-emoji="📄"
+                >
+                  <span class="cat-ic">📄</span>
+                  <h3>POD Request</h3>
+                  <p>Request proof of delivery</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="ATL Image Request"
+                  data-emoji="📷"
+                >
+                  <span class="cat-ic">📷</span>
+                  <h3>ATL Image Request</h3>
+                  <p>Photo of where the item was left</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="Redelivery Request"
+                  data-emoji="🔁"
+                >
+                  <span class="cat-ic">🔁</span>
+                  <h3>Redelivery Request</h3>
+                  <p>Arrange another delivery attempt</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="Return To Sender Request"
+                  data-emoji="↩️"
+                >
+                  <span class="cat-ic">↩️</span>
+                  <h3>Return To Sender Request</h3>
+                  <p>Send the item back to the sender</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="General Enquiry"
+                  data-emoji="💬"
+                >
+                  <span class="cat-ic">💬</span>
+                  <h3>General Enquiry</h3>
+                  <p>Any other question about your item</p>
+                  <span class="cat-check">✓</span>
+                </button>
+                <button
+                  type="button"
+                  class="cat-card"
+                  role="radio"
+                  aria-checked="false"
+                  data-value="Other"
+                  data-emoji="❓"
+                >
+                  <span class="cat-ic">❓</span>
+                  <h3>Other</h3>
+                  <p>Something not listed above</p>
+                  <span class="cat-check">✓</span>
+                </button>
+              </div>
+              <div class="field-error-msg" id="catError">
+                Please choose an option to continue.
+              </div>
+            </div>
+
+            <!-- ===== STEP 2 : Barcode ===== -->
+            <div class="step" data-step="2">
+              <div class="context-chip" data-context></div>
+              <div class="step-title">Enter your barcode</div>
+              <p class="step-sub">
+                Type or paste the barcode or connote number from your label or
+                tracking email. We'll look up the parcel so you don't have to
+                re-type the details.
+              </p>
+              <div class="field-group">
+                <label class="field-label" for="barcode"
+                  >Barcode / connote number <span class="req">*</span></label
+                >
+                <div class="lookup-row">
+                  <input
+                    type="text"
+                    class="field-input"
+                    id="barcode"
+                    placeholder="e.g. MP0012345678 or 7XX1234567"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                  <button type="button" class="lookup-btn" id="lookupBtn">
+                    <span>🔍</span> Look up
+                  </button>
+                </div>
+                <div class="lookup-status" id="lookupStatus"></div>
+                <p class="field-hint">
+                  Can't find your barcode? You can still continue — just enter
+                  the receiver details manually on the next step.
+                </p>
+              </div>
+            </div>
+
+            <!-- ===== STEP 3 : Receiver ===== -->
+            <div class="step" data-step="3">
+              <div class="context-chip" data-context></div>
+              <div class="step-title">Receiver details</div>
+              <p class="step-sub">
+                Here's what we have for the recipient of this parcel. If
+                anything's not right, edit it so we're chasing the correct
+                delivery.
+              </p>
+
+              <div class="receiver-summary" id="receiverSummary">
+                <div class="rs-head">
+                  <h4>📦 Delivering to</h4>
+                  <span class="rs-badge" id="rsSource">From barcode</span>
+                </div>
+                <div class="rs-grid">
+                  <div class="rs-field">
+                    <div class="rs-k">Name</div>
+                    <div class="rs-v" id="rsName">—</div>
+                  </div>
+                  <div class="rs-field">
+                    <div class="rs-k">Company</div>
+                    <div class="rs-v" id="rsCompany">—</div>
+                  </div>
+                  <div class="rs-field">
+                    <div class="rs-k">Phone</div>
+                    <div class="rs-v" id="rsPhone">—</div>
+                  </div>
+                  <div class="rs-field">
+                    <div class="rs-k">Email</div>
+                    <div class="rs-v" id="rsEmail">—</div>
+                  </div>
+                  <div class="rs-field full">
+                    <div class="rs-k">Address</div>
+                    <div class="rs-v" id="rsAddress">—</div>
+                  </div>
+                </div>
+                <div class="rs-actions">
+                  <button type="button" class="link-btn" id="editReceiverBtn">
+                    ✏️ Details are incorrect — edit
+                  </button>
+                </div>
+              </div>
+
+              <div class="receiver-edit" id="receiverEdit">
+                <div class="edit-callout">
+                  Update whatever's wrong below. The address field uses Google
+                  address suggestions — start typing and pick the match.
+                </div>
+                <div class="field-row">
+                  <div class="field-group">
+                    <label class="field-label" for="rName"
+                      >Receiver name <span class="req">*</span></label
+                    >
+                    <input type="text" class="field-input" id="rName" />
+                  </div>
+                  <div class="field-group">
+                    <label class="field-label" for="rCompany"
+                      >Company <span class="opt">(optional)</span></label
+                    >
+                    <input type="text" class="field-input" id="rCompany" />
+                  </div>
+                </div>
+                <div class="field-row">
+                  <div class="field-group">
+                    <label class="field-label" for="rPhone"
+                      >Receiver phone <span class="opt">(optional)</span></label
+                    >
+                    <input type="tel" class="field-input" id="rPhone" />
+                  </div>
+                  <div class="field-group">
+                    <label class="field-label" for="rEmail"
+                      >Receiver email <span class="opt">(optional)</span></label
+                    >
+                    <input type="email" class="field-input" id="rEmail" />
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="rAddress"
+                    >Receiver address <span class="req">*</span></label
+                  >
+                  <div class="addr-wrap">
+                    <span class="addr-pin" aria-hidden="true">📍</span>
+                    <input
+                      type="text"
+                      class="field-input addr-input"
+                      id="rAddress"
+                      placeholder="Start typing the delivery address…"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <p class="pac-note" id="pacNote">
+                    Powered by Google · start typing to see suggestions
+                  </p>
+                </div>
+                <div class="rs-actions">
+                  <button
+                    type="button"
+                    class="link-btn subtle"
+                    id="cancelEditBtn"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+              <div class="field-error-msg" id="receiverError">
+                Please provide the receiver name and address.
+              </div>
+            </div>
+
+            <!-- ===== STEP 4 : Enquirer ===== -->
+            <div class="step" data-step="4">
+              <div class="context-chip" data-context></div>
+              <div class="step-title">Your details</div>
+              <p class="step-sub">
+                So we can get back to you with an update. We'll only use these
+                to respond to this ticket.
+              </p>
+              <div class="field-group">
+                <label class="field-label" for="eName"
+                  >Your name <span class="req">*</span></label
+                >
+                <input type="text" class="field-input" id="eName" />
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label class="field-label" for="eEmail"
+                    >Email <span class="req">*</span></label
+                  >
+                  <input
+                    type="email"
+                    class="field-input"
+                    id="eEmail"
+                    placeholder="you@example.com.au"
+                  />
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="ePhone"
+                    >Phone <span class="req">*</span></label
+                  >
+                  <input
+                    type="tel"
+                    class="field-input"
+                    id="ePhone"
+                    placeholder="04XX XXX XXX"
+                  />
+                </div>
+              </div>
+              <div class="field-error-msg" id="enquirerError">
+                Please fill in your name, a valid email and a phone number.
+              </div>
+            </div>
+
+            <!-- ===== STEP 5 : Freight ===== -->
+            <div class="step" data-step="5">
+              <div class="context-chip" data-context></div>
+              <div class="step-title">Freight details</div>
+              <p class="step-sub">
+                Tell us about the item and what's happened — number of items,
+                contents, what the tracking shows, dates, or anything relevant
+                to the delivery.
+              </p>
+              <div class="field-group">
+                <label class="field-label" for="freightNotes"
+                  >Notes on the freight <span class="req">*</span></label
+                >
+                <textarea
+                  class="field-textarea"
+                  id="freightNotes"
+                  rows="6"
+                  placeholder="e.g. 1 carton, approx 8kg — office supplies. Last scan was 'In transit Sydney' on Mon. Expected by Wed but nothing since…"
+                ></textarea>
+                <p class="field-hint">
+                  The more detail you give here, the faster we can resolve it.
+                </p>
+              </div>
+              <div class="field-error-msg" id="freightError">
+                Please add a few details about the freight.
+              </div>
+            </div>
+
+            <!-- ===== STEP 6 : Additional notes + review ===== -->
+            <div class="step" data-step="6">
+              <div class="context-chip" data-context></div>
+              <div class="step-title">Anything else?</div>
+              <p class="step-sub">
+                Add any additional notes, then review your ticket before
+                sending.
+              </p>
+              <div class="field-group">
+                <label class="field-label" for="additionalNotes"
+                  >Additional notes <span class="opt">(optional)</span></label
+                >
+                <textarea
+                  class="field-textarea"
+                  id="additionalNotes"
+                  rows="4"
+                  placeholder="Preferred contact time, safe-drop instructions, authority to leave, anything else we should know…"
+                ></textarea>
+              </div>
+
+              <div class="review-card" id="reviewCard">
+                <div class="review-row">
+                  <div class="rv-k">Help topic</div>
+                  <div class="rv-v" id="rvTopic"></div>
+                </div>
+                <div class="review-row">
+                  <div class="rv-k">Barcode / connote</div>
+                  <div class="rv-v mono" id="rvBarcode"></div>
+                </div>
+                <div class="review-row">
+                  <div class="rv-k">Receiver</div>
+                  <div class="rv-v" id="rvReceiver"></div>
+                </div>
+                <div class="review-row">
+                  <div class="rv-k">Enquirer</div>
+                  <div class="rv-v" id="rvEnquirer"></div>
+                </div>
+                <div class="review-row">
+                  <div class="rv-k">Freight notes</div>
+                  <div class="rv-v" id="rvFreight"></div>
+                </div>
+                <div class="review-row">
+                  <div class="rv-k">Additional notes</div>
+                  <div class="rv-v" id="rvAdditional"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== SUCCESS ===== -->
+            <div class="form-success" id="ticketSuccess">
+              <div class="fs-ic">✓</div>
+              <h3>Your ticket is in.</h3>
+              <p>
+                Thanks — we've logged your enquiry and our team is on it. You'll
+                get an email confirmation shortly, and an update within one
+                business day.
+              </p>
+              <div class="ticket-ref">🎫 <span id="ticketRef">—</span></div>
+              <p style="margin-top: 16px">
+                Need us sooner? Call <strong>1300 65 65 95</strong>, Mon–Fri
+                9am–5pm AEST.
+              </p>
+            </div>
+          </div>
+
+          <!-- ===== NAV BAR ===== -->
+          <div class="wizard-nav" id="wizardNav">
+            <button
+              type="button"
+              class="btn btn-ghost"
+              id="backBtn"
+              style="visibility: hidden"
+            >
+              ← Back
+            </button>
+            <div class="nav-spacer"></div>
+            <button type="button" class="btn btn-primary" id="nextBtn">
+              Continue →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= FOOTER ============= -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <span class="mail">mail</span><span class="plus">plus</span>
+            </div>
+            <p>
+              An Australian courier and parcel delivery network for small to
+              medium sized business, founded in 1997. Express delivery, Post
+              Office collect &amp; lodge, and local hand-to-hand delivery —
+              backed by local owner-operators.
+            </p>
+            <a href="tel:1300656595" class="footer-phone"
+              ><span>📞</span> 1300 65 65 95</a
+            >
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="/express-delivery">Express Delivery</a></li>
+              <li>
+                <a href="/post-office-collect-lodge"
+                  >Post Office Collect &amp; Lodge</a
+                >
+              </li>
+              <li><a href="/local-delivery">Hand-to-Hand Delivery</a></li>
+              <li><a href="/shipmate">ShipMate</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="/track">Track a Parcel</a></li>
+              <li><a href="/support-ticket">Raise a Ticket</a></li>
+              <li><a href="/faqs">FAQs</a></li>
+              <li><a href="tel:1300656595">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about">About MailPlus</a></li>
+              <li><a href="/franchise">Become a Franchisee</a></li>
+            </ul>
+            <address class="footer-address">
+              <span class="fa-label">Head office</span>
+              <span>L16, 175 Pitt Street,<br />Sydney NSW 2000</span>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 MailPlus Pty Ltd.</p>
+          <span class="footer-hours">Mon–Fri 9am–5pm AEST</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= CONFIG ================= -->
+    <script>
+      /* =========================================================================
+     INTEGRATION CONFIG  — fill these in to go live.
+     Until keys are provided the page runs in DEMO MODE with mock data so the
+     whole flow is testable. Search for "DEMO MODE" below to see the fallbacks.
+     ========================================================================= */
+      window.SUPPORT_TICKET_CONFIG = {
+        // ---- Firebase (prospectplus-application) ----
+        // From Firebase console → Project settings → Web app config.
+        firebase: {
+          apiKey: "", // TODO
+          authDomain: "prospectplus-application.firebaseapp.com",
+          projectId: "prospectplus-application",
+          storageBucket: "prospectplus-application.appspot.com",
+          messagingSenderId: "", // TODO
+          appId: "" // TODO
+        },
+        // Firestore collection holding packages, and the field(s) that store the
+        // barcode / connote. We query each candidate field until one matches.
+        packagesCollection: "packages",
+        barcodeFields: [
+          "barcode",
+          "connote",
+          "connoteNumber",
+          "trackingNumber",
+          "barcodeNumber",
+          "articleId"
+        ],
+        // Collection to write submitted tickets into (leave "" to POST to an endpoint instead).
+        ticketsCollection: "supportTickets",
+        // Optional: a Cloud Function / API endpoint to POST the ticket to instead of writing Firestore directly.
+        ticketEndpoint: "",
+
+        // ---- Google Places ----
+        // Maps JavaScript API key with Places library enabled + HTTP referrer restrictions.
+        googleMapsApiKey: "" // TODO
+      };
+    </script>
+
+    <!-- ================= APP LOGIC ================= -->
+    <script>
+      (function () {
+        "use strict";
+        const CFG = window.SUPPORT_TICKET_CONFIG;
+
+        /* ---------- Header interactions (shared) ---------- */
+        const servicesDd = document.getElementById("servicesDd");
+        const servicesBtn = document.getElementById("servicesBtn");
+        if (servicesDd && servicesBtn) {
+          servicesBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const open = servicesDd.classList.toggle("open");
+            servicesBtn.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+          document.addEventListener("click", (e) => {
+            if (!servicesDd.contains(e.target)) {
+              servicesDd.classList.remove("open");
+              servicesBtn.setAttribute("aria-expanded", "false");
+            }
+          });
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+              servicesDd.classList.remove("open");
+              servicesBtn.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
+        const hamburger = document.getElementById("hamburger");
+        const mobileNav = document.getElementById("mobileNav");
+        if (hamburger && mobileNav) {
+          hamburger.addEventListener("click", () => {
+            const open = mobileNav.classList.toggle("open");
+            hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+            hamburger.textContent = open ? "✕" : "☰";
+          });
+        }
+
+        /* ---------- Wizard state ---------- */
+        const TOTAL = 6;
+        const STEP_LABELS = [
+          "What can we help with?",
+          "Enter your barcode",
+          "Receiver details",
+          "Your details",
+          "Freight details",
+          "Anything else?"
+        ];
+        let current = 1;
+        const state = {
+          topic: "",
+          topicEmoji: "",
+          barcode: "",
+          receiverSource: "manual", // 'barcode' | 'manual' | 'edited'
+          receiver: {
+            name: "",
+            company: "",
+            phone: "",
+            email: "",
+            address: "",
+            place: null
+          },
+          enquirer: { name: "", email: "", phone: "" },
+          freightNotes: "",
+          additionalNotes: ""
+        };
+
+        const $ = (id) => document.getElementById(id);
+        const steps = Array.from(document.querySelectorAll(".step"));
+        const stepperItems = Array.from(
+          document.querySelectorAll(".stepper li")
+        );
+        const backBtn = $("backBtn");
+        const nextBtn = $("nextBtn");
+        const stepperMobile = $("stepperMobile");
+
+        function renderStepper() {
+          stepperItems.forEach((li) => {
+            const n = parseInt(li.dataset.step, 10);
+            li.classList.toggle("active", n === current);
+            li.classList.toggle("done", n < current);
+          });
+          stepperMobile.textContent = `Step ${current} of ${TOTAL} · ${STEP_LABELS[current - 1]}`;
+        }
+
+        function renderContextChips() {
+          document.querySelectorAll("[data-context]").forEach((el) => {
+            if (!state.topic) {
+              el.style.display = "none";
+              return;
+            }
+            el.style.display = "inline-flex";
+            el.innerHTML = `<span class="cc-emoji">${state.topicEmoji}</span> <span><strong>${escapeHtml(state.topic)}</strong></span> <button type="button" class="cc-edit" data-goto1>Change</button>`;
+          });
+        }
+
+        function showStep(n) {
+          current = n;
+          steps.forEach((s) =>
+            s.classList.toggle("active", parseInt(s.dataset.step, 10) === n)
+          );
+          $("ticketSuccess").classList.remove("show");
+          $("wizardNav").style.display = "flex";
+          backBtn.style.visibility = n === 1 ? "hidden" : "visible";
+          nextBtn.textContent = n === TOTAL ? "Submit ticket ✓" : "Continue →";
+          renderStepper();
+          renderContextChips();
+          if (n === 6) renderReview();
+          window.scrollTo({
+            top: document.querySelector(".stepper-wrap").offsetTop - 20,
+            behavior: "smooth"
+          });
+        }
+
+        /* ---------- Step 1: category cards ---------- */
+        const catGrid = $("catGrid");
+        catGrid.querySelectorAll(".cat-card").forEach((card) => {
+          const select = () => {
+            catGrid.querySelectorAll(".cat-card").forEach((c) => {
+              c.classList.remove("selected");
+              c.setAttribute("aria-checked", "false");
+            });
+            card.classList.add("selected");
+            card.setAttribute("aria-checked", "true");
+            state.topic = card.dataset.value;
+            state.topicEmoji = card.dataset.emoji;
+            $("catError").classList.remove("show");
+          };
+          card.addEventListener("click", select);
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              select();
+            }
+          });
+        });
+
+        // "Change" chip jumps back to step 1
+        document.addEventListener("click", (e) => {
+          if (e.target.matches("[data-goto1]")) showStep(1);
+        });
+
+        /* ---------- Step 2: barcode lookup ---------- */
+        const barcodeInput = $("barcode");
+        const lookupBtn = $("lookupBtn");
+        const lookupStatus = $("lookupStatus");
+        let lookupDone = false;
+
+        function setStatus(kind, html) {
+          lookupStatus.className = "lookup-status show " + kind;
+          lookupStatus.innerHTML = html;
+        }
+
+        lookupBtn.addEventListener("click", doLookup);
+        barcodeInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            doLookup();
+          }
+        });
+        barcodeInput.addEventListener("input", () => {
+          lookupDone = false;
+        });
+
+        async function doLookup() {
+          const code = barcodeInput.value.trim();
+          if (!code) {
+            setStatus("error", "⚠️ Please enter a barcode or connote number.");
+            return;
+          }
+          state.barcode = code;
+          lookupBtn.disabled = true;
+          setStatus(
+            "searching",
+            '<span class="spin"></span> Looking up your parcel…'
+          );
+          try {
+            const pkg = await lookupPackage(code);
+            if (pkg) {
+              applyReceiver(pkg, "barcode");
+              setStatus(
+                "ok",
+                "✓ Parcel found — we've pre-filled the receiver details on the next step."
+              );
+            } else {
+              applyReceiver(null, "manual");
+              setStatus(
+                "error",
+                "We couldn't find that barcode. No problem — continue and enter the receiver details manually."
+              );
+            }
+            lookupDone = true;
+          } catch (err) {
+            console.error("[support-ticket] lookup failed:", err);
+            applyReceiver(null, "manual");
+            setStatus(
+              "error",
+              "Lookup is unavailable right now. Continue and enter the receiver details manually."
+            );
+            lookupDone = true;
+          } finally {
+            lookupBtn.disabled = false;
+          }
+        }
+
+        /* ---------- Step 3: receiver ---------- */
+        const receiverSummary = $("receiverSummary");
+        const receiverEdit = $("receiverEdit");
+        const editReceiverBtn = $("editReceiverBtn");
+        const cancelEditBtn = $("cancelEditBtn");
+
+        function applyReceiver(pkg, source) {
+          if (pkg) {
+            state.receiver.name = pkg.name || "";
+            state.receiver.company = pkg.company || "";
+            state.receiver.phone = pkg.phone || "";
+            state.receiver.email = pkg.email || "";
+            state.receiver.address = pkg.address || "";
+          }
+          state.receiverSource = source;
+          renderReceiverSummary();
+          // mirror into edit fields
+          $("rName").value = state.receiver.name;
+          $("rCompany").value = state.receiver.company;
+          $("rPhone").value = state.receiver.phone;
+          $("rEmail").value = state.receiver.email;
+          $("rAddress").value = state.receiver.address;
+          // If nothing was found, open the editor by default so the user can fill it in.
+          if (source === "manual") openEditor(true);
+          else openEditor(false);
+        }
+
+        function renderReceiverSummary() {
+          const r = state.receiver;
+          $("rsName").textContent = r.name || "—";
+          $("rsCompany").textContent = r.company || "—";
+          $("rsPhone").textContent = r.phone || "—";
+          $("rsEmail").textContent = r.email || "—";
+          $("rsAddress").textContent = r.address || "—";
+          const badge = $("rsSource");
+          if (state.receiverSource === "barcode") {
+            badge.textContent = "From barcode";
+            badge.style.background = "var(--accent-tint)";
+            badge.style.color = "#2F7A3C";
+          } else if (state.receiverSource === "edited") {
+            badge.textContent = "Edited";
+            badge.style.background = "var(--warn-tint)";
+            badge.style.color = "#8A6D00";
+          } else {
+            badge.textContent = "Manual entry";
+            badge.style.background = "var(--info-tint)";
+            badge.style.color = "var(--brand)";
+          }
+          // Hide the read-only summary entirely when we have nothing to show.
+          const hasAny = r.name || r.company || r.phone || r.email || r.address;
+          receiverSummary.style.display = hasAny ? "block" : "none";
+        }
+
+        function openEditor(show) {
+          receiverEdit.classList.toggle("show", show);
+          if (show) initPlaces();
+        }
+        editReceiverBtn.addEventListener("click", () => openEditor(true));
+        cancelEditBtn.addEventListener("click", () => {
+          // revert edit fields to stored values
+          $("rName").value = state.receiver.name;
+          $("rCompany").value = state.receiver.company;
+          $("rPhone").value = state.receiver.phone;
+          $("rEmail").value = state.receiver.email;
+          $("rAddress").value = state.receiver.address;
+          openEditor(false);
+        });
+
+        function commitReceiverEdits() {
+          if (!receiverEdit.classList.contains("show")) return; // nothing to commit
+          const before = JSON.stringify(state.receiver);
+          state.receiver.name = $("rName").value.trim();
+          state.receiver.company = $("rCompany").value.trim();
+          state.receiver.phone = $("rPhone").value.trim();
+          state.receiver.email = $("rEmail").value.trim();
+          state.receiver.address = $("rAddress").value.trim();
+          if (
+            state.receiverSource === "barcode" &&
+            JSON.stringify(state.receiver) !== before
+          )
+            state.receiverSource = "edited";
+          renderReceiverSummary();
+        }
+
+        /* ---------- Step 4/5/6 field bindings ---------- */
+        function collectStepFields() {
+          state.enquirer.name = $("eName").value.trim();
+          state.enquirer.email = $("eEmail").value.trim();
+          state.enquirer.phone = $("ePhone").value.trim();
+          state.freightNotes = $("freightNotes").value.trim();
+          state.additionalNotes = $("additionalNotes").value.trim();
+        }
+
+        /* ---------- Validation per step ---------- */
+        function validateStep(n) {
+          if (n === 1) {
+            if (!state.topic) {
+              $("catError").classList.add("show");
+              return false;
+            }
+            return true;
+          }
+          if (n === 2) {
+            // Barcode is required to progress; lookup is optional (manual entry allowed).
+            if (!barcodeInput.value.trim()) {
+              setStatus(
+                "error",
+                '⚠️ Please enter a barcode or connote number (or type "N/A" if you don\'t have one).'
+              );
+              return false;
+            }
+            state.barcode = barcodeInput.value.trim();
+            if (!lookupDone) {
+              applyReceiver(
+                null,
+                state.receiverSource === "barcode" ? "barcode" : "manual"
+              );
+            }
+            return true;
+          }
+          if (n === 3) {
+            commitReceiverEdits();
+            const r = state.receiver;
+            if (!r.name || !r.address) {
+              $("receiverError").classList.add("show");
+              openEditor(true);
+              markErr($("rName"), !r.name);
+              markErr($("rAddress"), !r.address);
+              return false;
+            }
+            $("receiverError").classList.remove("show");
+            return true;
+          }
+          if (n === 4) {
+            const name = $("eName").value.trim(),
+              email = $("eEmail").value.trim(),
+              phone = $("ePhone").value.trim();
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const ok = name && emailOk && phone;
+            markErr($("eName"), !name);
+            markErr($("eEmail"), !emailOk);
+            markErr($("ePhone"), !phone);
+            $("enquirerError").classList.toggle("show", !ok);
+            return ok;
+          }
+          if (n === 5) {
+            const v = $("freightNotes").value.trim();
+            markErr($("freightNotes"), !v);
+            $("freightError").classList.toggle("show", !v);
+            return !!v;
+          }
+          return true;
+        }
+
+        function markErr(el, isErr) {
+          el.classList.toggle("err", !!isErr);
+        }
+
+        /* ---------- Nav ---------- */
+        nextBtn.addEventListener("click", () => {
+          if (!validateStep(current)) return;
+          collectStepFields();
+          if (current === TOTAL) {
+            submitTicket();
+            return;
+          }
+          showStep(current + 1);
+        });
+        backBtn.addEventListener("click", () => {
+          if (current > 1) showStep(current - 1);
+        });
+
+        /* ---------- Review ---------- */
+        function renderReview() {
+          collectStepFields();
+          const r = state.receiver,
+            e = state.enquirer;
+          $("rvTopic").innerHTML = state.topic
+            ? `${state.topicEmoji} ${escapeHtml(state.topic)}`
+            : emptyTag();
+          $("rvBarcode").textContent = state.barcode || "—";
+          const recLines = [
+            r.name,
+            r.company,
+            r.address,
+            [r.phone, r.email].filter(Boolean).join(" · ")
+          ]
+            .filter(Boolean)
+            .join("\n");
+          $("rvReceiver").innerHTML = recLines
+            ? escapeHtml(recLines)
+            : emptyTag();
+          const enqLines = [
+            e.name,
+            [e.email, e.phone].filter(Boolean).join(" · ")
+          ]
+            .filter(Boolean)
+            .join("\n");
+          $("rvEnquirer").innerHTML = enqLines
+            ? escapeHtml(enqLines)
+            : emptyTag();
+          $("rvFreight").innerHTML = state.freightNotes
+            ? escapeHtml(state.freightNotes)
+            : emptyTag();
+          $("rvAdditional").innerHTML = state.additionalNotes
+            ? escapeHtml(state.additionalNotes)
+            : emptyTag();
+        }
+        function emptyTag() {
+          return '<span class="empty">Not provided</span>';
+        }
+
+        /* ---------- Submit ---------- */
+        async function submitTicket() {
+          nextBtn.disabled = true;
+          nextBtn.textContent = "Sending…";
+          const ref = genRef();
+          const payload = {
+            ref,
+            topic: state.topic,
+            barcode: state.barcode,
+            receiver: state.receiver,
+            receiverSource: state.receiverSource,
+            enquirer: state.enquirer,
+            freightNotes: state.freightNotes,
+            additionalNotes: state.additionalNotes,
+            createdAt: new Date().toISOString(),
+            source: "support-ticket-web"
+          };
+          try {
+            await saveTicket(payload);
+          } catch (err) {
+            console.error(
+              "[support-ticket] save failed, showing success anyway (demo):",
+              err
+            );
+          }
+          $("ticketRef").textContent = ref;
+          steps.forEach((s) => s.classList.remove("active"));
+          $("wizardNav").style.display = "none";
+          $("ticketSuccess").classList.add("show");
+          stepperItems.forEach((li) => li.classList.add("done"));
+          window.scrollTo({
+            top: document.querySelector(".stepper-wrap").offsetTop - 20,
+            behavior: "smooth"
+          });
+        }
+        function genRef() {
+          const d = new Date();
+          const y = d.getFullYear().toString().slice(-2);
+          const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+          return `MP-${y}${(d.getMonth() + 1).toString().padStart(2, "0")}${d.getDate().toString().padStart(2, "0")}-${rand}`;
+        }
+
+        function escapeHtml(s) {
+          return String(s).replace(
+            /[&<>"']/g,
+            (c) =>
+              ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+              })[c]
+          );
+        }
+
+        /* =====================================================================
+     FIREBASE + GOOGLE integration (lazy-loaded, demo fallbacks)
+     ===================================================================== */
+        let _db = null,
+          _dbReady = null;
+        async function getDb() {
+          if (_db) return _db;
+          if (!CFG.firebase.apiKey) return null; // DEMO MODE — not configured
+          if (!_dbReady) {
+            _dbReady = (async () => {
+              const appMod =
+                await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+              const fsMod =
+                await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+              const app = appMod.initializeApp(CFG.firebase);
+              _db = fsMod.getFirestore(app);
+              window.__fs = fsMod; // keep helpers handy
+              return _db;
+            })();
+          }
+          return _dbReady;
+        }
+
+        // Look up a package by barcode/connote. Returns a normalised receiver object or null.
+        async function lookupPackage(code) {
+          const db = await getDb();
+          if (!db) return demoLookup(code); // DEMO MODE
+          const fs = window.__fs;
+          const col = fs.collection(db, CFG.packagesCollection);
+          for (const field of CFG.barcodeFields) {
+            try {
+              const q = fs.query(col, fs.where(field, "==", code), fs.limit(1));
+              const snap = await fs.getDocs(q);
+              if (!snap.empty) return normaliseReceiver(snap.docs[0].data());
+            } catch (e) {
+              /* field may not exist / be indexed — try the next */
+            }
+          }
+          // Fallback: some datasets use the barcode as the document id.
+          try {
+            const docSnap = await fs.getDoc(
+              fs.doc(db, CFG.packagesCollection, code)
+            );
+            if (docSnap.exists()) return normaliseReceiver(docSnap.data());
+          } catch (e) {}
+          return null;
+        }
+
+        // Map an arbitrary package document onto our receiver shape, tolerating
+        // several common field-naming conventions.
+        function normaliseReceiver(d) {
+          const pick = (...keys) => {
+            for (const k of keys) {
+              if (d[k] != null && d[k] !== "") return d[k];
+            }
+            return "";
+          };
+          const name = pick(
+            "receiverName",
+            "receiver_name",
+            "recipientName",
+            "deliverToName",
+            "toName",
+            "consigneeName",
+            "name"
+          );
+          const company = pick(
+            "receiverCompany",
+            "recipientCompany",
+            "deliverToCompany",
+            "company",
+            "businessName"
+          );
+          const phone = pick(
+            "receiverPhone",
+            "recipientPhone",
+            "deliverToPhone",
+            "toPhone",
+            "phone",
+            "mobile"
+          );
+          const email = pick(
+            "receiverEmail",
+            "recipientEmail",
+            "deliverToEmail",
+            "toEmail",
+            "email"
+          );
+          let address = pick(
+            "receiverAddress",
+            "recipientAddress",
+            "deliverToAddress",
+            "deliveryAddress",
+            "toAddress",
+            "address",
+            "destinationAddress"
+          );
+          if (address && typeof address === "object") {
+            const a = address;
+            address = [
+              a.line1 || a.address1 || a.street,
+              a.line2 || a.address2,
+              a.suburb || a.city || a.locality,
+              a.state,
+              a.postcode || a.postCode || a.zip
+            ]
+              .filter(Boolean)
+              .join(", ");
+          }
+          // Compose from parts if there's no single address field.
+          if (!address) {
+            address = [
+              pick("addressLine1", "street", "line1"),
+              pick("addressLine2", "line2"),
+              pick("suburb", "city", "locality"),
+              pick("state"),
+              pick("postcode", "postCode", "zip")
+            ]
+              .filter(Boolean)
+              .join(", ");
+          }
+          return { name, company, phone, email, address };
+        }
+
+        // ---- DEMO MODE mock dataset (used until Firebase keys are provided) ----
+        function demoLookup(code) {
+          const key = code.toUpperCase().replace(/\s+/g, "");
+          const demo = {
+            MP0012345678: {
+              name: "Sarah Nguyen",
+              company: "Northside Naturals",
+              phone: "0412 884 220",
+              email: "sarah@northsidenaturals.com.au",
+              address: "48 Chandos Street, St Leonards NSW 2065"
+            },
+            MP0099887766: {
+              name: "James O'Connor",
+              company: "",
+              phone: "0433 771 908",
+              email: "j.oconnor@example.com",
+              address: "12 Baker Lane, Richmond VIC 3121"
+            },
+            "7XX1234567": {
+              name: "Priya Sharma",
+              company: "Sharma Textiles",
+              phone: "0455 210 447",
+              email: "priya@sharmatextiles.com.au",
+              address: "203/9 Grazier Ave, Bella Vista NSW 2153"
+            }
+          };
+          // Simulate network latency.
+          return new Promise((res) =>
+            setTimeout(() => res(demo[key] || null), 750)
+          );
+        }
+
+        // ---- Persist the ticket ----
+        async function saveTicket(payload) {
+          if (CFG.ticketEndpoint) {
+            const r = await fetch(CFG.ticketEndpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+            if (!r.ok) throw new Error("endpoint " + r.status);
+            return;
+          }
+          const db = await getDb();
+          if (db && CFG.ticketsCollection) {
+            const fs = window.__fs;
+            await fs.addDoc(fs.collection(db, CFG.ticketsCollection), {
+              ...payload,
+              createdAt: fs.serverTimestamp()
+            });
+            return;
+          }
+          // DEMO MODE — nothing configured. Log and resolve so the UX still completes.
+          console.info("[support-ticket] DEMO submit — payload:", payload);
+          return new Promise((res) => setTimeout(res, 700));
+        }
+
+        /* ---- Google Places Autocomplete (lazy) ---- */
+        let _placesLoading = null,
+          _placesReady = false;
+        function initPlaces() {
+          const input = $("rAddress");
+          const note = $("pacNote");
+          if (_placesReady) return;
+          if (!CFG.googleMapsApiKey) {
+            note.textContent =
+              "Address suggestions inactive (Google Places key not set) — type the full address manually.";
+            return;
+          }
+          if (_placesLoading) return;
+          note.textContent = "Loading Google address suggestions…";
+          _placesLoading = new Promise((resolve) => {
+            window.__initPlacesCb = () => resolve();
+            const s = document.createElement("script");
+            s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(CFG.googleMapsApiKey)}&libraries=places&callback=__initPlacesCb`;
+            s.async = true;
+            s.defer = true;
+            s.onerror = () => {
+              note.textContent =
+                "Couldn't load Google suggestions — type the address manually.";
+            };
+            document.head.appendChild(s);
+          }).then(() => {
+            const ac = new google.maps.places.Autocomplete(input, {
+              componentRestrictions: { country: "au" },
+              fields: [
+                "formatted_address",
+                "address_components",
+                "geometry",
+                "place_id"
+              ],
+              types: ["address"]
+            });
+            ac.addListener("place_changed", () => {
+              const place = ac.getPlace();
+              if (place && place.formatted_address) {
+                input.value = place.formatted_address;
+                state.receiver.place = {
+                  placeId: place.place_id,
+                  lat: place.geometry?.location?.lat(),
+                  lng: place.geometry?.location?.lng()
+                };
+              }
+            });
+            _placesReady = true;
+            note.textContent =
+              "Powered by Google · start typing to see suggestions";
+          });
+        }
+
+        /* ---------- init ---------- */
+        renderContextChips();
+        renderStepper();
+      })();
+    </script>
+  </body>
+</html>
