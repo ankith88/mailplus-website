@@ -160,42 +160,6 @@ export default function ExpressDeliveryPage() {
   </div>
 </section>
 
-<section className="section" style={{"paddingTop":"0px", "paddingBottom":"24px"}}>
-  <div className="wrap">
-    <div className="surcharge-wrap" style={{"maxWidth":"900px", "margin":"0 auto"}}>
-      <div className="surcharge-card">
-        <h3 style={{"fontFamily":"var(--font-display)", "fontSize":"22px", "fontWeight":"700", "marginBottom":"18px", "color":"var(--brand)"}}>Express Delivery Specifications &amp; Timelines</h3>
-        <table className="surcharge-table">
-          <thead>
-            <tr>
-              <th scope="col">Weight Limit / Service Type</th>
-              <th scope="col">Pricing Model</th>
-              <th scope="col">Delivery Timeframe</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Standard satchels &amp; parcels (Up to 5kg)</td>
-              <td style={{"fontWeight":"600", "color":"var(--brand)"}}>National Flat-Rate</td>
-              <td>1–2 business days (95% overnight)</td>
-            </tr>
-            <tr>
-              <td>Heavy parcels (5kg to 20kg)</td>
-              <td>Custom cubic / weight rate</td>
-              <td>1–2 business days (95% overnight)</td>
-            </tr>
-            <tr>
-              <td>Local hand-to-hand delivery</td>
-              <td style={{"fontWeight":"600", "color":"var(--brand)"}}>Flat-Rate</td>
-              <td>Same-day collection &amp; delivery</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section className="section">
   <div className="wrap">
     <div className="section-head">
