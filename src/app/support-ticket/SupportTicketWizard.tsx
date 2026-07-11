@@ -209,63 +209,77 @@ export function SupportTicketWizard() {
     })
 
     try {
-      let pkg: ReceiverData | null = null
-      let billingCompany = ''
-      let billingAccount = ''
-      
-      // Try initializing Firebase
-      const isFirebaseConfigured = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
-      if (isFirebaseConfigured) {
-        const { db: firestoreDb } = getFirebaseClient()
-        const col = collection(firestoreDb, 'packages')
-        const barcodeFields = ['barcode', 'connote', 'connoteNumber', 'trackingNumber', 'barcodeNumber', 'articleId']
-        
-        for (const field of barcodeFields) {
-          try {
-            const q = query(col, where(field, '==', code), limit(1))
-            const snap = await getDocs(q)
-            if (!snap.empty) {
-              const docData = snap.docs[0].data()
-              pkg = normaliseReceiver(docData)
-              billingCompany = docData.customerCompany || docData.senderCompany || docData.clientCompany || docData.company || ''
-              billingAccount = docData.customerAccountNumber || docData.accountNumber || docData.account || ''
-              break
-            }
-          } catch (e) {
-            // Check next field
-          }
-        }
+      const res = await fetch(`/api/packages/lookup?id=${encodeURIComponent(code)}`)
 
-        if (!pkg) {
-          try {
-            const docSnap = await getDoc(doc(firestoreDb, 'packages', code))
-            if (docSnap.exists()) {
-              const docData = docSnap.data()
-              pkg = normaliseReceiver(docData)
-              billingCompany = docData.customerCompany || docData.senderCompany || docData.clientCompany || docData.company || ''
-              billingAccount = docData.customerAccountNumber || docData.accountNumber || docData.account || ''
-            }
-          } catch (e) {
-            // Ignore doc id fetch errors
-          }
+      if (res.status === 404) {
+        // Fallback to Demo Mode lookup
+        const demoPkg = await demoLookup(code)
+        if (demoPkg) {
+          setRName(demoPkg.name)
+          setRCompany(demoPkg.company)
+          setRPhone(demoPkg.phone)
+          setREmail(demoPkg.email)
+          setRAddress(demoPkg.address)
+          setCustomerCompany('MailPlus Australia')
+          setCustomerAccountNumber('MP12345')
+          setReceiverSource('barcode')
+          setShowReceiverEditor(false)
+          setLookupStatus({
+            type: 'ok',
+            text: '✓ Parcel found — we\'ve pre-filled the receiver details on the next step.'
+          })
+        } else {
+          setRName('')
+          setRCompany('')
+          setRPhone('')
+          setREmail('')
+          setRAddress('')
+          setCustomerCompany('')
+          setCustomerAccountNumber('')
+          setReceiverSource('manual')
+          setShowReceiverEditor(true)
+          setLookupStatus({
+            type: 'error',
+            text: 'We couldn\'t find that barcode. No problem — continue and enter the receiver details manually.'
+          })
         }
-      } else {
-        // Fallback to Demo Mode
-        pkg = await demoLookup(code)
-        if (pkg) {
-          billingCompany = pkg.company || 'MailPlus Australia'
-          billingAccount = 'MP12345'
-        }
+        setLookupDone(true)
+        return
       }
 
-      if (pkg) {
-        setRName(pkg.name)
-        setRCompany(pkg.company)
-        setRPhone(pkg.phone)
-        setREmail(pkg.email)
-        setRAddress(pkg.address)
-        setCustomerCompany(billingCompany)
-        setCustomerAccountNumber(billingAccount)
+      if (!res.ok) {
+        throw new Error('API lookup error')
+      }
+
+      const data = await res.json()
+      const rDetails = data.receiverFullDetails || data.receiverDetails || {}
+      const cDetails = data.customerDetails || {}
+
+      setRName(rDetails.name && rDetails.name !== 'Unknown' ? rDetails.name : '')
+      setRCompany('')
+      setRPhone(rDetails.phone || '')
+      setREmail(rDetails.email || '')
+      setRAddress(rDetails.address && rDetails.address !== 'Unknown' ? rDetails.address : '')
+      setCustomerCompany(cDetails.company || data.customerName || '')
+      setCustomerAccountNumber(cDetails.accountNumber || '')
+      setReceiverSource('barcode')
+      setShowReceiverEditor(false)
+      setLookupStatus({
+        type: 'ok',
+        text: '✓ Parcel found — we\'ve pre-filled the receiver details on the next step.'
+      })
+      setLookupDone(true)
+    } catch (err) {
+      console.warn('[support-ticket] API lookup failed, trying demo fallback:', err)
+      const demoPkg = await demoLookup(code)
+      if (demoPkg) {
+        setRName(demoPkg.name)
+        setRCompany(demoPkg.company)
+        setRPhone(demoPkg.phone)
+        setREmail(demoPkg.email)
+        setRAddress(demoPkg.address)
+        setCustomerCompany('MailPlus Australia')
+        setCustomerAccountNumber('MP12345')
         setReceiverSource('barcode')
         setShowReceiverEditor(false)
         setLookupStatus({
@@ -287,17 +301,6 @@ export function SupportTicketWizard() {
           text: 'We couldn\'t find that barcode. No problem — continue and enter the receiver details manually.'
         })
       }
-      setLookupDone(true)
-    } catch (err) {
-      console.error('[support-ticket] lookup failed:', err)
-      setReceiverSource('manual')
-      setShowReceiverEditor(true)
-      setCustomerCompany('')
-      setCustomerAccountNumber('')
-      setLookupStatus({
-        type: 'error',
-        text: 'Lookup is unavailable right now. Continue and enter the receiver details manually.'
-      })
       setLookupDone(true)
     } finally {
       setLookupLoading(false)
@@ -435,8 +438,13 @@ export function SupportTicketWizard() {
       freightNotes: freightNotes,
       customerCompany: customerCompany || rCompany || "",
       customerAccountNumber: customerAccountNumber || "",
-      newReceiverName: rName,
-      newReceiverAddress: rAddress
+      hasNewReceiverDetails: receiverSource !== 'barcode',
+      ...(receiverSource !== 'barcode' ? {
+        newReceiverName: rName,
+        newReceiverAddress: rAddress,
+        newReceiverEmail: rEmail,
+        newReceiverPhone: rPhone
+      } : {})
     }
 
     try {
