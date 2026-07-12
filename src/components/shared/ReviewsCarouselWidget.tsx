@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useId } from 'react';
 import Script from 'next/script';
 
 export default function ReviewsCarouselWidget() {
   const initialized = useRef(false);
+  const uId = useId();
+  const containerId = `reviewsio-carousel-widget-${uId.replace(/:/g, '')}`;
 
   useEffect(() => {
     const initWidget = () => {
       if (typeof window !== 'undefined' && (window as any).carouselInlineWidget && !initialized.current) {
-        const container = document.getElementById('reviewsio-carousel-widget');
+        const container = document.getElementById(containerId);
         if (container) {
           container.innerHTML = ''; // Clear any fallback static content if present
           try {
-            new (window as any).carouselInlineWidget('reviewsio-carousel-widget', {
+            new (window as any).carouselInlineWidget(containerId, {
               /*Your REVIEWS.io account ID:*/
               store: 'mailplus.com.au',
               sku: '',
@@ -210,7 +212,7 @@ export default function ReviewsCarouselWidget() {
     return () => {
       clearInterval(checkInterval);
     };
-  }, []);
+  }, [containerId]);
 
   return (
     <>
@@ -220,7 +222,7 @@ export default function ReviewsCarouselWidget() {
         src="https://widget.reviews.io/carousel-inline-iframeless/dist.js?_t=2026062223"
         strategy="afterInteractive"
       />
-      <div id="reviewsio-carousel-widget"></div>
+      <div id={containerId}></div>
     </>
   );
 }
