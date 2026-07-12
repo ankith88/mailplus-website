@@ -85,6 +85,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://mailplus.com.au',
   },
+  icons: {
+    icon: '/images/MailPlus Branding Logo - 202507.png',
+  },
   other: {
     'ai-content-policy': 'allow',
   },
