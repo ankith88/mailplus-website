@@ -138,6 +138,7 @@ export default function MailplusApiClient() {
           customerPhone: (document.getElementById('f-phone') as HTMLInputElement).value,
           customerServiceEmail: (document.getElementById('f-email') as HTMLInputElement).value,
           interestedIn: (document.getElementById('f-interest') as HTMLInputElement).value,
+          selectedServiceOption: (document.getElementById('f-interest') as HTMLInputElement).value,
           weeklyParcels: (document.getElementById('f-volume') as HTMLInputElement).value,
           bucket: 'inbound',
           address: {

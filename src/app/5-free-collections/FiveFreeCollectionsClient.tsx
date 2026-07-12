@@ -193,6 +193,7 @@ export default function FiveFreeCollectionsClient() {
         customerPhone: formFields.phone,
         customerServiceEmail: formFields.email,
         interestedIn: selectedService === 'five-free' ? '5-free' : selectedService,
+        selectedServiceOption: selectedService,
         weeklyParcels: formFields.volume,
         bucket: selectedService === 'five-free' ? '5-free-trial' : 'inbound',
         isFiveFreeCollections: selectedService === 'five-free',

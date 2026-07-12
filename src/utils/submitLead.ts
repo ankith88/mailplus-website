@@ -3,6 +3,7 @@ export interface LeadPayload {
   customerPhone: string;
   customerServiceEmail: string;
   interestedIn: string;
+  selectedServiceOption?: string;
   weeklyParcels: string;
   bucket: string;
   isFiveFreeCollections?: boolean;
