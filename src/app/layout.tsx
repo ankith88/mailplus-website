@@ -54,15 +54,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_AU',
     siteName: 'MailPlus',
-    title: 'MailPlus | Sydney Courier & Logistics',
+    title: 'MailPlus | Australian Courier & Logistics',
     description:
-      'Same-day courier, parcel delivery and mail management in Sydney. Waterloo & Alexandria depots. Real-time tracking.',
+      'Same-day courier, parcel delivery and mail management Australia-wide. Real-time tracking.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'MailPlus — Sydney Courier & Logistics',
+        alt: 'MailPlus — Australian Courier & Logistics',
       },
     ],
   },
