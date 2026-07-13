@@ -28,6 +28,16 @@ const nextConfig: NextConfig = {
         destination: '/surcharges',
         permanent: true,
       },
+      {
+        source: '/post-office-solutions',
+        destination: '/post-office-collect-lodge',
+        permanent: true,
+      },
+      {
+        source: '/tracking',
+        destination: 'https://track.mailplus.com.au/',
+        permanent: true,
+      },
     ]
   },
 };
