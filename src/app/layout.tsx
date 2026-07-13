@@ -19,15 +19,15 @@ import { FacebookPixel } from '@/components/shared/FacebookPixel'
 
 
 
-const sourceSerif = Source_Serif_4({ 
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   variable: "--font-display"
 });
-const dmSans = DM_Sans({ 
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-body"
 });
-const jetbrainsMono = JetBrains_Mono({ 
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono"
 });
@@ -35,20 +35,25 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://mailplus.com.au'),
   title: {
-    default: 'MailPlus | Sydney Courier, Parcel Delivery & Mail Management',
+    default: 'MailPlus | Australian Courier, Parcel Delivery & Mail Management',
     template: '%s | MailPlus',
   },
   description:
-    'MailPlus provides same-day courier, parcel delivery, mail management and logistics from our Waterloo and Alexandria depots in Sydney, NSW. Real-time tracking. Book online.',
+    'MailPlus provides same-day courier, parcel delivery, mail management and logistics Australia-wide. Real-time tracking. Book online.',
   keywords: [
-    'courier Sydney',
-    'same-day delivery Sydney',
-    'parcel delivery Sydney',
-    'mail management Sydney',
-    'logistics Sydney',
+    'courier Australia-wide',
+    'same-day delivery Australia-wide',
+    'parcel delivery Australia-wide',
+    'mail management Australia-wide',
+    'logistics Australia-wide',
     'MailPlus',
-    'Waterloo courier',
-    'Alexandria warehouse',
+    'Australia-wide courier',
+    'Australia-wide parcel delivery',
+    'Australia-wide mail management',
+    'Australia-wide logistics',
+    'Express parcel delivery Australia-wide',
+    'Flat-rate parcel delivery Australia-wide',
+    'Post Office collect & lodge',
   ],
   openGraph: {
     type: 'website',
