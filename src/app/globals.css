@@ -648,6 +648,36 @@ footer { background: var(--ink); color: #fff; margin-top: 64px; }
   .fact + .fact { border-top: 1px solid var(--line); }
 }
 
+/* ========== PLATFORM NOTE ========== */
+.platform-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 620px;
+  margin: 26px auto 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 16px;
+  box-shadow: var(--shadow-sm);
+}
+.platform-note .hn-ic {
+  color: var(--brand);
+  flex-shrink: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.platform-note .hn-tx {
+  flex: 1;
+}
+.platform-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 /* ========== GOOGLE PLACES AUTOCOMPLETE ========== */
 .pac-container {
   background-color: var(--card) !important;
