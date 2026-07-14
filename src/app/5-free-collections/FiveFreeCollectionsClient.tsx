@@ -496,7 +496,7 @@ export default function FiveFreeCollectionsClient() {
           <p className="platform-note">
             <span className="hn-ic" aria-hidden="true">ⓘ</span>
             <span className="hn-tx">
-              You book these local pickups in <strong>LocalMile</strong>. It&apos;s a separate platform from{' '}
+              You book these local pickups in <strong>LocalMile</strong>. It’s a separate platform from{' '}
               <strong>ShipMate</strong>, which handles Australia-wide express shipping.
             </span>
           </p>
