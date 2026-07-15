@@ -1,3 +1,7 @@
+---
+description: "Checkout a new git branch from the latest main branch"
+---
+
 # New Branch Workflow
 
 This workflow automates the process of creating a new git branch from the latest production main branch while preserving any local changes.

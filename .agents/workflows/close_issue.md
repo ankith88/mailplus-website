@@ -1,3 +1,7 @@
+---
+description: "Stage, commit with an issue reference, and push to close an issue"
+---
+
 # Close Issue Workflow
 
 This workflow automates staging modified files, committing them with a message that closes a specific issue, and pushing the active branch upstream.

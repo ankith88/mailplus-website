@@ -1,3 +1,7 @@
+---
+description: "Merge active branch to main and push to remote"
+---
+
 # Merge to Main Workflow
 
 This workflow automates safely merging the active development branch into the `main` branch, pushing the changes to GitHub with a commit message referencing an issue to trigger closing hooks, and leaving the local environment clean on the `main` branch.
