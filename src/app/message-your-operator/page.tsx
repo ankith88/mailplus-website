@@ -10,7 +10,7 @@ interface CompanyDetails {
   franchiseeEmail: string | null
 }
 
-function MessageYourOperatorContent() {
+function MessageYourDriverContent() {
   const searchParams = useSearchParams()
   const customerid = searchParams.get('customerid')
   const loginemail = searchParams.get('loginemail')
@@ -139,7 +139,7 @@ function MessageYourOperatorContent() {
           --font-mono: "JetBrains Mono", ui-monospace, monospace;
         }
 
-        .message-operator-page-container {
+        .message-driver-page-container {
           background: var(--paper);
           color: var(--ink);
           font-family: var(--font-body);
@@ -481,15 +481,15 @@ function MessageYourOperatorContent() {
         }
       `}</style>
 
-      <div className="message-operator-page-container">
+      <div className="message-driver-page-container">
         <div className="wrap">
           <div className="page-head">
             <div className="hero-eyebrow">
-              <span className="dot"></span> ShipMate &middot; Operator messaging
+              <span className="dot"></span> ShipMate &middot; Driver messaging
             </div>
-            <h1>Message your operator.</h1>
+            <h1>Message your driver.</h1>
             <p>
-              Send a quick one-way note to your local MailPlus operator &mdash; a change of parcel location, a pick-up update, parcels ready early, or a special request. Need a reply, or is it urgent? Call your operator directly, or phone <a href="tel:1300656595" style={{ color: 'var(--brand)', fontWeight: 600, textDecoration: 'none' }}>1300 65 65 95</a>.
+              Send a quick one-way note to your local MailPlus driver &mdash; a change of parcel location, a pick-up update, parcels ready early, or a special request. Need a reply, or is it urgent? Call your driver directly, or phone <a href="tel:1300656595" style={{ color: 'var(--brand)', fontWeight: 600, textDecoration: 'none' }}>1300 65 65 95</a>.
             </p>
           </div>
 
@@ -498,8 +498,8 @@ function MessageYourOperatorContent() {
               
               {/* Left Panel */}
               <div className="enquiry-left">
-                <h2>A quick note, straight to your operator.</h2>
-                <p>Your MailPlus operator is a local owner-operator &mdash; use a one-way message for everyday updates like these:</p>
+                <h2>A quick note, straight to your driver.</h2>
+                <p>Your MailPlus driver is a local owner-driver &mdash; use a one-way message for everyday updates like these:</p>
                 
                 <div className="msg-examples">
                   <div className="msg-example">
@@ -520,7 +520,7 @@ function MessageYourOperatorContent() {
                   </div>
                 </div>
 
-                <p className="one-way-note">Messages are one-way, so your operator won&rsquo;t reply here. For anything urgent or two-way, call them directly or phone us.</p>
+                <p className="one-way-note">Messages are one-way, so your driver won&rsquo;t reply here. For anything urgent or two-way, call them directly or phone us.</p>
                 
                 <div className="enquiry-contacts" style={{ marginTop: '20px' }}>
                   <a href="tel:1300656595" className="enquiry-contact">
@@ -544,7 +544,7 @@ function MessageYourOperatorContent() {
               <div className="enquiry-form">
                 {!submitted ? (
                   <form onSubmit={handleSubmit}>
-                    <p className="ef-intro">Type your update below &mdash; include times and locations so your operator has everything at a glance.</p>
+                    <p className="ef-intro">Type your update below &mdash; include times and locations so your driver has everything at a glance.</p>
                     
                     {/* Readonly Account Details */}
                     <div className="field-group">
@@ -564,7 +564,7 @@ function MessageYourOperatorContent() {
                       </div>
                       {details?.franchiseeName && (
                         <div style={{ marginTop: '16px' }}>
-                          <label className="field-label">Operator / Franchisee</label>
+                          <label className="field-label">Driver / Franchisee</label>
                           <div className="field-readonly">{details.franchiseeName}</div>
                         </div>
                       )}
@@ -594,7 +594,7 @@ function MessageYourOperatorContent() {
                           Sending...
                         </>
                       ) : (
-                        'Send to your operator →'
+                        'Send to your driver →'
                       )}
                     </button>
                   </form>
@@ -603,7 +603,7 @@ function MessageYourOperatorContent() {
                     <div className="fs-ic">✓</div>
                     <h3>Message sent.</h3>
                     <p>
-                      Your note is on its way to your local operator (<strong>{details?.franchiseeName}</strong>). Need a reply or something urgent? Call <strong>1300 65 65 95</strong>, Mon&ndash;Fri 9am&ndash;5pm AEST.
+                      Your note is on its way to your local driver (<strong>{details?.franchiseeName}</strong>). Need a reply or something urgent? Call <strong>1300 65 65 95</strong>, Mon&ndash;Fri 9am&ndash;5pm AEST.
                     </p>
                   </div>
                 )}
@@ -617,7 +617,7 @@ function MessageYourOperatorContent() {
   )
 }
 
-export default function MessageYourOperatorPage() {
+export default function MessageYourDriverPage() {
   return (
     <Suspense fallback={
       <div className="min-h-[50vh] flex items-center justify-center pt-32 pb-20 bg-[#CFE0CE]">
@@ -627,7 +627,7 @@ export default function MessageYourOperatorPage() {
         </div>
       </div>
     }>
-      <MessageYourOperatorContent />
+      <MessageYourDriverContent />
     </Suspense>
   )
 }
