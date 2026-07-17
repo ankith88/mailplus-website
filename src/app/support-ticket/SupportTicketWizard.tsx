@@ -103,6 +103,7 @@ export function SupportTicketWizard() {
   const [ticketRef, setTicketRef] = useState('—')
   const [submitting, setSubmitting] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({})
+  const [activeTicketAlert, setActiveTicketAlert] = useState<{ open: boolean; ticketNumber: string } | null>(null)
 
   // Autocomplete ref
   const addressInputRef = useRef<HTMLInputElement>(null)
@@ -252,6 +253,19 @@ export function SupportTicketWizard() {
       }
 
       const data = await res.json()
+      
+      if (data.activeTicket) {
+        setLookupStatus({
+          type: 'error',
+          text: `⚠️ An investigation is already open for this shipment - please contact CS for more information. Ticket ID: ${data.activeTicket.ticketNumber}`
+        })
+        setActiveTicketAlert({ open: true, ticketNumber: data.activeTicket.ticketNumber })
+        setRName('')
+        setRAddress('')
+        setLookupDone(false)
+        return
+      }
+
       const rDetails = data.receiverFullDetails || data.receiverDetails || {}
       const cDetails = data.customerDetails || {}
 
@@ -1041,6 +1055,31 @@ export function SupportTicketWizard() {
           </div>
         </div>
       </section>
+
+      {activeTicketAlert && activeTicketAlert.open && (
+        <div className="active-ticket-modal-overlay">
+          <div className="active-ticket-modal">
+            <div className="active-ticket-modal-header">
+              <h3>Investigation Already Open ⚠️</h3>
+            </div>
+            <div className="active-ticket-modal-body">
+              <p>An investigation is already open for this shipment - please contact CS for more information.</p>
+              <div className="active-ticket-id">
+                Ticket ID: <strong>{activeTicketAlert.ticketNumber}</strong>
+              </div>
+            </div>
+            <div className="active-ticket-modal-footer">
+              <button 
+                type="button" 
+                className="btn btn-primary"
+                onClick={() => setActiveTicketAlert(null)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
