@@ -80,7 +80,7 @@ export default function TermsPage() {
 
       <div className="terms-page">
 {/* ============= HERO ============= */}
-<section className="legal-hero">
+<section className="legal-hero" data-no-reveal>
   <div className="wrap">
     <div className="crumb"><Link href="/">Home</Link> <span>/</span> Terms &amp; Conditions</div>
     <div className="hero-eyebrow"><span className="dot"></span> Legal</div>
@@ -91,7 +91,7 @@ export default function TermsPage() {
 </section>
 
 {/* ============= ANSWER-FIRST INTRO BAND (AEO) ============= */}
-<section className="intro-band">
+<section className="intro-band" data-no-reveal>
   <div className="wrap">
     <div className="intro-band-inner">
       <div className="intro-band-label">In <span className="hl">plain English</span></div>
@@ -106,7 +106,7 @@ export default function TermsPage() {
 </section>
 
 {/* ============= TABLE OF CONTENTS ============= */}
-<section className="section" style={{ padding: '36px 0 8px' }}>
+<section className="section" style={{ padding: '36px 0 8px' }} data-no-reveal>
   <div className="wrap">
     <div className="legal-toc">
       <h2>On this page</h2>
@@ -127,7 +127,7 @@ export default function TermsPage() {
 </section>
 
 {/* ============= LEGAL BODY ============= */}
-<section className="section" style={{ paddingTop: '28px' }}>
+<section className="section" style={{ paddingTop: '28px' }} data-no-reveal>
   <div className="wrap">
     <div className="legal-body">
 
@@ -352,7 +352,7 @@ export default function TermsPage() {
 </section>
 
 {/* ============= FAQ (AEO) ============= */}
-<section className="section faq-section" id="faq" style={{ background: 'var(--paper)' }}>
+<section className="section faq-section" id="faq" style={{ background: 'var(--paper)' }} data-no-reveal>
   <div className="wrap">
     <div className="section-head">
       <div className="section-eyebrow">Frequently asked questions</div>
@@ -385,7 +385,7 @@ export default function TermsPage() {
 </section>
 
 {/* ============= CTA BAND ============= */}
-<section className="cta-band">
+<section className="cta-band" data-no-reveal>
   <div className="wrap">
     <h2>Questions about your account or these terms?</h2>
     <p>Our local support team is here to help — no long hold times, no bots. Call us Monday to Friday, 9am–5pm.</p>

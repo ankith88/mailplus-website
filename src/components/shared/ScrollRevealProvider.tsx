@@ -34,12 +34,17 @@ export function ScrollRevealProvider() {
           }
         })
       },
-      { threshold: 0.07, rootMargin: '0px 0px -56px 0px' }
+      { threshold: 0.01, rootMargin: '0px 0px -56px 0px' }
     )
 
     topLevelSections.forEach((el, i) => {
       // Skip the hero (first section) — it's already fully visible
       if (i === 0) return
+
+      // Skip elements that explicitly opt out of reveal
+      if (el.hasAttribute('data-no-reveal') || el.classList.contains('no-reveal')) {
+        return
+      }
 
       // Default variant is "up" if none is specified
       if (!el.hasAttribute('data-reveal')) {

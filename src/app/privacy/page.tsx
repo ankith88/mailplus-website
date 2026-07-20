@@ -80,7 +80,7 @@ export default function PrivacyPage() {
 
       <div className="privacy-page">
         {/* ============= HERO ============= */}
-        <section className="legal-hero">
+        <section className="legal-hero" data-no-reveal>
           <div className="wrap">
             <div className="crumb">
               <Link href="/">Home</Link> <span>/</span> Privacy Policy
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* ============= ANSWER-FIRST INTRO BAND (AEO) ============= */}
-        <section className="intro-band">
+        <section className="intro-band" data-no-reveal>
           <div className="wrap">
             <div className="intro-band-inner">
               <div className="intro-band-label">
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* ============= TABLE OF CONTENTS ============= */}
-        <section className="section" style={{ padding: '36px 0 8px' }}>
+        <section className="section" style={{ padding: '36px 0 8px' }} data-no-reveal>
           <div className="wrap">
             <div className="legal-toc">
               <h2>On this page</h2>
@@ -145,7 +145,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* ============= LEGAL BODY ============= */}
-        <section className="section" style={{ paddingTop: '28px' }}>
+        <section className="section" style={{ paddingTop: '28px' }} data-no-reveal>
           <div className="wrap">
             <div className="legal-body">
               {/* 1 */}
@@ -478,7 +478,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* ============= FAQ (AEO) ============= */}
-        <section className="section faq-section" id="faq" style={{ background: 'var(--paper)' }}>
+        <section className="section faq-section" id="faq" style={{ background: 'var(--paper)' }} data-no-reveal>
           <div className="wrap">
             <div className="section-head">
               <div className="section-eyebrow">Frequently asked questions</div>
@@ -541,7 +541,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* ============= CTA BAND ============= */}
-        <section className="cta-band">
+        <section className="cta-band" data-no-reveal>
           <div className="wrap">
             <h2>Questions about your privacy?</h2>
             <p>Contact our Customer Service team to access or correct your information, opt out of marketing, or raise a concern. Our local team is here Monday to Friday.</p>
