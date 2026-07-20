@@ -215,18 +215,18 @@ export function SupportTicketWizard() {
         // Fallback to Demo Mode lookup
         const demoPkg = await demoLookup(code)
         if (demoPkg) {
-          setRName(demoPkg.name)
-          setRCompany(demoPkg.company)
-          setRPhone(demoPkg.phone)
-          setREmail(demoPkg.email)
-          setRAddress(demoPkg.address)
+          setRName('')
+          setRCompany('')
+          setRPhone('')
+          setREmail('')
+          setRAddress('')
           setCustomerCompany('MailPlus Australia')
           setCustomerAccountNumber('MP12345')
-          setReceiverSource('barcode')
-          setShowReceiverEditor(false)
+          setReceiverSource('manual')
+          setShowReceiverEditor(true)
           setLookupStatus({
             type: 'ok',
-            text: '✓ Parcel found — we\'ve pre-filled the receiver details on the next step.'
+            text: '✓ Parcel found — please enter the receiver details on the next step.'
           })
         } else {
           setRName('')
@@ -240,7 +240,7 @@ export function SupportTicketWizard() {
           setShowReceiverEditor(true)
           setLookupStatus({
             type: 'error',
-            text: 'We couldn\'t find that barcode. No problem — continue and enter the receiver details manually.'
+            text: '⚠️ We couldn\'t find that barcode. Please enter a valid barcode to continue.'
           })
         }
         setLookupDone(true)
@@ -252,39 +252,38 @@ export function SupportTicketWizard() {
       }
 
       const data = await res.json()
-      const rDetails = data.receiverFullDetails || data.receiverDetails || {}
       const cDetails = data.customerDetails || {}
 
-      setRName(rDetails.name && rDetails.name !== 'Unknown' ? rDetails.name : '')
+      setRName('')
       setRCompany('')
-      setRPhone(rDetails.phone || '')
-      setREmail(rDetails.email || '')
-      setRAddress(rDetails.address && rDetails.address !== 'Unknown' ? rDetails.address : '')
+      setRPhone('')
+      setREmail('')
+      setRAddress('')
       setCustomerCompany(cDetails.company || data.customerName || '')
       setCustomerAccountNumber(cDetails.accountNumber || '')
-      setReceiverSource('barcode')
-      setShowReceiverEditor(false)
+      setReceiverSource('manual')
+      setShowReceiverEditor(true)
       setLookupStatus({
         type: 'ok',
-        text: '✓ Parcel found — we\'ve pre-filled the receiver details on the next step.'
+        text: '✓ Parcel found — please enter the receiver details on the next step.'
       })
       setLookupDone(true)
     } catch (err) {
       console.warn('[support-ticket] API lookup failed, trying demo fallback:', err)
       const demoPkg = await demoLookup(code)
       if (demoPkg) {
-        setRName(demoPkg.name)
-        setRCompany(demoPkg.company)
-        setRPhone(demoPkg.phone)
-        setREmail(demoPkg.email)
-        setRAddress(demoPkg.address)
+        setRName('')
+        setRCompany('')
+        setRPhone('')
+        setREmail('')
+        setRAddress('')
         setCustomerCompany('MailPlus Australia')
         setCustomerAccountNumber('MP12345')
-        setReceiverSource('barcode')
-        setShowReceiverEditor(false)
+        setReceiverSource('manual')
+        setShowReceiverEditor(true)
         setLookupStatus({
           type: 'ok',
-          text: '✓ Parcel found — we\'ve pre-filled the receiver details on the next step.'
+          text: '✓ Parcel found — please enter the receiver details on the next step.'
         })
       } else {
         setRName('')
@@ -298,7 +297,7 @@ export function SupportTicketWizard() {
         setShowReceiverEditor(true)
         setLookupStatus({
           type: 'error',
-          text: 'We couldn\'t find that barcode. No problem — continue and enter the receiver details manually.'
+          text: '⚠️ We couldn\'t find that barcode. Please enter a valid barcode to continue.'
         })
       }
       setLookupDone(true)
@@ -325,7 +324,14 @@ export function SupportTicketWizard() {
       if (!barcode.trim()) {
         setLookupStatus({
           type: 'error',
-          text: '⚠️ Please enter a barcode or connote number (or type "N/A" if you don\'t have one).'
+          text: '⚠️ Please enter a barcode or connote number.'
+        })
+        return false
+      }
+      if (lookupStatus.type !== 'ok') {
+        setLookupStatus({
+          type: 'error',
+          text: '⚠️ Please perform a successful barcode lookup before continuing.'
         })
         return false
       }
@@ -429,22 +435,23 @@ export function SupportTicketWizard() {
     
     const requestBody = {
       trackingIdentifier: barcode || "N/A",
-      issueCategory: [topic],
-      enquirySource: "Website",
+      customerCompany: customerCompany || rCompany || "Unknown Company",
+      customerAccountNumber: customerAccountNumber || "N/A",
+      receiverName: rName,
+      receiverAddress: rAddress,
+      receiverEmail: rEmail,
+      receiverPhone: rPhone,
+      source: "Website",
+      description: [freightNotes, additionalNotes].filter(Boolean).join('\n\n') || "No description provided.",
+      enquiryType: [topic],
       enquirerName: eName,
       enquirerEmail: eEmail,
       enquirerPhone: ePhone,
-      notes: additionalNotes || "No additional notes provided.",
-      freightNotes: freightNotes,
-      customerCompany: customerCompany || rCompany || "",
-      customerAccountNumber: customerAccountNumber || "",
-      hasNewReceiverDetails: receiverSource !== 'barcode',
-      ...(receiverSource !== 'barcode' ? {
-        newReceiverName: rName,
-        newReceiverAddress: rAddress,
-        newReceiverEmail: rEmail,
-        newReceiverPhone: rPhone
-      } : {})
+      hasNewReceiverDetails: true,
+      newReceiverName: rName,
+      newReceiverAddress: rAddress,
+      newReceiverEmail: rEmail,
+      newReceiverPhone: rPhone
     }
 
     try {
@@ -661,59 +668,12 @@ export function SupportTicketWizard() {
                     )}
                     <div className="step-title">Receiver details</div>
                     <p className="step-sub">
-                      Here's what we have for the recipient of this parcel. If
-                      anything's not right, edit it so we're chasing the correct
-                      delivery.
+                      For privacy reasons, receiver details are hidden. Please enter the recipient's details below to confirm the delivery address.
                     </p>
 
-                    {(rName || rCompany || rPhone || rEmail || rAddress) && !showReceiverEditor && (
-                      <div className="receiver-summary" style={{ display: 'block' }}>
-                        <div className="rs-head">
-                          <h4>📦 Delivering to</h4>
-                          <span className="rs-badge">
-                            {receiverSource === 'barcode' && 'From barcode'}
-                            {receiverSource === 'edited' && 'Edited'}
-                            {receiverSource === 'manual' && 'Manual entry'}
-                          </span>
-                        </div>
-                        <div className="rs-grid">
-                          <div className="rs-field">
-                            <div className="rs-k">Name</div>
-                            <div className="rs-v">{rName || '—'}</div>
-                          </div>
-                          <div className="rs-field">
-                            <div className="rs-k">Company</div>
-                            <div className="rs-v">{rCompany || '—'}</div>
-                          </div>
-                          <div className="rs-field">
-                            <div className="rs-k">Phone</div>
-                            <div className="rs-v">{rPhone || '—'}</div>
-                          </div>
-                          <div className="rs-field">
-                            <div className="rs-k">Email</div>
-                            <div className="rs-v">{rEmail || '—'}</div>
-                          </div>
-                          <div className="rs-field full">
-                            <div className="rs-k">Address</div>
-                            <div className="rs-v">{rAddress || '—'}</div>
-                          </div>
-                        </div>
-                        <div className="rs-actions">
-                          <button
-                            type="button"
-                            className="link-btn"
-                            onClick={() => setShowReceiverEditor(true)}
-                          >
-                            ✏️ Details are incorrect — edit
-                          </button>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className={`receiver-edit ${showReceiverEditor ? 'show' : ''}`}>
+                    <div className="receiver-edit show">
                       <div className="edit-callout">
-                        Update whatever's wrong below. The address field uses Google
-                        address suggestions — start typing and pick the match.
+                        Please provide the receiver's name and full address. The address field uses Google address suggestions — start typing and pick the match.
                       </div>
                       <div className="field-row">
                         <div className="field-group">
@@ -807,18 +767,6 @@ export function SupportTicketWizard() {
                             : 'Address suggestions inactive — type the full address manually.'}
                         </p>
                       </div>
-                      
-                      {(rName || rCompany || rPhone || rEmail || rAddress) && (
-                        <div className="rs-actions">
-                          <button
-                            type="button"
-                            className="link-btn subtle"
-                            onClick={() => setShowReceiverEditor(false)}
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      )}
                     </div>
                     
                     {(fieldErrors.rName || fieldErrors.rAddress) && (
