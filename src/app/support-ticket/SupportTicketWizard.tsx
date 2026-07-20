@@ -437,6 +437,7 @@ export function SupportTicketWizard() {
       trackingIdentifier: barcode || "N/A",
       customerCompany: customerCompany || rCompany || "Unknown Company",
       customerAccountNumber: customerAccountNumber || "N/A",
+      customerEmail: eEmail,
       receiverName: rName,
       receiverAddress: rAddress,
       receiverEmail: rEmail,
