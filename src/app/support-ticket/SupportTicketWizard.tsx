@@ -453,7 +453,7 @@ export function SupportTicketWizard() {
   async function handleSubmitTicket() {
     setSubmitting(true)
     const ref = genRef()
-    
+
     const requestBody = {
       trackingIdentifier: barcode || "N/A",
       customerCompany: customerCompany || rCompany || "Unknown Company",
@@ -665,14 +665,14 @@ export function SupportTicketWizard() {
                           <span>🔍</span> Look up
                         </button>
                       </div>
-                      
+
                       {lookupStatus.type && (
                         <div className={`lookup-status show ${lookupStatus.type}`}>
                           {lookupStatus.type === 'searching' && <span className="spin"></span>}
                           {lookupStatus.text}
                         </div>
                       )}
-                      
+
                       <p className="field-hint">
                         Can't find your barcode? You can still continue — just enter
                         the receiver details manually on the next step.
@@ -791,7 +791,7 @@ export function SupportTicketWizard() {
                         </p>
                       </div>
                     </div>
-                    
+
                     {(fieldErrors.rName || fieldErrors.rAddress) && (
                       <div className="field-error-msg show">
                         Please provide the receiver name and address.
@@ -1025,12 +1025,12 @@ export function SupportTicketWizard() {
                 An active support ticket (<strong>{activeTicket.ticketNumber || activeTicket.id}</strong>) is already open for this consignment.
               </p>
               <p>
-                To avoid duplication, you cannot create a new ticket. Please follow up on the existing ticket or contact customer support if you need further help.
+                To avoid duplication, you cannot create a new ticket. Please call customer support on 1300 65 65 95 (option 2) if you need further help.
               </p>
               <div className="mp-actions">
-                <button 
-                  type="button" 
-                  className="btn btn-primary" 
+                <button
+                  type="button"
+                  className="btn btn-primary"
                   onClick={() => setShowWarningModal(false)}
                 >
                   OK
