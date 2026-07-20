@@ -103,6 +103,8 @@ export function SupportTicketWizard() {
   const [ticketRef, setTicketRef] = useState('—')
   const [submitting, setSubmitting] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({})
+  const [activeTicket, setActiveTicket] = useState<{ id: string, ticketNumber: string } | null>(null)
+  const [showWarningModal, setShowWarningModal] = useState(false)
 
   // Autocomplete ref
   const addressInputRef = useRef<HTMLInputElement>(null)
@@ -252,6 +254,18 @@ export function SupportTicketWizard() {
       }
 
       const data = await res.json()
+
+      if (data.activeTicket) {
+        setActiveTicket(data.activeTicket)
+        setShowWarningModal(true)
+        setLookupStatus({
+          type: 'error',
+          text: `⚠️ There is already an active ticket for this parcel (${data.activeTicket.ticketNumber || data.activeTicket.id}).`
+        })
+        setLookupDone(true)
+        return
+      }
+
       const cDetails = data.customerDetails || {}
 
       setRName('')
@@ -325,6 +339,13 @@ export function SupportTicketWizard() {
         setLookupStatus({
           type: 'error',
           text: '⚠️ Please enter a barcode or connote number.'
+        })
+        return false
+      }
+      if (activeTicket) {
+        setLookupStatus({
+          type: 'error',
+          text: `⚠️ There is already an active ticket for this parcel (${activeTicket.ticketNumber || activeTicket.id}).`
         })
         return false
       }
@@ -623,6 +644,7 @@ export function SupportTicketWizard() {
                           onChange={(e) => {
                             setBarcode(e.target.value)
                             setLookupDone(false)
+                            setActiveTicket(null)
                           }}
                           placeholder="e.g. MP0012345678 or 7XX1234567"
                           autoComplete="off"
@@ -990,6 +1012,34 @@ export function SupportTicketWizard() {
           </div>
         </div>
       </section>
+
+      {activeTicket && (
+        <div className={`mp-modal-overlay ${showWarningModal ? 'open' : ''}`}>
+          <div className="mp-modal">
+            <div className="mp-modal-top">
+              <div className="mp-icon">⚠️</div>
+              <h3>Active Ticket Exists</h3>
+            </div>
+            <div className="mp-modal-body">
+              <p>
+                An active support ticket (<strong>{activeTicket.ticketNumber || activeTicket.id}</strong>) is already open for this consignment.
+              </p>
+              <p>
+                To avoid duplication, you cannot create a new ticket. Please follow up on the existing ticket or contact customer support if you need further help.
+              </p>
+              <div className="mp-actions">
+                <button 
+                  type="button" 
+                  className="btn btn-primary" 
+                  onClick={() => setShowWarningModal(false)}
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
