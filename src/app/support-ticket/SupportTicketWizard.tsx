@@ -406,7 +406,7 @@ export function SupportTicketWizard() {
 
     if (step === 5) {
       const notesVal = freightNotes.trim()
-      if (!notesVal) {
+      if (notesVal.length < 10) {
         errors.freightNotes = true
         setFieldErrors(errors)
         return false
@@ -905,7 +905,7 @@ export function SupportTicketWizard() {
                     </div>
                     {fieldErrors.freightNotes && (
                       <div className="field-error-msg show">
-                        Please add a few details about the freight.
+                        Please add a few details about the freight (minimum 10 characters).
                       </div>
                     )}
                   </div>
