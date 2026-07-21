@@ -674,8 +674,7 @@ export function SupportTicketWizard() {
                       )}
 
                       <p className="field-hint">
-                        Can't find your barcode? You can still continue — just enter
-                        the receiver details manually on the next step.
+                        Can't find your barcode? Please call customer support on 1300 65 65 95 option 2
                       </p>
                     </div>
                   </div>
