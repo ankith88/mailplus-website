@@ -3,10 +3,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Script from 'next/script'
 
-export function ReviewsCtaSection() {
-  const [step, setStep] = useState<1 | 2 | 3>(1)
+interface ReviewsCtaSectionProps {
+  defaultSelectedService?: string
+  initialStep?: 1 | 2 | 3
+}
+
+export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1 }: ReviewsCtaSectionProps) {
+  const [step, setStep] = useState<1 | 2 | 3>(initialStep)
   const [checkingArea, setCheckingArea] = useState(false)
-  const [selectedService, setSelectedService] = useState<string>('')
+  const [selectedService, setSelectedService] = useState<string>(defaultSelectedService)
   const [isSorryOpen, setIsSorryOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [serviceable, setServiceable] = useState(true)
@@ -236,7 +241,7 @@ export function ReviewsCtaSection() {
       {/* Enquiry & Progressive Form Section */}
       <section className="section" id="enquire" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <div className="enquiry-band reveal">
+          <div className="enquiry-band">
             <div className="enquiry-grid">
               <div className="enquiry-left">
                 <h2>Get your time back — starting this week.</h2>

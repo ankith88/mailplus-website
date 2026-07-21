@@ -7,7 +7,7 @@ export function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="logo">
-              <span className="mail">mail</span><span className="plus">plus</span>
+              <img src="/images/mailplus new logo solo copy.png" alt="MailPlus" style={{ height: '35px', width: 'auto', display: 'block' }} />
             </Link>
             <p>
               An Australian courier and parcel delivery network for small to medium sized business, founded in 1997. Express delivery, Post Office collect &amp; lodge, and local hand-to-hand delivery — backed by local owner-operators.

@@ -33,35 +33,28 @@ export function ExpressReviews() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-5">
+        <div className="text-center mb-8">
           <span
-            className="text-xs font-bold tracking-widest uppercase mb-4 block"
+            className="text-xs font-bold tracking-widest uppercase mb-3 block"
             style={{ color: '#EAF044' }}
           >
-            Customer Reviews
+            WHAT OUR CUSTOMERS SAY
           </span>
           <h2
             id="reviews-heading"
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold mb-6"
             style={{ color: '#ffffff' }}
           >
-            See Why Businesses{' '}
-            <span className="italic" style={{ color: '#EAF044' }}>Love Us</span>
+            Trusted by small businesses across<br />Australia.
           </h2>
-          <p
-            className="text-base max-w-xl mx-auto"
-            style={{ color: 'rgba(255,255,255,0.60)' }}
-          >
-            Our 5-star reviews speak for themselves — join other businesses that trust us for
-            top-tier service and shipping solutions.
-          </p>
-        </div>
-
-        {/* Stars bar */}
-        <div className="flex justify-center gap-1 mb-12" aria-label="5 out of 5 stars">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className="text-2xl" style={{ color: '#EAF044' }} aria-hidden="true">★</span>
-          ))}
+          <div className="inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+            <div className="flex gap-1 text-lg" style={{ color: '#EAF044' }} aria-label="5 stars">
+              ★★★★★
+            </div>
+            <div className="text-sm" style={{ color: 'rgba(255,255,255,0.80)' }}>
+              <strong style={{ color: '#ffffff', fontWeight: 700 }}>Excellent</strong> · Rated by businesses on Reviews.io
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">

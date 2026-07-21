@@ -33,15 +33,28 @@ export function PostOfficeTestimonials() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
+          <span
+            className="text-xs font-bold tracking-widest uppercase mb-3 block"
+            style={{ color: '#EAF044' }}
+          >
+            WHAT OUR CUSTOMERS SAY
+          </span>
           <h2
             id="po-reviews-heading"
-            className="text-3xl md:text-4xl font-bold"
+            className="text-3xl md:text-4xl font-bold mb-6"
             style={{ color: '#ffffff' }}
           >
-            Don&apos;t take our word for it,{' '}
-            <span className="italic" style={{ color: '#EAF044' }}>listen to our customers.</span>
+            Trusted by small businesses across<br />Australia.
           </h2>
+          <div className="inline-flex items-center justify-center gap-2.5 px-6 py-2.5 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+            <div className="flex gap-1 text-lg" style={{ color: '#EAF044' }} aria-label="5 stars">
+              ★★★★★
+            </div>
+            <div className="text-sm" style={{ color: 'rgba(255,255,255,0.80)' }}>
+              <strong style={{ color: '#ffffff', fontWeight: 700 }}>Excellent</strong> · Rated by businesses on Reviews.io
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import AboutClient from './AboutClient'
 import ReviewsCarouselWidget from '@/components/shared/ReviewsCarouselWidget'
+import ReviewsHeaderBanner from '@/components/shared/ReviewsHeaderBanner'
 import { ReviewsCtaSection } from '@/components/home/ReviewsCtaSection'
 import './styles.css'
 
@@ -292,6 +293,7 @@ export default function AboutPage() {
         {/* ============= TESTIMONIALS ============= */}
         <section className="section testimonial-section" style={{ paddingTop: 0 }}>
           <div className="wrap">
+            <ReviewsHeaderBanner />
             <ReviewsCarouselWidget />
           </div>
         </section>
