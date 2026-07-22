@@ -211,6 +211,10 @@ export default function ReviewsCarouselWidget() {
 
     return () => {
       clearInterval(checkInterval);
+      if (typeof document !== 'undefined') {
+        const popups = document.querySelectorAll('.reviews-popup, [class*="reviews-popup"], [class*="reviewsio-"]');
+        popups.forEach(el => el.remove());
+      }
     };
   }, [containerId]);
 

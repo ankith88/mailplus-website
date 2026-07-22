@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { submitLpoOwnerToNetSuite } from '@/lib/netsuite';
+import { ProgressModal } from '../../components/shared/ProgressModal';
 
 export default function LpoOwnerInfoClient() {
   const [formFields, setFormFields] = useState({
@@ -374,6 +375,7 @@ export default function LpoOwnerInfoClient() {
           </div>
         </form>
       </div>
+      <ProgressModal isOpen={submitting} />
     </main>
   );
 }

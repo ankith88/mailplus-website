@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { ProgressModal } from '../../../components/shared/ProgressModal';
 
 export default function HowWeCompareClient() {
+  const [submitting, setSubmitting] = useState(false);
   useEffect(() => {
     // Google Places Autocomplete
     let placesInterval: ReturnType<typeof setInterval>;
@@ -133,17 +135,24 @@ export default function HowWeCompareClient() {
           }]
         };
 
-        const result = await submitLead(payload);
+        setSubmitting(true);
+        try {
+          const result = await submitLead(payload);
 
-        if (checking) checking.classList.remove('show');
-        
-        if (result.success) {
-          sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
-          window.location.href = '/confirmation';
-        } else {
-          // If failed, just show a fallback success or error message inline.
-          const successMsg = document.getElementById('enquirySuccess');
-          if (successMsg) successMsg.classList.add('show');
+          if (checking) checking.classList.remove('show');
+          
+          if (result.success) {
+            sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
+            window.location.href = '/confirmation';
+          } else {
+            setSubmitting(false);
+            // If failed, just show a fallback success or error message inline.
+            const successMsg = document.getElementById('enquirySuccess');
+            if (successMsg) successMsg.classList.add('show');
+          }
+        } catch (err) {
+          console.error(err);
+          setSubmitting(false);
         }
       });
     }
@@ -154,5 +163,5 @@ export default function HowWeCompareClient() {
     };
   }, []);
 
-  return null;
+  return <ProgressModal isOpen={submitting} />;
 }

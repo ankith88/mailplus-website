@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Script from 'next/script'
+import { ProgressModal } from '../shared/ProgressModal'
 
 interface ReviewsCtaSectionProps {
   defaultSelectedService?: string
@@ -462,6 +463,7 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
           </div>
         </div>
       </div>
+      <ProgressModal isOpen={submitting} />
     </>
   )
 }

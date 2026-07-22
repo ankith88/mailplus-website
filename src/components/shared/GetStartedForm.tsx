@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import Script from 'next/script'
 import { submitToNetSuite } from '@/lib/netsuite'
 import { CustomSelect } from './CustomSelect'
+import { ProgressModal } from './ProgressModal'
 
 interface FormState {
   businessName: string
@@ -448,6 +449,7 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
           </p>
         </div>
       </form>
+      <ProgressModal isOpen={submitting} />
     </>
   )
 }

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import { ProgressModal } from '../../components/shared/ProgressModal';
 
 interface FAQ {
   q: string;
@@ -1015,6 +1016,7 @@ export default function FiveFreeCollectionsClient() {
           </div>
         </div>
       </div>
+      <ProgressModal isOpen={submitting} />
     </div>
   );
 }

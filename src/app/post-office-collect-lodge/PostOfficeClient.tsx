@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
+import { ProgressModal } from '../../components/shared/ProgressModal';
 
 const postOfficeFaqs = [
   {
@@ -677,6 +678,7 @@ export default function PostOfficeClient() {
           </div>
         </div>
       </div>
+      <ProgressModal isOpen={submitting} />
     </>
   );
 }
