@@ -71,7 +71,7 @@ export function ProgressModal({ isOpen }: ProgressModalProps) {
         justifyContent: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
         backdropFilter: 'blur(4px)',
-        padding: '16px',
+        padding: '24px',
       }}
     >
       <div 
@@ -102,26 +102,15 @@ export function ProgressModal({ isOpen }: ProgressModalProps) {
           aria-hidden="true"
         ></div>
 
-        <h1 
-          style={{
-            margin: '0 0 12px',
-            fontSize: '24px',
-            fontWeight: 700,
-            letterSpacing: '-0.01em',
-            color: '#14293b',
-          }}
-        >
-          Creating Account
-        </h1>
-
+        {/* Status Text (No title element) */}
         <p 
           style={{
             margin: '0 auto 32px',
             maxWidth: '320px',
-            minHeight: '44px',
-            fontSize: '15.5px',
+            minHeight: '48px',
+            fontSize: '17px',
             lineHeight: 1.5,
-            color: '#5f7186',
+            color: '#14293b',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
