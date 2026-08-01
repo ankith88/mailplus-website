@@ -21,15 +21,11 @@ const empty: FormState = {
   description: '',
 }
 
-const inputCls =
-  'w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-200 bg-white'
-const labelStyle = { color: '#095c7b' }
-const errorStyle = { color: '#e53e3e' }
-
 export function ShipMateSupportForm() {
   const [form, setForm] = useState<FormState>(empty)
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({})
+  const [submitting, setSubmitting] = useState(false)
 
   function set(field: keyof FormState, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }))
@@ -48,8 +44,6 @@ export function ShipMateSupportForm() {
     setErrors(e)
     return Object.keys(e).length === 0
   }
-
-  const [submitting, setSubmitting] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -75,127 +69,157 @@ export function ShipMateSupportForm() {
 
   if (submitted) {
     return (
-      <div
-        className="rounded-2xl px-8 py-14 text-center"
-        style={{ backgroundColor: '#DAE8DA' }}
-      >
-        <h2 className="text-2xl font-bold mb-5" style={{ color: '#095c7b' }}>
-          Thank you for your enquiry.
-        </h2>
-        <p className="text-sm leading-relaxed mb-8 max-w-sm mx-auto" style={{ color: '#095c7b' }}>
+      <div className="form-success show">
+        <div className="fs-ic">✓</div>
+        <h3>Thank you for your enquiry.</h3>
+        <p>
           We&apos;ll be in contact with you very soon via phone or email. Please allow up to 24
           hours. If it is the weekend, we&apos;ll be in touch the next business day.
         </p>
-        <button
-          onClick={() => { setForm(empty); setSubmitted(false); setSubmitting(false) }}
-          className="px-8 py-3 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105"
-          style={{ backgroundColor: '#095c7b', color: '#ffffff' }}
-        >
-          Submit Another Ticket
-        </button>
+        <div className="pt-6">
+          <button
+            onClick={() => {
+              setForm(empty)
+              setSubmitted(false)
+              setSubmitting(false)
+            }}
+            className="btn btn-primary px-8 py-3 font-bold text-sm"
+            style={{ backgroundColor: '#025d7c', color: '#ffffff' }}
+          >
+            Submit Another Ticket
+          </button>
+        </div>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
-
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
       {/* Company Name */}
-      <div>
+      <div className="field-group">
+        <label className="field-label" htmlFor="companyName">
+          Company Name <span className="req">*</span>
+        </label>
         <input
+          id="companyName"
           type="text"
           value={form.companyName}
           onChange={(e) => set('companyName', e.target.value)}
-          placeholder="Company Name*"
-          aria-label="Company Name"
-          className={inputCls}
-          style={{ borderColor: errors.companyName ? '#e53e3e' : 'rgba(9,92,123,0.20)' }}
+          placeholder="e.g. Acme Corporation"
+          className={`field-input ${errors.companyName ? 'err' : ''}`}
         />
-        {errors.companyName && <p className="mt-1 text-xs" style={errorStyle}>{errors.companyName}</p>}
+        {errors.companyName && <p className="field-error-msg show">{errors.companyName}</p>}
       </div>
 
       {/* First / Last Name */}
-      <div className="grid grid-cols-2 gap-4">
-        <div>
+      <div className="field-row">
+        <div className="field-group">
+          <label className="field-label" htmlFor="firstName">
+            First Name <span className="req">*</span>
+          </label>
           <input
+            id="firstName"
             type="text"
             value={form.firstName}
             onChange={(e) => set('firstName', e.target.value)}
-            placeholder="First Name*"
-            aria-label="First Name"
-            className={inputCls}
-            style={{ borderColor: errors.firstName ? '#e53e3e' : 'rgba(9,92,123,0.20)' }}
+            placeholder="e.g. Jane"
+            className={`field-input ${errors.firstName ? 'err' : ''}`}
           />
-          {errors.firstName && <p className="mt-1 text-xs" style={errorStyle}>{errors.firstName}</p>}
+          {errors.firstName && <p className="field-error-msg show">{errors.firstName}</p>}
         </div>
-        <div>
+        <div className="field-group">
+          <label className="field-label" htmlFor="lastName">
+            Last Name <span className="req">*</span>
+          </label>
           <input
+            id="lastName"
             type="text"
             value={form.lastName}
             onChange={(e) => set('lastName', e.target.value)}
-            placeholder="Last Name*"
-            aria-label="Last Name"
-            className={inputCls}
-            style={{ borderColor: errors.lastName ? '#e53e3e' : 'rgba(9,92,123,0.20)' }}
+            placeholder="e.g. Smith"
+            className={`field-input ${errors.lastName ? 'err' : ''}`}
           />
-          {errors.lastName && <p className="mt-1 text-xs" style={errorStyle}>{errors.lastName}</p>}
+          {errors.lastName && <p className="field-error-msg show">{errors.lastName}</p>}
         </div>
       </div>
 
       {/* Email / Phone */}
-      <div className="grid grid-cols-2 gap-4">
-        <div>
+      <div className="field-row">
+        <div className="field-group">
+          <label className="field-label" htmlFor="email">
+            Email Address <span className="req">*</span>
+          </label>
           <input
+            id="email"
             type="email"
             value={form.email}
             onChange={(e) => set('email', e.target.value)}
-            placeholder="Email Address*"
-            aria-label="Email Address"
-            className={inputCls}
-            style={{ borderColor: errors.email ? '#e53e3e' : 'rgba(9,92,123,0.20)' }}
+            placeholder="jane@company.com.au"
+            className={`field-input ${errors.email ? 'err' : ''}`}
           />
-          {errors.email && <p className="mt-1 text-xs" style={errorStyle}>{errors.email}</p>}
+          {errors.email && <p className="field-error-msg show">{errors.email}</p>}
         </div>
-        <div>
+        <div className="field-group">
+          <label className="field-label" htmlFor="phone">
+            Phone Number <span className="req">*</span>
+          </label>
           <input
+            id="phone"
             type="tel"
             value={form.phone}
             onChange={(e) => set('phone', e.target.value)}
-            placeholder="Phone Number*"
-            aria-label="Phone Number"
-            className={inputCls}
-            style={{ borderColor: errors.phone ? '#e53e3e' : 'rgba(9,92,123,0.20)' }}
+            placeholder="e.g. 0400 000 000"
+            className={`field-input ${errors.phone ? 'err' : ''}`}
           />
-          {errors.phone && <p className="mt-1 text-xs" style={errorStyle}>{errors.phone}</p>}
+          {errors.phone && <p className="field-error-msg show">{errors.phone}</p>}
         </div>
       </div>
 
       {/* Brief Description */}
-      <div>
-        <input
-          type="text"
+      <div className="field-group">
+        <label className="field-label" htmlFor="description">
+          Brief Description <span className="req">*</span>
+        </label>
+        <textarea
+          id="description"
+          rows={4}
           value={form.description}
           onChange={(e) => set('description', e.target.value)}
-          placeholder="Brief Description*"
-          aria-label="Brief Description"
-          className={inputCls}
-          style={{ borderColor: errors.description ? '#e53e3e' : 'rgba(9,92,123,0.20)' }}
+          placeholder="Please describe your enquiry, Shopify order sync, or label issue in detail..."
+          className={`field-input field-textarea ${errors.description ? 'err' : ''}`}
         />
-        {errors.description && <p className="mt-1 text-xs" style={errorStyle}>{errors.description}</p>}
+        {errors.description && <p className="field-error-msg show">{errors.description}</p>}
       </div>
 
       {/* Submit */}
-      <div className="flex justify-center pt-2">
+      <div className="flex justify-center pt-3">
         <button
           type="submit"
           disabled={submitting}
-          className="px-14 py-4 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+          className="btn btn-primary px-12 py-3.5 text-base font-bold transition-all duration-200 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
           style={{ backgroundColor: '#EAF044', color: '#103d39' }}
         >
-          {submitting ? 'Submitting…' : 'Submit'}
+          {submitting ? 'Submitting…' : 'Submit Ticket'}
         </button>
       </div>
 
+      {/* Direct Contact CTA */}
+      <div className="text-center text-sm pt-6 mt-6 border-t border-slate-100" style={{ color: 'var(--ink-2)' }}>
+        <p className="flex items-center justify-center gap-1.5 mb-1 font-medium">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
+          </svg>
+          Want to chat now?
+        </p>
+        <p>
+          Call{' '}
+          <a href="tel:1300656595" className="font-bold hover:underline" style={{ color: 'var(--brand)' }}>
+            1300 65 65 95
+          </a>{' '}
+          Mon–Fri 9am–5pm AEST.
+        </p>
+      </div>
     </form>
   )
 }
+

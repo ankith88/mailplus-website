@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ShipMateSupportForm } from '@/components/shipmate-support-ticket/ShipMateSupportForm'
+import '@/app/support-ticket/styles.css'
 
 export const metadata: Metadata = {
   title: 'ShipMate Support Ticket | MailPlus',
@@ -10,27 +12,45 @@ export const metadata: Metadata = {
 
 export default function ShipMateSupportTicketPage() {
   return (
-    <section
-      className="min-h-screen px-6 py-32 flex items-center justify-center"
-      style={{ backgroundColor: '#DAE8DA' }}
-      aria-label="ShipMate support ticket form"
-    >
-      <div className="w-full max-w-2xl">
-        <div className="text-center mb-10">
-          <h1
-            className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
-            style={{ color: '#095c7b', fontFamily: 'var(--font-display)' }}
-          >
-            Need some ShipMate assistance?
+    <>
+      {/* ============= BREADCRUMB ============= */}
+      <div className="wrap">
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+          <Link href="/">Home</Link>
+          <span className="sep">/</span>
+          <Link href="/support-ticket">Support</Link>
+          <span className="sep">/</span>
+          <span>ShipMate Support Ticket</span>
+        </nav>
+      </div>
+
+      {/* ============= HERO ============= */}
+      <section className="ticket-hero">
+        <div className="wrap">
+          <div className="hero-eyebrow">
+            <span className="dot"></span> ShipMate support
+          </div>
+          <h1>
+            Need some <span className="hl">ShipMate assistance?</span>
           </h1>
-          <p className="text-base leading-relaxed" style={{ color: 'rgba(9,92,123,0.80)' }}>
+          <p>
             Please fill in the details on this form, and our support team will
             get back to you ASAP via phone or email.
           </p>
         </div>
+      </section>
 
-        <ShipMateSupportForm />
-      </div>
-    </section>
+      {/* ============= FORM CONTAINER ============= */}
+      <section className="wizard-section">
+        <div className="wrap-narrow">
+          <div className="wizard">
+            <div className="wizard-body">
+              <ShipMateSupportForm />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }
+
