@@ -97,7 +97,7 @@ export default function FranchiseeClient() {
     // Franchise enquiry submit
     const formSubmitBtn = document.querySelector('.form-submit');
     if (formSubmitBtn) {
-      formSubmitBtn.addEventListener('click', (e) => {
+      formSubmitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const required = ['f-fname','f-lname','f-email','f-phone','f-interest','f-vehicle','f-experience'];
         let ok = true;
@@ -113,6 +113,33 @@ export default function FranchiseeClient() {
           }
         });
         if (!ok) return;
+
+        // Collect form fields
+        const fname = (document.getElementById('f-fname') as HTMLInputElement)?.value || '';
+        const lname = (document.getElementById('f-lname') as HTMLInputElement)?.value || '';
+        const email = (document.getElementById('f-email') as HTMLInputElement)?.value || '';
+        const phone = (document.getElementById('f-phone') as HTMLInputElement)?.value || '';
+        const location = (document.getElementById('f-location') as HTMLSelectElement)?.value || '';
+        const vehicle = (document.getElementById('f-vehicle') as HTMLSelectElement)?.value || '';
+        const experience = (document.getElementById('f-experience') as HTMLSelectElement)?.value || '';
+
+        // Post submission to Prospect+ Ingestion API
+        try {
+          await fetch('https://prospectplus.mailplus.com.au/api/public/become-a-franchisee', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: fname,
+              lastName: lname,
+              email: email,
+              phone: phone,
+              preferredTerritory: location,
+              message: `Vehicle: ${vehicle} | Experience: ${experience}`,
+            }),
+          });
+        } catch (err) {
+          console.error('Error submitting franchise enquiry:', err);
+        }
 
         const formInner = document.getElementById('enquiryFormInner');
         const success = document.getElementById('enquirySuccess');
