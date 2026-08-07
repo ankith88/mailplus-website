@@ -38,6 +38,11 @@ const nextConfig: NextConfig = {
         destination: 'https://track.mailplus.com.au/',
         permanent: true,
       },
+      {
+        source: '/terms-conditions',
+        destination: '/terms',
+        permanent: true,
+      },
     ]
   },
 };
