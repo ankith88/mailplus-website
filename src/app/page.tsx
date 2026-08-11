@@ -37,7 +37,7 @@ const homeFaqs = [
   },
   {
     question: 'How are the 5 free collections free?',
-    answer: "We'd rather show you than tell you. New business customers get five parcel collections completely free — your local owner-operator comes to you, collects, and delivers, whether that's lodging your Australia Post parcels or a hand-to-hand local delivery. No credit card and no obligation — it's the simplest way to see how much time the service saves before you commit."
+    answer: "We'd rather show you than tell you. New business customers get five parcel collections completely free — your local owner-operator comes to you, collects your parcels, and lodges them at the Post Office. No credit card and no obligation — it's the simplest way to see how much time the service saves before you commit."
   },
   {
     question: 'Why choose MailPlus over Australia Post?',

@@ -63,7 +63,7 @@ export default function FiveFreeCollectionsPage() {
       "name": "What are MailPlus 5 free collections?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It's a free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator comes to your premises and lodges your parcels at the Post Office for you. You can also use your free collections for hand-to-hand local deliveries. There's no credit card, no invoice, and no obligation to continue."
+        "text": "It's a free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator comes to your premises and lodges your parcels at the Post Office for you. There's no credit card, no invoice, and no obligation to continue."
       }
     },
     {
@@ -92,14 +92,6 @@ export default function FiveFreeCollectionsPage() {
     },
     {
       "@type": "Question",
-      "name": "Can I use the trial for local deliveries, not just the Post Office?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. As well as Post Office lodgements, your free collections can be used for hand-to-hand local deliveries — your owner-operator collects and delivers goods straight to a local recipient. You choose what each job is when you book it in LocalMile, so the trial fits the way your business actually sends."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "How soon will my parcels be collected?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -111,7 +103,7 @@ export default function FiveFreeCollectionsPage() {
       "name": "What if I already use another courier?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still driving parcels in or dropping things across town, your owner-operator can take that off your hands, alongside whatever courier you already use."
+        "text": "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still doing that run, your owner-operator can take it off your hands, alongside whatever courier you already use."
       }
     },
     {

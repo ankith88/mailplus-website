@@ -238,7 +238,7 @@ export default function FiveFreeCollectionsClient() {
   const faqs: FAQ[] = [
     {
       q: 'What are MailPlus 5 free collections?',
-      a: "It's a free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator comes to your premises and lodges your parcels at the Post Office for you. You can also use your free collections for hand-to-hand local deliveries. There's no credit card, no invoice, and no obligation to continue.",
+      a: "It's a free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator comes to your premises and lodges your parcels at the Post Office for you. There's no credit card, no invoice, and no obligation to continue.",
     },
     {
       q: 'Is there really no catch with the free collections?',
@@ -253,16 +253,12 @@ export default function FiveFreeCollectionsClient() {
       a: "Most businesses choose to keep going. If you book as you need it, ad hoc collections are $15 + GST each. If you'd rather a scheduled, regular service, your Account Manager tailors the pricing to your business during the trial. There's no lock-in, and the choice is entirely yours once you've seen the service for yourself.",
     },
     {
-      q: 'Can I use the trial for local deliveries, not just the Post Office?',
-      a: "Yes. As well as Post Office lodgements, your free collections can be used for hand-to-hand local deliveries — your owner-operator collects and delivers goods straight to a local recipient. You choose what each job is when you book it in LocalMile, so the trial fits the way your business actually sends.",
-    },
-    {
       q: 'How soon will my parcels be collected?',
       a: "During the trial, same-day collections need to be booked before 12pm, so your local owner-operator has plenty of time to fit you into their run. Book after that and your collection rolls to the next business day. Either way, you'll see it confirmed in LocalMile, so you always know a pickup is on the way.",
     },
     {
       q: 'What if I already use another courier?',
-      a: "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still driving parcels in or dropping things across town, your owner-operator can take that off your hands, alongside whatever courier you already use.",
+      a: "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still doing that run, your owner-operator can take it off your hands, alongside whatever courier you already use.",
     },
     {
       q: 'How does MailPlus collection work with my local Post Office?',
@@ -345,7 +341,7 @@ export default function FiveFreeCollectionsClient() {
           <div className="deal-card">
             <div className="deal-head">
               <h2>Here&apos;s the deal</h2>
-              <p>Free local collections — for Post Office lodgements or local deliveries.</p>
+              <p>Free collections for your Post Office lodgements — no queue, no trip.</p>
             </div>
             <div className="deal-grid">
               <div className="deal-fact">
@@ -652,7 +648,7 @@ export default function FiveFreeCollectionsClient() {
               </div>
               <div className="sr-val">
                 Your local owner-operator collects your parcels from your premises and lodges them at the Post Office for
-                you. You can also book hand-to-hand local deliveries with your free collections.
+                you.
               </div>
             </div>
             <div className="spec-row">
