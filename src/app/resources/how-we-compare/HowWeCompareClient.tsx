@@ -119,6 +119,8 @@ export default function HowWeCompareClient() {
           selectedServiceOption: (document.getElementById('f-interest') as HTMLInputElement).value,
           weeklyParcels: (document.getElementById('f-volume') as HTMLInputElement).value,
           bucket: 'inbound',
+          sourcePage: 'How We Compare',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
           address: {
             address1: '',
             street: addressEl.value,

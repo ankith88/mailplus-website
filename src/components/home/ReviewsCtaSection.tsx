@@ -197,6 +197,7 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
             ? 'Express Delivery'
             : (window.location.pathname.includes('about') ? 'About' : 'Home Page'))
           : 'Home Page',
+        pageUrl: typeof window !== 'undefined' ? window.location.href : '',
         address: {
           address1: '',
           street: location?.street || addressInputRef.current?.value || '',

@@ -143,6 +143,8 @@ export default function MailplusApiClient() {
           selectedServiceOption: (document.getElementById('f-interest') as HTMLInputElement).value,
           weeklyParcels: (document.getElementById('f-volume') as HTMLInputElement).value,
           bucket: 'inbound',
+          sourcePage: 'MailPlus API Integration',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
           address: {
             address1: '',
             street: addressEl.value,

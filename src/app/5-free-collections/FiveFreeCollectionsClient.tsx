@@ -200,6 +200,7 @@ export default function FiveFreeCollectionsClient() {
         isFiveFreeCollections: selectedService === 'five-free',
         noFranchisees: !serviceable,
         sourcePage: '5 Free Collections',
+        pageUrl: typeof window !== 'undefined' ? window.location.href : '',
         address: {
           address1: '',
           street: location?.street || addressInputRef.current?.value || '',

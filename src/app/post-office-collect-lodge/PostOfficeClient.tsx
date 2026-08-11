@@ -210,6 +210,7 @@ export default function PostOfficeClient() {
         isFiveFreeCollections: selectedService === 'five-free',
         noFranchisees: !serviceable,
         sourcePage: 'Post Office Collect & Lodge',
+        pageUrl: typeof window !== 'undefined' ? window.location.href : '',
         address: {
           address1: '',
           street: location?.street || addressInputRef.current?.value || '',

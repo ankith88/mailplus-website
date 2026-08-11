@@ -9,6 +9,7 @@ export interface LeadPayload {
   isFiveFreeCollections?: boolean;
   noFranchisees?: boolean;
   sourcePage?: string;
+  pageUrl?: string;
   address: {
     address1: string;
     street: string;
