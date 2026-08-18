@@ -35,15 +35,17 @@ export default function FiveFreeCollectionsClient() {
 
   /* ── Tab close / abandonment listener during pending submit ─ */
   useEffect(() => {
-    const handleBeforeUnload = () => {
+    const handleAbandonment = () => {
       if (isSubmittingRef.current && submitStartTimeRef.current) {
         const waitDuration = performance.now() - submitStartTimeRef.current;
         trackFormAbandonedDuringSubmission('5_free_collections', waitDuration);
       }
     };
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener('beforeunload', handleAbandonment);
+    window.addEventListener('pagehide', handleAbandonment);
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('beforeunload', handleAbandonment);
+      window.removeEventListener('pagehide', handleAbandonment);
     };
   }, []);
 

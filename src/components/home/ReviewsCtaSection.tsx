@@ -195,7 +195,11 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
         sourcePage: typeof window !== 'undefined'
           ? (window.location.pathname.includes('express-delivery')
             ? 'Express Delivery'
-            : (window.location.pathname.includes('about') ? 'About' : 'Home Page'))
+            : (window.location.pathname.includes('shipmate-platform')
+              ? 'ShipMate Platform'
+              : (window.location.pathname.includes('mailplus-api')
+                ? 'MailPlus API Integration'
+                : (window.location.pathname.includes('about') ? 'About' : 'Home Page'))))
           : 'Home Page',
         pageUrl: typeof window !== 'undefined' ? window.location.href : '',
         address: {

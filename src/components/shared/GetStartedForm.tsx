@@ -93,15 +93,17 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
 
   /* ── Tab close / abandonment listener during pending submit ─ */
   useEffect(() => {
-    const handleBeforeUnload = () => {
+    const handleAbandonment = () => {
       if (isSubmittingRef.current && submitStartTimeRef.current) {
         const waitDuration = performance.now() - submitStartTimeRef.current
         trackFormAbandonedDuringSubmission('get_started_form', waitDuration)
       }
     }
-    window.addEventListener('beforeunload', handleBeforeUnload)
+    window.addEventListener('beforeunload', handleAbandonment)
+    window.addEventListener('pagehide', handleAbandonment)
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload)
+      window.removeEventListener('beforeunload', handleAbandonment)
+      window.removeEventListener('pagehide', handleAbandonment)
     }
   }, [])
 

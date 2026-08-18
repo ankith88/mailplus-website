@@ -35,13 +35,17 @@ export function initPostHog() {
   }
 }
 
-export function captureEvent(eventName: string, properties?: Record<string, any>) {
+export function captureEvent(
+  eventName: string,
+  properties?: Record<string, any>,
+  options?: { transport?: 'sendBeacon' | 'fetch' | 'XHR' }
+) {
   if (typeof window === 'undefined') return;
   if (!isInitialized) {
     initPostHog();
   }
   try {
-    posthog.capture(eventName, properties);
+    posthog.capture(eventName, properties, options);
   } catch (e) {
     console.error('[PostHog] Event capture error:', e);
   }
@@ -149,13 +153,17 @@ export function trackFormAbandonedDuringSubmission(
   waitDurationMs: number,
   extra?: Record<string, any>
 ) {
-  captureEvent('form_abandoned_during_submission', {
-    form_id: formId,
-    wait_duration_ms: Math.round(waitDurationMs),
-    wait_duration_seconds: Math.round(waitDurationMs / 100) / 10,
-    page_url: typeof window !== 'undefined' ? window.location.href : '',
-    ...extra,
-  });
+  captureEvent(
+    'form_abandoned_during_submission',
+    {
+      form_id: formId,
+      wait_duration_ms: Math.round(waitDurationMs),
+      wait_duration_seconds: Math.round(waitDurationMs / 100) / 10,
+      page_url: typeof window !== 'undefined' ? window.location.href : '',
+      ...extra,
+    },
+    { transport: 'sendBeacon' }
+  );
 }
 
 /** Tracks confirmation page load and correlation with submit duration */

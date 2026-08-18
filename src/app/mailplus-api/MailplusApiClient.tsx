@@ -1,60 +1,14 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { ProgressModal } from '../../components/shared/ProgressModal';
+import { useEffect } from 'react';
 
 export default function MailplusApiClient() {
-  const [submitting, setSubmitting] = useState(false);
   useEffect(() => {
-    // Google Places Autocomplete
-    let placesInterval: ReturnType<typeof setInterval>;
-    const initPlaces = () => {
-      const addressInput = document.getElementById('f-address') as HTMLInputElement;
-      if (!addressInput) return;
-      if (window.google && window.google.maps && window.google.maps.places) {
-        if (placesInterval) clearInterval(placesInterval);
-        const autocomplete = new window.google.maps.places.Autocomplete(addressInput, {
-          componentRestrictions: { country: 'au' },
-          types: ['address'],
-          fields: ['address_components', 'geometry'],
-        });
-        autocomplete.addListener('place_changed', () => {
-          const place = autocomplete.getPlace();
-          if (!place || !place.address_components || !place.geometry) return;
-          let streetNumber = '';
-          let route = '';
-          let city = '';
-          let state = '';
-          let zip = '';
-          for (const component of place.address_components) {
-            const types = component.types;
-            if (types.includes('street_number')) streetNumber = component.long_name;
-            if (types.includes('route')) route = component.long_name;
-            if (types.includes('locality')) city = component.long_name;
-            if (types.includes('administrative_area_level_1')) state = component.long_name;
-            if (types.includes('postal_code')) zip = component.long_name;
-          }
-          const street = [streetNumber, route].filter(Boolean).join(' ');
-          addressInput.value = street;
-          addressInput.dataset.lat = place.geometry.location?.lat().toString() || '';
-          addressInput.dataset.lng = place.geometry.location?.lng().toString() || '';
-          addressInput.dataset.city = city;
-          addressInput.dataset.state = state;
-          addressInput.dataset.zip = zip;
-          addressInput.style.borderColor = ''; // clear error state if any
-        });
-      }
-    };
-    initPlaces();
-    if (!(window.google && window.google.maps && window.google.maps.places)) {
-      placesInterval = setInterval(initPlaces, 500);
-    }
-
     // Meet MailPlus — read more / less
     const introToggle = document.getElementById('introToggle');
     const introMore = document.getElementById('introMore');
     if (introToggle && introMore) {
-      introToggle.addEventListener('click', () => {
+      const handleIntro = () => {
         const isOpen = introMore.classList.toggle('open');
         introToggle.classList.toggle('open', isOpen);
         introToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -62,7 +16,8 @@ export default function MailplusApiClient() {
         if (textEl) textEl.textContent = isOpen ? 'Read less' : 'Read more';
         (introMore as HTMLElement).style.maxHeight = isOpen ? introMore.scrollHeight + 'px' : '';
         (introMore as HTMLElement).style.marginTop = isOpen ? '0' : '';
-      });
+      };
+      introToggle.addEventListener('click', handleIntro);
     }
 
     // FAQ accordion
@@ -108,86 +63,33 @@ export default function MailplusApiClient() {
     const heroCard = document.querySelector('.hero-card');
     if (heroCard) statObserver.observe(heroCard);
 
-    // Form submission
-    const formBtn = document.querySelector('.form-submit');
-    if (formBtn) {
-      formBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const required = ['f-fname', 'f-lname', 'f-company', 'f-address', 'f-email', 'f-phone', 'f-interest', 'f-volume'];
-        let ok = true;
-        required.forEach(id => {
-          const el = document.getElementById(id) as HTMLInputElement | HTMLSelectElement | null;
-          if (el) {
-            const wrapper = document.getElementById(`wrapper-${id}`);
-            const targetEl = wrapper ? (wrapper.querySelector('.custom-select-trigger') as HTMLElement || wrapper) : el;
-            if (!el.value.trim()) { targetEl.style.borderColor = '#E5484D'; ok = false; }
-            else { targetEl.style.borderColor = ''; }
-          }
-        });
-        if (!ok) return;
-
-        const formInner = document.getElementById('enquiryFormInner');
-        const checking = document.getElementById('enquiryChecking');
-        if (formInner) formInner.style.display = 'none';
-        if (checking) checking.classList.add('show');
-
-        // Dynamic import to avoid SSR issues with utils
-        const { submitLead } = await import('@/utils/submitLead');
-
-        const addressEl = document.getElementById('f-address') as HTMLInputElement;
-        const payload = {
-          companyName: (document.getElementById('f-company') as HTMLInputElement).value,
-          customerPhone: (document.getElementById('f-phone') as HTMLInputElement).value,
-          customerServiceEmail: (document.getElementById('f-email') as HTMLInputElement).value,
-          interestedIn: (document.getElementById('f-interest') as HTMLInputElement).value,
-          selectedServiceOption: (document.getElementById('f-interest') as HTMLInputElement).value,
-          weeklyParcels: (document.getElementById('f-volume') as HTMLInputElement).value,
-          bucket: 'inbound',
-          sourcePage: 'MailPlus API Integration',
-          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
-          address: {
-            address1: '',
-            street: addressEl.value,
-            city: addressEl.dataset.city || '',
-            state: addressEl.dataset.state || '',
-            zip: addressEl.dataset.zip || '',
-            latitude: parseFloat(addressEl.dataset.lat || '0'),
-            longitude: parseFloat(addressEl.dataset.lng || '0')
-          },
-          contacts: [{
-            name: `${(document.getElementById('f-fname') as HTMLInputElement).value} ${(document.getElementById('f-lname') as HTMLInputElement).value}`,
-            email: (document.getElementById('f-email') as HTMLInputElement).value,
-            phone: (document.getElementById('f-phone') as HTMLInputElement).value
-          }]
-        };
-
-        setSubmitting(true);
-        try {
-          const result = await submitLead(payload);
-
-          if (checking) checking.classList.remove('show');
-          
-          if (result.success) {
-            sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
-            window.location.href = '/confirmation';
-          } else {
-            setSubmitting(false);
-            // If failed, just show a fallback success or error message inline.
-            const successMsg = document.getElementById('enquirySuccess');
-            if (successMsg) successMsg.classList.add('show');
-          }
-        } catch (err) {
-          console.error(err);
-          setSubmitting(false);
-        }
-      });
+    // Scroll reveal animation for .reveal / .reveal-stagger elements
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    let revealObserver: IntersectionObserver | null = null;
+    if (targets.length) {
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('in-view'));
+      } else {
+        revealObserver = new IntersectionObserver((entries, o) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              o.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        targets.forEach(el => revealObserver?.observe(el));
+      }
     }
 
     return () => {
-      if (placesInterval) clearInterval(placesInterval);
       document.removeEventListener('click', handleFaqClick);
+      if (revealObserver) {
+        revealObserver.disconnect();
+      }
     };
   }, []);
 
-  return <ProgressModal isOpen={submitting} />;
+  return null;
 }

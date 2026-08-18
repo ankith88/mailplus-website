@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import MailplusApiClient from './MailplusApiClient';
-import { CustomSelect } from '@/components/shared/CustomSelect';
+import { ReviewsCtaSection } from '@/components/home/ReviewsCtaSection';
 import './styles.css';
 
 export const metadata: Metadata = {
@@ -212,121 +212,7 @@ export default function MailPlusApiPage() {
 
 
         {/* ============= ENQUIRY FORM ============= */}
-        <section className="section" id="enquire" style={{ paddingTop: 0 }}>
-          <div className="wrap">
-            <div className="enquiry-band">
-              <div className="enquiry-grid">
-                <div className="enquiry-left">
-                  <h2>Talk to us about API access.</h2>
-                  <p>Tell us a little about your business and what you'd like to connect, and we'll talk you through getting set up with MailPlus API access. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
-                  <div className="enquiry-contacts">
-                    <a href="tel:1300656595" className="enquiry-contact">
-                      <div className="ec-ic">📞</div>
-                      <div>
-                        <div className="ec-lbl">Call us</div>
-                        <div className="ec-val mono">1300 65 65 95</div>
-                      </div>
-                    </a>
-                    <div className="enquiry-contact">
-                      <div className="ec-ic">🕘</div>
-                      <div>
-                        <div className="ec-lbl">Hours</div>
-                        <div className="ec-val">Mon–Fri, 9am–5pm AEST</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="enquiry-form">
-                  <div id="enquiryFormInner">
-                    <p className="ef-intro">Tell us about your business and what you'd like to connect, and we'll be in touch about getting set up with API access.</p>
-
-                    <div className="field-row">
-                      <div className="field-group">
-                        <label className="field-label">First name <span className="req">*</span></label>
-                        <input type="text" className="field-input" id="f-fname" />
-                      </div>
-                      <div className="field-group">
-                        <label className="field-label">Last name <span className="req">*</span></label>
-                        <input type="text" className="field-input" id="f-lname" />
-                      </div>
-                    </div>
-
-                    <div className="field-group">
-                      <label className="field-label">Business name <span className="req">*</span></label>
-                      <input type="text" className="field-input" id="f-company" />
-                    </div>
-
-                    <div className="field-group">
-                      <label className="field-label">Pickup address <span className="req">*</span></label>
-                      <div className="addr-wrap">
-                        <span className="addr-pin" aria-hidden="true">📍</span>
-                        <input type="text" className="field-input addr-input" id="f-address" placeholder="Start typing your business address…" autoComplete="off" />
-                      </div>
-                      <p className="field-hint">We use this to find your local driver.</p>
-                    </div>
-
-                    <div className="field-row">
-                      <div className="field-group">
-                        <label className="field-label">Email <span className="req">*</span></label>
-                        <input type="email" className="field-input" id="f-email" />
-                      </div>
-                      <div className="field-group">
-                        <label className="field-label">Phone <span className="req">*</span></label>
-                        <input type="tel" className="field-input" id="f-phone" />
-                      </div>
-                    </div>
-
-                    <div className="field-group">
-                      <label className="field-label">What would you like to connect? <span className="req">*</span></label>
-                      <CustomSelect
-                        id="f-interest"
-                        triggerClassName="field-select"
-                        options={[
-                          { value: 'MailPlus API integration', label: 'MailPlus API integration' },
-                          { value: 'Warehouse / 3PL system', label: 'Warehouse / 3PL system' },
-                          { value: 'Custom shipping platform', label: 'Custom shipping platform' },
-                          { value: 'Not sure yet — want to discuss', label: 'Not sure yet — want to discuss' },
-                          { value: 'Something else', label: 'Something else' },
-                        ]}
-                      />
-                    </div>
-
-                    <div className="field-group">
-                      <label className="field-label">Roughly how many parcels do you send a week? <span className="req">*</span></label>
-                      <CustomSelect
-                        id="f-volume"
-                        triggerClassName="field-select"
-                        options={[
-                          { value: '1–10 a week', label: '1–10 a week' },
-                          { value: '11–50 a week', label: '11–50 a week' },
-                          { value: '51–200 a week', label: '51–200 a week' },
-                          { value: '201–500 a week', label: '201–500 a week' },
-                          { value: '500+ a week', label: '500+ a week' },
-                          { value: 'Not sure yet', label: 'Not sure yet' },
-                        ]}
-                      />
-                    </div>
-
-                    <button className="form-submit">Enquire now →</button>
-                  </div>
-
-                  <div className="form-success" id="enquiryChecking">
-                    <div className="fs-ic checking">📍</div>
-                    <h3>Checking your area…</h3>
-                    <p>Looking for a local MailPlus driver near your pickup address. This will only take a moment.</p>
-                  </div>
-
-                  <div className="form-success" id="enquirySuccess">
-                    <div className="fs-ic">✓</div>
-                    <h3>Thanks — we've got it.</h3>
-                    <p>A member of the MailPlus team will be in touch within one business day. Need us sooner? Call <strong>1300 65 65 95</strong>, Mon–Fri 9am–5pm AEST.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ReviewsCtaSection />
       </div>
 
       <MailplusApiClient />
