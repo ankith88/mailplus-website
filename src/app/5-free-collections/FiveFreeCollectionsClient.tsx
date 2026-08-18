@@ -3,6 +3,16 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { ProgressModal } from '../../components/shared/ProgressModal';
+import {
+  trackFormStarted,
+  trackFormStepCompleted,
+  trackFormValidationError,
+  trackFormSubmitClicked,
+  trackFormSubmitProcessing,
+  trackFormSubmitSuccess,
+  trackFormSubmitFailure,
+  trackFormAbandonedDuringSubmission,
+} from '@/lib/posthog';
 
 interface FAQ {
   q: string;
@@ -18,6 +28,24 @@ export default function FiveFreeCollectionsClient() {
   const [introOpen, setIntroOpen] = useState(false);
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
   const [serviceable, setServiceable] = useState(true);
+
+  const formStartedRef = useRef(false);
+  const submitStartTimeRef = useRef<number | null>(null);
+  const isSubmittingRef = useRef(false);
+
+  /* ── Tab close / abandonment listener during pending submit ─ */
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (isSubmittingRef.current && submitStartTimeRef.current) {
+        const waitDuration = performance.now() - submitStartTimeRef.current;
+        trackFormAbandonedDuringSubmission('5_free_collections', waitDuration);
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const addressInputRef = useRef<HTMLInputElement>(null);
   const [location, setLocation] = useState<{
@@ -110,6 +138,7 @@ export default function FiveFreeCollectionsClient() {
     if (!addressInputRef.current?.value.trim()) {
       setAddressError(true);
       if (addressInputRef.current) addressInputRef.current.style.borderColor = '#E5484D';
+      trackFormValidationError('5_free_collections', ['address_input']);
       return;
     }
 
@@ -117,6 +146,7 @@ export default function FiveFreeCollectionsClient() {
       setAddressError(true);
       if (addressInputRef.current) addressInputRef.current.style.borderColor = '#E5484D';
       alert('Please select a business address from the suggestions dropdown.');
+      trackFormValidationError('5_free_collections', ['address_suggestion_unselected']);
       return;
     }
 
@@ -144,19 +174,32 @@ export default function FiveFreeCollectionsClient() {
         setServiceable(true);
         setSelectedService('five-free');
         setStep(3); // Go straight to step 3 details
+        trackFormStepCompleted('5_free_collections', 1, 'address_check_serviceable', {
+          postcode: location.zip,
+          suburb: location.city,
+        });
       } else {
         setServiceable(false);
         setStep(2);
+        trackFormStepCompleted('5_free_collections', 1, 'address_check_unserviceable', {
+          postcode: location.zip,
+          suburb: location.city,
+        });
       }
     } catch (err) {
       console.error('Territory check error:', err);
       setCheckingArea(false);
       setServiceable(false);
       setStep(2);
+      trackFormStepCompleted('5_free_collections', 1, 'address_check_error');
     }
   };
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      trackFormStarted('5_free_collections');
+    }
     const { id, value } = e.target;
     const fieldName = id.replace('f-', '');
     setFormFields((prev) => ({ ...prev, [fieldName]: value }));
@@ -167,6 +210,13 @@ export default function FiveFreeCollectionsClient() {
   };
 
   const handleSubmit = async () => {
+    trackFormSubmitClicked('5_free_collections', {
+      selected_service: selectedService,
+      serviceable,
+      postcode: location?.zip,
+      suburb: location?.city,
+    });
+
     const requiredIds = ['f-fname', 'f-lname', 'f-company', 'f-email', 'f-phone', 'f-volume'];
     let ok = true;
     const newErrors: Record<string, boolean> = {};
@@ -183,9 +233,17 @@ export default function FiveFreeCollectionsClient() {
     });
 
     setFieldErrors(newErrors);
-    if (!ok) return;
+    if (!ok) {
+      trackFormValidationError('5_free_collections', newErrors);
+      return;
+    }
 
     setSubmitting(true);
+    isSubmittingRef.current = true;
+    const startTime = performance.now();
+    submitStartTimeRef.current = startTime;
+    trackFormSubmitProcessing('5_free_collections');
+
     try {
       const { submitLead } = await import('@/utils/submitLead');
 
@@ -220,20 +278,34 @@ export default function FiveFreeCollectionsClient() {
       };
 
       const result = await submitLead(payload);
+      const duration = performance.now() - startTime;
+      isSubmittingRef.current = false;
+      submitStartTimeRef.current = null;
       setSubmitting(false);
 
       if (result.success) {
+        trackFormSubmitSuccess('5_free_collections', duration, {
+          outOfTerritory: result.outOfTerritory,
+          interestedIn: payload.interestedIn,
+        });
         sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
+        sessionStorage.setItem('lead_submit_timestamp', startTime.toString());
         window.location.href = '/confirmation';
       } else {
+        trackFormSubmitFailure('5_free_collections', duration, result.message || 'Submission unsuccesful');
         setIsSorryOpen(true);
       }
     } catch (err) {
       console.error('Error submitting lead:', err);
+      const duration = performance.now() - startTime;
+      isSubmittingRef.current = false;
+      submitStartTimeRef.current = null;
+      trackFormSubmitFailure('5_free_collections', duration, err instanceof Error ? err.message : 'Unknown exception');
       setSubmitting(false);
       setIsSorryOpen(true);
     }
   };
+
 
   const faqs: FAQ[] = [
     {

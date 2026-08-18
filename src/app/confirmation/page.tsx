@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { LeadPayload, LeadResponse } from '@/utils/submitLead';
+import { trackConfirmationPageViewed } from '@/lib/posthog';
 
 function ConfirmationContent() {
   const searchParams = useSearchParams();
@@ -14,6 +15,7 @@ function ConfirmationContent() {
   useEffect(() => {
     if (isLpo) {
       setLoading(false);
+      trackConfirmationPageViewed('lpo_owner_info', undefined, { isLpo: true });
       return;
     }
     // Read from sessionStorage
@@ -54,7 +56,24 @@ function ConfirmationContent() {
         coverage_status: coverageStatus,
       });
     }
+
+    const submitTsStr = sessionStorage.getItem('lead_submit_timestamp');
+    let waitTimeMs: number | undefined;
+    if (submitTsStr) {
+      const submitTs = parseFloat(submitTsStr);
+      if (!isNaN(submitTs)) {
+        waitTimeMs = performance.now() - submitTs;
+      }
+    }
+
+    trackConfirmationPageViewed(data.payload.sourcePage || interestedIn, waitTimeMs, {
+      interestedIn,
+      outOfTerritory,
+      contentName,
+      coverageStatus,
+    });
   }, [data]);
+
 
   if (loading) {
     return (

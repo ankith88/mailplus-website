@@ -98,6 +98,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { PostHogProvider } from '@/components/providers/PostHogProvider'
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const orgSchema = buildOrganizationGraph()
 
@@ -134,25 +136,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
-          <Script
-            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-            strategy="afterInteractive"
-          />
-        )}
-        <ScrollProgressBar />
-        <FacebookPixel />
-        <GlobalFloatingBg />
+        <PostHogProvider>
+          {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
+            <Script
+              src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+              strategy="afterInteractive"
+            />
+          )}
+          <ScrollProgressBar />
+          <FacebookPixel />
+          <GlobalFloatingBg />
 
-        <ScrollRevealProvider />
-        <ParallaxInit />
-        <Navbar />
-        <NavigationScrollToTop />
-        <main>{children}</main>
-        <GetStartedModal />
-        <ScrollToTop />
-        <Footer />
+          <ScrollRevealProvider />
+          <ParallaxInit />
+          <Navbar />
+          <NavigationScrollToTop />
+          <main>{children}</main>
+          <GetStartedModal />
+          <ScrollToTop />
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   )
 }
+

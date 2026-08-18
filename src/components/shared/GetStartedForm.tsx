@@ -69,6 +69,16 @@ function Label({ children, required }: { children: React.ReactNode; required?: b
   )
 }
 
+import {
+  trackFormStarted,
+  trackFormValidationError,
+  trackFormSubmitClicked,
+  trackFormSubmitProcessing,
+  trackFormSubmitSuccess,
+  trackFormSubmitFailure,
+  trackFormAbandonedDuringSubmission,
+} from '@/lib/posthog'
+
 export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   const [form, setForm] = useState<FormState>(EMPTY_FORM)
   const [errors, setErrors] = useState<FormErrors>({})
@@ -76,8 +86,24 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   const [submitting, setSubmitting] = useState(false)
 
   const streetInputRef = useRef<HTMLInputElement>(null)
-
   const autocompleteInitialized = useRef(false)
+  const formStartedRef = useRef(false)
+  const submitStartTimeRef = useRef<number | null>(null)
+  const isSubmittingRef = useRef(false)
+
+  /* ── Tab close / abandonment listener during pending submit ─ */
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (isSubmittingRef.current && submitStartTimeRef.current) {
+        const waitDuration = performance.now() - submitStartTimeRef.current
+        trackFormAbandonedDuringSubmission('get_started_form', waitDuration)
+      }
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+    }
+  }, [])
 
   /* ── Google Places Autocomplete ────────────────────────── */
   const initAutocomplete = useCallback(() => {
@@ -166,24 +192,46 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
     }
 
     setErrors(e)
-    return Object.keys(e).length === 0
+    const hasErrors = Object.keys(e).length > 0
+    if (hasErrors) {
+      trackFormValidationError('get_started_form', e)
+    }
+    return !hasErrors
   }
 
   /* ── Handlers ──────────────────────────────────────────── */
   function handleChange(field: keyof FormState, value: string | boolean) {
+    if (!formStartedRef.current) {
+      formStartedRef.current = true
+      trackFormStarted('get_started_form')
+    }
     setForm((prev) => ({ ...prev, [field]: value }))
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }))
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    trackFormSubmitClicked('get_started_form', {
+      weekly_shipments: form.weeklyShipments,
+      service_interest: form.servicesOfInterest,
+      current_carrier: form.currentCarrier,
+      suburb: form.suburb,
+      postcode: form.postcode,
+    })
+
     if (!validate()) return
+
     setSubmitting(true)
+    isSubmittingRef.current = true
+    const startTime = performance.now()
+    submitStartTimeRef.current = startTime
+    trackFormSubmitProcessing('get_started_form')
 
     const nameParts = form.fullName.trim().split(/\s+/)
     const firstName = nameParts[0] ?? ''
     const lastName = nameParts.slice(1).join(' ') || firstName
 
+    let submissionSuccess = true
     try {
       await submitToNetSuite({
         business_name: form.businessName,
@@ -205,14 +253,27 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
         pageURL: window.location.href,
         subscribe: form.joinMailingList ? 'T' : 'F',
       })
-    } catch {
-      // Submission still counts as done — show success regardless of API errors
+    } catch (err) {
+      submissionSuccess = false
+      const duration = performance.now() - startTime
+      trackFormSubmitFailure('get_started_form', duration, err instanceof Error ? err.message : 'Unknown error')
     }
 
+    const duration = performance.now() - startTime
+    if (submissionSuccess) {
+      trackFormSubmitSuccess('get_started_form', duration, {
+        weekly_shipments: form.weeklyShipments,
+        service_interest: form.servicesOfInterest,
+      })
+    }
+
+    isSubmittingRef.current = false
+    submitStartTimeRef.current = null
     setSubmitting(false)
     setSubmitted(true)
     onSuccess?.()
   }
+
 
   /* ── Success state ─────────────────────────────────────── */
   if (submitted) {
