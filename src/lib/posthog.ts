@@ -3,7 +3,8 @@ import posthog from 'posthog-js';
 const POSTHOG_KEY =
   process.env.NEXT_PUBLIC_POSTHOG_KEY ||
   process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN ||
-  '';
+  'phc_q2TeLAfUXEmJMni3LpXg8VWuSmFSRksJWmBP6PfNxRRt';
+
 const POSTHOG_HOST =
   process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
 
@@ -15,20 +16,22 @@ export function initPostHog() {
   if (POSTHOG_KEY) {
     posthog.init(POSTHOG_KEY, {
       api_host: POSTHOG_HOST,
-      capture_pageview: false, // We handle pageviews manually in Next.js App Router
+      capture_pageview: false, // Handled manually for Next.js App Router
       capture_pageleave: true,
-      person_profiles: 'identified_only', // Create profiles only when identified
+      person_profiles: 'always', // Track all users & sessions
       session_recording: {
-        maskAllInputs: true, // Mask sensitive text inputs for privacy
+        maskAllInputs: true, // Privacy masking
       },
       loaded: (ph) => {
         if (process.env.NODE_ENV === 'development') {
-          // Keep debug logging light in dev
-          ph.debug(false);
+          ph.debug(true); // Show console logs in dev mode so events are visible
+          console.log('[PostHog] Initialized successfully with key:', POSTHOG_KEY);
         }
       },
     });
     isInitialized = true;
+  } else {
+    console.warn('[PostHog] Missing POSTHOG_KEY! Events will not be sent.');
   }
 }
 
