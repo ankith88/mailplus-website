@@ -4,48 +4,59 @@ import React, { useEffect, useState } from 'react';
 
 interface ProgressModalProps {
   isOpen: boolean;
-  onComplete?: () => void;
 }
 
-export function ProgressModal({ isOpen, onComplete }: ProgressModalProps) {
+export function ProgressModal({ isOpen }: ProgressModalProps) {
   const [progress, setProgress] = useState(0);
-  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
       setProgress(0);
-      setCompleted(false);
       return;
     }
 
     const startTime = Date.now();
-    const duration = 650; // Fast 650ms animation to reach 100%
+    const duration = 48000; // 48 seconds to reach 98%
 
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      const pct = Math.min((elapsed / duration) * 100, 100);
-      const rounded = Math.round(pct);
-      setProgress(rounded);
-
-      if (rounded >= 100) {
-        clearInterval(timer);
-        setCompleted(true);
-        if (onComplete) {
-          setTimeout(onComplete, 180);
-        }
-      }
-    }, 16);
+      const percentage = Math.min((elapsed / duration) * 98, 98);
+      setProgress(Math.round(percentage));
+    }, 100);
 
     return () => clearInterval(timer);
-  }, [isOpen, onComplete]);
+  }, [isOpen]);
 
-  // Status message for rapid animation
-  let copy = 'Confirming your pickup address...';
-  if (progress >= 35 && progress < 80) {
-    copy = 'Matching with your local MailPlus driver...';
-  } else if (progress >= 80) {
-    copy = 'All done! Redirecting to confirmation...';
+  // Copy mapping
+  let copy = 'Checking your pickup address...';
+  if (progress >= 15 && progress < 35) {
+    copy = 'Looking for your local MailPlus driver...';
+  } else if (progress >= 35 && progress < 55) {
+    copy = 'Found your patch — matching you with your local operator...';
+  } else if (progress >= 55 && progress < 75) {
+    copy = 'Getting your details ready for the team...';
+  } else if (progress >= 75 && progress < 90) {
+    copy = 'Setting up your booking link...';
+  } else if (progress >= 90 && progress < 98) {
+    copy = 'Almost there — hang tight, this bit takes a moment...';
+  } else if (progress >= 98) {
+    copy = 'All done! Taking you through now...';
   }
+
+  // Smooth copy transition
+  const [displayMessage, setDisplayMessage] = useState(copy);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    if (copy !== displayMessage) {
+      setFading(true);
+      const timer = setTimeout(() => {
+        setDisplayMessage(copy);
+        setFading(false);
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, [copy, displayMessage]);
 
   if (!isOpen) return null;
 
@@ -58,85 +69,64 @@ export function ProgressModal({ isOpen, onComplete }: ProgressModalProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0, 20, 30, 0.65)',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(4px)',
         padding: '24px',
       }}
     >
       <div 
         style={{
           width: '100%',
-          maxWidth: '400px',
+          maxWidth: '440px',
           backgroundColor: '#ffffff',
-          borderRadius: '24px',
-          padding: '36px 32px 32px',
-          boxShadow: '0 24px 60px rgba(0, 71, 81, 0.3)',
+          borderRadius: '20px',
+          padding: '48px 44px 44px',
+          boxShadow: '0 24px 60px rgba(20, 41, 59, 0.28)',
           textAlign: 'center',
           boxSizing: 'border-box',
         }}
         role="status"
         aria-live="polite"
       >
-        {/* Icon */}
-        <div style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-          {completed ? (
-            <div 
-              style={{
-                width: '52px',
-                height: '52px',
-                borderRadius: '50%',
-                backgroundColor: '#10B981',
-                color: '#ffffff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '26px',
-                fontWeight: 'bold',
-                boxShadow: '0 8px 20px rgba(16, 185, 129, 0.4)',
-              }}
-            >
-              ✓
-            </div>
-          ) : (
-            <div 
-              className="animate-spin"
-              style={{
-                width: '46px',
-                height: '46px',
-                border: '4px solid #E2E8F0',
-                borderTopColor: '#004751',
-                borderRadius: '50%',
-              }}
-              aria-hidden="true"
-            ></div>
-          )}
-        </div>
+        {/* Spinner */}
+        <div 
+          className="animate-spin"
+          style={{
+            width: '56px',
+            height: '56px',
+            margin: '0 auto 28px',
+            border: '5px solid #eef1f4',
+            borderTopColor: '#1f3a52',
+            borderRadius: '50%',
+          }}
+          aria-hidden="true"
+        ></div>
 
-        {/* Copy */}
+        {/* Status Text (No title element) */}
         <p 
           style={{
-            margin: '0 auto 20px',
-            maxWidth: '300px',
-            minHeight: '44px',
-            fontSize: '16px',
-            fontWeight: 600,
-            lineHeight: 1.4,
-            color: '#004751',
+            margin: '0 auto 32px',
+            maxWidth: '320px',
+            minHeight: '48px',
+            fontSize: '17px',
+            lineHeight: 1.5,
+            color: '#14293b',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            transition: 'opacity 0.35s ease',
+            opacity: fading ? 0 : 1,
           }}
         >
-          {copy}
+          {displayMessage}
         </p>
 
-        {/* Track */}
+        {/* Progress Bar Track */}
         <div 
           style={{
-            height: '8px',
+            height: '10px',
             width: '100%',
-            backgroundColor: '#F1F5F9',
+            backgroundColor: '#eef1f4',
             borderRadius: '999px',
             overflow: 'hidden',
           }}
@@ -147,8 +137,8 @@ export function ProgressModal({ isOpen, onComplete }: ProgressModalProps) {
               height: '100%',
               width: `${Math.max(progress, 5)}%`,
               borderRadius: '999px',
-              background: completed ? '#10B981' : 'linear-gradient(90deg, #004751, #007A87)',
-              transition: 'width 0.08s linear, background-color 0.2s ease',
+              background: 'linear-gradient(90deg, #2e5f86, #1f3a52)',
+              transition: 'width 0.4s ease',
             }}
           ></div>
         </div>
@@ -156,11 +146,11 @@ export function ProgressModal({ isOpen, onComplete }: ProgressModalProps) {
         {/* Percentage */}
         <div 
           style={{
-            marginTop: '12px',
-            fontSize: '15px',
+            marginTop: '18px',
+            fontSize: '20px',
             fontWeight: 700,
-            color: completed ? '#10B981' : '#004751',
-            letterSpacing: '0.02em',
+            color: '#14293b',
+            letterSpacing: '0.01em',
           }}
         >
           {progress}%
@@ -169,4 +159,3 @@ export function ProgressModal({ isOpen, onComplete }: ProgressModalProps) {
     </div>
   );
 }
-
