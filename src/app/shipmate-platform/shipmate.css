@@ -600,6 +600,13 @@
                display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px;
                flex-shrink:0; transition:all .15s; }
   .svc-card.selected .svc-check { background:var(--brand); border-color:var(--brand); }
+  .svc-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .svc-badge-free { display: inline-flex; align-items: center; background-color: #E0F2FE; color: #0369A1; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; line-height: 1.2; }
+  .svc-badge-shipmate { display: inline-flex; align-items: center; background-color: #F3F4F6; color: #4B5563; font-size: 11.5px; font-weight: 500; padding: 2px 8px; border-radius: 999px; line-height: 1.2; }
+  .svc-divider { display: flex; align-items: center; text-align: center; margin: 14px 0 12px; color: var(--muted, #6B7280); font-size: 13px; font-weight: 500; }
+  .svc-divider::before, .svc-divider::after { content: ''; flex: 1; border-bottom: 1px solid var(--line, #E5E7EB); }
+  .svc-divider span { padding: 0 12px; }
+  .svc-card.svc-card-corporate { border-radius: 999px; padding: 12px 18px; }
 
   /* ========== FOOTER ========== */
   footer { background: var(--ink); color: #fff; margin-top: 64px; }

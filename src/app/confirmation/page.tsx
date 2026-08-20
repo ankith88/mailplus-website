@@ -18,6 +18,16 @@ function ConfirmationContent() {
       trackConfirmationPageViewed('lpo_owner_info', undefined, { isLpo: true });
       return;
     }
+    const serviceParam = searchParams.get('service');
+    const outOfTerritoryParam = searchParams.get('outOfTerritory') === 'true';
+    if (serviceParam) {
+      setData({
+        result: { success: true, outOfTerritory: outOfTerritoryParam },
+        payload: { interestedIn: serviceParam, sourcePage: 'Preview' } as any
+      });
+      setLoading(false);
+      return;
+    }
     // Read from sessionStorage
     const stored = sessionStorage.getItem('lead_submission_data');
     if (stored) {
@@ -29,7 +39,7 @@ function ConfirmationContent() {
       }
     }
     setLoading(false);
-  }, []);
+  }, [isLpo, searchParams]);
 
   useEffect(() => {
     if (!data) return;
@@ -47,6 +57,8 @@ function ConfirmationContent() {
       contentName = '5 Free Collections';
     } else if (interestedIn === 'express') {
       contentName = 'Express & ShipMate';
+    } else if (interestedIn === 'not-sure') {
+      contentName = 'Not sure / Need both';
     }
 
     if (window.fbq) {
@@ -185,31 +197,30 @@ function ConfirmationContent() {
               <span>Enquiry received</span>
             </nav>
             <h1>You&rsquo;re all set — <span className="hl">let&rsquo;s get started.</span></h1>
-            <p className="res-lead">Thanks — we&rsquo;ve got your details, and your <strong>five free collections</strong> are ready to go. Just choose how you&rsquo;d like to start below.</p>
+            <p className="res-lead">
+              Thanks, we&rsquo;ve got your details. If you send with Australia Post on an <strong>eParcel or MyPost Business account</strong>, your <strong>five free collections</strong> are ready to go &mdash; your local driver picks up your parcels and lodges them at the Post Office for you. Register free now, book a call to talk it through first, or read more about the offer below.
+            </p>
           </div>
         </section>
 
         <section className="res-body">
           <div className="res-cards two">
             <div className="res-card">
-              {localMilePlusAuthLink ? (
-                <>
-                  <span className="rc-tag">● Fastest way to start</span>
-                  <h2>Register on LocalMile</h2>
-                  <p>Set up your free LocalMile account and book your first of five pickups straight away — your local driver comes to you.</p>
-                  <a href={localMilePlusAuthLink} className="btn btn-cta">Register now on LocalMile &rarr;</a>
-                  <p className="rc-foot">Takes about 2 minutes. No card required.</p>
-                  <div className="rc-divider"></div>
-                </>
-              ) : null}
-              <span className="rc-tag">● Know the details</span>
-              <h2>Not sure how it works yet?</h2>
-              <p>If you jumped straight to the free offer, it&rsquo;s worth a quick read first — see exactly what&rsquo;s included in your five free collections, with no card and no catch, so you know what to expect.</p>
-              <Link href="/5-free-collections" className="btn btn-outline">Read more on 5 Free Collections &rarr;</Link>
+              <span className="rc-tag">● FASTEST WAY TO START</span>
+              <h2>Claim your five free collections</h2>
+              <p>
+                You&rsquo;ll do this in <strong>LocalMile</strong>, our booking app for Australia Post customers. Set up your free account, link your eParcel or MyPost Business details, and book your first pickup straight away. Your parcels are lodged on your own Australia Post account, so your rates and tracking don&rsquo;t change.
+              </p>
+              <a href={localMilePlusAuthLink || '#'} className="btn btn-cta" style={{ marginTop: '20px', display: 'inline-block' }}>
+                Register free on LocalMile &rarr;
+              </a>
+              <p className="rc-foot" style={{ marginTop: '20px', lineHeight: '1.6' }}>
+                Takes about 2 minutes. No card required. After your trial, your Account Manager will walk you through competitive pricing options so you can keep enjoying the convenience &mdash; no lock-in, no obligation.
+              </p>
             </div>
-            
+
             <div className="res-card">
-              <span className="rc-tag">● Prefer to talk first</span>
+              <span className="rc-tag">● PREFER TO TALK FIRST</span>
               <h2>Book a call</h2>
               <p>Want to talk it through before you start? Grab a time with your Account Manager.</p>
               {iframeUrl ? (
@@ -234,6 +245,19 @@ function ConfirmationContent() {
               )}
               <p className="rc-foot">Rather phone us? Call <a href="tel:1300656595">1300 65 65 95</a>, Mon–Fri 9am–5pm AEST.</p>
             </div>
+          </div>
+        </section>
+
+        <section className="res-body res-body-tail">
+          <div className="res-card res-card-solo">
+            <span className="rc-tag">● KNOW THE DETAILS</span>
+            <h2>Not sure how it works yet?</h2>
+            <p style={{ lineHeight: '1.7', color: 'var(--ink-2, #386373)' }}>
+              If you jumped straight to the free offer, it&rsquo;s worth a quick read first. In short: this is for businesses already sending with Australia Post on eParcel or MyPost Business &mdash; we take over the Post Office run, and your first five collections are free, no card, no catch. See exactly what&rsquo;s included so you know what to expect.
+            </p>
+            <Link href="/5-free-collections" className="btn btn-outline" style={{ marginTop: '20px', display: 'inline-block' }}>
+              Read more on 5 Free Collections &rarr;
+            </Link>
           </div>
         </section>
       </div>
@@ -302,7 +326,77 @@ function ConfirmationContent() {
     );
   }
 
-  // 4. CORPORATE & MULTISITE CONFIRMATION
+  // 4. NOT SURE / NEED BOTH CONFIRMATION
+  if (interestedIn === 'not-sure') {
+    return (
+      <div style={{ minHeight: '90vh', background: 'var(--paper)', padding: '0 0 60px 0' }}>
+        <section className="res-hero" id="main">
+          <div className="res-hero-inner">
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span className="sep">/</span>
+              <span>Enquiry received</span>
+            </nav>
+            <h1>Thanks — <span className="hl">let&rsquo;s find the right fit together.</span></h1>
+            <p className="res-lead">
+              We&rsquo;ve got your details. Not sure which service suits, or need a bit of both? That&rsquo;s exactly what a quick call is for &mdash; tell us what you send and we&rsquo;ll recommend the right setup, no obligation. Book a time below, or we&rsquo;ll call you.
+            </p>
+          </div>
+        </section>
+
+        <section className="res-body">
+          <div className="res-cards">
+            <div className="res-card">
+              <span className="rc-tag">● Book a time</span>
+              <h2>Pick a time that suits you</h2>
+              <p><strong>Prefer we just call you?</strong> No need to do anything &mdash; our team will reach out within one business day (Mon–Fri 9am–5pm AEST).</p>
+              {iframeUrl ? (
+                <iframe 
+                  src={iframeUrl}
+                  style={{
+                    width: '100%',
+                    height: '520px',
+                    border: 'none',
+                    borderRadius: '12px',
+                    backgroundColor: '#fff',
+                    marginTop: '16px'
+                  }}
+                  title="Schedule Discussion"
+                />
+              ) : (
+                <div className="cal-host">
+                  <div className="cs-ic">📅</div>
+                  <div className="cs-label">No appointment link available</div>
+                  <div className="cs-note">We will call you within one business day (Mon–Fri 9am–5pm AEST) to arrange your call.</div>
+                </div>
+              )}
+              <p className="rc-foot">Rather phone us? Call <a href="tel:1300656595">1300 65 65 95</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="res-body res-body-tail">
+          <div className="res-card res-card-solo res-card-wide" style={{ textAlign: 'center' }}>
+            <span className="rc-tag">● LEARN MORE</span>
+            <h2>The two services, side by side</h2>
+            <p style={{ maxWidth: '640px', margin: '12px auto 24px', lineHeight: '1.7', color: 'var(--ink-2, #386373)' }}>
+              In short: with <strong>5 Free Collections</strong> your local driver runs your parcels to the Post Office and lodges them on your Australia Post account (your first five runs are free). With <strong>Express Delivery</strong> we deliver door-to-door in 1–2 days Australia-wide. Plenty of businesses end up using both &mdash; your call will sort out what fits.
+            </p>
+            <div className="rc-btn-row" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+              <Link href="/5-free-collections" className="btn btn-outline" style={{ minWidth: '220px', textAlign: 'center' }}>
+                5 Free Collections &rarr;
+              </Link>
+              <Link href="/express-delivery" className="btn btn-outline" style={{ minWidth: '220px', textAlign: 'center' }}>
+                Express Delivery &rarr;
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  // 5. CORPORATE & MULTISITE CONFIRMATION
   return (
     <div style={{ minHeight: '90vh', background: 'var(--paper)', padding: '0 0 60px 0' }}>
       <section className="res-hero" id="main">
@@ -312,8 +406,8 @@ function ConfirmationContent() {
             <span className="sep">/</span>
             <span>Enquiry received</span>
           </nav>
-          <h1>Thank you — <span className="hl">let&rsquo;s chat about your corporate courier needs.</span></h1>
-          <p className="res-lead">We&rsquo;ve got your details for corporate and/or multi-site solutions. One of our team will be in touch soon to scope the right setup — or book a time below.</p>
+          <h1>Thank you — <span className="hl">let&rsquo;s talk corporate mail.</span></h1>
+          <p className="res-lead">We&rsquo;ve got your details. Whether it&rsquo;s clearing PO boxes, lodging corporate mail, or covering multiple sites, our corporate team will scope the right setup with you &mdash; book a time below, or we&rsquo;ll call you.</p>
         </div>
       </section>
 

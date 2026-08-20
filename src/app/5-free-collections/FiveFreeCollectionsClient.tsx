@@ -873,7 +873,12 @@ export default function FiveFreeCollectionsClient() {
                   {serviceable ? (
                     <div className="ef-instep-head">
                       <span className="ef-badge"><span className="efb-tick">✓</span> You’re in our patch</span>
-                      <p className="ef-instep-note">There’s a local driver covering your area. What can we help you with?</p>
+                      <p className="ef-instep-note" style={{ fontWeight: 600, color: 'var(--ink)' }}>
+                        There’s a local driver covering your area. Which sounds like you?
+                      </p>
+                      <p className="ef-instep-subnote" style={{ fontSize: '14px', color: 'var(--muted, #6B7280)', marginTop: '3px' }}>
+                        We do two different things — pick the one you came for.
+                      </p>
                     </div>
                   ) : (
                     <div className="ef-instep-head">
@@ -889,7 +894,7 @@ export default function FiveFreeCollectionsClient() {
                       </p>
                     </div>
                   )}
-                  <div className="svc-cards" role="radiogroup" aria-label="What are you interested in?">
+                  <div className="svc-cards" role="radiogroup" aria-label="Which sounds like you?">
                     <button 
                       type="button" 
                       className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
@@ -897,10 +902,15 @@ export default function FiveFreeCollectionsClient() {
                       role="radio" 
                       aria-checked={selectedService === 'five-free'}
                     >
-                      <span className="svc-ic">🎁</span>
+                      <span className="svc-ic">🏣</span>
                       <span className="svc-txt">
-                        <span className="svc-name">5 Free Collections</span>
-                        <span className="svc-desc">We’ll deliver your items to the Post Office. Five free pickups, no card, no catch.</span>
+                        <span className="svc-title-row">
+                          <span className="svc-name">We run your parcels and mail to the Post Office</span>
+                          <span className="svc-badge-free">First 5 free</span>
+                        </span>
+                        <span className="svc-desc">
+                          For eParcel, MyPost Business or general mail items on an Aus Post account — your local driver collects and lodges for you. No card, no catch.
+                        </span>
                       </span>
                       <span className="svc-check">✓</span>
                     </button>
@@ -913,22 +923,48 @@ export default function FiveFreeCollectionsClient() {
                     >
                       <span className="svc-ic">⚡</span>
                       <span className="svc-txt">
-                        <span className="svc-name">Express Delivery &amp; ShipMate</span>
-                        <span className="svc-desc">1–2 day delivery + Shopify &amp; WooCommerce plugins.</span>
+                        <span className="svc-title-row">
+                          <span className="svc-name">We deliver your parcels door-to-door</span>
+                          <span className="svc-badge-shipmate">ShipMate</span>
+                        </span>
+                        <span className="svc-desc">
+                          1–2 day express delivery Australia-wide, with Shopify &amp; WooCommerce plugins.
+                        </span>
                       </span>
                       <span className="svc-check">✓</span>
                     </button>
                     <button 
                       type="button" 
-                      className={`svc-card ${selectedService === 'corporate' ? 'selected' : ''}`} 
+                      className={`svc-card ${selectedService === 'not-sure' ? 'selected' : ''}`} 
+                      onClick={() => setSelectedService('not-sure')}
+                      role="radio" 
+                      aria-checked={selectedService === 'not-sure'}
+                    >
+                      <span className="svc-ic">📅</span>
+                      <span className="svc-txt">
+                        <span className="svc-name">Not sure, or need both?</span>
+                        <span className="svc-desc">
+                          Book a quick call and we’ll find the setup that fits how your business sends.
+                        </span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+
+                    <div className="svc-divider">
+                      <span>Something bigger?</span>
+                    </div>
+
+                    <button 
+                      type="button" 
+                      className={`svc-card svc-card-corporate ${selectedService === 'corporate' ? 'selected' : ''}`} 
                       onClick={() => setSelectedService('corporate')}
                       role="radio" 
                       aria-checked={selectedService === 'corporate'}
                     >
-                      <span className="svc-ic">🏢</span>
-                      <span className="svc-txt">
-                        <span className="svc-name">Corporate / Multi-site</span>
-                        <span className="svc-desc">Tailored Post Office services for business.</span>
+                      <span className="svc-ic">📮</span>
+                      <span className="svc-txt" style={{ flexDirection: 'row', alignItems: 'center', gap: '4px', flexWrap: 'wrap' }}>
+                        <span className="svc-name" style={{ fontSize: '14.5px' }}>Corporate mail, PO box clearing, or multi-site</span>
+                        <span className="svc-desc" style={{ fontSize: '14.5px', color: 'var(--muted, #6B7280)' }}>— book a call with our corporate team</span>
                       </span>
                       <span className="svc-check">✓</span>
                     </button>
