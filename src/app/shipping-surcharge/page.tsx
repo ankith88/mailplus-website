@@ -13,7 +13,7 @@ export default function Page() {
       <section className="legal-hero">
   <div className="wrap">
     <div className="crumb"><a href="/">Home</a> <span>/</span> Shipping Surcharge</div>
-    <div className="hero-eyebrow"><span className="dot"></span> Pricing reference</div>
+    <div className="hero-eyebrow"><span className="dot"></span> Pricing references</div>
     <h1>Shipping Surcharge</h1>
     <p className="legal-lead">With fluctuations in logistics industry costs, the surcharge may increase, decrease, remain constant, or be removed, depending on fuel price movement, security and surcharge levies incurred.</p>
   </div>
