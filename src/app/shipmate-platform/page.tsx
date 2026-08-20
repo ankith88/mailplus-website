@@ -286,7 +286,7 @@ export default function ShipMatePlatformPage() {
 </section>
 
 {/* ============= ENQUIRY FORM ============= */}
-<ReviewsCtaSection defaultSelectedService="express" initialStep={2} />
+<ReviewsCtaSection defaultSelectedService="express" />
 
 {/* ============= FOOTER (shared across all pages) ============= */}
     </ShipMateClientWrapper>
