@@ -1,0 +1,2 @@
+Hi {first name}, MailPlus here — your LocalMile access is ready, so you can book your five free collections. Enter code {code} at: {link}
+We've emailed it too. Any trouble, call 1300 65 65 95.

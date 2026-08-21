@@ -129,8 +129,8 @@ function ConfirmationContent() {
 
   const iframeUrl = bookingUrlId ? `https://prospectplus.com.au/book/${bookingUrlId}?embed=true` : '';
 
-  // 1. OUT OF TERRITORY PAGE (Pending/Edge-of-run/Out-of-territory manual confirmation)
-  if (outOfTerritory) {
+  // 1. OUT OF TERRITORY / MULTIPLE FRANCHISEES PENDING COVERAGE CHECK
+  if (outOfTerritory || (interestedIn === '5-free' && !localMilePlusAuthLink)) {
     return (
       <div style={{ minHeight: '90vh', background: 'var(--paper)', padding: '0 0 60px 0' }}>
         <section className="res-hero" id="main">
@@ -140,9 +140,9 @@ function ConfirmationContent() {
               <span className="sep">/</span>
               <span>Enquiry received</span>
             </nav>
-            <h1>Thank you — <span className="hl">we&rsquo;re confirming who covers you.</span></h1>
+            <h1>That&rsquo;s everything we need — <span className="hl">now we&rsquo;re confirming your local driver.</span></h1>
             <p className="res-lead">
-              Your address sits right on the edge of a local driver&rsquo;s run, so we&rsquo;re checking with the drivers nearby to confirm your coverage. <strong>We&rsquo;ll be in touch within one business day</strong> (Mon&ndash;Fri 9am&ndash;5pm AEST) — usually sooner.
+              Your address sits right at the edge of a couple of our local runs &mdash; close enough that we&rsquo;d rather check with the drivers than guess. Whichever MailPlus service you&rsquo;re after, <strong>we&rsquo;ll be in touch within one business day</strong> (Mon&ndash;Fri 9am&ndash;5pm AEST) &mdash; usually much sooner.
             </p>
           </div>
         </section>
@@ -150,35 +150,35 @@ function ConfirmationContent() {
         <section className="res-body">
           <div className="res-cards">
             <div className="res-card">
-              <span className="rc-tag">● What happens next</span>
+              <span className="rc-tag">● WHAT HAPPENS NEXT</span>
               <h2>We&rsquo;re checking with our drivers</h2>
-              <p>Nothing more to do on your end — here&rsquo;s what happens behind the scenes:</p>
-              <ol className="next-steps" style={{ marginTop: '16px', paddingLeft: '20px', lineHeight: '1.8' }}>
-                <li style={{ marginBottom: '12px' }}>
-                  <strong>We check the runs around you.</strong> Our team looks at the local driver runs near your address to see who&rsquo;s best placed to cover you.
+              <p style={{ marginBottom: '20px', lineHeight: '1.6', color: 'var(--ink-2, #386373)' }}>
+                Nothing more to do on your end &mdash; here&rsquo;s what happens behind the scenes:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '20px 0 0 0', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', fontSize: '15px', color: 'var(--ink-2, #386373)', lineHeight: '1.6' }}>
+                  <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#DCEBDB', color: '#095C7B', fontWeight: '700', fontSize: '14px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>1</span>
+                  <div>
+                    <strong>We check the runs around you.</strong> Our team looks at the local driver runs near your address to see who&rsquo;s best placed to cover you.
+                  </div>
                 </li>
-                <li style={{ marginBottom: '12px' }}>
-                  <strong>We confirm your local driver.</strong> A team member confirms coverage with the drivers nearby — most checks are sorted the same day.
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', fontSize: '15px', color: 'var(--ink-2, #386373)', lineHeight: '1.6' }}>
+                  <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#DCEBDB', color: '#095C7B', fontWeight: '700', fontSize: '14px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>2</span>
+                  <div>
+                    <strong>We confirm your local driver.</strong> A team member confirms coverage with the drivers nearby &mdash; most checks are sorted the same day.
+                  </div>
                 </li>
-                <li style={{ marginBottom: '12px' }}>
-                  <strong>We come straight back to you.</strong> You&rsquo;ll hear from us within one business day to get you set up.
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', fontSize: '15px', color: 'var(--ink-2, #386373)', lineHeight: '1.6' }}>
+                  <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#DCEBDB', color: '#095C7B', fontWeight: '700', fontSize: '14px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>3</span>
+                  <div>
+                    <strong>We come straight back to you.</strong> You&rsquo;ll hear from us within one business day to get you set up &mdash; it may come from an unfamiliar mobile, so keep an eye on your phone.
+                  </div>
                 </li>
-              </ol>
-              <p className="rc-foot" style={{ marginTop: '24px' }}>
-                Need us sooner? Call <a href="tel:1300656595" style={{ fontWeight: '600', color: 'var(--brand)' }}>1300 65 65 95</a>.
+              </ul>
+              <p style={{ textAlign: 'center', marginTop: '32px', fontSize: '15px', color: 'var(--ink-2, #386373)' }}>
+                Need us sooner? Call <a href="tel:1300656595" style={{ color: 'var(--brand)', fontWeight: '700', textDecoration: 'none' }}>1300 65 65 95</a>.
               </p>
             </div>
-          </div>
-        </section>
-
-        <section className="res-body res-body-tail">
-          <div className="res-card res-card-solo">
-            <span className="rc-tag">● Learn more</span>
-            <h2>While you wait</h2>
-            <p>Meet the network of local owner-drivers who&rsquo;ll be looking after your parcels.</p>
-            <Link href="/about" className="btn btn-outline" style={{ marginTop: '16px', display: 'inline-block' }}>
-              About MailPlus &rarr;
-            </Link>
           </div>
         </section>
       </div>
@@ -198,7 +198,7 @@ function ConfirmationContent() {
             </nav>
             <h1>You&rsquo;re all set — <span className="hl">let&rsquo;s get started.</span></h1>
             <p className="res-lead">
-              Thanks, we&rsquo;ve got your details. If you send with Australia Post on an <strong>eParcel or MyPost Business account</strong>, your <strong>five free collections</strong> are ready to go &mdash; your local driver picks up your parcels and lodges them at the Post Office for you. Register free now, book a call to talk it through first, or read more about the offer below.
+              Your <strong>LocalMile</strong> activation code is on its way by <strong>SMS and email</strong>. It should land within a minute.
             </p>
           </div>
         </section>
@@ -208,21 +208,36 @@ function ConfirmationContent() {
             <div className="res-card">
               <span className="rc-tag">● FASTEST WAY TO START</span>
               <h2>Claim your five free collections</h2>
-              <p>
-                You&rsquo;ll do this in <strong>LocalMile</strong>, our booking app for Australia Post customers. Set up your free account, link your eParcel or MyPost Business details, and book your first pickup straight away. Your parcels are lodged on your own Australia Post account, so your rates and tracking don&rsquo;t change.
+              <p style={{ marginBottom: '14px', lineHeight: '1.6' }}>
+                Grab the code from the SMS or email, follow the link, enter the code and set a password. About two minutes, and you can book your first pickup straight away.
               </p>
-              <a href={localMilePlusAuthLink || '#'} className="btn btn-cta" style={{ marginTop: '20px', display: 'inline-block' }}>
-                Register free on LocalMile &rarr;
+              <p style={{ marginBottom: '20px', lineHeight: '1.6' }}>
+                Your parcels are still lodged on your own <strong>Australia Post account &mdash;</strong> same rates, same tracking. MailPlus is a separate business from Australia Post; we&rsquo;re simply the local driver who does the Post Office run for you.
+              </p>
+              <a href={localMilePlusAuthLink} className="btn btn-cta" style={{ marginTop: '0', marginBottom: '20px', display: 'inline-block' }}>
+                Open LocalMile activation &rarr;
               </a>
-              <p className="rc-foot" style={{ marginTop: '20px', lineHeight: '1.6' }}>
-                Takes about 2 minutes. No card required. After your trial, your Account Manager will walk you through competitive pricing options so you can keep enjoying the convenience &mdash; no lock-in, no obligation.
+              <p className="rc-foot" style={{ marginTop: '0', lineHeight: '1.6' }}>
+                Haven&rsquo;t got it yet? Check junk,{' '}
+                <button 
+                  type="button" 
+                  onClick={() => {
+                    alert('Resend request sent. Please check your email inbox and SMS in a moment.');
+                  }}
+                  style={{ background: 'none', border: 'none', padding: 0, font: 'inherit', color: 'var(--brand)', cursor: 'pointer', fontWeight: 600, textDecoration: 'underline' }}
+                >
+                  resend my code
+                </button>
+                , or call <a href="tel:1300656595" style={{ color: 'var(--brand)', fontWeight: 600 }}>1300 65 65 95</a>.
               </p>
             </div>
 
             <div className="res-card">
               <span className="rc-tag">● PREFER TO TALK FIRST</span>
               <h2>Book a call</h2>
-              <p>Want to talk it through before you start? Grab a time with your Account Manager.</p>
+              <p style={{ marginBottom: '16px', lineHeight: '1.6' }}>
+                Your Account Manager will call you during business hours (Mon–Fri, 9am–5pm AEST) to confirm pickup details &mdash; so there&rsquo;s nothing you need to do. Want to lock in a time that suits you instead? Pick a slot below.
+              </p>
               {iframeUrl ? (
                 <iframe 
                   src={iframeUrl}
@@ -249,15 +264,25 @@ function ConfirmationContent() {
         </section>
 
         <section className="res-body res-body-tail">
-          <div className="res-card res-card-solo">
+          <div className="res-card res-card-solo" style={{ textAlign: 'left' }}>
             <span className="rc-tag">● KNOW THE DETAILS</span>
-            <h2>Not sure how it works yet?</h2>
-            <p style={{ lineHeight: '1.7', color: 'var(--ink-2, #386373)' }}>
-              If you jumped straight to the free offer, it&rsquo;s worth a quick read first. In short: this is for businesses already sending with Australia Post on eParcel or MyPost Business &mdash; we take over the Post Office run, and your first five collections are free, no card, no catch. See exactly what&rsquo;s included so you know what to expect.
-            </p>
-            <Link href="/5-free-collections" className="btn btn-outline" style={{ marginTop: '20px', display: 'inline-block' }}>
-              Read more on 5 Free Collections &rarr;
-            </Link>
+            <h2>What&rsquo;s included</h2>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '16px 0 24px 0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <li style={{ fontSize: '15px', color: 'var(--ink-2, #386373)', lineHeight: '1.6' }}>
+                ✓ Five collections, on us &mdash; no card, no invoice, nothing to cancel
+              </li>
+              <li style={{ fontSize: '15px', color: 'var(--ink-2, #386373)', lineHeight: '1.6' }}>
+                ✓ For businesses already sending on <strong>eParcel or MyPost Business &mdash;</strong> your Australia Post account stays exactly as it is
+              </li>
+              <li style={{ fontSize: '15px', color: 'var(--ink-2, #386373)', lineHeight: '1.6' }}>
+                ✓ After your five, book ad hoc or have your Account Manager set up a regular service. No lock-in either way.
+              </li>
+            </ul>
+            <div style={{ textAlign: 'center', marginTop: '24px' }}>
+              <Link href="/5-free-collections" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: '700', fontSize: '16px', color: 'var(--brand)', textDecoration: 'none' }}>
+                Full details on 5 Free Collections &rarr;
+              </Link>
+            </div>
           </div>
         </section>
       </div>
