@@ -22,7 +22,7 @@ interface FAQ {
 export default function FiveFreeCollectionsClient() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [checkingArea, setCheckingArea] = useState(false);
-  const [selectedService, setSelectedService] = useState<string>('');
+  const [selectedService, setSelectedService] = useState<string>('five-free');
   const [isSorryOpen, setIsSorryOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [introOpen, setIntroOpen] = useState(false);
@@ -175,7 +175,7 @@ export default function FiveFreeCollectionsClient() {
       if (data.serviceable) {
         setServiceable(true);
         setSelectedService('five-free');
-        setStep(3); // Go straight to step 3 details
+        setStep(2);
         trackFormStepCompleted('5_free_collections', 1, 'address_check_serviceable', {
           postcode: location.zip,
           suburb: location.city,
@@ -819,7 +819,7 @@ export default function FiveFreeCollectionsClient() {
               </div>
 
               <div className="enquiry-form">
-                {/* Progressive enquiry: Step 1 address gate -> Step 3 details (Step 2 skipped) */}
+                {/* Progressive enquiry: Step 1 address gate -> Step 2 service selection -> Step 3 details */}
                 <div className="ef-progress" aria-hidden="true">
                   <span className={`ef-dot ${step === 1 ? 'active' : ''} ${step > 1 ? 'done' : ''}`} data-s="1"></span>
                   <span className={`ef-bar ${step > 1 ? 'done' : ''}`}></span>
@@ -1082,7 +1082,7 @@ export default function FiveFreeCollectionsClient() {
                     </select>
                   </div>
                   <div className="ef-nav">
-                    <button className="ef-back" type="button" onClick={() => setStep(serviceable ? 1 : 2)}>
+                    <button className="ef-back" type="button" onClick={() => setStep(2)}>
                       &larr; Back
                     </button>
                     <button
