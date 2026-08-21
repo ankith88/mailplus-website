@@ -308,11 +308,10 @@ export default function FiveFreeCollectionsClient() {
     }
   };
 
-
   const faqs: FAQ[] = [
     {
       q: 'What are MailPlus 5 free collections?',
-      a: "It's a free trial for new business customers: five parcel collections, completely free. A local MailPlus owner-operator comes to your premises and lodges your parcels at the Post Office for you. There's no credit card, no invoice, and no obligation to continue.",
+      a: "It's a free trial for new business customers who send with Australia Post: five collections, completely free. A local MailPlus owner-operator collects your parcels and mail from your premises and lodges them at the Post Office on your own Aus Post account — so your rates and tracking don't change. There's no credit card, no invoice, and no obligation to continue.",
     },
     {
       q: 'Is there really no catch with the free collections?',
@@ -321,6 +320,10 @@ export default function FiveFreeCollectionsClient() {
     {
       q: 'Do I need a credit card to start the free trial?',
       a: "No. You don't enter any card details to claim your five free collections. Just enter your business address on this page to check your area, and if there's a local owner-operator near you, register on LocalMile and book your first collection. There is no invoice and no obligation during the trial.",
+    },
+    {
+      q: 'Do I need an Australia Post account?',
+      a: "Yes — this offer is for businesses already sending with Australia Post, whether that's eParcel, MyPost Business or general mail items on an Aus Post account. Your local driver lodges everything on your own account, so your rates, tracking and invoicing don't change. If you're not sending with Australia Post, or want to switch, our Express Delivery service may be the better fit.",
     },
     {
       q: 'What happens after the 5 free collections?',
@@ -340,7 +343,7 @@ export default function FiveFreeCollectionsClient() {
     },
     {
       q: 'What is LocalMile and how do I book my collections?',
-      a: 'LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, you register on LocalMile and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard. It is a separate platform from ShipMate: LocalMile is for regular local pickups and deliveries, while ShipMate is for Australia-wide express shipping.',
+      a: 'LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, you register on LocalMile and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard. It is a separate platform from ShipMate: LocalMile is for your regular local Post Office collections, while ShipMate is for Australia-wide express shipping.',
     },
   ];
 
@@ -376,8 +379,9 @@ export default function FiveFreeCollectionsClient() {
                 <span className="hl">No card. No catch.</span>
               </h1>
               <p className="hero-lead hero-lead-hook">
-                Skip the Post Office run. Your local MailPlus owner-operator comes to you, collects and lodges your
-                parcels — no queue, no trip. Book each one in <strong>LocalMile</strong>, our free online platform for local pickups.
+                Send with Australia Post? Skip the Post Office run. Your local owner-operator collects your{' '}
+                <strong>eParcel, MyPost Business or general mail items</strong> and lodges them on your own Aus Post account
+                — rates and tracking unchanged. Book each pickup in <strong>LocalMile</strong>, our free booking app.
               </p>
               <div className="hero-cta-row">
                 <a href="#enquire" className="btn btn-primary">
