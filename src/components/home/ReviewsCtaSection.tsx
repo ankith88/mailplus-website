@@ -251,7 +251,7 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
             <div className="enquiry-grid">
               <div className="enquiry-left">
                 <h2>Get your time back — starting this week.</h2>
-                <p>Start with five free collections — no card, no catch. Enter your address and we'll instantly check for a local MailPlus driver in your area, then connect you with your account manager. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
+                <p>Send with Australia Post? Start with five free collections — no card, no catch. Enter your address and we'll instantly check for a local MailPlus driver in your area, then connect you with your account manager. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
                 <div className="enquiry-contacts">
                   <a href="tel:1300656595" className="enquiry-contact">
                     <div className="ec-ic">📞</div>

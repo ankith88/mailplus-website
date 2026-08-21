@@ -89,7 +89,7 @@ export function HeroSection() {
                 }}
               >
                 <p>We offer express parcel delivery in 1–2 business days Australia-wide — with 95% of shipments arriving overnight on business days — plus flat-rate pricing for items up to 5kg, same-day pickup through local owner-operators, and we bridge the gap between businesses and the Post Office — collecting and lodging mail and parcels on your behalf.</p>
-                <p>The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce. We&apos;re a reliable, independent alternative to Australia Post and traditional couriers.</p>
+                <p>The free MailPlus shipping platform, ShipMate, integrates with Shopify and WooCommerce. On your Post Office runs we work alongside Australia Post — collecting and lodging on your own account — while our express network delivers door-to-door as a reliable alternative to traditional couriers.</p>
               </div>
               <button 
                 className={`intro-toggle ${isOpen ? 'open' : ''}`} 
