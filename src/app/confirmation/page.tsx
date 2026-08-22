@@ -44,7 +44,7 @@ function ConfirmationContent() {
   useEffect(() => {
     if (!data) return;
 
-    const outOfTerritory = !!data.result.outOfTerritory;
+    const outOfTerritory = !!data.result.outOfTerritory || !!data.payload?.noFranchisees;
     const interestedIn = data.payload.interestedIn;
 
     let contentName = 'Corporate / Multi-site';
@@ -123,7 +123,7 @@ function ConfirmationContent() {
     );
   }
 
-  const outOfTerritory = !!data.result.outOfTerritory;
+  const outOfTerritory = !!data.result.outOfTerritory || !!data.payload?.noFranchisees;
   const interestedIn = data.payload.interestedIn; // '5-free' | 'express' | 'corporate'
   const { bookingUrlId, localMilePlusAuthLink } = data.result;
 

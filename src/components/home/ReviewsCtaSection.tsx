@@ -221,16 +221,16 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
       const result = await submitLead(payload)
       setSubmitting(false)
 
-      if (result.success) {
+      if (result.success || result.id || result.outOfTerritory !== undefined) {
         sessionStorage.setItem('lead_submission_data', JSON.stringify({ result, payload }));
-        window.location.href = '/confirmation'
+        window.location.href = '/confirmation';
       } else {
-        setIsSorryOpen(true)
+        alert(result.message || 'There was an issue submitting your enquiry. Please try again or call 1300 65 65 95.');
       }
     } catch (err) {
-      console.error('Error submitting lead:', err)
-      setSubmitting(false)
-      setIsSorryOpen(true)
+      console.error('Error submitting lead:', err);
+      setSubmitting(false);
+      alert('There was a network error submitting your enquiry. Please try again or call 1300 65 65 95.');
     }
   }
 

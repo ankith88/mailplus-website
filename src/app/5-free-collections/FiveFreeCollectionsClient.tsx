@@ -285,7 +285,7 @@ export default function FiveFreeCollectionsClient() {
       submitStartTimeRef.current = null;
       setSubmitting(false);
 
-      if (result.success) {
+      if (result.success || result.id || result.outOfTerritory !== undefined) {
         trackFormSubmitSuccess('5_free_collections', duration, {
           outOfTerritory: result.outOfTerritory,
           interestedIn: payload.interestedIn,
@@ -295,7 +295,7 @@ export default function FiveFreeCollectionsClient() {
         window.location.href = '/confirmation';
       } else {
         trackFormSubmitFailure('5_free_collections', duration, result.message || 'Submission unsuccesful');
-        setIsSorryOpen(true);
+        alert(result.message || 'There was an issue submitting your enquiry. Please try again or call 1300 65 65 95.');
       }
     } catch (err) {
       console.error('Error submitting lead:', err);
@@ -304,7 +304,7 @@ export default function FiveFreeCollectionsClient() {
       submitStartTimeRef.current = null;
       trackFormSubmitFailure('5_free_collections', duration, err instanceof Error ? err.message : 'Unknown exception');
       setSubmitting(false);
-      setIsSorryOpen(true);
+      alert('There was a network error submitting your enquiry. Please try again or call 1300 65 65 95.');
     }
   };
 
