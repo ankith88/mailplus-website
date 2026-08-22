@@ -1,3 +1,5 @@
+import { getAttributionPayload, AttributionData } from './attribution';
+
 export interface LeadPayload {
   companyName: string;
   customerPhone: string;
@@ -10,6 +12,7 @@ export interface LeadPayload {
   noFranchisees?: boolean;
   sourcePage?: string;
   pageUrl?: string;
+  attribution?: AttributionData;
   address: {
     address1: string;
     street: string;
@@ -44,12 +47,25 @@ export interface LeadResponse {
 
 export async function submitLead(data: LeadPayload): Promise<LeadResponse> {
   try {
+    const attribution = data.attribution || getAttributionPayload();
+    const payload = {
+      ...data,
+      attribution,
+      utmSource: attribution?.utmSource,
+      utmMedium: attribution?.utmMedium,
+      utmCampaign: attribution?.utmCampaign,
+      utmContent: attribution?.utmContent,
+      utmTerm: attribution?.utmTerm,
+      adClickId: attribution?.adClickId,
+      channel: attribution?.channel,
+    };
+
     const res = await fetch('/api/leads', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {

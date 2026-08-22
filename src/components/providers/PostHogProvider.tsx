@@ -5,15 +5,19 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
 import { initPostHog } from '@/lib/posthog';
 
+import { captureAttributionData } from '@/utils/attribution';
+
 function PostHogPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
     initPostHog();
+    captureAttributionData();
   }, []);
 
   useEffect(() => {
+    captureAttributionData();
     if (pathname) {
       let url = window.origin + pathname;
       if (searchParams?.toString()) {
