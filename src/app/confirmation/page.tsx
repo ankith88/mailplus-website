@@ -130,7 +130,7 @@ function ConfirmationContent() {
   const iframeUrl = bookingUrlId ? `https://prospectplus.com.au/book/${bookingUrlId}?embed=true` : '';
 
   // 1. OUT OF TERRITORY / MULTIPLE FRANCHISEES PENDING COVERAGE CHECK
-  if (outOfTerritory || (interestedIn === '5-free' && !localMilePlusAuthLink)) {
+  if (outOfTerritory) {
     return (
       <div style={{ minHeight: '90vh', background: 'var(--paper)', padding: '0 0 60px 0' }}>
         <section className="res-hero" id="main">
@@ -214,7 +214,7 @@ function ConfirmationContent() {
               <p style={{ marginBottom: '20px', lineHeight: '1.6' }}>
                 Your parcels are still lodged on your own <strong>Australia Post account &mdash;</strong> same rates, same tracking. MailPlus is a separate business from Australia Post; we&rsquo;re simply the local driver who does the Post Office run for you.
               </p>
-              <a href={localMilePlusAuthLink} className="btn btn-cta" style={{ marginTop: '0', marginBottom: '20px', display: 'inline-block' }}>
+              <a href={localMilePlusAuthLink || '#'} className="btn btn-cta" style={{ marginTop: '0', marginBottom: '20px', display: 'inline-block' }}>
                 Open LocalMile activation &rarr;
               </a>
               <p className="rc-foot" style={{ marginTop: '0', lineHeight: '1.6' }}>
