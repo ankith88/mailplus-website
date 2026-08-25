@@ -68,10 +68,26 @@ export default function FiveFreeCollectionsPage() {
     },
     {
       "@type": "Question",
+      "name": "Do I need an Australia Post account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — this offer is for businesses already sending with Australia Post, whether that's eParcel, MyPost Business or general mail items on an Aus Post account. Your local driver lodges everything on your own account, so your rates, tracking and invoicing don't change. If you're not sending with Australia Post, or want to switch, our Express Delivery service may be the better fit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does MailPlus collection work with my local Post Office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MailPlus is the collection arm for selected Licensed Post Offices across Australia. Your local owner-operator comes to your business, collects your parcels and mail, and lodges them at the Post Office for you. It bridges the gap between your business and the Post Office, on a schedule that suits you, so your team never has to make the run themselves."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Is there really no catch with the free collections?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No catch. MailPlus has worked with Licensed Post Offices across Australia for almost 30 years, so we'd rather show you the service than try to convince you. Five collections are on us, with nothing on your card and nothing to cancel. If it doesn't save your team time, you haven't lost a thing."
+        "text": "No catch. MailPlus owner-operators have worked with Licensed Post Offices across Australia for almost 30 years — we'd rather show you the service than sell it to you. Five collections are on us, with nothing on your card and nothing to cancel. If it doesn't save your team time, you haven't lost a thing."
       }
     },
     {
@@ -79,15 +95,7 @@ export default function FiveFreeCollectionsPage() {
       "name": "Do I need a credit card to start the free trial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. You don't enter any card details to claim your five free collections. Just enter your business address on this page to check your area, and if there's a local owner-operator near you, register on LocalMile and book your first collection. There is no invoice and no obligation during the trial."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need an Australia Post account?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — this offer is for businesses already sending with Australia Post, whether that's eParcel, MyPost Business or general mail items on an Aus Post account. Your local driver lodges everything on your own account, so your rates, tracking and invoicing don't change. If you're not sending with Australia Post, or want to switch, our Express Delivery service may be the better fit."
+        "text": "No. You don't enter any card details to claim your five free collections. Just enter your business address on this page to check your area. If there's a local owner-operator near you, we'll send your LocalMile activation code by SMS and email, and you can book your first collection straight away. There is no invoice and no obligation during the trial."
       }
     },
     {
@@ -103,23 +111,7 @@ export default function FiveFreeCollectionsPage() {
       "name": "How soon will my parcels be collected?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "During the trial, same-day collections need to be booked before 12pm, so your local owner-operator has plenty of time to fit you into their run. Book after that and your collection rolls to the next business day. Either way, you'll see it confirmed in LocalMile, so you always know a pickup is on the way."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if I already use another courier?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still doing that run, your owner-operator can take it off your hands, alongside whatever courier you already use."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does MailPlus collection work with my local Post Office?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "MailPlus is the collection arm for selected Licensed Post Offices across Australia. Your local owner-operator comes to your business, collects your parcels and mail, and lodges them at the Post Office for you. It bridges the gap between your business and the Post Office, on a schedule that suits you, so your team never has to make the run themselves."
+        "text": "Same-day collections need to be booked before 12pm, so your local owner-operator has plenty of time to fit you into their run. Book after that and your collection rolls to the next business day. Either way, you'll see it confirmed in LocalMile, so you always know a pickup is on the way."
       }
     },
     {
@@ -127,7 +119,7 @@ export default function FiveFreeCollectionsPage() {
       "name": "What is LocalMile and how do I book my collections?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, you register on LocalMile and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard. It is a separate platform from ShipMate: LocalMile is for your regular local Post Office collections, while ShipMate is for Australia-wide express shipping."
+        "text": "LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, we send you an activation code by SMS and email — activate, set a password, and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard. LocalMile is just for your local Post Office collections — our Express service, which delivers door-to-door Australia-wide, runs separately."
       }
     }
   ]

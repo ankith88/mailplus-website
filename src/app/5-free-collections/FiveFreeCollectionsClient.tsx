@@ -314,16 +314,20 @@ export default function FiveFreeCollectionsClient() {
       a: "It's a free trial for new business customers who send with Australia Post: five collections, completely free. A local MailPlus owner-operator collects your parcels and mail from your premises and lodges them at the Post Office on your own Aus Post account — so your rates and tracking don't change. There's no credit card, no invoice, and no obligation to continue.",
     },
     {
+      q: 'Do I need an Australia Post account?',
+      a: "Yes — this offer is for businesses already sending with Australia Post, whether that's eParcel, MyPost Business or general mail items on an Aus Post account. Your local driver lodges everything on your own account, so your rates, tracking and invoicing don't change. If you're not sending with Australia Post, or want to switch, our Express Delivery service may be the better fit.",
+    },
+    {
+      q: 'How does MailPlus collection work with my local Post Office?',
+      a: 'MailPlus is the collection arm for selected Licensed Post Offices across Australia. Your local owner-operator comes to your business, collects your parcels and mail, and lodges them at the Post Office for you. It bridges the gap between your business and the Post Office, on a schedule that suits you, so your team never has to make the run themselves.',
+    },
+    {
       q: 'Is there really no catch with the free collections?',
-      a: "No catch. MailPlus has worked with Licensed Post Offices across Australia for almost 30 years, so we'd rather show you the service than try to convince you. Five collections are on us, with nothing on your card and nothing to cancel. If it doesn't save your team time, you haven't lost a thing.",
+      a: "No catch. MailPlus owner-operators have worked with Licensed Post Offices across Australia for almost 30 years — we'd rather show you the service than sell it to you. Five collections are on us, with nothing on your card and nothing to cancel. If it doesn't save your team time, you haven't lost a thing.",
     },
     {
       q: 'Do I need a credit card to start the free trial?',
-      a: "No. You don't enter any card details to claim your five free collections. Just enter your business address on this page to check your area, and if there's a local owner-operator near you, register on LocalMile and book your first collection. There is no invoice and no obligation during the trial.",
-    },
-    {
-      q: 'Do I need an Australia Post account?',
-      a: "Yes — this offer is for businesses already sending with Australia Post, whether that's eParcel, MyPost Business or general mail items on an Aus Post account. Your local driver lodges everything on your own account, so your rates, tracking and invoicing don't change. If you're not sending with Australia Post, or want to switch, our Express Delivery service may be the better fit.",
+      a: "No. You don't enter any card details to claim your five free collections. Just enter your business address on this page to check your area. If there's a local owner-operator near you, we'll send your LocalMile activation code by SMS and email, and you can book your first collection straight away. There is no invoice and no obligation during the trial.",
     },
     {
       q: 'What happens after the 5 free collections?',
@@ -331,19 +335,11 @@ export default function FiveFreeCollectionsClient() {
     },
     {
       q: 'How soon will my parcels be collected?',
-      a: "During the trial, same-day collections need to be booked before 12pm, so your local owner-operator has plenty of time to fit you into their run. Book after that and your collection rolls to the next business day. Either way, you'll see it confirmed in LocalMile, so you always know a pickup is on the way.",
-    },
-    {
-      q: 'What if I already use another courier?',
-      a: "That's no problem — this isn't about replacing your courier. The free trial covers the trip to the Post Office that you're doing yourself. If you're still doing that run, your owner-operator can take it off your hands, alongside whatever courier you already use.",
-    },
-    {
-      q: 'How does MailPlus collection work with my local Post Office?',
-      a: 'MailPlus is the collection arm for selected Licensed Post Offices across Australia. Your local owner-operator comes to your business, collects your parcels and mail, and lodges them at the Post Office for you. It bridges the gap between your business and the Post Office, on a schedule that suits you, so your team never has to make the run themselves.',
+      a: "Same-day collections need to be booked before 12pm, so your local owner-operator has plenty of time to fit you into their run. Book after that and your collection rolls to the next business day. Either way, you'll see it confirmed in LocalMile, so you always know a pickup is on the way.",
     },
     {
       q: 'What is LocalMile and how do I book my collections?',
-      a: 'LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, you register on LocalMile and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard. It is a separate platform from ShipMate: LocalMile is for your regular local Post Office collections, while ShipMate is for Australia-wide express shipping.',
+      a: 'LocalMile is the free MailPlus platform for booking your local pickups online. Once your area is confirmed, we send you an activation code by SMS and email — activate, set a password, and book each collection in a few taps. Your local owner-operator is sent the job automatically, accepts it, and comes to your premises to collect — so you can manage everything from one simple dashboard. LocalMile is just for your local Post Office collections — our Express service, which delivers door-to-door Australia-wide, runs separately.',
     },
   ];
 
@@ -441,7 +437,7 @@ export default function FiveFreeCollectionsClient() {
               <div className="deal-fact">
                 <span className="deal-num">Free</span>
                 <span className="deal-label">
-                  register & book
+                  activate & book
                   <br />
                   online in LocalMile
                 </span>
@@ -497,10 +493,11 @@ export default function FiveFreeCollectionsClient() {
                 </p>
                 <p>
                   Getting started takes just a few minutes. Enter your business address on this page and we&apos;ll check
-                  for a local owner-operator in your area. If there&apos;s a driver near you, we take you straight to{' '}
-                  <strong>LocalMile</strong> — our free platform for booking local pickups — to register and book your
-                  first collection. MailPlus is a reliable, independent alternative to Australia Post and traditional
-                  couriers, backed by a local owner-operator and an Australian-based head-office support team.
+                  for a local owner-operator in your area. If there&apos;s a driver near you, we send your activation
+                  code for <strong>LocalMile</strong> — our free booking app for Australia Post customers — by SMS and
+                  email, so you can book your first collection straight away. MailPlus works alongside Australia Post
+                  as the local link between your business and the Post Office, backed by a local owner-operator and an
+                  Australian-based head-office support team.
                 </p>
               </div>
               <button
@@ -743,7 +740,8 @@ export default function FiveFreeCollectionsClient() {
                 <span className="sr-ic">📱</span> Getting started
               </div>
               <div className="sr-val">
-                Check your area on this page, register on LocalMile, then book your first collection — all online.
+                Check your area on this page, activate LocalMile with the code we send you, then book your first
+                collection — all online.
               </div>
             </div>
             <div className="spec-row">
@@ -797,8 +795,9 @@ export default function FiveFreeCollectionsClient() {
                 <h2>Claim your 5 free collections.</h2>
                 <p>
                   Enter your details and we&apos;ll instantly check for a local MailPlus owner-operator in your area.
-                  If there&apos;s a driver near you, we&apos;ll take you straight to LocalMile to register and start
-                  your trial. Prefer to talk? Our Aussie-based team is here Monday to Friday.
+                  If there&apos;s a driver near you, we&apos;ll send your LocalMile activation code by{' '}
+                  <strong>SMS and email</strong> — stay on this screen after you submit and we&apos;ll show you
+                  exactly what to do next. Prefer to talk? Our Aussie-based team is here Monday to Friday.
                 </p>
                 <div className="enquiry-contacts">
                   <a href="tel:1300656595" className="enquiry-contact">
