@@ -29,6 +29,7 @@ export default function Page() {
             <tr><th scope="col">Effective Date*</th><th scope="col">Express</th><th scope="col">Premium</th></tr>
           </thead>
           <tbody>
+        <tr><td>August 31st 2026</td><td className="pct">32.71%</td><td className="pct">23.95%</td></tr>
         <tr><td>August 24th 2026</td><td className="pct">31.29%</td><td className="pct">26.95%</td></tr>
         <tr><td>August 17th 2026</td><td className="pct">31.26%</td><td className="pct">26.95%</td></tr>
         <tr><td>August 10th 2026</td><td className="pct">30.15%</td><td className="pct">26.95%</td></tr>
