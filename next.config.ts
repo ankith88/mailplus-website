@@ -59,6 +59,11 @@ const nextConfig: NextConfig = {
         destination: '/terms',
         permanent: true,
       },
+      { // temporary redirection
+        source: '/contact',
+        destination: '/',
+        permanent: false,
+      },
     ]
   },
 };
