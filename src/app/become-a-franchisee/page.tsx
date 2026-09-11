@@ -59,7 +59,6 @@ export default function BecomeAFranchiseePage() {
       "Arncliffe, NSW",
       "Hunter Valley, NSW",
       "Macquarie Park, NSW",
-      "Mascot, NSW",
       "Newcastle, NSW",
       "Northern Beaches, NSW",
       "Waterloo, NSW",
@@ -193,7 +192,7 @@ export default function BecomeAFranchiseePage() {
       <p>We currently have a range of territories available across Australia. Find a location that suits you and enquire about it directly — your enquiry can reference the specific franchise you're interested in.</p>
     </div>
       <div className="fr-state-group">
-        <div className="fr-state-head"><span className="fr-state-badge">NSW</span><span className="fr-state-count">7 territories</span></div>
+        <div className="fr-state-head"><span className="fr-state-badge">NSW</span><span className="fr-state-count">6 territories</span></div>
         <div className="fr-card-grid">
           <div className="fr-card">
             <div className="fr-card-loc"><span className="fr-pin">📍</span>Arncliffe</div>
@@ -206,10 +205,6 @@ export default function BecomeAFranchiseePage() {
           <div className="fr-card">
             <div className="fr-card-loc"><span className="fr-pin">📍</span>Macquarie Park</div>
             <a href="#enquire" className="fr-card-cta" data-location="Macquarie Park, NSW">Enquire about Macquarie Park →</a>
-          </div>
-          <div className="fr-card">
-            <div className="fr-card-loc"><span className="fr-pin">📍</span>Mascot</div>
-            <a href="#enquire" className="fr-card-cta" data-location="Mascot, NSW">Enquire about Mascot →</a>
           </div>
           <div className="fr-card">
             <div className="fr-card-loc"><span className="fr-pin">📍</span>Newcastle</div>
@@ -488,7 +483,6 @@ export default function BecomeAFranchiseePage() {
                   <option value="Arncliffe, NSW">Arncliffe, NSW</option>
                   <option value="Hunter Valley, NSW">Hunter Valley, NSW</option>
                   <option value="Macquarie Park, NSW">Macquarie Park, NSW</option>
-                  <option value="Mascot, NSW">Mascot, NSW</option>
                   <option value="Newcastle, NSW">Newcastle, NSW</option>
                   <option value="Northern Beaches, NSW">Northern Beaches, NSW</option>
                   <option value="Waterloo, NSW">Waterloo, NSW</option>
