@@ -69,6 +69,11 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: false,
       },
+      { // temporary redirection
+        source: '/services/logistics',
+        destination: '/',
+        permanent: false,
+      },
     ]
   },
 };
