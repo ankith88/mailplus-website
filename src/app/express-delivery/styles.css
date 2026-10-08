@@ -581,32 +581,59 @@
   .footer-legal a:hover { color: var(--cta); }
 
   .hero-side { position: relative; }
+  /* soft glow halo so the floating illustration feels anchored on the sage bg */
+  .hero-side::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: 52%;
+    width: 78%; aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 50% 50%,
+                  rgba(255,255,255,.65) 0%,
+                  rgba(255,255,255,.28) 38%,
+                  rgba(255,255,255,0) 68%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    animation: hero-glow 6s ease-in-out infinite;
+  }
   /* soft ground shadow beneath the illustration — reacts to the float */
   .hero-side::after {
-    content: ""; position: absolute;
-    left: 50%; bottom: 4%;
-    width: 56%; height: 26px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    width: 56%;
+    height: 26px;
     transform: translateX(-50%);
     background: radial-gradient(ellipse at 50% 50%,
-                  rgba(10,50,66,.22) 0%, rgba(10,50,66,.10) 45%, rgba(10,50,66,0) 72%);
-    border-radius: 50%; z-index: 0; pointer-events: none;
+                  rgba(10,50,66,.22) 0%,
+                  rgba(10,50,66,.10) 45%,
+                  rgba(10,50,66,0) 72%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
     filter: blur(3px);
-    animation: heroGround 6s ease-in-out infinite;
+    animation: hero-ground 6s ease-in-out infinite;
   }
   .hero-image {
-    position: relative; z-index: 1;
-    width: 100%; height: auto; display: block;
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 620px;
+    margin: 0 auto;
+    /* per-object contact shadow that traces the transparent cut-out */
     filter: drop-shadow(0 18px 22px rgba(10,50,66,.18));
-    animation: heroFloat 6s ease-in-out infinite;
-  }
-  @keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-  @keyframes heroGround {
-    0%,100% { opacity: .9; transform: translateX(-50%) scaleX(1); }
-    50%     { opacity: .55; transform: translateX(-50%) scaleX(.86); }
+    animation: hero-bob 6s ease-in-out infinite;
+    will-change: transform;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-image, .hero-side::after { animation: none; }
+    .hero-image,
+    .hero-side::before,
+    .hero-side::after { animation: none; }
   }
 
   /* ========== RESPONSIVE ========== */
@@ -752,3 +779,15 @@
   }
 }
 
+@keyframes hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes hero-ground {
+  0%, 100% { opacity: .9; transform: translateX(-50%) scaleX(1); }
+  50%      { opacity: .55; transform: translateX(-50%) scaleX(.86); }
+}
+@keyframes hero-glow {
+  0%, 100% { opacity: .85; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%, -48%) scale(1.04); }
+}

@@ -783,13 +783,13 @@
   }
 
 
-  /* hero image — matches final-express-delivery page */
+  /* hero image — matches homepage and express-delivery page */
   .hero-image {
     width: 100%; height: auto; display: block;
     filter: drop-shadow(0 24px 40px rgba(10,50,66,.16));
-    animation: heroFloat 6s ease-in-out infinite;
+    animation: hero-bob 6s ease-in-out infinite;
+    will-change: transform;
   }
-  @keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   @media (prefers-reduced-motion: reduce) { .hero-image { animation: none; } }
 
   /* ========== FACT BANNER (white card, blue bold treatment, 4 facts) — matches V3 reference ========== */
