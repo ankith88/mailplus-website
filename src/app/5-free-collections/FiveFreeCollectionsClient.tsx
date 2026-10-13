@@ -900,25 +900,6 @@ export default function FiveFreeCollectionsClient() {
                   <div className="svc-cards" role="radiogroup" aria-label="Which sounds like you?">
                     <button 
                       type="button" 
-                      className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
-                      onClick={() => setSelectedService('five-free')}
-                      role="radio" 
-                      aria-checked={selectedService === 'five-free'}
-                    >
-                      <span className="svc-ic">🏣</span>
-                      <span className="svc-txt">
-                        <span className="svc-title-row">
-                          <span className="svc-name">We run your parcels and mail to the Post Office</span>
-                          <span className="svc-badge-free">First 5 free</span>
-                        </span>
-                        <span className="svc-desc">
-                          For eParcel, MyPost Business or general mail items on an Aus Post account — your local driver collects and lodges for you. No card, no catch.
-                        </span>
-                      </span>
-                      <span className="svc-check">✓</span>
-                    </button>
-                    <button 
-                      type="button" 
                       className={`svc-card ${selectedService === 'express' ? 'selected' : ''}`} 
                       onClick={() => setSelectedService('express')}
                       role="radio" 
@@ -932,6 +913,25 @@ export default function FiveFreeCollectionsClient() {
                         </span>
                         <span className="svc-desc">
                           1–2 day express delivery Australia-wide, with Shopify &amp; WooCommerce plugins.
+                        </span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
+                      onClick={() => setSelectedService('five-free')}
+                      role="radio" 
+                      aria-checked={selectedService === 'five-free'}
+                    >
+                      <span className="svc-ic">🏣</span>
+                      <span className="svc-txt">
+                        <span className="svc-title-row">
+                          <span className="svc-name">We run your parcels and mail to the Post Office</span>
+                          <span className="svc-badge-free">First 5 free</span>
+                        </span>
+                        <span className="svc-desc">
+                          For eParcel, MyPost Business or general mail items on an Aus Post account — your local driver collects and lodges for you. No card, no catch.
                         </span>
                       </span>
                       <span className="svc-check">✓</span>

@@ -2,8 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { scrollToEnquire, getCtaButtonText, useHasEnquire } from '@/components/shared/StickyCta'
 
 export function Navbar() {
+  const pathname = usePathname()
+  const hasEnquire = useHasEnquire()
+  const ctaText = getCtaButtonText(pathname)
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const servicesRef = useRef<HTMLDivElement>(null)
@@ -88,16 +93,30 @@ export function Navbar() {
         </nav>
 
         <div className="topbar-actions">
-          <a href="tel:1300656595" className="strip-phone">
+          <a href="tel:1300656595" className="strip-phone" aria-label="Call 1300 65 65 95">
             <span>📞</span>
             <span className="sp-num">1300 65 65 95</span>
           </a>
           <a href="https://customer.mailplus.com.au/" className="shipmate-login" target="_blank" rel="noopener noreferrer">
             <span>🔑</span><span>ShipMate Login</span>
           </a>
-          <a href="https://track.mailplus.com.au/" className="track-btn" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://track.mailplus.com.au/"
+            className={`track-btn ${hasEnquire ? 'track-btn--outline' : ''}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span>📍</span><span>Track a parcel</span>
           </a>
+          {hasEnquire && (
+            <button
+              type="button"
+              className="nav-cta"
+              onClick={scrollToEnquire}
+            >
+              {ctaText}
+            </button>
+          )}
         </div>
 
         <button 

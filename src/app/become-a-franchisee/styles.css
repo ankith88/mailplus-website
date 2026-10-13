@@ -120,6 +120,46 @@
     font-size: 14px; font-weight: 700; text-decoration: none; transition: background .15s;
   }
   .track-btn:hover { background: var(--cta-hover); }
+  .track-btn.track-btn--outline {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 9px 16px !important;
+    transition: all 0.15s ease !important;
+  }
+  .track-btn.track-btn--outline:hover {
+    background: #fff !important;
+    color: var(--brand) !important;
+    border-color: #fff !important;
+  }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--cta);
+    color: var(--ink);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    white-space: nowrap;
+  }
+  .nav-cta:hover {
+    background: var(--cta-hover);
+  }
+  @media (min-width: 921px) and (max-width: 1180px) {
+    .topbar-inner { gap: 12px; }
+    .topbar-actions { gap: 8px; }
+    .strip-phone .sp-num { display: none !important; }
+    .strip-phone { padding: 9px 12px !important; }
+  }
   .shipmate-login {
     display: inline-flex; align-items: center; gap: 7px;
     background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.45); color: #fff;

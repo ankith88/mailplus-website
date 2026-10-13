@@ -250,8 +250,8 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
           <div className="enquiry-band">
             <div className="enquiry-grid">
               <div className="enquiry-left">
-                <h2>Get your time back — starting this week.</h2>
-                <p>Send with Australia Post? Start with five free collections — no card, no catch. Enter your address and we'll instantly check for a local MailPlus driver in your area, then connect you with your account manager. Prefer to talk? Our Aussie-based team is here Monday to Friday.</p>
+                <h2>Check your area in seconds.</h2>
+                <p>Add your business address and the service you need. If there's a local driver near you, our expert team can help you make the switch.</p>
                 <div className="enquiry-contacts">
                   <a href="tel:1300656595" className="enquiry-contact">
                     <div className="ec-ic">📞</div>
@@ -282,7 +282,7 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
 
                 {/* STEP 1: Address gate */}
                 <div className={`ef-pane ${step === 1 && !checkingArea ? 'show' : ''}`}>
-                  <p className="ef-intro">Pop in your pickup address and we’ll instantly check for a local MailPlus driver in your area.</p>
+                  <p className="ef-intro">Pop in your pickup address to get started.</p>
                   <div className="field-group">
                     <label className="field-label">Pickup address <span className="req">*</span></label>
                     <div className="addr-wrap">
@@ -343,25 +343,6 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
                   <div className="svc-cards" role="radiogroup" aria-label="Which sounds like you?">
                     <button 
                       type="button" 
-                      className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
-                      onClick={() => handleSelectService('five-free')}
-                      role="radio" 
-                      aria-checked={selectedService === 'five-free'}
-                    >
-                      <span className="svc-ic">🏣</span>
-                      <span className="svc-txt">
-                        <span className="svc-title-row">
-                          <span className="svc-name">We run your parcels and mail to the Post Office</span>
-                          <span className="svc-badge-free">First 5 free</span>
-                        </span>
-                        <span className="svc-desc">
-                          For eParcel, MyPost Business or general mail items on an Aus Post account — your local driver collects and lodges for you. No card, no catch.
-                        </span>
-                      </span>
-                      <span className="svc-check">✓</span>
-                    </button>
-                    <button 
-                      type="button" 
                       className={`svc-card ${selectedService === 'express' ? 'selected' : ''}`} 
                       onClick={() => handleSelectService('express')}
                       role="radio" 
@@ -375,6 +356,25 @@ export function ReviewsCtaSection({ defaultSelectedService = '', initialStep = 1
                         </span>
                         <span className="svc-desc">
                           1–2 day express delivery Australia-wide, with Shopify &amp; WooCommerce plugins.
+                        </span>
+                      </span>
+                      <span className="svc-check">✓</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      className={`svc-card ${selectedService === 'five-free' ? 'selected' : ''}`} 
+                      onClick={() => handleSelectService('five-free')}
+                      role="radio" 
+                      aria-checked={selectedService === 'five-free'}
+                    >
+                      <span className="svc-ic">🏣</span>
+                      <span className="svc-txt">
+                        <span className="svc-title-row">
+                          <span className="svc-name">We run your parcels and mail to the Post Office</span>
+                          <span className="svc-badge-free">First 5 free</span>
+                        </span>
+                        <span className="svc-desc">
+                          For eParcel, MyPost Business or general mail items on an Aus Post account — your local driver collects and lodges for you. No card, no catch.
                         </span>
                       </span>
                       <span className="svc-check">✓</span>

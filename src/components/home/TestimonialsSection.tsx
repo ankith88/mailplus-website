@@ -1,9 +1,14 @@
 import ReviewsCarouselWidget from '@/components/shared/ReviewsCarouselWidget';
 import ReviewsHeaderBanner from '@/components/shared/ReviewsHeaderBanner';
 
-export function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+export function TestimonialsSection({ style, className }: TestimonialsSectionProps = {}) {
   return (
-    <section className="section">
+    <section className={`section ${className || ''}`.trim()} style={style}>
       <div className="wrap">
         <div className="testimonial-section">
           <ReviewsHeaderBanner />
@@ -11,6 +16,8 @@ export function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
+
+export default TestimonialsSection;
 

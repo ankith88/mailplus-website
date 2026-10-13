@@ -14,6 +14,7 @@ import { GetStartedModal } from '@/components/shared/GetStartedModal'
 import { GlobalFloatingBg } from '@/components/shared/GlobalFloatingBg'
 import { ScrollRevealProvider } from '@/components/shared/ScrollRevealProvider'
 import { ScrollToTop } from '@/components/shared/ScrollToTop'
+import { StickyCta } from '@/components/shared/StickyCta'
 import { NavigationScrollToTop } from '@/components/shared/NavigationScrollToTop'
 import { FacebookPixel } from '@/components/shared/FacebookPixel'
 
@@ -154,6 +155,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <GetStartedModal />
           <ScrollToTop />
+          <StickyCta />
           <Footer />
         </PostHogProvider>
       </body>

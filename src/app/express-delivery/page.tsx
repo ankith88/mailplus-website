@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import ExpressDeliveryClient from './ExpressDeliveryClient';
+import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { ReviewsCtaSection } from '@/components/home/ReviewsCtaSection';
 import './styles.css';
 
@@ -264,6 +265,7 @@ export default function ExpressDeliveryPage() {
   </div>
 </section>
 
+<TestimonialsSection />
 
 <section className="section faq-section" id="faq">
   <div className="wrap">
@@ -298,7 +300,7 @@ export default function ExpressDeliveryPage() {
 </section>
 
 
-<ReviewsCtaSection />
+<ReviewsCtaSection defaultSelectedService="express" />
 
 
       </div>
