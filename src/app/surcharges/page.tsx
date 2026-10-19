@@ -29,6 +29,7 @@ export default function Page() {
             <tr><th scope="col">Effective Date*</th><th scope="col">Services</th></tr>
           </thead>
           <tbody>
+            <tr><td>October 2026</td><td className="pct">32.80%</td></tr>
             <tr><td>September 2026</td><td className="pct">28.60%</td></tr>
             <tr className="links"><td>Fuel Index</td><td><a href="https://www.aip.com.au/pricing/pump-prices" target="_blank" rel="noopener">AIP pump prices ↗</a></td></tr>
           </tbody>
