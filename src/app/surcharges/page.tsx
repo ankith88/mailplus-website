@@ -15,7 +15,7 @@ export default function Page() {
     <div className="crumb"><a href="/">Home</a> <span>/</span> Service Surcharge</div>
     <div className="hero-eyebrow"><span className="dot"></span> Pricing reference</div>
     <h1>Surcharge</h1>
-    <p className="legal-lead">To account for variations in fuel prices and logistics industry costs, we apply a surcharge to our services. This surcharge is subject to change based on market conditions and may increase, decrease, or remain constant. However, to ensure consistent service quality, a minimum surcharge of 22.8% will always apply.</p>
+    <p className="legal-lead">To account for variations in fuel prices and logistics industry costs, we apply a surcharge to our services. This surcharge is subject to change based on market conditions and may increase, decrease, or remain constant. However, to ensure consistent service quality, a minimum surcharge of 32.8% will always apply.</p>
   </div>
 </section>
 
