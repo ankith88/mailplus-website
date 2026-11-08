@@ -26,15 +26,27 @@ export default function Page() {
       <div className="surcharge-card">
         <table className="surcharge-table">
           <thead>
-            <tr><th scope="col">Effective Date*</th><th scope="col">Services</th></tr>
+            <tr><th scope="col">Effective Period*</th><th scope="col">Surcharge charged</th></tr>
           </thead>
           <tbody>
             <tr><td>October 2026</td><td className="pct">32.80%</td></tr>
             <tr><td>September 2026</td><td className="pct">28.60%</td></tr>
-            <tr className="links"><td>Fuel Index</td><td><a href="https://www.aip.com.au/pricing/pump-prices" target="_blank" rel="noopener">AIP pump prices ↗</a></td></tr>
           </tbody>
         </table>
       </div>
+
+      <p className="table-note">
+        <strong>Current limitation:</strong> MailPlus is currently limiting the surcharge charged to 32.80%, although our surcharge methodology calculates a higher rate. This is not a permanent maximum. Any future increase, including the removal of this limitation, will apply in accordance with your contract.
+      </p>
+
+      <p className="table-note">
+        <strong>Fuel-price reference:</strong> <a href="https://www.aip.com.au/pricing/pump-prices" target="_blank" rel="noopener">AIP Pump Prices</a>.
+        <br />
+        This is the fuel-price data used in our surcharge methodology, not the MailPlus surcharge rate.
+      </p>
+
+      <p className="table-note">* Unless otherwise stated, the published surcharge will apply for the entire calendar month.</p>
+
       <div className="xlink-card">
         <div>
           <div className="xl-title">Looking for shipping surcharges?</div>
@@ -42,8 +54,6 @@ export default function Page() {
         </div>
         <a className="xl-btn" href="/shipping-surcharge">Shipping Surcharge →</a>
       </div>
-
-      <p className="table-note">* Unless otherwise stated, the published surcharge will apply for the entire calendar month.</p>
     </div>
   </div>
 </section>

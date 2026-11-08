@@ -30,9 +30,10 @@
   .surcharge-table .pct { font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
   .surcharge-table tr.current td { background: var(--accent-tint); }
   .surcharge-table tr.links td { background: var(--paper); font-weight: 600; color: var(--ink); }
-  .surcharge-table a { color: var(--brand); font-weight: 600; text-decoration: none; }
-  .surcharge-table a:hover { text-decoration: underline; }
+  .surcharge-table a, .table-note a { color: var(--brand); font-weight: 600; text-decoration: none; }
+  .surcharge-table a:hover, .table-note a:hover { text-decoration: underline; }
   .table-note { font-size: 13px; color: var(--muted); margin: 16px 4px 0; line-height: 1.55; }
+  .table-note strong { color: var(--ink); font-weight: 600; }
 
   .xlink-card {
     display: flex; align-items: center; justify-content: space-between; gap: 18px;
