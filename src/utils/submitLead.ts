@@ -1,4 +1,5 @@
 import { getAttributionPayload, AttributionData } from './attribution';
+import posthog from 'posthog-js';
 
 export interface LeadPayload {
   companyName: string;
@@ -58,7 +59,21 @@ export async function submitLead(data: LeadPayload): Promise<LeadResponse> {
       utmTerm: attribution?.utmTerm,
       adClickId: attribution?.adClickId,
       channel: attribution?.channel,
+      referrer: attribution?.referrer,
+      landingPage: attribution?.landingPage,
+      aiAssistant: attribution?.aiAssistant,
     };
+
+    // Track lead submission in PostHog
+    if (typeof posthog !== 'undefined' && posthog.capture) {
+      posthog.capture('lead_submission_attempt', {
+        interested_in: data.interestedIn,
+        source_page: data.sourcePage,
+        channel: attribution?.channel,
+        referrer: attribution?.referrer,
+        ai_assistant: attribution?.aiAssistant,
+      });
+    }
 
     const res = await fetch('/api/leads', {
       method: 'POST',
@@ -73,7 +88,19 @@ export async function submitLead(data: LeadPayload): Promise<LeadResponse> {
       return { success: false, message: 'Server error' };
     }
 
-    return await res.json();
+    const result = await res.json();
+
+    if (result.success && typeof posthog !== 'undefined' && posthog.capture) {
+      posthog.capture('lead_submission_success', {
+        lead_id: result.id,
+        interested_in: data.interestedIn,
+        source_page: data.sourcePage,
+        channel: attribution?.channel,
+        ai_assistant: attribution?.aiAssistant,
+      });
+    }
+
+    return result;
   } catch (err) {
     console.error('Error submitting lead', err);
     return { success: false, message: 'Network error' };

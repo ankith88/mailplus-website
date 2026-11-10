@@ -6,6 +6,7 @@ export function buildOrganizationGraph() {
         '@type': 'Organization',
         '@id': 'https://mailplus.com.au/#organization',
         name: 'MailPlus',
+        legalName: 'MailPlus Pty Ltd',
         url: 'https://mailplus.com.au',
         logo: {
           '@type': 'ImageObject',
@@ -13,27 +14,33 @@ export function buildOrganizationGraph() {
           width: 200,
           height: 60,
         },
-        description: 'Australian courier, parcel delivery, mail management and logistics company serving Sydney from depots in Waterloo and Alexandria, NSW.',
+        description:
+          'MailPlus is an Australian courier and parcel delivery network for small to medium sized business, founded in 1997, operating franchised territories across all metro areas and selected regional areas with approximately 300 vehicles on the road. Services include express parcel delivery in 1–2 business days Australia-wide, flat-rate pricing up to 5kg, same-day pickup by local owner-operators, and Post Office collect and lodge.',
         foundingDate: '1997',
+        founder: {
+          '@type': 'Person',
+          name: 'Chris Burgess',
+          jobTitle: 'Managing Director',
+        },
         areaServed: {
           '@type': 'Country',
           name: 'Australia',
         },
         address: {
           '@type': 'PostalAddress',
-          streetAddress: '45 Botany Road',
-          addressLocality: 'Waterloo',
+          streetAddress: 'Level 16, 175 Pitt Street',
+          addressLocality: 'Sydney',
           addressRegion: 'NSW',
-          postalCode: '2017',
+          postalCode: '2000',
           addressCountry: 'AU',
         },
         telephone: '+61-1300-65-65-95',
-        email: 'info@mailplus.com.au',
         sameAs: [
           'https://www.facebook.com/mailplusAustralia/',
           'https://www.linkedin.com/company/mailplusau',
           'https://twitter.com/mailplusau',
-          'https://www.instagram.com/mailplusau/?hl=en',
+          'https://www.instagram.com/mailplusau/',
+          'https://www.reviews.io/company-reviews/store/mailplus.com.au',
         ],
         contactPoint: [
           {
@@ -45,8 +52,8 @@ export function buildOrganizationGraph() {
             hoursAvailable: {
               '@type': 'OpeningHoursSpecification',
               dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-              opens: '07:00',
-              closes: '19:00',
+              opens: '09:00',
+              closes: '17:00',
             },
           },
           {
@@ -57,21 +64,50 @@ export function buildOrganizationGraph() {
             availableLanguage: 'English',
           },
         ],
+        makesOffer: [
+          {
+            '@type': 'Offer',
+            name: '5 Free Collections',
+            description:
+              'Five free collections for new MailPlus business customers who send with Australia Post. A local owner-operator collects and lodges on the customer\'s own Australia Post account. No credit card and no obligation.',
+            price: '0',
+            priceCurrency: 'AUD',
+            url: 'https://mailplus.com.au/5-free-collections',
+            eligibleCustomerType: 'https://schema.org/Business',
+          },
+          {
+            '@type': 'Offer',
+            name: 'ShipMate Platform',
+            description:
+              'Free shipping platform for booking pickups, printing labels and tracking, with Shopify and WooCommerce integrations. No subscription and no minimum volume.',
+            price: '0',
+            priceCurrency: 'AUD',
+            url: 'https://mailplus.com.au/shipmate-platform',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Express Parcel Delivery',
+            description:
+              'Flat-rate express delivery for items up to 5kg, 1–2 business days anywhere in Australia, with same-day pickup by a local owner-operator.',
+            url: 'https://mailplus.com.au/express-delivery',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Post Office Collect & Lodge',
+            description:
+              'Morning delivery of inbound Australia Post mail and parcels, end-of-day lodgement of outbound items, and business PO Box clearing by a local owner-operator.',
+            url: 'https://mailplus.com.au/post-office-collect-lodge',
+          },
+        ],
       },
       {
         '@type': 'WebSite',
         '@id': 'https://mailplus.com.au/#website',
         url: 'https://mailplus.com.au',
         name: 'MailPlus',
-        description: 'Sydney courier, parcel delivery, mail management and logistics',
-        publisher: { '@id': 'https://mailplus.com.au/#organization' },
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: 'https://mailplus.com.au/search?q={search_term_string}',
-          },
-          'query-input': 'required name=search_term_string',
+        description: 'Australian courier and parcel delivery for small business',
+        publisher: {
+          '@id': 'https://mailplus.com.au/#organization',
         },
         inLanguage: 'en-AU',
       },
