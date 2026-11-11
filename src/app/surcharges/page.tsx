@@ -102,7 +102,7 @@ export default function Page() {
                 </svg>
               </div>
               <p className="callout-body">
-                <strong>Calculation method:</strong> [MailPlus to insert: AIP data series used, formula, reference period, time lag and rounding]
+                <strong>Calculation method:</strong> Each month MailPlus averages the weekly national average unleaded petrol prices published by AIP for the reference month. The calculated rate is the percentage by which that average exceeds the base price of 165.0 cents per litre: (average price − 165.0) ÷ 165.0 × 100, rounded to one decimal place. If the calculated rate is below 22.8%, the minimum rate of 22.8% applies. The minimum is reviewed annually.
               </p>
             </div>
 
@@ -116,7 +116,7 @@ export default function Page() {
                 </svg>
               </div>
               <p className="callout-body">
-                <strong>Applicable rate:</strong> The rate that applies is the rate in effect on [MailPlus to insert: the date the Services or Extra Services were provided, or the invoice date].
+                <strong>Applicable rate:</strong> The rate for a calendar month applies to Services and Extra Services provided in that month.
               </p>
             </div>
 
