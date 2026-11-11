@@ -29,18 +29,15 @@ export default function Page() {
               <Link href="/terms" className="inline-link">
                 Terms and Conditions
               </Link>
-              . The surcharge is calculated as a percentage of the charges for those services.
+              . The surcharge is calculated as a percentage of all fees and charges for those services, excluding GST. GST is added where applicable.
             </p>
 
             <div className="policy-overview-card">
               <p>
-                We review the surcharge monthly using our surcharge methodology, which takes account of AIP pump-price data. The surcharge may increase, decrease or remain unchanged, subject to a minimum rate of <strong>22.8%</strong>.
+                MailPlus reviews the surcharge monthly using the calculation method below and the linked AIP Pump Prices data. The surcharge may increase, decrease or remain unchanged, subject to a minimum rate of <strong>22.8%</strong>.
               </p>
               <p>
-                MailPlus may limit the surcharge charged to customers to a rate below the rate calculated under that methodology. The table below shows the surcharge actually charged, which may therefore be lower than the calculated rate.
-              </p>
-              <p>
-                Any future increase, including the removal of a temporary limitation, will apply in accordance with your contract.
+                MailPlus may limit the surcharge charged to customers to a rate below the rate calculated under that calculation method. The table below shows the surcharge actually charged, which may therefore be lower than the calculated rate.
               </p>
             </div>
           </div>
@@ -91,7 +88,35 @@ export default function Page() {
                 </svg>
               </div>
               <p className="callout-body">
-                <strong>Current limitation:</strong> Since 1 October 2026, MailPlus has been limiting the surcharge charged to 32.80%, although our surcharge methodology calculates a higher rate. This is not a permanent maximum. Any future increase, including the removal of this limitation, will apply in accordance with your contract.
+                <strong>Current limitation:</strong> Since 1 October 2026, MailPlus has been limiting the surcharge charged to 32.80%, although the calculation method below produces a higher rate. The 32.80% limit is temporary. If the calculated rate falls below that limit, the lower rate applies, subject to the 22.8% minimum.
+              </p>
+            </div>
+
+            <div className="surcharge-callout surcharge-callout-limit">
+              <div className="callout-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="2" width="16" height="20" rx="2" />
+                  <line x1="8" y1="6" x2="16" y2="6" />
+                  <line x1="8" y1="10" x2="16" y2="10" />
+                  <line x1="8" y1="14" x2="12" y2="14" />
+                </svg>
+              </div>
+              <p className="callout-body">
+                <strong>Calculation method:</strong> [MailPlus to insert: AIP data series used, formula, reference period, time lag and rounding]
+              </p>
+            </div>
+
+            <div className="surcharge-callout surcharge-callout-limit">
+              <div className="callout-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+              </div>
+              <p className="callout-body">
+                <strong>Applicable rate:</strong> The rate that applies is the rate in effect on [MailPlus to insert: the date the Services or Extra Services were provided, or the invoice date].
               </p>
             </div>
 
@@ -116,12 +141,12 @@ export default function Page() {
                     <path d="M7 7h10v10" />
                   </svg>
                 </a>
-                . This is the fuel-price data used in our surcharge methodology, not the MailPlus surcharge rate.
+                . This is the fuel-price data used in the calculation method above, not the MailPlus surcharge rate.
               </p>
             </div>
 
             <p className="table-note">
-              Rates are reviewed monthly. The rate applicable to your services is determined under your contract and the surcharge schedule. Any increase applies prospectively, after the required written notice period, and not retrospectively.
+              The applicable rate is determined under the customer&rsquo;s contract and the calculation rules on this page. Any increase applies prospectively, after the required written notice period, and not retrospectively.
             </p>
 
             <div className="xlink-card">
