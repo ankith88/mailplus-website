@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-llms.mjs",
     "build": "next build",
+    "build:llms": "node scripts/generate-llms.mjs",
     "start": "next start",
     "lint": "eslint"
   },

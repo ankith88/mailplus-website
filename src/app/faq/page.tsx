@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { FaqHero } from '@/components/faq/FaqHero'
 import { FaqAccordion } from '@/components/faq/FaqAccordion'
 import { FaqCta } from '@/components/faq/FaqCta'
+import { canonicalFaqs } from '@/content/company-facts'
 
 export const metadata: Metadata = {
   title: 'FAQ | Everything You Need To Know About MailPlus',
@@ -11,8 +12,25 @@ export const metadata: Metadata = {
 }
 
 export default function FaqPage() {
+  const faqSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: canonicalFaqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaData) }}
+      />
       <FaqHero />
       <FaqAccordion />
       <FaqCta />

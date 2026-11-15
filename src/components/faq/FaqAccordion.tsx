@@ -9,28 +9,50 @@ const categories = [
     label: 'General',
     faqs: [
       {
-        q: 'What is MailPlus?',
-        a: 'MailPlus is a 100% Australian-owned courier, parcel delivery, mail management, and logistics company. We provide fast and stress-free shipping Australia-wide with guaranteed same-day collections, 1–2 day express delivery, and a free shipping platform called ShipMate. We have been helping small to medium-sized Aussie businesses grow since 2010.',
+        q: 'What does MailPlus do?',
+        a: 'MailPlus is an Australian courier network for small business, founded in 1997, with around 300 vehicles on the road across all metro areas and regional hubs. We do three things: express parcel delivery in 1–2 days Australia-wide, Post Office collect & lodge so you never queue, and same-day local hand-to-hand delivery — all from one trusted local driver.',
       },
       {
-        q: 'Is MailPlus Australian owned?',
-        a: 'Yes. MailPlus is 100% Australian-owned and operated. We are not a franchise and have no overseas shareholders or foreign call centres. Our team is based right here in Australia.',
+        q: 'How much does MailPlus cost?',
+        a: "Express parcels are flat-rate for anything up to 5kg, so your shipping costs stay predictable with no surprise bills. There's no lock-in contract, and no minimum volume — you only pay for what you send. New businesses can also start with five free collections, with no card required.",
       },
       {
-        q: 'How do I contact MailPlus?',
-        a: 'You can reach our customer service team by phone on 1300 65 65 95, Monday to Friday, 9am–5pm AEST. You can also submit an enquiry through our contact page and a team member will get back to you promptly.',
+        q: 'Can MailPlus handle my Post Office run?',
+        a: "Yes — that's one of the things we're known for. Your local owner-operator collects your parcels and mail, lodges them at the Post Office for you, and clears your business PO Boxes, all same-day. Your team never has to queue or leave the office, which is ideal for busy multi-site and corporate operations.",
       },
       {
-        q: 'Does MailPlus require a contract or minimum volume?',
-        a: 'No. There are no lock-in contracts and no minimum volume requirements. You only pay for the labels you scan and use. This makes MailPlus ideal for businesses of any size — whether you send 1 parcel or 1,000 per week.',
+        q: 'How fast can MailPlus deliver across Australia?',
+        a: 'MailPlus delivers parcels in 1–2 business days anywhere in Australia, with 95% of shipments arriving overnight on business days — collected in Sydney today, in Perth tomorrow. Book same-day collection with your local owner-operator before the daily cut-off, or set up a scheduled service so your regular pickups just happen without you having to book each time.',
       },
       {
-        q: 'What areas does MailPlus service?',
-        a: 'MailPlus delivers to every Australian postcode. Our owner-operators are based in major cities and regional areas across Australia, ensuring consistent same-day collections wherever your business is located.',
+        q: 'Does MailPlus work with Shopify and my online store?',
+        a: 'Yes. Our free shipping platform, ShipMate, plugs straight into Shopify and WooCommerce — orders sync automatically, labels print in a few clicks, and tracking updates in real time. Prefer to build your own setup? The MailPlus API connects your systems directly for automated bookings, labels and tracking at scale.',
       },
       {
-        q: 'How do I get started with MailPlus?',
-        a: 'Simply fill out our enquiry form and a member of our team will be in touch to get you set up. There are no contracts, no setup fees, and no minimum volumes. You can be up and running with ShipMate — our free shipping platform — in minutes.',
+        q: 'How are the 5 free collections free?',
+        a: "We'd rather show you than tell you. Businesses that send with Australia Post get five collections completely free — your local owner-operator picks up your parcels and mail and lodges them at the Post Office on your own Aus Post account, so your rates and tracking don't change. No credit card and no obligation — it's the simplest way to see how much time the service saves before you commit.",
+      },
+      {
+        q: 'Why choose MailPlus over Australia Post?',
+        a: "You get a dedicated local owner-operator who comes to you and knows your business — not a depot drop-off or a different contract driver with no stake in your service. Flat-rate pricing keeps costs predictable, and a local Aussie support team answers fast — no hold times, no bots. And if you send with Australia Post, nothing changes: we collect and lodge on your own account, working alongside the Post Office rather than replacing it.",
+      },
+    ],
+  },
+  {
+    id: 'offers',
+    label: 'Offers & Trials',
+    faqs: [
+      {
+        q: 'What is the 5 Free Collections offer?',
+        a: '5 Free Collections is a free trial for new MailPlus business customers who already send with Australia Post (eParcel, MyPost Business, or general mail on an Australia Post account). A local owner-operator collects from your premises and lodges on your own Australia Post account. Rates, tracking, and invoicing do not change. Cost is $0, with no credit card, no invoice, and no contract.',
+      },
+      {
+        q: 'How do I start the 5 Free Collections trial?',
+        a: 'Enter your business address on our 5 Free Collections page to check for a local owner-operator. Once confirmed, you receive an activation code for LocalMile (our free booking app for Australia Post customers) by SMS and email, and you can book your first collection immediately.',
+      },
+      {
+        q: 'What is the ShipMate platform offer?',
+        a: 'ShipMate is our free shipping platform with no subscription fees, no setup fees, and no minimum volume. It gives online merchants and small businesses access to discounted flat-rate express shipping, bulk label printing, live tracking, and seamless Shopify and WooCommerce sync.',
       },
     ],
   },
@@ -39,28 +61,38 @@ const categories = [
     label: 'Express Delivery',
     faqs: [
       {
-        q: 'How fast is MailPlus Express delivery?',
-        a: 'MailPlus Express delivers in 1–2 business days Australia-wide. Our owner-operators collect your parcels same-day and lodge them directly into the express network for next-day or two-day delivery to your customers.',
+        q: 'How does MailPlus Express Parcel Delivery work?',
+        a: 'You print your label in ShipMate, which assigns the pickup to your local owner-operator. Your driver collects the parcel from your premises the same day. Partner carriers complete the national line-haul, and MailPlus remains your single point of contact for end-to-end tracking and customer support.',
       },
       {
-        q: 'What are the flat-rate pricing tiers?',
-        a: 'MailPlus offers national flat-rate pricing on items up to 5kg, with an additional option for items up to 20kg. Pricing is simple and transparent — no hidden surcharges or fuel levies. Contact us to get a quote tailored to your business.',
+        q: 'What parcel weights and sizes are supported?',
+        a: 'We offer national flat-rate pricing for parcels up to 5kg. Heavier items up to 20kg can also be sent through the express network.',
       },
       {
-        q: 'What is the maximum parcel size for MailPlus Express?',
-        a: 'MailPlus Express caters for parcels up to 20kg. Flat-rate pricing applies up to 5kg. Items up to 20kg are also available. For heavier or bulkier freight, please contact our team to discuss the best solution for your needs.',
+        q: 'What are the pickup coverage areas for Express Delivery?',
+        a: 'Pickup is provided across all major Australian cities (Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, Darwin) and selected regional centres including Sunshine Coast, Central Coast, Geelong, Byron Bay, and Southeast Queensland. Express delivery is nationwide.',
       },
       {
-        q: 'Is same-day collection really guaranteed?',
-        a: 'Yes. Guaranteed same-day collections are a core promise of MailPlus. Your dedicated local owner-operator will collect your parcels the same day you book — no waiting, no missed pickups.',
+        q: 'Is there a minimum volume requirement for pickups?',
+        a: 'No lock-in contract and no minimum volume. A collection fee may apply for lower-volume businesses and is agreed upfront.',
+      },
+    ],
+  },
+  {
+    id: 'post-office',
+    label: 'Post Office Collect & Lodge',
+    faqs: [
+      {
+        q: 'What is Post Office Collect & Lodge?',
+        a: 'MailPlus handles your business Post Office trips on a reliable scheduled run. In the morning, your local driver collects inbound mail and parcels and clears business PO Boxes. In the afternoon, outbound mail and parcels are collected and lodged at Australia Post before daily cutoff. Express banking runs are also available.',
       },
       {
-        q: 'Do you offer biodegradable packaging?',
-        a: 'Yes. MailPlus offers biodegradable satchels through our Better Packaging Co partnership. These are eco-friendly alternatives to standard plastic satchels and are available to all MailPlus account holders.',
+        q: 'Do I need to book every time for Post Office runs?',
+        a: 'No. Post Office Collect & Lodge operates on a set schedule agreed with your business, so your regular morning and afternoon runs happen automatically without needing daily booking.',
       },
       {
-        q: 'Can I send parcels to PO Boxes?',
-        a: 'Yes. Through our Post Office Solutions service, MailPlus can clear your PO Box and lodge all outgoing Australia Post parcels same-day. We handle the entire process so you never have to queue at the Post Office again.',
+        q: 'How is Post Office Collect & Lodge priced?',
+        a: 'Pricing is tailored to your business schedule, volume, and whether you require service across a single site or multiple locations.',
       },
     ],
   },
@@ -70,127 +102,37 @@ const categories = [
     faqs: [
       {
         q: 'What is ShipMate?',
-        a: 'ShipMate is MailPlus\'s free shipping platform. It gives you access to discounted premium carriers, bulk label printing, Google address validation, real-time tracking, and automated customer notifications — all from one easy-to-use dashboard. There are no subscription fees.',
+        a: 'ShipMate is the free shipping platform from MailPlus. It allows you to book pickups, print labels in bulk, access discounted flat rates across premium carriers, validate addresses with Google, track parcels in real time, and message your local driver directly.',
       },
       {
-        q: 'Is ShipMate really free?',
-        a: 'Yes. ShipMate is completely free to use. There are no subscription fees, no setup costs, and no minimum volumes. You only pay for the shipping labels you use.',
+        q: 'Can non-ecommerce businesses use ShipMate?',
+        a: 'Yes. While ShipMate has one-click integrations for Shopify and WooCommerce, any business that sends parcels — including corporate offices, dental practices, legal firms, and schools — can use ShipMate standalone to manage shipping.',
       },
       {
-        q: 'Does ShipMate integrate with Shopify?',
-        a: 'Yes. ShipMate includes a free Shopify integration that automatically syncs your orders, applies smart product weights, supports tag filtering, and enables bulk label printing. You can install it directly from the Shopify App Store.',
-      },
-      {
-        q: 'What carriers are available through ShipMate?',
-        a: 'ShipMate gives you access to MailPlus Express and a range of discounted premium carriers for domestic and international shipments. Our platform lets you choose the best carrier for each shipment based on price, speed, and destination.',
-      },
-      {
-        q: 'Can I print bulk shipping labels through ShipMate?',
-        a: 'Yes. ShipMate supports bulk label printing, allowing you to generate and print multiple shipping labels at once. This is particularly useful for e-commerce businesses processing high volumes of orders.',
-      },
-      {
-        q: 'Does ShipMate send tracking notifications to my customers?',
-        a: 'Yes. ShipMate automatically sends SMS and email notifications to your customers at key points in the delivery journey — from pickup through to delivery. This reduces "where is my order?" queries and improves your customer experience.',
+        q: 'What is the MailPlus API?',
+        a: 'The MailPlus API connects your warehouse, ERP, or custom order management system directly to MailPlus for automated label generation, live tracking updates, and automated customer notifications at scale.',
       },
     ],
   },
   {
-    id: 'shopify',
-    label: 'Shopify Integration',
+    id: 'company',
+    label: 'Company & Franchising',
     faqs: [
       {
-        q: 'How do I install the MailPlus Shopify integration?',
-        a: 'The MailPlus Shopify app is available for free on the Shopify App Store. Once installed, it connects directly to your ShipMate account and automatically syncs all your Shopify orders for seamless label generation and dispatch.',
+        q: 'When was MailPlus founded and who owns it?',
+        a: 'MailPlus was founded in 1997 by Managing Director Chris Burgess. Headquartered at Level 16, 175 Pitt Street, Sydney NSW, MailPlus has nearly 30 years of history supporting Australian small and medium businesses.',
       },
       {
-        q: 'Does the Shopify integration support automatic order sync?',
-        a: 'Yes. The integration automatically pulls all new orders from your Shopify store into ShipMate. You can then generate labels individually or in bulk, with smart product weight rules already applied.',
+        q: 'Is MailPlus a franchise?',
+        a: 'Yes. MailPlus operates over 120 exclusive franchised territories across Australia with approximately 300 vehicles on the road. Each territory is owned and run by a local owner-operator who personally services businesses in their local community.',
       },
       {
-        q: 'Can I filter which Shopify orders are synced?',
-        a: 'Yes. ShipMate\'s Shopify integration supports tag filtering, so you can choose which orders are synced based on your Shopify order tags. This gives you precise control over your fulfilment workflow.',
+        q: 'How can I become a MailPlus Franchisee?',
+        a: 'Exclusive territories are available across NSW, ACT, QLD, VIC, and TAS. Visit our Become a Franchisee page to learn about territory availability, initial setup, vehicle leasing, and full head-office training and support.',
       },
       {
-        q: 'What happens after I print a label in ShipMate?',
-        a: 'After printing a label, your MailPlus owner-operator will collect the parcel same-day. The shipment status is then updated in real-time across ShipMate, and your customer automatically receives tracking notifications.',
-      },
-      {
-        q: 'Is the Shopify integration free?',
-        a: 'Yes. The MailPlus Shopify integration is completely free. There are no subscription fees for the app or the ShipMate platform. You only pay for the shipping labels you use.',
-      },
-    ],
-  },
-  {
-    id: 'api',
-    label: 'MailPlus API',
-    faqs: [
-      {
-        q: 'What can I do with the MailPlus API?',
-        a: 'The MailPlus API enables automated label generation, real-time tracking updates, live delivery status webhooks, and access to biodegradable packaging options. It is designed for developers, 3PLs, and businesses with custom platforms such as WooCommerce, Squarespace, or proprietary systems.',
-      },
-      {
-        q: 'Is there documentation available for the MailPlus API?',
-        a: 'Yes. Full API documentation and onboarding support is available to all MailPlus API partners. Our IT Systems team is only a call or email away if you need technical assistance during or after your integration.',
-      },
-      {
-        q: 'What platforms does the MailPlus API support?',
-        a: 'The MailPlus API can integrate with any platform that supports REST API calls — including WooCommerce, Squarespace, Magento, and fully custom-built systems. If you\'re unsure whether your platform is compatible, contact our team to discuss.',
-      },
-      {
-        q: 'Who supports the API integration?',
-        a: 'MailPlus provides full integration support through our IT Systems team and Customer Service & Retention team. You\'ll also have direct contact with your local MailPlus owner-operator for collections and deliveries.',
-      },
-      {
-        q: 'Do API customers get the same same-day collection guarantee?',
-        a: 'Yes. All MailPlus customers — including API integrations — benefit from guaranteed same-day collections and 1–2 day express delivery Australia-wide.',
-      },
-    ],
-  },
-  {
-    id: 'tracking',
-    label: 'Tracking & Delivery',
-    faqs: [
-      {
-        q: 'How do I track my MailPlus parcel?',
-        a: 'Visit our Tracking page and enter your tracking number to see real-time status updates from pickup through to delivery. You can find your tracking number in your shipping confirmation email or inside the ShipMate dashboard.',
-      },
-      {
-        q: 'My tracking number isn\'t working — what should I do?',
-        a: 'Tracking numbers can take a few hours to activate after pickup. If your number still isn\'t working after 4 hours, please contact our customer service team on 1300 65 65 95 (Mon–Fri, 9am–5pm AEST) or submit a delivery support form.',
-      },
-      {
-        q: 'Will my customers receive automatic delivery notifications?',
-        a: 'Yes. MailPlus automatically sends SMS and email notifications to your customers at each stage of the delivery journey — so they always know when to expect their parcel and are less likely to miss it.',
-      },
-      {
-        q: 'What happens if a delivery attempt is unsuccessful?',
-        a: 'If a delivery attempt is unsuccessful, the driver will leave a card with redelivery instructions. Your customer can arrange a redelivery or collect from the nearest facility. Our customer service team is also on hand to help resolve any delivery issues.',
-      },
-      {
-        q: 'Can I get proof of delivery?',
-        a: 'Yes. MailPlus provides proof of delivery including electronic signature capture and photo confirmation where applicable. These are accessible through the ShipMate platform and tracking portal.',
-      },
-    ],
-  },
-  {
-    id: 'po',
-    label: 'Post Office Solutions',
-    faqs: [
-      {
-        q: 'What is MailPlus Post Office Solutions?',
-        a: 'MailPlus Post Office Solutions is a service where we clear your PO Box and lodge all your outgoing Australia Post parcels and mail — same-day, guaranteed. No more Post Office queues or missed collections.',
-      },
-      {
-        q: 'How does PO Box clearing work?',
-        a: 'Your dedicated MailPlus owner-operator visits your PO Box, collects all incoming mail and parcels, and delivers them directly to your business. All outgoing mail and parcels are also lodged at Australia Post same-day on your behalf.',
-      },
-      {
-        q: 'What days does Post Office Solutions operate?',
-        a: 'Post Office Solutions operates Monday to Friday. Same-day collection and lodgement is guaranteed on all business days. Contact our team to discuss scheduling that works for your business.',
-      },
-      {
-        q: 'Can I use Post Office Solutions alongside MailPlus Express?',
-        a: 'Absolutely. Many MailPlus customers use both Express Delivery and Post Office Solutions together through ShipMate, allowing them to manage all their shipping and mail management needs from one platform.',
+        q: 'How do I contact MailPlus support?',
+        a: 'Our Australian customer support team is available Monday to Friday from 9am to 5pm Sydney time on 1300 65 65 95. Existing customers can also log in to ShipMate or submit support requests via track.mailplus.com.au.',
       },
     ],
   },
@@ -244,7 +186,7 @@ export function FaqAccordion() {
             >
               <p className="font-bold text-sm mb-1" style={{ color: '#095c7b' }}>Still need help?</p>
               <p className="text-xs leading-relaxed mb-4" style={{ color: 'rgba(9,92,123,0.72)' }}>
-                Our Aussie-based team is ready to help Monday–Friday, 9am–5pm AEST.
+                Our Aussie-based team is ready to help Monday–Friday, 9am–5pm Sydney time.
               </p>
               <a
                 href="tel:1300656595"
@@ -310,12 +252,12 @@ export function FaqAccordion() {
               <p className="font-bold text-sm mb-4" style={{ color: '#095c7b' }}>Related Pages</p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { href: '/express-delivery', label: 'MailPlus Express' },
-                  { href: '/post-office-collect-lodge', label: 'Post Office Solutions' },
-                  { href: '/shipmate-platform', label: 'ShipMate' },
+                  { href: '/5-free-collections', label: '5 Free Collections' },
+                  { href: '/express-delivery', label: 'Express Parcel Delivery' },
+                  { href: '/post-office-collect-lodge', label: 'Post Office Collect & Lodge' },
+                  { href: '/shipmate-platform', label: 'ShipMate Platform' },
                   { href: '/mailplus-api', label: 'MailPlus API' },
-                  { href: '/tracking', label: 'Track a Parcel' },
-                  { href: '/contact', label: 'Contact Us' },
+                  { href: '/become-a-franchisee', label: 'Become a Franchisee' },
                 ].map((link) => (
                   <Link
                     key={link.label}

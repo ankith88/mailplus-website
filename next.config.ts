@@ -25,7 +25,22 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/services/courier',
+        destination: '/express-delivery',
+        permanent: true,
+      },
+      {
+        source: '/services/parcel-delivery',
+        destination: '/express-delivery',
+        permanent: true,
+      },
+      {
         source: '/services/post-office-solutions',
+        destination: '/post-office-collect-lodge',
+        permanent: true,
+      },
+      {
+        source: '/services/mail-management',
         destination: '/post-office-collect-lodge',
         permanent: true,
       },
@@ -35,8 +50,43 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/services/logistics',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/#services',
+        permanent: true,
+      },
+      {
+        source: '/locations/waterloo',
+        destination: '/#enquire',
+        permanent: true,
+      },
+      {
+        source: '/locations/alexandria',
+        destination: '/#enquire',
+        permanent: true,
+      },
+      {
+        source: '/locations',
+        destination: '/#enquire',
+        permanent: true,
+      },
+      {
         source: '/shipmate',
         destination: '/shipmate-platform',
+        permanent: true,
+      },
+      {
+        source: '/shipmate-signup',
+        destination: '/shipmate-platform/signup',
+        permanent: true,
+      },
+      {
+        source: '/claim-5-free-collections',
+        destination: '/5-free-collections/claim',
         permanent: true,
       },
       {
@@ -59,20 +109,15 @@ const nextConfig: NextConfig = {
         destination: '/terms',
         permanent: true,
       },
-      { // temporary redirection
+      {
         source: '/contact',
         destination: '/',
-        permanent: false,
+        permanent: true,
       },
-      { // temporary redirection
+      {
         source: '/logistics',
         destination: '/',
-        permanent: false,
-      },
-      { // temporary redirection
-        source: '/services/logistics',
-        destination: '/',
-        permanent: false,
+        permanent: true,
       },
     ]
   },
