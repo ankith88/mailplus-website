@@ -41,20 +41,6 @@ export default function Page() {
         <tr><td>September 21st 2026</td><td className="pct">34.14%</td><td className="pct">23.95%</td></tr>
         <tr><td>September 14th 2026</td><td className="pct">33.37%</td><td className="pct">23.95%</td></tr>
         <tr><td>September 7th 2026</td><td className="pct">32.76%</td><td className="pct">23.95%</td></tr>
-        <tr><td>August 31st 2026</td><td className="pct">32.71%</td><td className="pct">23.95%</td></tr>
-        <tr><td>August 24th 2026</td><td className="pct">31.29%</td><td className="pct">26.95%</td></tr>
-        <tr><td>August 17th 2026</td><td className="pct">31.26%</td><td className="pct">26.95%</td></tr>
-        <tr><td>August 10th 2026</td><td className="pct">30.15%</td><td className="pct">26.95%</td></tr>
-        <tr><td>August 3rd 2026</td><td className="pct">28.61%</td><td className="pct">26.95%</td></tr>
-        <tr><td>July 27th 2026</td><td className="pct">28.73%</td><td className="pct">29.35%</td></tr>
-        <tr><td>July 20th 2026</td><td className="pct">28.73%</td><td className="pct">29.35%</td></tr>
-        <tr><td>July 13th 2026</td><td className="pct">28.73%</td><td className="pct">29.35%</td></tr>
-        <tr><td>July 6th 2026</td><td className="pct">31.14%</td><td className="pct">29.35%</td></tr>
-        <tr><td>June 29th 2026</td><td className="pct">32.13%</td><td className="pct">29.35%</td></tr>
-        <tr><td>June 22nd 2026</td><td className="pct">33.55%</td><td className="pct">36.55%</td></tr>
-        <tr><td>June 15th 2026</td><td className="pct">34.94%</td><td className="pct">36.55%</td></tr>
-        <tr><td>June 8th 2026</td><td className="pct">36.30%</td><td className="pct">36.55%</td></tr>
-        <tr><td>June 1st 2026</td><td className="pct">38.11%</td><td className="pct">36.55%</td></tr>
 
             <tr className="links"><td>Additional Charges</td><td><a href="https://mailplus.com.au/wp-content/uploads/2023/07/2023-TGE-Surcharges.pdf" target="_blank" rel="noopener">TGE surcharges (PDF) ↗</a></td><td><a href="https://startrack.com.au/pricing-updates" target="_blank" rel="noopener">StarTrack pricing updates ↗</a></td></tr>
           </tbody>
