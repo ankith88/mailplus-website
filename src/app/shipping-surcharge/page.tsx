@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 };
 
 const shippingRates = [
-  { date: 'November 9th 2026', express: '39.11%', premium: '30.55%', current: true },
+  { date: 'November 16th 2026', express: '39.81%', premium: '30.55%', current: true },
+  { date: 'November 9th 2026', express: '39.11%', premium: '30.55%' },
   { date: 'November 2nd 2026', express: '38.15%', premium: '30.55%' },
   { date: 'October 26th 2026', express: '37.65%', premium: '28.55%' },
   { date: 'October 19th 2026', express: '37.46%', premium: '28.55%' },
@@ -21,20 +22,6 @@ const shippingRates = [
   { date: 'September 21st 2026', express: '34.14%', premium: '23.95%' },
   { date: 'September 14th 2026', express: '33.37%', premium: '23.95%' },
   { date: 'September 7th 2026', express: '32.76%', premium: '23.95%' },
-  { date: 'August 31st 2026', express: '32.71%', premium: '23.95%' },
-  { date: 'August 24th 2026', express: '31.29%', premium: '26.95%' },
-  { date: 'August 17th 2026', express: '31.26%', premium: '26.95%' },
-  { date: 'August 10th 2026', express: '30.15%', premium: '26.95%' },
-  { date: 'August 3rd 2026', express: '28.61%', premium: '26.95%' },
-  { date: 'July 27th 2026', express: '28.73%', premium: '29.35%' },
-  { date: 'July 20th 2026', express: '28.73%', premium: '29.35%' },
-  { date: 'July 13th 2026', express: '28.73%', premium: '29.35%' },
-  { date: 'July 6th 2026', express: '31.14%', premium: '29.35%' },
-  { date: 'June 29th 2026', express: '32.13%', premium: '29.35%' },
-  { date: 'June 22nd 2026', express: '33.55%', premium: '36.55%' },
-  { date: 'June 15th 2026', express: '34.94%', premium: '36.55%' },
-  { date: 'June 8th 2026', express: '36.30%', premium: '36.55%' },
-  { date: 'June 1st 2026', express: '38.11%', premium: '36.55%' },
 ];
 
 export default function Page() {
