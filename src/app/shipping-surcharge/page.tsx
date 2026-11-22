@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 };
 
 const shippingRates = [
-  { date: 'November 16th 2026', express: '39.81%', premium: '30.55%', current: true },
+  { date: 'November 23rd 2026', express: '40.17%', premium: '30.55%', current: true },
+  { date: 'November 16th 2026', express: '39.81%', premium: '30.55%' },
   { date: 'November 9th 2026', express: '39.11%', premium: '30.55%' },
   { date: 'November 2nd 2026', express: '38.15%', premium: '30.55%' },
   { date: 'October 26th 2026', express: '37.65%', premium: '28.55%' },
