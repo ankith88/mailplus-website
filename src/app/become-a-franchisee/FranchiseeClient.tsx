@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation';
 
 export default function FranchiseeClient() {
   useEffect(() => {
@@ -95,6 +96,26 @@ export default function FranchiseeClient() {
     }
 
     // Franchise enquiry submit
+    const setInlineError = (el: HTMLElement, msg: string) => {
+      const group = el.closest('.field-group');
+      if (!group) return;
+      let errEl = group.querySelector('.field-inline-err') as HTMLElement | null;
+      if (msg) {
+        if (!errEl) {
+          errEl = document.createElement('span');
+          errEl.className = 'field-inline-err';
+          errEl.style.color = '#E5484D';
+          errEl.style.fontSize = '12px';
+          errEl.style.marginTop = '4px';
+          errEl.style.display = 'block';
+          group.appendChild(errEl);
+        }
+        errEl.textContent = msg;
+      } else if (errEl) {
+        errEl.remove();
+      }
+    };
+
     const formSubmitBtn = document.querySelector('.form-submit');
     if (formSubmitBtn) {
       formSubmitBtn.addEventListener('click', async (e) => {
@@ -109,9 +130,25 @@ export default function FranchiseeClient() {
               ok = false;
             } else {
               el.style.borderColor = '';
+              setInlineError(el, '');
             }
           }
         });
+
+        const emailEl = document.getElementById('f-email') as HTMLInputElement | null;
+        if (emailEl && emailEl.value.trim() && !isValidEmail(emailEl.value)) {
+          emailEl.style.borderColor = '#E5484D';
+          setInlineError(emailEl, 'Please enter a valid email address');
+          ok = false;
+        }
+
+        const phoneEl = document.getElementById('f-phone') as HTMLInputElement | null;
+        if (phoneEl && phoneEl.value.trim() && !isValidAustralianPhone(phoneEl.value)) {
+          phoneEl.style.borderColor = '#E5484D';
+          setInlineError(phoneEl, 'Please enter a valid Australian phone number');
+          ok = false;
+        }
+
         if (!ok) return;
 
         // Collect form fields

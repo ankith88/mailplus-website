@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { ProgressModal } from '../../components/shared/ProgressModal';
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation';
 import {
   trackFormStarted,
   trackFormStepCompleted,
@@ -233,6 +234,20 @@ export default function FiveFreeCollectionsClient() {
         if (el) el.style.borderColor = '';
       }
     });
+
+    const emailEl = document.getElementById('f-email') as HTMLInputElement | null;
+    if (emailEl && emailEl.value.trim() && !isValidEmail(emailEl.value)) {
+      emailEl.style.borderColor = '#E5484D';
+      newErrors['f-email'] = true;
+      ok = false;
+    }
+
+    const phoneEl = document.getElementById('f-phone') as HTMLInputElement | null;
+    if (phoneEl && phoneEl.value.trim() && !isValidAustralianPhone(phoneEl.value)) {
+      phoneEl.style.borderColor = '#E5484D';
+      newErrors['f-phone'] = true;
+      ok = false;
+    }
 
     setFieldErrors(newErrors);
     if (!ok) {
@@ -1045,6 +1060,11 @@ export default function FiveFreeCollectionsClient() {
                         value={formFields.email}
                         onChange={handleFieldChange}
                       />
+                      {fieldErrors['f-email'] && (
+                        <span style={{ color: '#E5484D', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                          Please enter a valid email address
+                        </span>
+                      )}
                     </div>
                     <div className="field-group">
                       <label className="field-label">
@@ -1058,6 +1078,11 @@ export default function FiveFreeCollectionsClient() {
                         value={formFields.phone}
                         onChange={handleFieldChange}
                       />
+                      {fieldErrors['f-phone'] && (
+                        <span style={{ color: '#E5484D', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                          Please enter a valid Australian phone number
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="field-group">

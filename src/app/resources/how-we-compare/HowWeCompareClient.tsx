@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ProgressModal } from '../../../components/shared/ProgressModal';
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation';
 
 export default function HowWeCompareClient() {
   const [submitting, setSubmitting] = useState(false);
@@ -85,6 +86,26 @@ export default function HowWeCompareClient() {
     document.addEventListener('click', handleFaqClick);
 
     // Form submission
+    const setInlineError = (el: HTMLElement, msg: string) => {
+      const group = el.closest('.field-group');
+      if (!group) return;
+      let errEl = group.querySelector('.field-inline-err') as HTMLElement | null;
+      if (msg) {
+        if (!errEl) {
+          errEl = document.createElement('span');
+          errEl.className = 'field-inline-err';
+          errEl.style.color = '#E5484D';
+          errEl.style.fontSize = '12px';
+          errEl.style.marginTop = '4px';
+          errEl.style.display = 'block';
+          group.appendChild(errEl);
+        }
+        errEl.textContent = msg;
+      } else if (errEl) {
+        errEl.remove();
+      }
+    };
+
     const formBtn = document.querySelector('.form-submit');
     if (formBtn) {
       formBtn.addEventListener('click', async (e) => {
@@ -97,9 +118,24 @@ export default function HowWeCompareClient() {
             const wrapper = document.getElementById(`wrapper-${id}`);
             const targetEl = wrapper ? (wrapper.querySelector('.custom-select-trigger') as HTMLElement || wrapper) : el;
             if (!el.value.trim()) { targetEl.style.borderColor = '#E5484D'; ok = false; }
-            else { targetEl.style.borderColor = ''; }
+            else { targetEl.style.borderColor = ''; setInlineError(el, ''); }
           }
         });
+
+        const emailEl = document.getElementById('f-email') as HTMLInputElement | null;
+        if (emailEl && emailEl.value.trim() && !isValidEmail(emailEl.value)) {
+          emailEl.style.borderColor = '#E5484D';
+          setInlineError(emailEl, 'Please enter a valid email address');
+          ok = false;
+        }
+
+        const phoneEl = document.getElementById('f-phone') as HTMLInputElement | null;
+        if (phoneEl && phoneEl.value.trim() && !isValidAustralianPhone(phoneEl.value)) {
+          phoneEl.style.borderColor = '#E5484D';
+          setInlineError(phoneEl, 'Please enter a valid Australian phone number');
+          ok = false;
+        }
+
         if (!ok) return;
 
         const formInner = document.getElementById('enquiryFormInner');

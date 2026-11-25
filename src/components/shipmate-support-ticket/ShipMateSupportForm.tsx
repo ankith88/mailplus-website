@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { submitShipMateToNetSuite } from '@/lib/netsuite'
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation'
 
 interface FormState {
   companyName: string
@@ -38,8 +39,9 @@ export function ShipMateSupportForm() {
     if (!form.firstName.trim()) e.firstName = 'First name is required.'
     if (!form.lastName.trim()) e.lastName = 'Last name is required.'
     if (!form.email.trim()) e.email = 'Email address is required.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Please enter a valid email.'
+    else if (!isValidEmail(form.email)) e.email = 'Please enter a valid email.'
     if (!form.phone.trim()) e.phone = 'Phone number is required.'
+    else if (!isValidAustralianPhone(form.phone)) e.phone = 'Please enter a valid Australian phone number.'
     if (!form.description.trim()) e.description = 'Please provide a brief description.'
     setErrors(e)
     return Object.keys(e).length === 0

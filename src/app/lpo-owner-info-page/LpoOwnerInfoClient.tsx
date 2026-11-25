@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { submitLpoOwnerToNetSuite } from '@/lib/netsuite';
 import { ProgressModal } from '../../components/shared/ProgressModal';
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation';
 
 export default function LpoOwnerInfoClient() {
   const [formFields, setFormFields] = useState({
@@ -120,10 +121,13 @@ export default function LpoOwnerInfoClient() {
       }
     });
 
-    // Simple email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (formFields.email && !emailRegex.test(formFields.email)) {
+    if (formFields.email && !isValidEmail(formFields.email)) {
       newErrors.email = true;
+      hasError = true;
+    }
+
+    if (formFields.phone && !isValidAustralianPhone(formFields.phone)) {
+      newErrors.phone = true;
       hasError = true;
     }
 
@@ -260,6 +264,11 @@ export default function LpoOwnerInfoClient() {
                 value={formFields.email}
                 onChange={handleChange}
               />
+              {fieldErrors.email && (
+                <span style={{ color: '#E5484D', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                  Please enter a valid email address
+                </span>
+              )}
             </div>
             <div className="form-label-group">
               <label className="input-field-label" htmlFor="phone">
@@ -269,10 +278,15 @@ export default function LpoOwnerInfoClient() {
                 id="phone"
                 className={`input-field-default ${fieldErrors.phone ? 'input-field-error' : ''}`}
                 required
-                type="text"
+                type="tel"
                 value={formFields.phone}
                 onChange={handleChange}
               />
+              {fieldErrors.phone && (
+                <span style={{ color: '#E5484D', fontSize: '12px', marginTop: '4px', display: 'block' }}>
+                  Please enter a valid Australian phone number
+                </span>
+              )}
             </div>
           </div>
 

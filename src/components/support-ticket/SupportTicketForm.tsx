@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { getFirebaseClient } from '@/lib/firebase/client'
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore'
 import Script from 'next/script'
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation'
 
 // Categories matching screenshot
 interface Category {
@@ -223,10 +224,14 @@ export function SupportTicketForm() {
       if (!form.enquirerName.trim()) e.enquirerName = 'Name is required.'
       if (!form.enquirerEmail.trim()) {
         e.enquirerEmail = 'Email is required.'
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.enquirerEmail)) {
+      } else if (!isValidEmail(form.enquirerEmail)) {
         e.enquirerEmail = 'Please enter a valid email.'
       }
-      if (!form.enquirerPhone.trim()) e.enquirerPhone = 'Phone number is required.'
+      if (!form.enquirerPhone.trim()) {
+        e.enquirerPhone = 'Phone number is required.'
+      } else if (!isValidAustralianPhone(form.enquirerPhone)) {
+        e.enquirerPhone = 'Please enter a valid Australian phone number.'
+      }
     }
 
     setErrors(e)

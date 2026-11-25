@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { ProgressModal } from '@/components/shared/ProgressModal'
 import { submitLead } from '@/utils/submitLead'
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation'
 
 export default function SignupClient() {
   const [submitting, setSubmitting] = useState(false)
@@ -116,8 +117,8 @@ export default function SignupClient() {
     if (!formFields.fname.trim()) errors.fname = true
     if (!formFields.lname.trim()) errors.lname = true
     if (!formFields.company.trim()) errors.company = true
-    if (!formFields.email.trim()) errors.email = true
-    if (!formFields.phone.trim()) errors.phone = true
+    if (!formFields.email.trim() || !isValidEmail(formFields.email)) errors.email = true
+    if (!formFields.phone.trim() || !isValidAustralianPhone(formFields.phone)) errors.phone = true
     if (!addressInputRef.current?.value.trim()) errors.address = true
 
     if (Object.keys(errors).length > 0) {
@@ -406,6 +407,11 @@ export default function SignupClient() {
                         color: '#0A3242',
                       }}
                     />
+                    {fieldErrors.email && (
+                      <p style={{ color: '#E5484D', fontSize: '12px', marginTop: '4px' }}>
+                        Please enter a valid email address
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -431,6 +437,11 @@ export default function SignupClient() {
                         color: '#0A3242',
                       }}
                     />
+                    {fieldErrors.phone && (
+                      <p style={{ color: '#E5484D', fontSize: '12px', marginTop: '4px' }}>
+                        Please enter a valid Australian phone number
+                      </p>
+                    )}
                   </div>
                 </div>
 

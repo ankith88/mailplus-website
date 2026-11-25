@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback, Fragment } from 'react'
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation'
 import { getFirebaseClient } from '@/lib/firebase/client'
 import {
   collection,
@@ -362,6 +363,8 @@ export function SupportTicketWizard() {
     if (step === 3) {
       const nameVal = rName.trim()
       const addrVal = rAddress.trim()
+      const emailVal = rEmail.trim()
+      const phoneVal = rPhone.trim()
       let valid = true
 
       if (!nameVal) {
@@ -370,6 +373,14 @@ export function SupportTicketWizard() {
       }
       if (!addrVal) {
         errors.rAddress = true
+        valid = false
+      }
+      if (emailVal && !isValidEmail(emailVal)) {
+        errors.rEmail = true
+        valid = false
+      }
+      if (phoneVal && !isValidAustralianPhone(phoneVal)) {
+        errors.rPhone = true
         valid = false
       }
 
@@ -384,7 +395,8 @@ export function SupportTicketWizard() {
       const nameVal = eName.trim()
       const emailVal = eEmail.trim()
       const phoneVal = ePhone.trim()
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)
+      const emailOk = isValidEmail(emailVal)
+      const phoneOk = isValidAustralianPhone(phoneVal)
       let valid = true
 
       if (!nameVal) {
@@ -395,7 +407,7 @@ export function SupportTicketWizard() {
         errors.eEmail = true
         valid = false
       }
-      if (!phoneVal) {
+      if (!phoneOk) {
         errors.ePhone = true
         valid = false
       }
@@ -737,11 +749,12 @@ export function SupportTicketWizard() {
                           </label>
                           <input
                             type="tel"
-                            className="field-input"
+                            className={`field-input ${fieldErrors.rPhone ? 'err' : ''}`}
                             id="rPhone"
                             value={rPhone}
                             onChange={(e) => {
                               setRPhone(e.target.value)
+                              setFieldErrors(prev => ({ ...prev, rPhone: false }))
                               if (receiverSource === 'barcode') setReceiverSource('edited')
                             }}
                           />
@@ -752,11 +765,12 @@ export function SupportTicketWizard() {
                           </label>
                           <input
                             type="email"
-                            className="field-input"
+                            className={`field-input ${fieldErrors.rEmail ? 'err' : ''}`}
                             id="rEmail"
                             value={rEmail}
                             onChange={(e) => {
                               setREmail(e.target.value)
+                              setFieldErrors(prev => ({ ...prev, rEmail: false }))
                               if (receiverSource === 'barcode') setReceiverSource('edited')
                             }}
                           />
@@ -791,9 +805,9 @@ export function SupportTicketWizard() {
                       </div>
                     </div>
 
-                    {(fieldErrors.rName || fieldErrors.rAddress) && (
+                    {(fieldErrors.rName || fieldErrors.rAddress || fieldErrors.rEmail || fieldErrors.rPhone) && (
                       <div className="field-error-msg show">
-                        Please provide the receiver name and address.
+                        Please provide a valid receiver name, address, email and Australian phone number.
                       </div>
                     )}
                   </div>
@@ -863,7 +877,7 @@ export function SupportTicketWizard() {
                     </div>
                     {(fieldErrors.eName || fieldErrors.eEmail || fieldErrors.ePhone) && (
                       <div className="field-error-msg show">
-                        Please fill in your name, a valid email and a phone number.
+                        Please fill in your name, a valid email and a valid Australian phone number.
                       </div>
                     )}
                   </div>

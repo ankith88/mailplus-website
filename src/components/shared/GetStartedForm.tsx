@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import Script from 'next/script'
 import { submitToNetSuite } from '@/lib/netsuite'
+import { isValidEmail, isValidAustralianPhone } from '@/utils/validation'
 import { CustomSelect } from './CustomSelect'
 import { ProgressModal } from './ProgressModal'
 
@@ -173,13 +174,13 @@ export function GetStartedForm({ onSuccess }: { onSuccess?: () => void } = {}) {
 
     if (!form.email.trim()) {
       e.email = 'Email Address is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!isValidEmail(form.email)) {
       e.email = 'Please enter a valid email address'
     }
 
     if (!form.phone.trim()) {
       e.phone = 'Phone Number is required'
-    } else if (!/^(\+?61|0)[2-578]\d{8}$/.test(form.phone.replace(/[\s\-()]/g, ''))) {
+    } else if (!isValidAustralianPhone(form.phone)) {
       e.phone = 'Please enter a valid Australian phone number'
     }
 
